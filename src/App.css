@@ -1,0 +1,51 @@
+
+
+
+
+
+.App {
+  background: url("bg.png")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.App-logo{
+  max-width: 40%;
+  max-height: 60%;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.row{
+  display: grid;  
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 25vh 25vh;  
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/* The grid: Three equal columns that floats next to each other */
+.column { 
+  text-align: center;
+  cursor: pointer;
+  color: black;
+  border-style: solid;
+  border-width: 0.1vh; 
+  background-color: rgba(41, 207, 47, 0.3);
+}
+
+.containerTab {
+  color: white;
+}
+
+
+
