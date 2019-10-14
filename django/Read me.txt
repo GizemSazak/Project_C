@@ -1,5 +1,5 @@
 Django openen
-Om django database te opennen eerst moet je naar de file waarin staat manage.py en daarna
+Om django database te openen eerst moet je naar de file waarin staat manage.py en daarna
 moet je shift ingedrukt houden en op rechter muisknop klikken, vervolgens klik je op powershell-venster openen 
 en daarna kan je dit command gebruiken.
 py manage.py runserver 
@@ -13,7 +13,7 @@ Als je een nieuw app voor de database wil maken dan kan je de command
 py manage.py startapp mijnapp (inplaats van mijnapp zet je je app naam)
 
 Serever openen.
-Om de server te kunnen opennen bij postgres dan moet je 'psycopg2' intalleren bij dit command line.
+Om de server te kunnen openen bij postgres dan moet je 'psycopg2' intalleren bij dit command line.
 pip install psycopg2.
 Daarna kan je naar pgAdmin4 gaan en de gegeven van de server invullen. Om dat in te vullen 
 eerst moet je op server klikken daarna klik je op add new server, dan vul je dit naam 'cligxofj',
