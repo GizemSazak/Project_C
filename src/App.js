@@ -1,10 +1,77 @@
-import React, { useState } from 'react';
-import './App.css';
-import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState } from "react";
+import "./App.css";
+import {
+  faCalendar,
+  faStickyNote,
+  faUsers,
+  faUserCheck,
+  faBezierCurve,
+  faRunning,
+  faClipboard,
+  faCogs
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch
+} from "react-router-dom";
 
-function App() {
+export default function App() {
+  return (
+    <div className="App">
+      <header>
+        <Router>
+          <div>
+            <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
+            <OldSchoolMenuLink to="/about" label="About" />
+            <OldSchoolMenuLink to="/dashboard" label="dashboard" />
 
+            <hr />
+
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/dashboard">
+                <Dashboard />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </header>
+    </div>
+  );
+}
+
+function OldSchoolMenuLink({ label, to, activeOnlyWhenExact }) {
+  let match = useRouteMatch({
+    path: to,
+    exact: activeOnlyWhenExact
+  });
+
+  return (
+    <div className={match ? "active" : ""}>
+      {match && "> "}
+      <Link to={to}>{label}</Link>
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <div>
+      <h2>About</h2>
+    </div>
+  );
+}
+
+function Dashboard() {
   const [buttons] = useState([
     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
     { link: "openTab('b1');", title: "Notities", icon: faStickyNote },
@@ -17,29 +84,43 @@ function App() {
   ]);
 
   return (
-    <div className="App">
-      <header>
-      </header>
-      <div className="row" >
-        {/* We're making all the buttons and filling the values in by mapping through all buttons */}
-        {buttons.map(buttons => (
-          <div className="column" onclick={buttons.link}>
-            <FontAwesomeIcon icon={buttons.icon} className="App-logo" />
-            <br />{buttons.title}
-          </div>
-        ))}
-      </div >
+    <div className="row">
+      {/* We're making all the buttons and filling the values in by mapping through all buttons */}
+      {buttons.map(buttons => (
+        <div className="column" onclick={buttons.link}>
+          <FontAwesomeIcon icon={buttons.icon} className="App-logo" />
+          <br />
+          {buttons.title}
+        </div>
+      ))}
     </div>
   );
 }
 
-function openTab(tabName) {
-  var i, x;
-  x = document.getElementsByClassName("containerTab");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  document.getElementById(tabName).style.display = "block";
+function Home() {
+  return (
+    <div>
+      <h2>Login</h2>
+      <form>
+        <label>
+          <p>Username:</p>
+          <input type="text" name="username" />
+        </label>
+        <label>
+          <p>Password:</p>
+          <input type="text" name="password" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  );
 }
 
-export default App;
+//   function openTab(tabName) {
+//   var i, x;
+//   x = document.getElementsByClassName("containerTab");
+//   for (i = 0; i < x.length; i++) {
+//     x[i].style.display = "none";
+//   }
+//   document.getElementById(tabName).style.display = "block";
+// }
