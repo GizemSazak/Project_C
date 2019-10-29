@@ -4,7 +4,7 @@ import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunnin
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Menu() {
-
+    // Here the values of the buttons are filled in
     const [buttons] = useState([
         { title: "Agenda", icon: faCalendar },
         { title: "Notities", icon: faStickyNote },
@@ -18,6 +18,7 @@ function Menu() {
 
     return (
         <nav className="sidebar" >
+            {/* We're making all the buttons and filling the values in by mapping through all buttons */}
             {buttons.map(buttons => (
                 <button>
                     <FontAwesomeIcon icon={buttons.icon} />
