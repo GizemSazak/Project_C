@@ -28,16 +28,13 @@
 }
 /* The grid: Three equal columns that floats next to each other */
 .column { 
+  font-size: 1.5rem;
   padding: 50px;
   text-align: center;
   cursor: pointer;
   color: white;
   border: 0.1vh solid black;
   background-image: radial-gradient(rgb(0, 200, 0,0.6),rgb(0, 100, 0,0.6));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .containerTab {
   color: white;
