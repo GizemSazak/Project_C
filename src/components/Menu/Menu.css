@@ -1,14 +1,10 @@
-body{
+.App {
     background: url("../../bg.png")no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    color: white;
-}
+  }
 .sidebar{
     overflow: auto;
     height: 100vh;
@@ -28,12 +24,12 @@ body{
     flex: 1;
     font-size: 1.1rem;
     color: white;
-    background-image: radial-gradient(rgb(0, 200, 0,0.8),rgb(0, 100, 0,0.8));
+    background-image: radial-gradient(rgb(0, 200, 0,0.6),rgb(0, 100, 0,0.8));
     border: 1.5px solid black;
     cursor: pointer;
 }
 .sidebar button:hover{
-    background-image: radial-gradient(rgb(0, 150, 0,0.8),rgb(0, 250, 0,0.8));
+    background-image: radial-gradient(rgb(0, 150, 0,0.6),rgb(0, 250, 0,0.8));
     font-size: 1.2rem;
 }
 .ToggleButton{
@@ -41,7 +37,7 @@ body{
     width: 16vh;
     font-size: 1rem;
     color: white;
-    background-image: radial-gradient(rgb(0, 200, 0,0.8),rgb(0, 100, 0,0.8));
+    background-image: radial-gradient(rgb(0, 200, 0,0.6),rgb(0, 100, 0,0.8));
     padding: 15px;
     border: 1.5px solid black;
 }

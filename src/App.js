@@ -1,33 +1,24 @@
 import React from 'react';
-import calendar from './calendar.png';
-import note from './note.png';
-import players from './players.png';
-import attendance from './attendance.png';
-import tactics from './tactics.png';
-import exercise from './exercise.png';
-import competition from './competition.png';
-import settings from './settings.png';
 import './App.css';
-import Check from './components/Menu/Check'
-
+import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function App() {
   return (
-    <Check />
-    // <div className="App">
-    //   <header>
-    //   </header>
-    //   <div className="row">
-    //     <div className="column" onclick="openTab('b1');"><br></br><img src={calendar} className="App-logo" alt="icon1" /><br></br>AGENDA</div>
-    //     <div className="column" onclick="openTab('b2');"><br></br><img src={note} className="App-logo" alt="icon2" /><br></br>NOTITIE</div>
-    //     <div className="column" onclick="openTab('b3');"><br></br><img src={players} className="App-logo" alt="icon3" /><br></br>SPELERS</div>
-    //     <div className="column" onclick="openTab('b4');"><br></br><img src={attendance} className="App-logo" alt="icon4" /><br></br>AANWEZIGHEID</div>
-    //     <div className="column" onclick="openTab('b5');"><br></br><img src={tactics} className="App-logo" alt="icon5" /><br></br>TACTIEK</div>
-    //     <div className="column" onclick="openTab('b6');"><br></br><img src={exercise} className="App-logo" alt="icon6" /><br></br>OEFENINGEN</div>
-    //     <div className="column" onclick="openTab('b7');"><br></br><img src={competition} className="App-logo" alt="icon7" /><br></br>WEDSTRIJDUITSLAGEN</div>
-    //     <div className="column" onclick="openTab('b8');"><br></br><img src={settings} className="App-logo" alt="icon8" /><br></br>INSTELLINGEN</div>
-    //   </div>
-    // </div>
+    <div className="App">
+      <header>
+      </header>
+      <div className="row">
+        <div className="column" onclick="openTab('b1');"><FontAwesomeIcon icon={faCalendar} className="App-logo" /><br />AGENDA</div>
+        <div className="column" onclick="openTab('b2');"><FontAwesomeIcon icon={faStickyNote} className="App-logo" /><br />NOTITIE</div>
+        <div className="column" onclick="openTab('b3');"><FontAwesomeIcon icon={faUsers} className="App-logo" /><br />SPELERS</div>
+        <div className="column" onclick="openTab('b4');"><FontAwesomeIcon icon={faUserCheck} className="App-logo" /><br />AANWEZIGHEID</div>
+        <div className="column" onclick="openTab('b5');"><FontAwesomeIcon icon={faBezierCurve} className="App-logo" /><br />TACTIEK</div>
+        <div className="column" onclick="openTab('b6');"><FontAwesomeIcon icon={faRunning} className="App-logo" /><br />OEFENINGEN</div>
+        <div className="column" onclick="openTab('b7');"><FontAwesomeIcon icon={faClipboard} className="App-logo" /><br />WEDSTRIJDUITSLAGEN</div>
+        <div className="column" onclick="openTab('b8');"><FontAwesomeIcon icon={faCogs} className="App-logo" /><br />INSTELLINGEN</div>
+      </div>
+    </div>
   );
 }
 
