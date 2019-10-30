@@ -4,17 +4,19 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    position:relative;
   }
 .sidebar{
     overflow: auto;
     height: 100vh;
-    width: 16vh;
+    width: 18vh;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    overflow: hidden;
 }
 .sidebar button :first-child {
     font-size: 3rem;

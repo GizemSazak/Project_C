@@ -7,6 +7,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .App-logo{
   font-size: 7rem;
@@ -20,7 +21,7 @@
   display: grid;  
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 25vh 25vh;  
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
@@ -35,7 +36,10 @@
   color: white;
   border: 0.1vh solid black;
   background-image: radial-gradient(rgb(0, 200, 0,0.6),rgb(0, 100, 0,0.6));
+  
 }
 .containerTab {
   color: white;
 }
+
+
