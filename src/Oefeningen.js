@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Oefeningen() {
 
-  
 
   return (
     <div className='App'>
@@ -63,6 +62,8 @@ function Oefeningen() {
                     <p>Koppen</p><h4>Terug koppen</h4>
                 </div>                
             </div>
+
+            
     </div>
     
   );

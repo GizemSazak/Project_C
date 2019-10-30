@@ -20,7 +20,7 @@
 .row{
   display: grid;  
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 25vh 25vh;  
+   
   position: fixed;
   right: 0;
   bottom: 0;
@@ -40,6 +40,10 @@
 }
 .containerTab {
   color: white;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 
