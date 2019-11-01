@@ -18,6 +18,8 @@ import {
   Link,
   useRouteMatch
 } from "react-router-dom";
+import Registration from "./components/auth/Registration";
+import Login from "./components/auth/Login";
 
 export default function App() {
   return (
@@ -28,9 +30,7 @@ export default function App() {
             <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
             <OldSchoolMenuLink to="/about" label="About" />
             <OldSchoolMenuLink to="/dashboard" label="dashboard" />
-
             <hr />
-
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -41,6 +41,9 @@ export default function App() {
               <Route path="/dashboard">
                 <Dashboard />
               </Route>
+              <route path="/registreren">
+                <Registreren />
+              </route>
             </Switch>
           </div>
         </Router>
@@ -100,18 +103,15 @@ function Dashboard() {
 function Home() {
   return (
     <div>
-      <h2>Login</h2>
-      <form>
-        <label>
-          <p>Username:</p>
-          <input type="text" name="username" />
-        </label>
-        <label>
-          <p>Password:</p>
-          <input type="text" name="password" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <Login />
+    </div>
+  );
+}
+
+function Registreren() {
+  return (
+    <div>
+      <Registration />
     </div>
   );
 }
