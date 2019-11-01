@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Oefeningen from './Oefeningen'
 import { Route, Link } from 'react-router-dom'
 
 function Home() {
@@ -16,7 +15,7 @@ function Home() {
     { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
     { link: "openTab('b1');", title: "Wedstrijduitslag", icon: faClipboard },
     { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
-    
+
   ]);
 
   return (
@@ -25,11 +24,13 @@ function Home() {
       </header>
       <div className="row" >
         {/* We're making all the buttons and filling the values in by mapping through all buttons */}
-        {buttons.map(buttons => (<Link to={buttons.link} className="link">
-          <div className="column" onclick={buttons.link}>
-            <FontAwesomeIcon icon={buttons.icon} className="App-logo" />
-            <br/>{buttons.title}
-          </div></Link>
+        {buttons.map(buttons => (
+          <Link to={buttons.link} className="link">
+            <div className="column" onclick={buttons.link}>
+              <FontAwesomeIcon icon={buttons.icon} className="App-logo" />
+              <br />{buttons.title}
+            </div>
+          </Link>
         ))}
       </div >
     </div>
