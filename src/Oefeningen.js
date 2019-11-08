@@ -14,9 +14,9 @@ function Oefeningen() {
       <Check/>
             <div class="roww">
                 <div class="columnn">
-                <Link to="/oefening_1">
+                <Link to="/oefening_1" >
                 <img id="oefimg" src="//www.yoursportplanner.com/uploads/69b52cb3b2a2dec7e432d618a268cf2799034128.png"/>
-                    <p>Aanvallen en verdedigen</p><h4>Bal afpakken</h4>
+                    <p >Aanvallen en verdedigen</p><h4>Bal afpakken</h4>
                     </Link>
                 </div>
                 <div class="columnn">

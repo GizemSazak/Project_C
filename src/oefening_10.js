@@ -8,6 +8,7 @@ function oefening_10() {
 
   return (
     <div>
+      <div id="space">
         <img id="oefen_img" src="//www.yoursportplanner.com/uploads/64a1a81413613274d3918854907b92deb9487632.png"/>  
         <h2>Veldopstelling</h2>
         <p5> 2x 4x 2 pionnen naast elkaar opstellen zodat twee</p5> <br></br> <p5> straten ontstaan van pionnen.</p5>
@@ -18,7 +19,7 @@ function oefening_10() {
         <p6>Speler 3 begint weer op dezelde plek als sport 1.</p6>
               <h6>Spelregels:</h6>
         <p7>1- De bal moet door de pionnenstraat heen.</p7> <p7>2- Als je een pion raakt moet je sprinten om de pion<br></br> </p7> <p7> recht op te zetten en het opnieuw proberen.</p7> <br></br> <p7>3- De bal moet langs alle pionnen gaan alvorens de ontvangende<br></br> </p7> <p7> speler de bal mag aannemen.</p7> 
-
+        </div>
       <Check/>
             
     </div>

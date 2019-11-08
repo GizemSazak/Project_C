@@ -8,6 +8,8 @@ function oefening_1() {
 
   return (
     <div>
+      
+    <div id="space">
         <img id="oefen_img" src="//www.yoursportplanner.com/uploads/69b52cb3b2a2dec7e432d618a268cf2799034128.png"/>  
         <h2>Veldopstelling</h2>
         <p5>Veld afzetten met 4 pionnen op 20 bij meter.</p5>
@@ -19,10 +21,11 @@ function oefening_1() {
               <h6>Spelregels:</h6>
         <p7>1- Als een speler de bal afpakt dan mag deze speler de bal</p7>
         <p7>afschermen en moet de andere speler de bal afpakken.</p7> <p7>2- Op het fluit signaal van de trainer moet je van spelersgroepje wisselen.</p7> <p7>3- Je mag niet wisselen naar een andere speler waar je al een keer tegen hebt gespeeld.</p7> <p7>4- Gebruik bij het afschermen van de bal je lichaam goed.</p7>
-      <Check/>
+      
             
     </div>
-    
+    <Check/>
+    </div>
   );
 }
 

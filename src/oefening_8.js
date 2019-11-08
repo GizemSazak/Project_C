@@ -8,6 +8,7 @@ function oefening_8() {
 
   return (
     <div>
+      <div id="space">
         <img id="oefen_img" src="//www.yoursportplanner.com/uploads/858e71a398184f0549cd36a7195ecebd7c037905.png"/>  
         <h2>Veldopstelling</h2>
         <p5>4 x 4 pionnen in een rechthoek opstelling.</p5>
@@ -18,6 +19,7 @@ function oefening_8() {
          <p6> in dat vierkant met een kapbeweging de bal weer de andere kant op te sturen.</p6>
               <h6>Spelregels:</h6>
         <p7>1- De bal mag niet buiten het vierkant van pionnen komen.</p7> <p7>2- Er moet 2 x heen en terug worden gesprint alvorens de volgende speler mag.</p7>  
+        </div>
       <Check/>
             
     </div>

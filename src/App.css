@@ -19,8 +19,7 @@
 }
 .row{
   display: grid;  
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-   
+  grid-template-columns: repeat(auto-fill, minmax(150px, 4fr ));
   position: fixed;
   right: 0;
   bottom: 0;
@@ -30,20 +29,20 @@
 /* The grid: Three equal columns that floats next to each other */
 .column { 
   font-size: 1.5rem;
-  padding: 50px;
+  padding: 5vh;
   text-align: center;
   cursor: pointer;
   color: white;
   border: 0.1vh solid black;
-  background-image: radial-gradient(rgb(0, 200, 0,0.6),rgb(0, 100, 0,0.6));
+  background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.8));
   
 }
-.containerTab {
-  color: white;
+
+a:hover{
+  background-image: radial-gradient(rgb(0, 150, 0,1),rgb(0, 250, 0,1));
+  font-size: 0.95rem;
+  cursor: pointer;
 }
 
-a:link {
-  text-decoration: none;
-}
 
 

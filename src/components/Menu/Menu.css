@@ -24,6 +24,7 @@
 .menu:hover{
     background-image: radial-gradient(rgb(0, 150, 0,0.6),rgb(0, 250, 0,0.8));
     font-size: 0.95rem;
+    color: white;
 }
 .ToggleButton{
     height: 10vh;

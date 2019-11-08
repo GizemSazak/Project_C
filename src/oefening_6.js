@@ -8,6 +8,7 @@ function oefening_6() {
 
   return (
     <div>
+      <div id="space">
         <img id="oefen_img" src="//www.yoursportplanner.com/uploads/f7b44018acb9c0a54a1644d57944cccf5e2b0717.png"/>  
         <h2>Veldopstelling</h2>
         <p5>4 tot 6 pionnen waarlangs gedribbeld moet worden </p5><br></br><p5>2 x een pion in het doel.</p5>
@@ -16,6 +17,7 @@ function oefening_6() {
         <p6> Speler dribbelt langs/door de pionnen en probeert in één beweging </p6><p6> middels een hard schot (dus bovenkant voet) een van de </p6> <p6>pionnen omver te schieten.</p6>
               <h6>Spelregels:</h6>
         <p7>1-De speler moet zelf zijn bal uit het net halen.</p7> <p7>2- De speler moet zelf de pion rechtop zetten.</p7> <p7>3- De speler moet zelf de bal ophalen die hij heeft misgeschoten.</p7> <p7>4-  Een andere speler mag pas beginnen als de eerste speler zijn bal heeft weggepakt.</p7>  
+        </div>
       <Check/>
             
     </div>
