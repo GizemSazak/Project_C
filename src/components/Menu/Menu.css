@@ -20,6 +20,7 @@
     background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.9));
     border: 1.5px solid black;
     cursor: pointer;
+    
 }
 .menu:hover{
     background-image: radial-gradient(rgb(0, 150, 0,0.6),rgb(0, 250, 0,0.8));

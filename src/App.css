@@ -19,13 +19,19 @@
 }
 .row{
   display: grid;  
-  grid-template-columns: repeat(auto-fill, minmax(150px, 4fr ));
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
-  
 }
+
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+  }
+
 /* The grid: Three equal columns that floats next to each other */
 .column { 
   font-size: 1.5rem;
@@ -43,6 +49,7 @@ a:hover{
   font-size: 0.95rem;
   cursor: pointer;
 }
+
 
 
 
