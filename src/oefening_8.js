@@ -14,11 +14,15 @@ function oefening_8() {
         <p5>4 x 4 pionnen in een rechthoek opstelling.</p5>
         <h5>Kappen met de bal</h5><br></br>
         <h3>Spelverloop:</h3>
-        <p6> Elke speler sprint vanuit het vierkant van pionnen naar het vierkant </p6> <p6>van pionnen aan de overkant. Daar wordt de </p6> <p6>bal met een kapbeweging (binnen- of buitenkant voet) in de tegenovergestelde richting gestuurd </p6> <br></br>
-        <p6> Nu wordt weer naar de andere kant gesprint om ook</p6>
-         <p6> in dat vierkant met een kapbeweging de bal weer de andere kant op te sturen.</p6>
+        <p6> Elke speler sprint vanuit het vierkant van pionnen naar het vierkant van pionnen aan de overkant. 
+          Daar wordt de bal met een kapbeweging (binnen- of buitenkant voet) in de tegenovergestelde richting gestuurd 
+          Nu wordt weer naar de andere kant gesprint om ook
+          in dat vierkant met een kapbeweging de bal weer de andere kant op te sturen.</p6>
               <h6>Spelregels:</h6>
-        <p7>1- De bal mag niet buiten het vierkant van pionnen komen.</p7> <p7>2- Er moet 2 x heen en terug worden gesprint alvorens de volgende speler mag.</p7>  
+              <ol>
+        <li>De bal mag niet buiten het vierkant van pionnen komen.</li>
+         <li>Er moet 2 x heen en terug worden gesprint alvorens de volgende speler mag.</li>  
+        </ol>
         </div>
       <Check/>
             

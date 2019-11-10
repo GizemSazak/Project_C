@@ -14,9 +14,15 @@ function oefening_6() {
         <p5>4 tot 6 pionnen waarlangs gedribbeld moet worden </p5><br></br><p5>2 x een pion in het doel.</p5>
         <h5>Dribbel en schiet pionnen omver</h5><br></br>
         <h3>Spelverloop:</h3>
-        <p6> Speler dribbelt langs/door de pionnen en probeert in één beweging </p6><p6> middels een hard schot (dus bovenkant voet) een van de </p6> <p6>pionnen omver te schieten.</p6>
+        <p6> Speler dribbelt langs/door de pionnen en probeert in één beweging middels een hard schot (dus bovenkant voet) een van de 
+          pionnen omver te schieten.</p6>
               <h6>Spelregels:</h6>
-        <p7>1-De speler moet zelf zijn bal uit het net halen.</p7> <p7>2- De speler moet zelf de pion rechtop zetten.</p7> <p7>3- De speler moet zelf de bal ophalen die hij heeft misgeschoten.</p7> <p7>4-  Een andere speler mag pas beginnen als de eerste speler zijn bal heeft weggepakt.</p7>  
+              <ol>
+        <li>De speler moet zelf zijn bal uit het net halen.</li> 
+        <li>De speler moet zelf de pion rechtop zetten.</li> 
+        <li>De speler moet zelf de bal ophalen die hij heeft misgeschoten.</li> 
+        <li>Een andere speler mag pas beginnen als de eerste speler zijn bal heeft weggepakt.</li>  
+        </ol>
         </div>
       <Check/>
             

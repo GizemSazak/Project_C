@@ -14,9 +14,13 @@ function oefening_9() {
         <p5>4 x 4 pionnen in een rechthoek opstelling.</p5>
         <h5>Sneldribellen met de bal</h5><br></br>
         <h3>Spelverloop:</h3>
-        <p6> Bij het 1 x fluitsignaal wordt met de bal door alle spelers naar vierkant</p6><p6> 1 gelopen bij 2 x fluitsignaal naar vierkant 2, etc.</p6>
+        <p6> Bij het 1 x fluitsignaal wordt met de bal door alle spelers naar vierkant 
+          1 gelopen bij 2 x fluitsignaal naar vierkant 2, etc.</p6>
               <h6>Spelregels:</h6>
-        <p7>1- De speler die het eerst met de bal in het vierkant is krijgt 1 punt.</p7> <p7>2- De speler die het laatste in het vierkant is moet een rondje om </p7> <br></br><p7> het totale speelveld sprinten.</p7> 
+              <ol>
+        <li>De speler die het eerst met de bal in het vierkant is krijgt 1 punt.</li>
+         <li>De speler die het laatste in het vierkant is moet een rondje om het totale speelveld sprinten.</li> 
+         </ol>
         </div>
       <Check/>
             

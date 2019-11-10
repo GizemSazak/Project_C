@@ -16,7 +16,12 @@ function oefening_4() {
         <h3>Spelverloop:</h3>
         <p6> 4 spelers paars spelen partij tegen 4 spelers wit.</p6>
               <h6>Spelregels:</h6>
-        <p7>1- Als er is gescoord moet de bal aan het andere team worden gegeven.</p7> <p7>2-Er mag niet van eigen helft worden gescoord.</p7> <p7>3- Als de bal over de lijn is moet worden ingegooid.</p7> <p7>4- De aanvallers moeten scoren op het grote doel en de verdedigers op<p7> de 2 kleine plondoeltjes.</p7></p7>  
+          <ol>
+        <li>Als er is gescoord moet de bal aan het andere team worden gegeven.</li>
+         <li>Er mag niet van eigen helft worden gescoord.</li>
+          <li>Als de bal over de lijn is moet worden ingegooid.</li> 
+          <li>De aanvallers moeten scoren op het grote doel en de verdedigers op de 2 kleine plondoeltjes.</li>  
+        </ol>
         </div>
       <Check/>
             

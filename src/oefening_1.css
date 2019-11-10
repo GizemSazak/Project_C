@@ -2,51 +2,90 @@
 #oefen_img{
   width: 400px;
   height: 450px;
-  margin-left: 80pt;
-  margin-top: 0.5pt;
+  margin-left: 60pt;
+  column-count: 2;
+  column-gap: 20px;
+  display: block;
 }
 h5 {
   font-size: 4vh;
-  margin-left: 500pt;
-  margin-top: -500px;
-  color:#253780;
+  margin-left: 480pt;
+ color:#253780;
+ display: block;
+ margin-bottom: 30px;
+ margin-top: -480px;
+
 }
 h3 {
   font-size: 3vh;
-  margin-left: 500pt;
-  margin-top: 10px;
+  margin-left: 480pt;
   color:#253780;
+  float: left;
 }
 h6 {
   font-size: 3vh;
-  margin-left: 500pt;
+  margin-left: 480pt;
   margin-top: 10px;
   color:#253780;
+  float: left;
 }
 p6 {
-  text-align: center;
-  font-size: 2.5vh;
-margin-left: 500pt;  
-color:#253780;
+text-align: left;
+font-size: 2.2vh;
+margin-left: 480pt;  
+color:#333;
+display: block;
+float: left;
+padding-right: 18.5vh;
+padding-left: 0.9vh;
 }
-p7 {
-  text-align: center;
-  font-size: 2.2vh;
-margin-left: 500pt;  
-color:#253780;
+ol {
+text-align: left;
+font-size: 2.2vh;
+margin-left: 468pt; 
+display: block;
+float: left;
+color:#333;
+padding-right: 18.5vh;
+
 }
 h2 {
   font-size: 4vh;
-  margin-left: 83pt;
   color:#253780;
+  margin-left: 100px;
+  column-count: 1;
+  column-gap: 20px;
 }
 p5{
-  margin-left: 85pt;
   color:#333;
+  font-size: 2.5vh;
   font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+  margin-left: 100px;
+  column-count: 2;
+  column-gap: 20px;
 }
-  
   
 #space {
   padding-left: 3.9vh;
+}
+@media only screen and (max-width: 400px) {
+  .roww {
+    grid-template-columns: repeat(auto-fill, minmax(40vh, 1fr ));
+    right: 0;
+    bottom: 0;
+    padding-left: 18vh;
+  }
+}
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+  .rowww {
+    font-size: 20px;
+  }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  .rowww {
+    font-size: 14px;
+  }
 }
