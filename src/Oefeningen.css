@@ -14,6 +14,14 @@
     background-size: cover;
     min-height: 100vh;
   }
+
+  @media (max-width: 600px) {
+    .App {
+      width: 110%;
+    }
+    }
+
+
   .App-logo{
     font-size: 7rem;
     max-width: 10vh;

@@ -9,6 +9,13 @@
     position: fixed;
     bottom: 0;
 }
+
+@media (max-width: 600px) {
+    .sidebar {
+      padding-top: 8.3vh;
+    }
+    }
+
 .menu :first-child {
     font-size: 2rem;
     margin-top: 10px;
