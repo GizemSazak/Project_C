@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import './App.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Home() {
 
   const [buttons] = useState([
     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
     { link: "openTab('b1');", title: "Notities", icon: faStickyNote },
-    { link: "openTab('b1');", title: "Spelers", icon: faUsers },
+    { link: "./components/Spelers/Spelers", title: "Spelers", icon: faUsers },
     { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },
     { link: "openTab('b1');", title: "Tactiek", icon: faBezierCurve },
     { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
     { link: "openTab('b1');", title: "Wedstrijduitslag", icon: faClipboard },
     { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
-
   ]);
 
   return (
@@ -45,6 +44,5 @@ function openTab(tabName) {
   }
   document.getElementById(tabName).style.display = "block";
 }
-
 
 export default Home;
