@@ -4,7 +4,7 @@ import './Spelers.css'
 function Spelers() {
     return (
         <div className="page">
-            <head>Spelers</head>
+            <header>Spelers</header>
             <body>x</body>
         </div>
     )
