@@ -9,7 +9,7 @@ function Menu() {
     const [buttons] = useState([
         { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
         { link: "openTab('b1');", title: "Notities", icon: faStickyNote },
-        { link: "../Spelers/Spelers", title: "Spelers", icon: faUsers },
+        { link: "../../Spelers", title: "Spelers", icon: faUsers },
         { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },
         { link: "openTab('b1');", title: "Tactiek", icon: faBezierCurve },
         { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },

@@ -7,6 +7,6 @@ function Spelers() {
             <header>Spelers</header>
             <body>x</body>
         </div>
-    )
+    );
 }
 export default Spelers;
