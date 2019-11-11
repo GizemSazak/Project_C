@@ -10,17 +10,13 @@
     bottom: 0;
 }
 
-@media (max-width: 600px) {
-    .sidebar {
-      padding-top: 8.3vh;
-    }
-    }
 
 .menu :first-child {
     font-size: 2rem;
     margin-top: 10px;
 }
 .menu{
+    padding-top: 2vh;
     flex: 1;
     font-size: 0.9rem;
     color: white;
@@ -75,3 +71,15 @@
         font-size: 0.8rem;
     }
 }
+
+@media (max-width: 600px) {
+    .sidebar {
+      padding-top: 8.3vh;
+    }
+    }
+
+@media (max-width: 600px) {
+    .menu {
+      padding-top: 0vh;
+    }
+    }
