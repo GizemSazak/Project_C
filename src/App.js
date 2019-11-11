@@ -20,6 +20,7 @@ import {
 } from "react-router-dom";
 import Registration from "./components/auth/Registration";
 import Login from "./components/auth/Login";
+import contactpagina from "./components/contactpagina/contactpagina";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
             <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
             <OldSchoolMenuLink to="/about" label="About" />
             <OldSchoolMenuLink to="/dashboard" label="dashboard" />
+            <OldSchoolMenuLink to="./contact" label="contact" />
             <hr />
             <Switch>
               <Route exact path="/">
@@ -41,9 +43,12 @@ export default function App() {
               <Route path="/dashboard">
                 <Dashboard />
               </Route>
-              <route path="/registreren">
+              <Route path="/registreren">
                 <Registreren />
-              </route>
+              </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
             </Switch>
           </div>
         </Router>
@@ -112,6 +117,14 @@ function Registreren() {
   return (
     <div>
       <Registration />
+    </div>
+  );
+}
+
+function Contact() {
+  return (
+    <div>
+      <contactpagina />
     </div>
   );
 }
