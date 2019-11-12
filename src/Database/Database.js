@@ -21,7 +21,7 @@ db.query('SELECT * from speler').then(res => {
         console.log(`Id: ${row.id} spelernummer: ${row.spelernummer} voornaam: ${row.voornaam} achternaamnaam: ${row.achternaam}`);
     })
 
-}).finally(() => client.end());
+}).finally(() => db.end());
 
 // link used:
 // http://zetcode.com/javascript/nodepostgres/
