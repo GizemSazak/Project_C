@@ -13,7 +13,7 @@ function Menu() {
         { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },
         { link: "openTab('b1');", title: "Tactiek", icon: faBezierCurve },
         { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
-        { link: "openTab('b1');", title: "Wedstrijduitslag", icon: faClipboard },
+        { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
         { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
     ]);
 

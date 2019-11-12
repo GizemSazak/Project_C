@@ -17,6 +17,7 @@ import oefening_12 from './oefeningen//oefening_12'
 import Spelers from './Spelers'
 
 import Home from './Home'
+import Uitslagen from './Uitslagen';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
       <Route exact path='/oefening_11' component={oefening_11} />
       <Route exact path='/oefening_12' component={oefening_12} />
       <Route exact path='/Spelers' component={Spelers} />
+      <Route exact path='/Uitslagen' component={Uitslagen} />
     </div>
   );
 }
