@@ -36,7 +36,7 @@ function App() {
       <Route exact path='/oefening_10' component={oefening_10} />
       <Route exact path='/oefening_11' component={oefening_11} />
       <Route exact path='/oefening_12' component={oefening_12} />
-      <Route exact path='/Spelers' component={Spelers} /> />
+      <Route exact path='/Spelers' component={Spelers} />
     </div>
   );
 }
