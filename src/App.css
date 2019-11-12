@@ -7,37 +7,45 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color: white;
+  position: relative;
 }
-
 .App-logo{
-  max-width: 40%;
-  max-height: 60%;
+  font-size: 7rem;
+  max-width: 10vh;
+  max-height: 10vh;
 }
-
 .App-link {
   color: #09d3ac;
 }
-
 .row{
   display: grid;  
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 25vh 25vh;  
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
 }
+
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+  }
+
 /* The grid: Three equal columns that floats next to each other */
 .column { 
+  font-size: 1.5rem;
+  padding: 5vh;
   text-align: center;
   cursor: pointer;
-  color: black;
-  border-style: solid;
-  border-width: 0.1vh; 
-  background-color: rgba(41, 207, 47, 0.3);
+  color: white;
+  border: 0.1vh solid black;
+  background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.8));
+  
 }
 
-.containerTab {
-  color: white;
+a:hover{
+  background-image: radial-gradient(rgb(0, 150, 0,1),rgb(0, 250, 0,1));
+  font-size: 0.95rem;
+  cursor: pointer;
 }

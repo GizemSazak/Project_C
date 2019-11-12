@@ -1,0 +1,70 @@
+.sidebar{
+    overflow: auto;
+    height: 100vh;
+    width: 18vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    position: fixed;
+    bottom: 0;
+}
+.menu :first-child {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+.menu{
+    flex: 1;
+    font-size: 0.9rem;
+    color: white;
+    background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.9));
+    border: 1.5px solid black;
+    cursor: pointer;
+    
+}
+.menu:hover{
+    background-image: radial-gradient(rgb(0, 150, 0,0.6),rgb(0, 250, 0,0.8));
+    font-size: 0.95rem;
+    color: white;
+}
+.ToggleButton{
+    height: 10vh;
+    width: 16vh;
+    font-size: 1rem;
+    color: white;
+    background-image: radial-gradient(rgb(0, 200, 0,0.6),rgb(0, 100, 0,0.8));
+    padding: 15px;
+    border: 1.5px solid black;
+}
+
+@media (max-width: 490px) {
+    .sidebar {
+      height: 90vh;
+    }
+    .sidebar button :first-child {
+        font-size: 2.5rem;
+        margin-bottom: 5px;;
+    }
+    .sidebar button{
+        font-size: 0.8rem;
+    }
+    .sidebar button:hover{
+        font-size: 0.9rem;
+    }
+  }
+
+@media (max-width: 375px) {
+    .sidebar {
+        height: 90vh;
+    }
+    .sidebar button :first-child {
+        font-size: 2rem;
+        margin-bottom: 5px;;
+    }
+    .sidebar button{
+        font-size: 0.7rem;
+    }
+    .sidebar button:hover{
+        font-size: 0.8rem;
+    }
+}
