@@ -1,0 +1,11 @@
+To send queries you have to make a cursor and execute a query
+An example is shown here:
+
+# Activate Connection cursor
+cur = connection.cursor()
+
+# Send query
+cur.execute("Select * from soccer_oefeningen")
+# Fetch the data  -  rows is a list
+rows = cur.fetchall()
+print(rows)
