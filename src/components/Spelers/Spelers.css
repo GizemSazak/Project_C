@@ -1,0 +1,33 @@
+.Page{  
+    background-color: green;
+    overflow: auto;
+    height: 100vh;
+    width: 178.1vh;
+    position: fixed;
+    right: 0;
+}
+.Header{
+    text-align: center;
+    height: 10%;
+    padding: 50px 0px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+.Body{
+    text-align: center;
+    height: 75%;
+    padding: 50px 50px;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(128, 128, 128,0.8);
+    border: 1px solid black;
+}
+.SpelerImg{
+    height: 75px;
+    width: 75px;
+    background-color: teal;
+    border: 1px solid black;
+}
