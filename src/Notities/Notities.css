@@ -4,3 +4,25 @@
       height: 200vh;
     }
     }
+    .column1 { 
+      padding: 5vh;
+      cursor: pointer;
+      display: block;
+      color: white;
+      border: 0.2vh solid black;
+      background-color: rgba(138, 143, 144, 0.4); 
+      height: 539.5px;     
+    }
+    /* @media (max-width: 600px) {
+      .column1  {
+      }
+      } */
+  .Toevoegen{
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    display: inline-block;
+    width: 300px;
+    padding-right: 10p0x;
+    height: 50px;
+  }  
