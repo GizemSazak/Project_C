@@ -1,6 +1,7 @@
 import React from 'react'
 import './Spelers.css'
 import Menu from '../Menu/Menu'
+import Speler from './SpelerLayout'
 
 function Spelers() {
 
@@ -14,16 +15,14 @@ function Spelers() {
             <div className="Page">
                 <header className="Header">Spelers</header>
                 <body className="Body">
-                    <div className="Speler">
-                        <div className="SpelerImg" />
-                        Jane Doe
-                        {/* {spelers.map(spelers => (
-                            <Link to={spelers.link} className="menu">
-                                <FontAwesomeIcon icon={spelers.icon} />
-                                <br />{spelers.title}
-                            </Link>
-                            ))} */}
-                    </div>
+                    <Speler />
+                    <Speler />
+                    <Speler />
+                    <Speler />
+                    <Speler />
+                    <Speler />
+                    <Speler />
+                    <Speler />
                 </body>
             </div>
             <Menu />
@@ -31,3 +30,10 @@ function Spelers() {
     );
 }
 export default Spelers;
+
+{/* {spelers.map(spelers => (
+                            <Link to={spelers.link} className="menu">
+                                <FontAwesomeIcon icon={spelers.icon} />
+                                <br />{spelers.title}
+                            </Link>
+                            ))} */}

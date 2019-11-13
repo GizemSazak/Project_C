@@ -1,0 +1,17 @@
+.Speler{
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px;
+}
+
+.Image{
+    height: 75px;
+    width: 75px;
+    background-color: teal;
+    border: 1px solid black;
+}
+
+.Spelernaam{
+    margin: 0px 10px;
+}
