@@ -8,7 +8,7 @@ function Menu() {
     // Here the values of the buttons are filled in
     const [buttons] = useState([
         { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
-        { link: "openTab('b1');", title: "Notities", icon: faStickyNote },
+        { link: "./Notities", title: "Notities", icon: faStickyNote },
         { link: "../../Spelers", title: "Spelers", icon: faUsers },
         { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },
         { link: "openTab('b1');", title: "Tactiek", icon: faBezierCurve },

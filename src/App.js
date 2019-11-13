@@ -15,9 +15,9 @@ import oefening_10 from './oefeningen//oefening_10'
 import oefening_11 from './oefeningen//oefening_11'
 import oefening_12 from './oefeningen//oefening_12'
 import Spelers from './Spelers'
-
 import Home from './Home'
 import Uitslagen from './Uitslagen';
+import Notities from './Notities//Notities'
 
 function App() {
 
@@ -39,6 +39,7 @@ function App() {
       <Route exact path='/oefening_12' component={oefening_12} />
       <Route exact path='/Spelers' component={Spelers} />
       <Route exact path='/Uitslagen' component={Uitslagen} />
+      <Route exact path='/Notities' component={Notities} />
     </div>
   );
 }
