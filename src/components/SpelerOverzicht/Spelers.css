@@ -1,0 +1,52 @@
+.Page{  
+    background: url("../../bg.png")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width: 178.1vh;
+    position: fixed;
+    right: 0;
+}
+.Header{
+    text-align: center;
+    height: 10%;
+    padding: 50px 0px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+.Body{
+    display: grid;
+    grid-template-columns: auto auto;
+    overflow: auto;
+    color: white;
+
+    height: 75%;
+    width: 100%;
+    padding: 50px 200px;
+
+    position: fixed;
+    bottom: 0;
+
+    background-color: rgb(128, 128, 128,0.8);
+    border: 1px solid black;
+}
+.btnAddPlayer,.btnDeletePlayer{
+    font-size: 3rem;
+    font-weight: 900;
+    width: 100px;
+    height: 100px;
+    color: white;
+    background-color: transparent;
+    border: none;
+
+    position: absolute;
+    right:10px; 
+    bottom:10px;
+}
+.btnAddPlayer{
+    float:left;
+    right:100px; 
+}

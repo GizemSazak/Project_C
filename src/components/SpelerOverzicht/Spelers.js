@@ -2,6 +2,7 @@ import React from 'react'
 import './Spelers.css'
 import Menu from '../Menu/Menu'
 import Speler from './SpelerLayout'
+import { Link } from 'react-router-dom'
 
 function Spelers() {
 
@@ -23,7 +24,22 @@ function Spelers() {
                     <Speler />
                     <Speler />
                     <Speler />
+                    <Speler />
+                    <Speler />
+                    <Speler />
+                    <Speler />
+                    <Speler />
+                    <Speler />
                 </body>
+
+                <Link to="./SpelerToevoegen/Toevoegen">
+                    <button className="btnAddPlayer">+</button><br />
+                </Link>
+
+                <Link to="./SpelerVerwijderen/Verwijderen">
+                    <button className="btnDeletePlayer">-</button>
+                </Link>
+
             </div>
             <Menu />
         </div>

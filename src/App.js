@@ -14,7 +14,7 @@ import oefening_9 from './oefening_9'
 import oefening_10 from './oefening_10'
 import oefening_11 from './oefening_11'
 import oefening_12 from './oefening_12'
-import Spelers from './components/Spelers/Spelers'
+import Spelers from './components/SpelerOverzicht/Spelers'
 import Home from './Home'
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
       <Route exact path='/oefening_10' component={oefening_10} />
       <Route exact path='/oefening_11' component={oefening_11} />
       <Route exact path='/oefening_12' component={oefening_12} />
-      <Route exact path='/components/Spelers/Spelers' component={Spelers} />
+      <Route exact path='/components/SpelerOverzicht/Spelers' component={Spelers} />
     </div>
   );
 }

@@ -9,10 +9,10 @@ function Menu() {
     const [buttons] = useState([
         { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
         { link: "openTab('b1');", title: "Notities", icon: faStickyNote },
-        { link: "../Spelers/Spelers", title: "Spelers", icon: faUsers },
+        { link: "../SpelerOverzicht/Spelers", title: "Spelers", icon: faUsers },
         { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },
         { link: "openTab('b1');", title: "Tactiek", icon: faBezierCurve },
-        { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
+        { link: "../../Oefeningen", title: "Oefeningen", icon: faRunning },
         { link: "openTab('b1');", title: "Wedstrijduitslag", icon: faClipboard },
         { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
     ]);

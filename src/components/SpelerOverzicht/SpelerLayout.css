@@ -1,0 +1,18 @@
+.Speler{
+    margin: 10px 0px;
+}
+.Image{
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+    float: left;
+    background-color: teal;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.Spelernaam{
+    /* vertical-align: auto; */
+    font-size: 1.2rem;
+    line-height: 100px;
+    text-align: left;
+}
