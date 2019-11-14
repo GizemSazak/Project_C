@@ -1,27 +1,58 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const pg = require('pg');
+const cors = require('cors');
+const PORT = 3001;
 
+const pool = new pg.Pool({
 // Connect to database
-const cs = {
     host:"salt.db.elephantsql.com",
     database:"cligxofj",
     user:"cligxofj",
     password:"MMdvlDXsE73zeBxtbKvigi5ALP6_pRVo"
-};
+});
 
-const db = new pg.Client(cs);
-db.connect();
+const app = express();
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(morgan('dev'));
+
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+});
 
 
-// example
-db.query('SELECT * from speler').then(res => {
 
-    const data = res.rows;
+app.get('/api/wedstrijduitslag', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
 
-    data.forEach(row => {
-        console.log(`Id: ${row.id} spelernummer: ${row.spelernummer} voornaam: ${row.voornaam} achternaamnaam: ${row.achternaam}`);
-    })
+        db.query('SELECT * from wedstrijduitslag', (err, table) => {
+            done();
+            if (err) {
+                return res.status(400).send(err);
+            }
+            return res.status(200).send(table.rows);
+            console.log(table.rows)
+        });
+    });
+});
 
-}).finally(() => db.end());
+
+app.listen(PORT, () => console.log('Listening on port ' + PORT));
+
+
 
 // link used:
 // http://zetcode.com/javascript/nodepostgres/
