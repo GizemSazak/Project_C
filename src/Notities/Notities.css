@@ -17,12 +17,19 @@
       .column1  {
       }
       } */
-  .Toevoegen{
+  #Toevoegen{
     position: absolute;
     top: 34%;
     left: 50%;
+    right: 50%;    ;
     display: inline-block;
-    width: 300px;
-    padding-right: 10p0x;
+    width: 200px;
+    padding-right: 10px;
     height: 50px;
+    border: 0.1vh solid black;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 18px;
+    color:white;
+    background-image:radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.5))
   }  
