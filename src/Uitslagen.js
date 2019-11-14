@@ -21,7 +21,6 @@ function Uitslagen() {
         .catch()
     })
 
-
     return (
         <div className="App">
             <h1 className='titleOefeningen'>Wedstrijduistslagen</h1>
