@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Uitslagen.css';
-import Check from './components/Menu/Check';
+import Check from './Menu/Menu';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 
@@ -11,11 +11,11 @@ function Uitslagen() {
 
     useEffect(() => {
         axios.get('http://localhost:3001/api/wedstrijduitslag')
-        .then(res => {
-            console.log(res)
-            setPosts(res.data)
-        })
-        .catch()
+            .then(res => {
+                console.log(res)
+                setPosts(res.data)
+            })
+            .catch()
     })
 
     return (
