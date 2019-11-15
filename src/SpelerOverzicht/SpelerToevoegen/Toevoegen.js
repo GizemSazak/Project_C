@@ -7,8 +7,9 @@ function Toevoegen() {
     return (
         <div>
             <div className="P">
-                <header className="Header">Speler Toevoegen</header>
-                <body className="Body">
+                Test
+                <header className="H">Speler Toevoegen</header>
+                <body className="B"> Test
                 </body>
             </div>
             <Menu />

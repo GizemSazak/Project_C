@@ -32,9 +32,16 @@ function Spelers() {
                     <Speler />
                 </body>
 
-                <Link to="./SpelerToevoegen/Toevoegen">
-                    <button className="btnAddPlayer">+</button><br />
-                </Link>
+                <nav >
+                    <Link to="./SpelerToevoegen/Toevoegen" >
+                        +
+                    </Link>
+                </nav >
+
+
+                {/* <Link to="./SpelerToevoegen/Toevoegen">
+                    <button className="btnAddPlayer">+</button>
+                </Link><br /> */}
 
                 <Link to="./SpelerVerwijderen/Verwijderen">
                     <button className="btnDeletePlayer">-</button>

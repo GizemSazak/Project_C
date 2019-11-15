@@ -9,7 +9,7 @@ function Home() {
   const [buttons] = useState([
     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
     { link: "openTab('b1');", title: "Notities", icon: faStickyNote },
-    { link: "./components/SpelerOverzicht/Spelers", title: "Spelers", icon: faUsers },
+    { link: "./SpelerOverzicht", title: "Spelers", icon: faUsers },
     { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },
     { link: "openTab('b1');", title: "Tactiek", icon: faBezierCurve },
     { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },

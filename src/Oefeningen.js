@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Oefeningen.css'
-import Check from './components/Menu/Check'
+import Check from './Menu/Check'
 import { Link } from 'react-router-dom';
 
 
