@@ -1,6 +1,6 @@
 import React from 'react'
 import './Toevoegen.css'
-import Menu from '../../Menu/Menu'
+// import Menu from './Menu/Menu'
 
 function Toevoegen() {
 
@@ -12,7 +12,7 @@ function Toevoegen() {
                 <body className="B"> Test
                 </body>
             </div>
-            <Menu />
+            {/* <Menu /> */}
         </div>
     );
 }
