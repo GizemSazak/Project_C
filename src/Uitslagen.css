@@ -5,13 +5,22 @@
     }
     }
 
-  #tablee{
-    
-    text-align: center;
-    
-  }
+.uitslagBody {
+  background: rgba(128,128,128, .7);
+  margin-left: 18vh;
+  flex-grow : 1;
+  
+}
 
-  .tabl{
-    background: grey;
-  }
+#tableR {
+  text-align: center;
+  width: 84vh;
+  border-bottom: 1px solid black;
+}
 
+#tableL{
+  width: 16vh;
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
