@@ -5,14 +5,8 @@ import './Toevoegen.css'
 function Toevoegen() {
 
     return (
-        <div>
-            <div className="P">
-                Test
-                <header className="H">Speler Toevoegen</header>
-                <body className="B"> Test
-                </body>
-            </div>
-            {/* <Menu /> */}
+        <div className="P">
+            Test
         </div>
     );
 }

@@ -3,7 +3,6 @@ import './Spelers.css'
 import Menu from '../Menu/Menu'
 import Speler from './SpelerLayout'
 import { Link } from 'react-router-dom'
-import x from '../SpelerToevoegen/Toevoegen'
 
 function Spelers() {
 
@@ -33,11 +32,11 @@ function Spelers() {
                     <Speler />
                 </body>
 
-                <a href="./SpelerToevoegen">
+                <a href="./Toevoegen">
                     <button type="button">+</button>
                 </a>
                 {/* <nav >
-                    <Link to="./SpelerToevoegen/Toevoegen" >
+                    <Link to="./SpelerToevoegen" >
                         +
                     </Link>
                 </nav > */}
