@@ -1,13 +1,13 @@
 import React from 'react'
 import './Verwijderen.css'
-import Menu from './Menu/Menu'
+import Menu from '../Menu/Menu'
 
 function Verwijderen() {
 
     return (
         <div>
             <div className="Page">
-                <header className="Header">Speler Toevoegen</header>
+                <header className="Header">Speler Verwijderen</header>
                 <body className="Body">
                 </body>
             </div>

@@ -15,6 +15,8 @@ import oefening_10 from './oefening_10'
 import oefening_11 from './oefening_11'
 import oefening_12 from './oefening_12'
 import Spelers from './SpelerOverzicht/Spelers'
+import SpelerToevoegen from './SpelerToevoegen/Toevoegen'
+import SpelerVerwijderen from './SpelerVerwijderen/Verwijderen'
 import Home from './Home'
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
       <Route exact path='/oefening_11' component={oefening_11} />
       <Route exact path='/oefening_12' component={oefening_12} />
       <Route exact path='/SpelerOverzicht/Spelers' component={Spelers} />
+      <Route exact path='/SpelerToevoegen/Toevoegen' component={SpelerToevoegen} />
+      <Route exact path='/SpelerVerwijderen/Verwijderen' component={SpelerVerwijderen} />
     </div>
   );
 }
