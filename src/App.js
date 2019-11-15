@@ -18,6 +18,7 @@ import Spelers from './SpelerOverzicht/Spelers'
 import SpelerToevoegen from './SpelerToevoegen/Toevoegen'
 import SpelerVerwijderen from './SpelerVerwijderen/Verwijderen'
 import Home from './Home'
+import Uitslagen from './Uitslagen';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
       <Route exact path='/SpelerOverzicht/Spelers' component={Spelers} />
       <Route exact path='/SpelerToevoegen/Toevoegen' component={SpelerToevoegen} />
       <Route exact path='/SpelerVerwijderen/Verwijderen' component={SpelerVerwijderen} />
+      <Route exact path='/Uitslagen' component={Uitslagen} />
     </div>
   );
 }

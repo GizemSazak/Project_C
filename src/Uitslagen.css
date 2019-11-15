@@ -1,0 +1,17 @@
+@media (max-width: 600px) {
+    .App {
+      width: 110%;
+      height: 200vh;
+    }
+    }
+
+  #tablee{
+    
+    text-align: center;
+    
+  }
+
+  .tabl{
+    background: grey;
+  }
+
