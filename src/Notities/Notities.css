@@ -31,5 +31,8 @@
     text-align: center;
     font-size: 18px;
     color:white;
-    background-image:radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.5))
+    background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5))
   }  
+  a{
+    color: white;
+  }

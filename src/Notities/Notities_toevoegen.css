@@ -1,0 +1,65 @@
+@media (max-width: 600px) {
+    .App {
+      width: 110%;
+      height: 200vh;
+    }
+    }
+    ::-webkit-input-placeholder { 
+        color: white;
+      }
+      input[type=text]:focus {
+        background-color: radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+      }
+      #title{
+        padding: 5vh;
+        cursor: pointer;
+        display: block;
+        border: 0.2vh solid black;
+        background-image:radial-gradient(rgb(0, 200, 0,0.6),rgb(0, 100, 0,0.6));
+        height: 50px;     
+        margin-top: 300px;
+        margin-left: 30%;
+        width: 800px;
+        color: black;
+        position: absolute;
+        font-size: 28px;
+        text-align: center;
+      }
+      #beschrijven{
+        padding: 5vh;
+        cursor: pointer;
+        display: block;
+        border: 0.2vh solid black;
+        background-color: rgba(205, 207, 206, 0.8);        
+         height: 300px;     
+        margin-top: 378px;
+        margin-left: 30%;
+        width: 800px;
+        position: absolute;
+        font-size: 28px;
+        color:black;
+        text-align: center;
+      }
+      #opslaan{
+        position: absolute;
+        right: 360px;
+        bottom: 60px;
+        display: inline-block;
+        width: 200px;
+        height: 50px;
+        border: 0.1vh solid black;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 18px;
+        color:white;
+        background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5))
+      }
+      #trash{
+          width:120px;
+          height:80px;
+          display:inline-block;
+          right: 230px;
+          bottom: 45px;
+          position: absolute;
+          background-image: none;
+        }

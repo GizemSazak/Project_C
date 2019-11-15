@@ -18,7 +18,7 @@ import Spelers from './Spelers'
 import Home from './Home'
 import Uitslagen from './Uitslagen';
 import Notities from './Notities//Notities'
-
+import Notities_toevoegen from './Notities//Notities_toevoegen'
 function App() {
 
   return (
@@ -40,6 +40,8 @@ function App() {
       <Route exact path='/Spelers' component={Spelers} />
       <Route exact path='/Uitslagen' component={Uitslagen} />
       <Route exact path='/Notities' component={Notities} />
+      <Route exact path='/Notities_toevoegen' component={Notities_toevoegen} />
+
     </div>
   );
 }

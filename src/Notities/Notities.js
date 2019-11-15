@@ -6,7 +6,9 @@ function Notities() {
     return (
         <div className="App">
             <h1 className='titleOefeningen'>Notities</h1>
-            <div><button id="Toevoegen" type="button" onclick="alert('Hello world!')">Notities Toevoegen</button></div>
+            <a href = "./Notities_toevoegen">
+                <button id="Toevoegen" type="button" onclick="alert('Hello world!')">Notities Toevoegen</button>
+                </a>
             <div className = "column1"></div>
             <Check />
         </div>
