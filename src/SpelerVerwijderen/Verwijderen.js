@@ -7,7 +7,7 @@ function Verwijderen() {
     return (
         <div>
             <div className="Page">
-                <header className="Header">Speler Verwijderen</header>
+                <header className="PageHeader">Speler Verwijderen</header>
                 <body className="Body">
                 </body>
             </div>

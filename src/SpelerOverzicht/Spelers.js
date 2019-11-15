@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Spelers.css'
 import Menu from '../Menu/Menu'
-import Speler from './SpelerLayout'
 
 function Spelers() {
 
@@ -25,19 +24,13 @@ function Spelers() {
     return (
         <div>
             <div className="Page">
-                <header className="Header">Spelers</header>
+                <header className="PageHeader">Spelers</header>
                 <body className="Body">
-                    <Speler />
-
-                    {/* This is a test */}
-                    {posts.map(post =>
-                        <p>{post.voornaam}</p>
-                    )}
 
                     {posts.map(post =>
                         <div className="Speler">
                             <div className="Image" />
-                            <div className="Spelernaam">{post.voornaam}</div>
+                            <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
                         </div>
                     )}
 
