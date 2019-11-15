@@ -20,7 +20,8 @@ import {
 } from "react-router-dom";
 import Registration from "./components/auth/Registration";
 import Login from "./components/auth/Login";
-import contactpagina from "./components/contactpagina/contactpagina";
+import Contact from "./components/contactpagina/contactpagina"
+
 
 export default function App() {
   return (
@@ -121,14 +122,10 @@ function Registreren() {
   );
 }
 
-function Contact() {
-  return (
-    <div>
-      <contactpagina />
-    </div>
-  );
-}
 
+    
+//   );
+// }
 //   function openTab(tabName) {
 //   var i, x;
 //   x = document.getElementsByClassName("containerTab");
