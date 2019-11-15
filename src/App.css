@@ -1,5 +1,5 @@
 .App {
-  background: url("bg.png")no-repeat center center fixed;
+  background: url("bg.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
 }
-.App-logo{
+.App-logo {
   font-size: 7rem;
   max-width: 10vh;
   max-height: 10vh;
@@ -16,25 +16,24 @@
 .App-link {
   color: #09d3ac;
 }
-.row{
-  display: grid;  
+.row {
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 25vh 25vh;  
+  grid-template-rows: 25vh 25vh;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  
 }
 /* The grid: Three equal columns that floats next to each other */
-.column { 
+.column {
   font-size: 1.5rem;
   padding: 50px;
   text-align: center;
   cursor: pointer;
   color: white;
   border: 0.1vh solid black;
-  background-image: radial-gradient(rgb(0, 200, 0,0.6),rgb(0, 100, 0,0.6));
+  background-image: radial-gradient(rgb(0, 200, 0, 0.6), rgb(0, 100, 0, 0.6));
 }
 .containerTab {
   color: white;

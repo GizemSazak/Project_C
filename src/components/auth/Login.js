@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
-export default class Login extends Component {
+export default class Registration extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      password_confirmation: "",
+      registrationErrors: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,28 +26,39 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            required
-          />
+      <div className="wrapper">
+        <div className="form-wrapper">
+          <h1>Login</h1>
+          <form onSubmit={this.handleSubmit} noValidate>
+            <div className="email">
+              <label htmlFor="email">Email</label>
+              <input
+                className=""
+                placeholder="Email"
+                type="email"
+                name="email"
+                noValidate
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="password">
+              <label htmlFor="password">Password</label>
+              <input
+                className=""
+                placeholder="Password"
+                type="password"
+                name="password"
+                noValidate
+                onChange={this.handleChange}
+              />
+            </div>
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required
-          />
-          <button type="submit">Login</button>
-          <a href="/Registreren"> Registreren?</a>
-        </form>
+            <div className="createAccount">
+              <button type="submit">Login</button>
+              <a href="/Registreren"> Don't have an account yet?</a>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

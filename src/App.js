@@ -27,12 +27,24 @@ export default function App() {
     <div className="App">
       <header>
         <Router>
-          <div>
-            <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
-            <OldSchoolMenuLink to="/about" label="About" />
-            <OldSchoolMenuLink to="/dashboard" label="dashboard" />
-            <OldSchoolMenuLink to="./contact" label="contact" />
+          <div className="menulink">
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About </Link>
+              </li>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link to="./contact">Contact</Link>
+              </li>
+            </ul>
+
             <hr />
+
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -53,20 +65,6 @@ export default function App() {
           </div>
         </Router>
       </header>
-    </div>
-  );
-}
-
-function OldSchoolMenuLink({ label, to, activeOnlyWhenExact }) {
-  let match = useRouteMatch({
-    path: to,
-    exact: activeOnlyWhenExact
-  });
-
-  return (
-    <div className={match ? "active" : ""}>
-      {match && "> "}
-      <Link to={to}>{label}</Link>
     </div>
   );
 }
