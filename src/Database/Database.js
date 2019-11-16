@@ -66,15 +66,32 @@ app.get('/api/speler', (req, res) => {
     });
 });
 
+app.get('/api/notities', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+
+        db.query('SELECT * from notities', (err, table) => {
+            done();
+            if (err) {
+                return res.status(400).send(err);
+            }
+            return res.status(200).send(table.rows);
+            console.log(table.rows)
+        });
+    });
+});
+
 
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 
 
 
 // }).finally(() => db.end());
-db.query("INSERT INTO notities (id,titel,notitie)values(2,'test','notitie toevoegen')",(err,res)=>{
-    console.log(err,res)
-    db.end()
-})
+// db.query("INSERT INTO notities (id,titel,notitie)values(2,'test','notitie toevoegen')",(err,res)=>{
+//     console.log(err,res)
+//     db.end()
+// })
 // link used:
 // http://zetcode.com/javascript/nodepostgres/
