@@ -3,7 +3,6 @@ import './Notities_toevoegen.css'
 import '../App.css'
 import trash from './trash.svg' // Tell Webpack this JS file uses this image
 import Check from '../components/Menu/Check'
-
 function Notities_toevoegen() {
   return (
     <div className="App">
@@ -20,6 +19,4 @@ function Notities_toevoegen() {
   );
   
 }
-
-
 export default Notities_toevoegen;     
