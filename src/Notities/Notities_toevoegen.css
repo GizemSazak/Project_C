@@ -17,7 +17,7 @@
         border: 0.2vh solid black;
         background-image:radial-gradient(rgb(0, 200, 0,0.6),rgb(0, 100, 0,0.6));
         height: 50px;     
-        margin-top: 300px;
+        margin-top: 100px;
         margin-left: 30%;
         width: 800px;
         color: black;
@@ -31,8 +31,8 @@
         display: block;
         border: 0.2vh solid black;
         background-color: rgba(205, 207, 206, 0.8);        
-         height: 300px;     
-        margin-top: 378px;
+        height: 300px;     
+        margin-top: 178px;
         margin-left: 30%;
         width: 800px;
         position: absolute;
@@ -43,7 +43,7 @@
       #opslaan{
         position: absolute;
         right: 360px;
-        bottom: 60px;
+        bottom: 55px;
         display: inline-block;
         width: 200px;
         height: 50px;
@@ -59,7 +59,7 @@
           height:80px;
           display:inline-block;
           right: 230px;
-          bottom: 45px;
+          bottom: 40px;
           position: absolute;
           background-image: none;
         }

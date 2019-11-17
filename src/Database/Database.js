@@ -85,11 +85,10 @@ app.get('/api/notities', (req, res) => {
 
 app.post('/api/notities', (req, res) => {
     console.log(req.body);
-    const id = req.body.id;
     const titel = req.body.titel;
     const notitie = req.body.notitie;
 
-    const values = [id, titel, notitie];
+    const values = [titel, notitie];
 
     pool.connect((err, db, done) => {
         if (err) {
@@ -98,8 +97,8 @@ app.post('/api/notities', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO notities (id, titel, notitie) VALUES($1, $2, $3)',
-            [id,titel,notitie],
+            'INSERT INTO notities (titel, notitie) VALUES($1, $2)',
+            [titel,notitie],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
