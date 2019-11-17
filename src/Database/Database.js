@@ -30,7 +30,33 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.get('/api/speler', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
 
+        db.query('SELECT * from speler', (err, table) => {
+            done();
+
+            // If err is True than send err else send table.rows
+            err ? res.status(400).send(err) : res.status(200).send(table.rows)
+        });
+    });
+});
+
+app.get('/api/speler', (req, res) => {
+    // const id = parseInt(request.params.id)
+    const id = req.body.id;
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query('DELETE from speler WHERE id = $1', [id], (err, table) => {
+            done();
+
+            // If err is True than send err else send table.rows
+            err ? res.status(400).send(err) : res.status(200).send(table.rows)
+        });
+    });
+});
 
 app.get('/api/wedstrijduitslag', (req, res) => {
     pool.connect((err, db, done) => {
@@ -49,24 +75,6 @@ app.get('/api/wedstrijduitslag', (req, res) => {
     });
 });
 
-x = 'wedstrijduitslag'
-
-app.get('/api/speler', (req, res) => {
-    pool.connect((err, db, done) => {
-        if (err) {
-            return res.status(400).send(err);
-        }
-
-        db.query('SELECT * from wedstrijduitslag', (err, table) => {
-            done();
-            if (err) {
-                return res.status(400).send(err);
-            }
-            return res.status(200).send(table.rows);
-            console.log(table.rows)
-        });
-    });
-});
 
 app.post('/api/wedstrijduitslag', (req, res) => {
     console.log(req.body);
