@@ -57,7 +57,7 @@ app.get('/api/speler', (req, res) => {
             return res.status(400).send(err);
         }
 
-        db.query('SELECT * from wedstrijduitslag', (err, table) => {
+        db.query('SELECT * from speler', (err, table) => {
             done();
             if (err) {
                 return res.status(400).send(err);
@@ -68,6 +68,23 @@ app.get('/api/speler', (req, res) => {
     });
 });
 
+
+app.get('/api/speler/:id', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+
+        db.query('SELECT * FROM speler WHERE id = ?', [req.params.id], (err, table) => {
+            done();
+            if (err) {
+                return res.status(400).send(err);
+            }
+            return res.status(200).send(table.rows);
+            console.log(table.rows)
+        });
+    });
+});
 // function Add(props) {
 //     app.get('/api/spelertoevoegen', (req, res) => {
 //         pool.connect((err, db, done) => {
