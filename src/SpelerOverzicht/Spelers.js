@@ -19,32 +19,30 @@ function Spelers() {
                 setPosts(res.data)
             })
             .catch()
-    })
+    }, []);
 
     return (
-        <div>
-            <div className="Page">
-                <header className="PageHeader">Spelers</header>
-                <body className="Body">
+        <div className="Page">
+            <header className="PageHeader">Spelers</header>
 
-                    {posts.map(post =>
-                        <div className="Speler">
-                            <div className="Image" />
-                            <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
-                        </div>
-                    )}
+            <body className="Body">
 
-                </body>
+                {posts.map(post =>
+                    <div className="Speler">
+                        <div className="Image" />
+                        <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
+                    </div>
+                )}
 
-                <a href="../SpelerToevoegen/Toevoegen">
-                    <button className="btnAddPlayer">+</button>
-                </a>
+            </body>
 
-                <a href="../SpelerVerwijderen/Verwijderen">
-                    <button className="btnDeletePlayer">-</button>
-                </a>
+            <a href="../SpelerToevoegen/Toevoegen">
+                <button className="btnAddPlayer">+</button>
+            </a>
 
-            </div>
+            <a href="../SpelerVerwijderen/Verwijderen">
+                <button className="btnDeletePlayer">-</button>
+            </a>
             <Menu />
         </div>
     );

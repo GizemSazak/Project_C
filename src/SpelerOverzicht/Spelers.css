@@ -28,7 +28,7 @@
     color: white;
 
     height: 75%;
-    width: 178.1vh;
+    width: 179vh;
     padding: 50px 200px;
 
     position: fixed;
@@ -51,7 +51,6 @@
     border-radius: 5px;
 }
 .Spelernaam{
-    /* vertical-align: auto; */
     font-size: 1.2rem;
     line-height: 100px;
     text-align: left;

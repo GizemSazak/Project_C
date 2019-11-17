@@ -18,28 +18,26 @@ function Verwijderen() {
     })
 
     return (
-        <div>
-            <div className="Page">
-                <header className="PageHeader">Speler Verwijderen</header>
+        <div className="Page">
+            <header className="PageHeader">Speler Verwijderen</header>
 
-                <body className="Body">
+            <body className="Body">
 
-                    <h2 className="BodyHeader">Kies een speler of spelers om te verwijderen</h2>
+                <h2 className="BodyHeader">Kies een speler of spelers om te verwijderen</h2>
 
-                    {posts.map(post =>
+                {posts.map(post =>
 
-                        <div className="Speler">
-                            <br />
-                            <div className="Image" />
-                            <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
-                        </div>
-                    )}
+                    <div className="Speler">
+                        <br />
+                        <div className="Image" />
+                        <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
+                    </div>
+                )}
 
-                    <br />
-                    <FontAwesomeIcon icon={faTrashAlt} className="DeletePlayer" />
+                <br />
+                <FontAwesomeIcon icon={faTrashAlt} className="DeletePlayer" />
 
-                </body>
-            </div>
+            </body>
             <Menu />
         </div>
     );

@@ -49,13 +49,15 @@ app.get('/api/wedstrijduitslag', (req, res) => {
     });
 });
 
+x = 'wedstrijduitslag'
+
 app.get('/api/speler', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) {
             return res.status(400).send(err);
         }
 
-        db.query('SELECT * from speler', (err, table) => {
+        db.query('SELECT * from wedstrijduitslag', (err, table) => {
             done();
             if (err) {
                 return res.status(400).send(err);

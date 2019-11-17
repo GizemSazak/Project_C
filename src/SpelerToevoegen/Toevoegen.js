@@ -1,29 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Toevoegen.css'
 import Menu from '../Menu/Menu'
 // import Add from '../Database/Database'
 
 function Toevoegen() {
+    const [forms] = useState([
+        { label: "Voornaam", type: "text", name: "voornaam", className: "Inputfield", value: null },
+        { label: "Achternaam", type: "text", name: "achternaam", className: "Inputfield", value: null },
+        { label: "Email", type: "email", name: "email", className: "Inputfield", value: null },
+        { label: "Spelernummer", type: "number", name: "Spelernummer", className: "Inputfield", value: null },
+        { label: null, type: "submit", name: "Opslaan", className: "SubmitBtn", value: "Opslaan" }
+    ]);
 
     return (
         <div className="Page">
             <header className="PageHeader">Speler Toevoegen</header>
             <body className="AddBody">
-                <form>
-                    <label>Voornaam</label><br />
-                    <input type="text" name="voornaam" className="Inputfield" /><br /><br />
 
-                    <label>Achternaam</label><br />
-                    <input type="text" name="achternaam" className="Inputfield" /><br /><br />
+                {forms.map(forms => (
+                    <form>
+                        <label>{forms.label}</label><br />
+                        <input type={forms.type} name={forms.name} className={forms.className} value={forms.value} /> <br />
+                    </form>
+                ))}
 
-                    <label>Email</label><br />
-                    <input type="email" name="email" className="Inputfield" /><br /><br />
-
-                    <label>Spelernummer</label><br />
-                    <input type="number" name="Spelernummer" className="Inputfield" /><br /><br /><br />
-
-                    <input type="submit" value="Submit" className="SubmitBtn" />
-                </form>
             </body>
             <Menu />
         </div >
@@ -32,7 +32,6 @@ function Toevoegen() {
 
 // function Query(props) {
 //     return(
-
 //     )
 // }
 
