@@ -43,6 +43,36 @@ app.get('/api/speler', (req, res) => {
     });
 });
 
+app.post('/api/speler', (req, res) => {
+    console.log(req.body);
+    const spelernummer = req.body.spelernummer;
+    const voornaam = req.body.voornaam;
+    const achternaam = req.body.achternaam;
+    const email = req.body.email;
+
+    pool.connect((err, db, done) => {
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+
+        db.query(
+            'INSERT INTO speler (spelernummer, voornaam, achternaam, email) VALUES($1, $2, $3, $4)',
+            [spelernummer, voornaam, achternaam, email],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+
+                console.log('INSERTED DATA SUCCESS');
+
+                res.status(201).send({ message: 'Data inserted!' });
+            }
+        );
+    });
+});
+
 app.get('/api/speler', (req, res) => {
     // const id = parseInt(request.params.id)
     const id = req.body.id;
