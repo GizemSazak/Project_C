@@ -34,18 +34,13 @@ class uitslagtoevoegen extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      id: ''
-    }
+    this.state = { id: '' }
 
     this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
-  updateInput(event) {
-    this.setState({ id: event.target.value })
-  }
+  updateInput(event) { this.setState({ id: event.target.value }) }
 
 
   handleSubmit() {
@@ -61,19 +56,20 @@ class uitslagtoevoegen extends Component {
           <div className="standtoevoegenBody">
 
             <form useRef="dataForm" className="standForm">
-              <input id="formp1" type="text" placeholder="week" /><br></br>
+              <input id="formp1" type="text" placeholder="week" onChange={this.updateInput} /><br></br>
               <input id="formp1" type="text" placeholder="thuis" /><br></br>
               <input id="formp1" type="text" placeholder="uit" /><br></br>
               <input id="formp1" type="text" placeholder="stand" /><br></br>
               <textarea cols="23" rows="20" id="formp2" type="text" placeholder="verslag"></textarea>
               <br></br>
-              <button onClick={addUitslag()}>Toevoegen</button>
+              <button onClick={this.handleSubmit}>Toevoegen</button>
             </form>
 
           </div>
         </div>
         <Check />
       </div>
+
     )
   }
 
