@@ -6,11 +6,11 @@ const cors = require('cors');
 const PORT = 3001;
 
 const pool = new pg.Pool({
-// Connect to database
-    host:"salt.db.elephantsql.com",
-    database:"cligxofj",
-    user:"cligxofj",
-    password:"MMdvlDXsE73zeBxtbKvigi5ALP6_pRVo"
+    // Connect to database
+    host: "salt.db.elephantsql.com",
+    database: "cligxofj",
+    user: "cligxofj",
+    password: "MMdvlDXsE73zeBxtbKvigi5ALP6_pRVo"
 });
 
 const app = express();
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
         'Access-Control-Allow-Headers',
@@ -66,10 +66,27 @@ app.get('/api/speler', (req, res) => {
     });
 });
 
+// function Add(props) {
+//     app.get('/api/spelertoevoegen', (req, res) => {
+//         pool.connect((err, db, done) => {
+//             if (err) {
+//                 return res.status(400).send(err);
+//             }
+
+//             db.query('INSERT INTO speler VALUES (' + props.spelernummer + "," + props.voornaam + "," + props.achternaam + "," + props.email + ")", (err, table) => {
+//                 done();
+//                 if (err) {
+//                     return res.status(400).send(err);
+//                 }
+//                 return res.status(200).send(table.rows);
+//                 console.log(table.rows)
+//             });
+//         });
+//     })
+// }
+// export default Add;
 
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
-
-
 
 // link used:
 // http://zetcode.com/javascript/nodepostgres/

@@ -16,10 +16,14 @@
     font-size: 2rem;
     font-weight: 700;
     color: white;
+
+    width: 180vh;
+    position: fixed;
+    right: 0;
 }
 .Body{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto auto;
     overflow: auto;
     color: white;
 
@@ -35,7 +39,7 @@
     border: 1px solid black;
 }
 .Speler{
-    margin: 10px 0px;
+    margin: 40px 0px 10px 0px;
 }
 .Image{
     height: 100px;

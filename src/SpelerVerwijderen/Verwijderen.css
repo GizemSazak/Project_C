@@ -1,0 +1,18 @@
+.BodyHeader{
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+
+    width: 180vh;
+    position: fixed;
+    right: 0;
+}
+.DeletePlayer{
+    color: black;
+    font-size: 3rem;
+    position: fixed;
+
+    right: 0;
+    bottom: 0;
+    margin: 50px 50px;
+}

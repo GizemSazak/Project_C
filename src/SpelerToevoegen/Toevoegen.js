@@ -1,6 +1,7 @@
 import React from 'react'
 import './Toevoegen.css'
 import Menu from '../Menu/Menu'
+// import Add from '../Database/Database'
 
 function Toevoegen() {
 
@@ -28,4 +29,11 @@ function Toevoegen() {
         </div >
     );
 }
+
+// function Query(props) {
+//     return(
+
+//     )
+// }
+
 export default Toevoegen;
