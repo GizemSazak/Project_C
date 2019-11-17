@@ -83,7 +83,36 @@ app.get('/api/notities', (req, res) => {
     });
 });
 
+app.post('/api/notities', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const titel = req.body.titel;
+    const notitie = req.body.notitie;
 
+    const values = [id, titel, notitie];
+
+    pool.connect((err, db, done) => {
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+
+        db.query(
+            'INSERT INTO notities (id, titel, notitie) VALUES($1, $2, $3)',
+            [id,titel,notitie],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+
+                console.log('INSERTED DATA SUCCESS');
+
+                res.status(201).send({ message: 'Data inserted!' });
+            }
+        );
+    });
+});
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 
 
