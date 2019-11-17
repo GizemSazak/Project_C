@@ -19,13 +19,17 @@ export default class Notities extends React.Component {
   render() {
     return (
       <div className="App">
-      <ul>
-        { this.state.Data.map(table => <li>{table.titel} {table.notitie}</li>) }
-      </ul>
+
          <h1 className='titleOefeningen'>Notities</h1>
          <a href = "./Notities_toevoegen">
-          <button id="Toevoegen" type="button" onclick="alert('Hello world!')">Notities Toevoegen</button>
+          <button id="Toevoegen" type="button">Notities Toevoegen</button>
              </a>
+             <div className = "tablerow" >
+             <a href = "./notities_beschrijven">
+            {this.state.Data.map(table => 
+            <button id="rowss">{table.titel}</button> ) }
+                  </a>
+          </div>
           <div className = "column1"></div>
             <Check />
          </div>

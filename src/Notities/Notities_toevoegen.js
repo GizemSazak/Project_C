@@ -65,12 +65,12 @@ export default  class Notities_toevoegen extends Component {
         )
       }
     }
-    //CODE FOR UPDATE
-    // import axios from 'axios'
+    // CODE FOR UPDATE
     // export default  class Notities_toevoegen extends Component {
     //   constructor(props) {
     //     super(props)
     //     this.state = {
+    //       id: '7',
     //       titel: '',
     //       notitie: ''
     //     }
@@ -94,7 +94,7 @@ export default  class Notities_toevoegen extends Component {
     //   }
     
     //   render() {
-    //     const { titel, notitie } = this.state
+    //     const { id,titel, notitie } = this.state
     //     return (
     //         <div className="App">
     //      <h1 className='titleOefeningen'>Notities</h1>

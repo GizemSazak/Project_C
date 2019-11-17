@@ -83,13 +83,12 @@ app.get('/api/notities', (req, res) => {
     });
 });
 
+
 app.post('/api/notities', (req, res) => {
     console.log(req.body);
     const titel = req.body.titel;
     const notitie = req.body.notitie;
-
     const values = [titel, notitie];
-
     pool.connect((err, db, done) => {
         if (err) {
             console.log(err + 'eerste');
@@ -117,9 +116,6 @@ app.put('/api/notities', (req, res) => {
     const id = req.body.id;
     const titel = req.body.titel;
     const notitie = req.body.notitie;
-
-    const values = [titel, notitie];
-
     pool.connect((err, db, done) => {
         if (err) {
             console.log(err + 'eerste');
@@ -127,8 +123,8 @@ app.put('/api/notities', (req, res) => {
         }
 
         db.query(
-            'UPDATE notities SET titel = $1, notitie = $2 WHERE id = 5',
-            [titel,notitie],
+            'UPDATE notities SET titel = $2, notitie = $3 WHERE id = $1',
+            [id,titel,notitie],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
