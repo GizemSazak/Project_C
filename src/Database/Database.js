@@ -112,6 +112,63 @@ app.post('/api/notities', (req, res) => {
         );
     });
 });
+app.put('/api/notities', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const titel = req.body.titel;
+    const notitie = req.body.notitie;
+
+    const values = [titel, notitie];
+
+    pool.connect((err, db, done) => {
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+
+        db.query(
+            'UPDATE notities SET titel = $1, notitie = $2 WHERE id = 5',
+            [titel,notitie],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+
+                console.log('Update DATA SUCCESS');
+
+                res.status(201).send({ message: 'Data updated!' });
+            }
+        );
+    });
+});
+// app.delete('/api/notities', (req, res) => {
+//     console.log(req.body);
+//     const id = req.body.id;
+//     const values = [id];
+
+//     pool.connect((err, db, done) => {
+//         if (err) {
+//             console.log(err + 'eerste');
+//             return res.status(400).send(err);
+//         }
+
+//         db.query(
+//             "DELETE FROM notities WHERE id = $1",
+//             [id],
+//             err => {
+//                 if (err) {
+//                     console.log(err + 'tweede');
+//                     return res.status(400).send(err);
+//                 }
+
+//                 console.log('Delete DATA SUCCESS');
+
+//                 res.status(201).send({ message: 'Data deleted!' });
+//             }
+//         );
+//     });
+// });
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 
 
