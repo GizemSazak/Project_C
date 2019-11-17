@@ -9,7 +9,7 @@ function oefening_9() {
   return (
     <div>
       <div id="space">
-        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/6380201af82f4d9c051206d382310dada5895317.png" />
+        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/6380201af82f4d9c051206d382310dada5895317.png" alt="Oefening 2" />
         <h2>Veldopstelling</h2>
         <p5>4 x 4 pionnen in een rechthoek opstelling.</p5>
         <h5>Sneldribellen met de bal</h5><br></br>

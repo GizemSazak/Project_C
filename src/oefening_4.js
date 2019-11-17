@@ -9,7 +9,7 @@ function oefening_4() {
   return (
     <div>
       <div id="space">
-        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/0022047447a0a1f98066f16d8d5a0b6445669b87.png" />
+        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/0022047447a0a1f98066f16d8d5a0b6445669b87.png" alt="Oefening 2" />
         <h2>Veldopstelling</h2>
         <p5>1 groot doel en 2 kleine piondoeltjes langs elke lijn en 1 bal.</p5>
         <h5>Aanvallers tegen verdedigers</h5><br></br>

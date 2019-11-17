@@ -10,7 +10,7 @@ function oefening_1() {
 
       <div id="space">
         <div div class="rowww">
-          <img id="oefen_img" src="//www.yoursportplanner.com/uploads/69b52cb3b2a2dec7e432d618a268cf2799034128.png" />
+          <img id="oefen_img" src="//www.yoursportplanner.com/uploads/69b52cb3b2a2dec7e432d618a268cf2799034128.png" alt="Oefening 2" />
           <h2 align>Veldopstelling</h2>
           <p5>Veld afzetten met 4 pionnen op 20 bij meter.</p5>
           <h5 align>Bal afpakken</h5>

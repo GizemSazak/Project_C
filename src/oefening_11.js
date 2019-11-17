@@ -9,7 +9,7 @@ function oefening_11() {
   return (
     <div>
       <div id="space">
-        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/ccd0e4702c45b484e4d8ebf77e67f990a0eb0021.png" />
+        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/ccd0e4702c45b484e4d8ebf77e67f990a0eb0021.png" alt="Oefening 2" />
         <h2>Veldopstelling</h2>
         <p5>1 vertrekpion op 30 meter afstand van de goal Een verdediger</p5><br></br><p5> op 10 meter van de goal. Een keeper op de goal. Een 2de</p5><br></br><p5>verdediger bij de opkomende aanvaller.</p5>
         <h5>Dieptepass met verdedigers</h5><br></br>

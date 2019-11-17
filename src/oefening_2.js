@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './oefening_1.css'
 import Check from './Menu/Check'
 
@@ -9,7 +9,7 @@ function oefening_2() {
   return (
     <div>
       <div id="space">
-        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/a72e4fd30a8bde3b070b77a20d4ba6adc4e47470.png" />
+        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/a72e4fd30a8bde3b070b77a20d4ba6adc4e47470.png" alt="Oefening 2" />
         <h2>Veldopstelling</h2>
         <p5>Keeper met verdedigers bij de goal(1ste en 2de paal).</p5> <br></br>
         <p5> Eventueel overige verdedigens in vrije rol.</p5><br></br>

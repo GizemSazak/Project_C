@@ -9,7 +9,7 @@ function oefening_6() {
   return (
     <div>
       <div id="space">
-        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/f7b44018acb9c0a54a1644d57944cccf5e2b0717.png" />
+        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/f7b44018acb9c0a54a1644d57944cccf5e2b0717.png" alt="Oefening 2" />
         <h2>Veldopstelling</h2>
         <p5>4 tot 6 pionnen waarlangs gedribbeld moet worden </p5><br></br><p5>2 x een pion in het doel.</p5>
         <h5>Dribbel en schiet pionnen omver</h5><br></br>
