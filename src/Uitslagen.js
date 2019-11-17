@@ -5,6 +5,10 @@ import Check from './components/Menu/Check';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { tsAnyKeyword } from '@babel/types';
+import addbutton from './addbutton.png'
+import reportimg from './reportimg.png'
+
+
 
 function Uitslagen() {
 
@@ -14,25 +18,27 @@ function Uitslagen() {
         axios.get('http://localhost:3001/api/wedstrijduitslag')
         .then(res => {
             console.log(res)
-            setPosts(res.data)
+        setPosts(res.data)
         })
         .catch()
-    })
+    }, []);
 
     return (
         <div className="App">
-            <h1 className='titleOefeningen'>Wedstrijduistslagen</h1>
+            <h1 className='titleOefeningen'>Wedstrijduitslagen</h1>
             <div className="uitslagBody">
-                <tbody id="tt" >
+                <tbody id="tt">
                             <tr >
-                                <th id="tableL" >#</th>
-                                <th id="tableR"  >Thuis</th>
-                                <th id="tableR" >Stand</th>
-                                <th id="tableR" >Uit</th>
+                                <th id="HtableL" >#</th>
+                                <th id="HtableR"  >Thuis</th>
+                                <th id="HtableR" >Stand</th>
+                                <th id="HtableR" >Uit</th>
+                                <th id="HtableR" >Verslag</th>
                             </tr>    
-                    {posts.map(function(post){
+                    {posts.map(function(post, id){
                     return(
-                            <tr>
+                        
+                            <tr key={id} >
                             <th id="tableL" >
                                 {post.id} 
                             </th>   
@@ -45,11 +51,17 @@ function Uitslagen() {
                             <td id="tableR" >
                                 {post.uit} 
                             </td>
+                            <td id="tableR"  >
+                            <Link className="linkk" to={{pathname:"/verslag", verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
+                            <img src={reportimg} ald="verslag" className="reportimg"/>
+                            </Link>
+                            </td>
                             </tr>
+                            
                         )
                     })}
                 </tbody>
-                 
+         <Link to="/uitslagtoevoegen"><img src={addbutton} alt="add" className="addbutton"/></Link>                  
             </div>
             <Check />
         </div>

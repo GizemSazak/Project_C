@@ -12,10 +12,26 @@
   
 }
 
+#HtableR {
+  text-align: center;
+  width: 84vh;
+  border-bottom: 2px solid black;
+  padding: 3vh;
+}
+
+#HtableL{
+  width: 16vh;
+  text-align: center;
+  border-bottom: 2px solid black;
+  border-right: 1px solid black;
+  padding: 3vh;
+}
+
 #tableR {
   text-align: center;
   width: 84vh;
   border-bottom: 1px solid black;
+  padding: 2vh;
 }
 
 #tableL{
@@ -23,4 +39,67 @@
   text-align: center;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
+  padding: 2vh;
 }
+
+.addbutton {
+  height: 10vh;
+  padding-top: 1vh;
+  bottom: 4vh;
+  right: 4vh;
+  position: fixed;
+}
+
+.reportimg {
+  height: 3vh;
+}
+
+a:hover{
+  background-image: none;
+}
+
+.verslagBody {
+  background-color: rgba(128,128,128, .8);
+  margin-left: 10vh;
+  margin-right: 10vh;
+  margin-top: 10vh;
+  margin-bottom: 15vh;
+  border: 0.2vh solid black;
+  min-height: 45vh;
+}
+
+
+#titleverslag {
+  font-size: 4vh;
+  text-align: center;
+  border-bottom: 0.2vh solid black;
+  background-color: rgba(6, 126, 6, 0.8);
+}
+
+#tekstverslag{
+  margin-left: 3vh;
+  margin-right: 3vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.standForm {
+  text-align: center;
+  background-color: rgba(128,128,128, .8);
+  margin-top: 10vh;
+  padding: 5vh;
+  
+}
+
+#formp1 {
+  margin-bottom: 1vh;
+}
+
+#formp2 {
+  height: 50px;
+  word-break: break-word;
+}
+
+
+
+

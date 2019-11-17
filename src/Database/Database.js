@@ -38,7 +38,7 @@ app.get('/api/wedstrijduitslag', (req, res) => {
             return res.status(400).send(err);
         }
 
-        db.query('SELECT * from wedstrijduitslag', (err, table) => {
+        db.query('SELECT * from wedstrijduitslag order by id DESC', (err, table) => {
             done();
             if (err) {
                 return res.status(400).send(err);
@@ -63,6 +63,39 @@ app.get('/api/speler', (req, res) => {
             return res.status(200).send(table.rows);
             console.log(table.rows)
         });
+    });
+});
+
+app.post('/api/wedstrijduitslag', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const thuis = req.body.thuis;
+    const stand = req.body.stand;
+    const uit = req.body.uit;
+    const verslag = req.body.verslag;
+
+    const values = [id, thuis, stand, uit, verslag];
+
+    pool.connect((err, db, done) => {
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+
+        db.query(
+            'INSERT INTO wedstrijduitslag (id, thuis, uit, stand, verslag) VALUES($1, $2, $3, $4, $5)',
+            [id,thuis,stand,uit,verslag],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+
+                console.log('INSERTED DATA SUCCESS');
+
+                res.status(201).send({ message: 'Data inserted!' });
+            }
+        );
     });
 });
 
