@@ -15,7 +15,7 @@ function Verwijderen() {
                 setPosts(res.data)
             })
             .catch()
-    })
+    }, [])
 
     return (
         <div className="Page">
@@ -26,15 +26,12 @@ function Verwijderen() {
                 <h2 className="BodyHeader">Kies een speler of spelers om te verwijderen</h2>
 
                 {posts.map(post =>
-
                     <div className="Speler">
-                        <br />
                         <div className="Image" />
                         <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
                     </div>
                 )}
 
-                <br />
                 <FontAwesomeIcon icon={faTrashAlt} className="DeletePlayer" />
 
             </body>

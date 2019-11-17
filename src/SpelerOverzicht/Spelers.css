@@ -17,7 +17,7 @@
     font-weight: 700;
     color: white;
 
-    width: 180vh;
+    width: 179vh;
     position: fixed;
     right: 0;
 }
@@ -29,7 +29,7 @@
 
     height: 75%;
     width: 179vh;
-    padding: 50px 200px;
+    padding: 30px 200px;
 
     position: fixed;
     bottom: 0;
@@ -39,7 +39,7 @@
     border: 1px solid black;
 }
 .Speler{
-    margin: 40px 0px 10px 0px;
+    margin: 80px 0px 10px 0px;
 }
 .Image{
     height: 100px;

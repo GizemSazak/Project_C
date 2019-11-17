@@ -1,12 +1,13 @@
 .AddBody{
     text-align: center;
     background-color: transparent;
-    padding: 100px 0;
-}
-
-.AddBody label{
-    font-size: 1.5rem;
+    overflow: auto;
     color: white;
+    font-size: 1.5rem;
+    padding: 150px 0;
+    width: 179vh;
+    position: fixed;
+    right: 0;
 }
 .Inputfield{
     font-size: 1.2rem;
@@ -18,7 +19,7 @@
     font-size: 1.5rem;
     font-weight: 500;
     color: white;
-    background-color:  green;
+    background-image:  radial-gradient(rgb(0, 50, 0,0.8),rgb(0, 150, 0,0.8));
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px 50px;
