@@ -43,6 +43,7 @@ app.get('/api/speler', (req, res) => {
     });
 });
 
+
 app.post('/api/speler', (req, res) => {
     console.log(req.body);
     const spelernummer = req.body.spelernummer;
@@ -60,10 +61,7 @@ app.post('/api/speler', (req, res) => {
             'INSERT INTO speler (spelernummer, voornaam, achternaam, email) VALUES($1, $2, $3, $4)',
             [spelernummer, voornaam, achternaam, email],
             err => {
-                if (err) {
-                    console.log(err + 'tweede');
-                    return res.status(400).send(err);
-                }
+                if (err) { return res.status(400).send(err); }
 
                 console.log('INSERTED DATA SUCCESS');
 
@@ -72,6 +70,7 @@ app.post('/api/speler', (req, res) => {
         );
     });
 });
+
 
 app.get('/api/speler', (req, res) => {
     // const id = parseInt(request.params.id)
