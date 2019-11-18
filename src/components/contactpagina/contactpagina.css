@@ -1,3 +1,18 @@
 .contact{
-    padding: 60px;
+    padding: 40px;
+    color: #999;
+}
+
+.Contact_wrapper {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px #555;
+    background-color: #ffffff;
+      }
+
+.contact_gegevens{
+    font-size: 25px;
 }
