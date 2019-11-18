@@ -16,7 +16,6 @@ import {
   Switch,
   Route,
   Link,
-  useRouteMatch
 } from "react-router-dom";
 import Registration from "./components/auth/Registration";
 import Login from "./components/auth/Login";
