@@ -29,15 +29,18 @@ class Toevoegen extends Component {
         const values = [this.state.spelernummer, this.state.voornaam, this.state.achternaam, this.state.email];
 
         //Send state to the server code
-        const [posts, setPosts] = useState([])
-        useEffect(() => {
-            axios.get('http://localhost:3001/api/speler')
-                .then(res => {
-                    console.log(res)
-                    setPosts(res.data(values))
-                })
-                .catch()
-        }, []);
+        const request = new Request('http://localhost:3001/api/speler', {
+            method: 'POST',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify({ 'spelernummer': this.state.spelernummer, 'voornaam': this.state.voornaam, 'achternaam': this.state.achternaam, 'email': this.state.email })
+        });
+        fetch(request)
+            .then(response => {
+                response.json().then(data => { });
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     render() {

@@ -51,6 +51,8 @@ app.post('/api/speler', (req, res) => {
     const achternaam = req.body.achternaam;
     const email = req.body.email;
 
+    const values = [spelernummer, voornaam, achternaam, email];
+
     pool.connect((err, db, done) => {
         if (err) {
             console.log(err + 'eerste');
@@ -59,7 +61,7 @@ app.post('/api/speler', (req, res) => {
 
         db.query(
             'INSERT INTO speler (spelernummer, voornaam, achternaam, email) VALUES($1, $2, $3, $4)',
-            [spelernummer, voornaam, achternaam, email],
+            [...values],
             err => {
                 if (err) { return res.status(400).send(err); }
 
