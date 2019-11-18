@@ -17,9 +17,9 @@ export default class Notities extends React.Component {
   }
 
   render() {
+    
     return (
       <div className="App">
-
          <h1 className='titleOefeningen'>Notities</h1>
          <a href = "./Notities_toevoegen">
           <button id="Toevoegen" type="button">Notities Toevoegen</button>
@@ -27,7 +27,8 @@ export default class Notities extends React.Component {
              <div className = "tablerow" >
              <a href = "./notities_beschrijven">
             {this.state.Data.map(table => 
-            <button id="rowss">{table.titel}</button> ) }
+            <button value={table.id} 
+            key={table.id} id="rowss">{table.titel}</button> ) }
                   </a>
           </div>
           <div className = "column1"></div>

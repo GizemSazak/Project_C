@@ -59,7 +59,6 @@ export default  class Notities_toevoegen extends Component {
           <button id="opslaan"  type="submit">Submit</button>
         </form>
      <div className = "column1"> </div> 
-      return <img  id = "trash" src={trash} alt="Logo" />;
      <Check/>
     </div>
         )
@@ -154,20 +153,3 @@ export default  class Notities_toevoegen extends Component {
 
 
 
-// function Notities_toevoegen() {
-//   return (
-//     <div className="App">
-//      <h1 className='titelOefeningen'>Notities</h1>
-//      <input id = "title" type="text" placeholder="titel"/>
-//      <input id = "beschrijven" type="text" placeholder="Beschrijven"/> 
-//      <button id="opslaan" type="button">Opslaan</button>
-//      <div className = "column1"> </div> 
-//       return <img  id = "trash" src={trash} alt="Logo" />;
-//      <Check/>
-
-//     </div>
-
-//   );
-
-// }
-// export default Notities_toevoegen;     
