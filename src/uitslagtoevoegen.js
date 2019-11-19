@@ -7,51 +7,45 @@ import axios from 'axios'
 import { tsAnyKeyword } from '@babel/types';
 import addbutton from './addbutton.png'
 
-const id = 0;
-const thuis = '';
-const stand = '';
-const uit = '';
-const verslag = '';
-
-function addUitslag() {
-
-  const request = new Request('http://localhost:3001/api/wedstrijduitslag', {
-    method: 'POST',
-    headers: new Headers({ 'Content-Type': 'application/json' }),
-    body: JSON.stringify({ 'id': id, 'thuis': thuis, 'stand': stand, 'uit': uit, 'verslag': verslag })
-  });
-  fetch(request)
-    .then(response => {
-      response.json().then(data => { });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-
-}
-
 class uitslagtoevoegen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      id: ''
+      id: 0,
+      thuis: '',
+      stand: '',
+      uit: '',
+      verslag: ''
     }
+  }
 
-    this.updateInput = this.updateInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  handleChange (event) {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({[nam]: val});
   }
 
 
-  updateInput(event) {
-    this.setState({ id: event.target.value })
+  
+
+  addUitslag() {
+
+    const request = new Request('http://localhost:3001/api/wedstrijduitslag', {
+      method: 'POST',
+      headers: new Headers({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify({ 'id': parseInt(this.state.id), 'thuis': this.state.thuis, 'stand': this.state.stand, 'uit': this.state.uit, 'verslag': this.state.verslag })
+    });
+    fetch(request)
+      .then(response => {
+        response.json().then(data => { });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  
   }
 
-
-  handleSubmit() {
-    console.log('Your input value is: ' + this.state.id)
-    //Send state to the server code
-  }
 
   render() {
     return (
@@ -61,13 +55,13 @@ class uitslagtoevoegen extends Component {
           <div className="standtoevoegenBody">
 
             <form useRef="dataForm" className="standForm">
-              <input id="formp1" type="text" placeholder="week" /><br></br>
-              <input id="formp1" type="text" placeholder="thuis" /><br></br>
-              <input id="formp1" type="text" placeholder="uit" /><br></br>
-              <input id="formp1" type="text" placeholder="stand" /><br></br>
-              <textarea cols="23" rows="20" id="formp2" type="text" placeholder="verslag"></textarea>
+              <input id="formp1" name="id" type="text" placeholder="week" onChange={event => this.handleChange(event)} /><br></br>
+              <input id="formp1" name="thuis" type="text" placeholder="thuis" onChange={event => this.handleChange(event)} /><br></br>
+              <input id="formp1" name="uit" type="text" placeholder="uit" onChange={event => this.handleChange(event)} /><br></br>
+              <input id="formp1" name="stand" type="text" placeholder="stand" onChange={event => this.handleChange(event)} /><br></br>
+              <textarea cols="23" namee="verslag" rows="20" id="formp2" type="text" placeholder="verslag" onChange={event => this.handleChange(event)} ></textarea>
               <br></br>
-              <button onClick={addUitslag()}>Toevoegen</button>
+              <Link to='./Uitslagen'><button onClick={() => this.addUitslag()}>Toevoegen</button></Link>
             </form>
 
           </div>

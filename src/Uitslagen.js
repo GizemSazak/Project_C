@@ -21,7 +21,7 @@ function Uitslagen() {
         setPosts(res.data)
         })
         .catch()
-    }, []);
+    },[]);
 
     return (
         <div className="App">
@@ -37,7 +37,6 @@ function Uitslagen() {
                             </tr>    
                     {posts.map(function(post, id){
                     return(
-                        
                             <tr key={id} >
                             <th id="tableL" >
                                 {post.id} 
