@@ -55,7 +55,6 @@ app.post('/api/speler', (req, res) => {
 
     pool.connect((err, db, done) => {
         if (err) {
-            console.log(err + 'eerste');
             return res.status(400).send(err);
         }
 
@@ -139,7 +138,6 @@ app.post('/api/wedstrijduitslag', (req, res) => {
         );
     });
 });
-
 
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 

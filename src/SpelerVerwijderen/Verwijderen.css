@@ -16,3 +16,15 @@
     bottom: 0;
     margin: 50px 50px;
 }
+.Delete{
+    height: 100px;
+    width: 100px;
+    color: red;
+    font-weight: 900;
+    font-size: 4rem;
+    margin-right: 10px;
+    float: left;
+    background-color: teal;
+    border: 1px solid black;
+    border-radius: 5px;
+}
