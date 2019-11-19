@@ -65,7 +65,6 @@ app.post('/api/speler', (req, res) => {
                 if (err) { return res.status(400).send(err); }
 
                 console.log('INSERTED DATA SUCCESS');
-
                 res.status(201).send({ message: 'Data inserted!' });
             }
         );
