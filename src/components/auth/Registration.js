@@ -2,6 +2,44 @@ import React, { Component } from "react";
 import "./login.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      password: ""
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    console.log("handeld change", event);
+  }
+
+  handleSubmit(event) {
+    console.log("from submidded")
+
+    var pg = require('pg');
+
+    var conString = "postgres://cligxofj:MMdvlDXsE73zeBxtbKvigi5ALP6_pRVo@salt.db.elephantsql.com:5432/cligxofj" //Can be found in the Details page
+    var client = new pg.Client(conString);
+    client.connect(function(err) {
+      if(err) {
+        return console.error('could not connect to postgres', err);
+      }
+      client.query('SELECT NOW() AS "theTime"', function(err, result) {
+        if(err) {
+          return console.error('error running query', err);
+        }
+        console.log(result.rows[0].theTime);
+        client.end();
+      });
+    });
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
@@ -136,29 +174,29 @@ class App extends Component {
 export default App;
 
 // export default class Login extends Component {
-//   constructor(props) {
-//     super(props);
+//    constructor(props) {
+//      super(props);
 
-//     this.state = {
-//       email: "",
-//       password: ""
-//     };
+//      this.state = {
+//        email: "",
+//        password: ""
+//      };
 
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//     this.handleChange = this.handleChange.bind(this);
-//   }
+//      this.handleSubmit = this.handleSubmit.bind(this);
+//      this.handleChange = this.handleChange.bind(this);
+//    }
 
-//   handleChange(event) {
-//     console.log("handeld change", event);
-//   }
+//    handleChange(event) {
+//      console.log("handeld change", event);
+//    }
 
-//   handleSubmit(event) {
-//     console.log("from submidded");
-//     event.preventDefault();
-//   }
+//    handleSubmit(event) {
+//      console.log("from submidded");
+//      event.preventDefault();
+//    }
 
-//   render() {
-//     return (
+//    render() {
+//      return (
 //       <div>
 //         <form onSubmit={this.handleSubmit}>
 //           <input
