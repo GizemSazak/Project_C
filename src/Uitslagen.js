@@ -33,10 +33,11 @@ function Uitslagen() {
                                 <th id="HtableR"  >Thuis</th>
                                 <th id="HtableR" >Stand</th>
                                 <th id="HtableR" >Uit</th>
-                                <th id="HtableR" >Verslag</th>
-                            </tr>    
+                            </tr>   
+                            </tbody> 
                     {posts.map(function(post, id){
-                    return(
+                    return(<Link className="linkk" to={{pathname:"/verslag", verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
+                        <tbody id="tt">
                             <tr key={id} >
                             <th id="tableL" >
                                 {post.id} 
@@ -50,16 +51,12 @@ function Uitslagen() {
                             <td id="tableR" >
                                 {post.uit} 
                             </td>
-                            <td id="tableR"  >
-                            <Link className="linkk" to={{pathname:"/verslag", verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
-                            <img src={reportimg} ald="verslag" className="reportimg"/>
-                            </Link>
-                            </td>
                             </tr>
-                            
+                            </tbody>
+                            </Link>
                         )
                     })}
-                </tbody>
+                
          <Link to="/uitslagtoevoegen"><img src={addbutton} alt="add" className="addbutton"/></Link>                  
             </div>
             <Check />

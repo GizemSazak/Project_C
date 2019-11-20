@@ -18,6 +18,7 @@ import addbutton from './addbutton.png'
             <h1 className='titleOefeningen'>Wedstrijduitslagen</h1>
             <div className="uitslagBody">
                 <div className="verslagBody">
+                    <div id="titlestand">{props.location.thuis}&emsp;{props.location.stand}&emsp;{props.location.uit}</div>    
                     <div id="titleverslag">Verslag</div>                    
                     <div id="tekstverslag">{props.location.verslag}<br></br>
  

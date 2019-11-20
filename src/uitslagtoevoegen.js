@@ -10,7 +10,6 @@ import addbutton from './addbutton.png'
 class uitslagtoevoegen extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       id: 0,
       thuis: '',
@@ -61,7 +60,7 @@ class uitslagtoevoegen extends Component {
               <input id="formp1" name="stand" type="text" placeholder="stand" onChange={event => this.handleChange(event)} /><br></br>
               <textarea cols="23" namee="verslag" rows="20" id="formp2" type="text" placeholder="verslag" onChange={event => this.handleChange(event)} ></textarea>
               <br></br>
-              <Link to='./Uitslagen'><button onClick={() => this.addUitslag()}>Toevoegen</button></Link>
+              <Link to='./Uitslagen' refresh="true"><button onClick={() => this.addUitslag()}>Toevoegen</button></Link>
             </form>
 
           </div>

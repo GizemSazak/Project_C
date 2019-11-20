@@ -53,8 +53,13 @@
   height: 3vh;
 }
 
-a:hover{
+ a:hover{
   background-image: none;
+  color: black;
+}
+
+a{
+  color: black;
 }
 
 .verslagBody {
@@ -73,6 +78,13 @@ a:hover{
   text-align: center;
   border-bottom: 0.2vh solid black;
   background-color: rgba(6, 126, 6, 0.8);
+}
+
+#titlestand {
+  font-size: 4vh;
+  text-align: center;
+  border-bottom: 0.2vh solid black;
+  background-color: rgba(15, 202, 15, 0.8);
 }
 
 #tekstverslag{
