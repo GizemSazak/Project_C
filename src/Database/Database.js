@@ -150,7 +150,6 @@ app.put('/api/notities', (req, res) => {
         );
     });
 });
-
 app.delete('/api/notities', (req, res) => {
     console.log(req.body);
     const id = req.body.id;
@@ -162,16 +161,14 @@ app.delete('/api/notities', (req, res) => {
             return res.status(400).send(err);
         }
 
-        db.query(
-            "DELETE FROM notities WHERE id =$1",
-            [id],
-            err => {
+        db.query('DELETE FROM notities WHERE id = $1',[id], err => {
                 if (err) {
                     console.log(err + 'tweede');
                     return res.status(400).send(err);
                 }
 
                 console.log('Delete DATA SUCCESS');
+                console.log(id);
 
                 res.status(201).send({ message: 'Data deleted!' });
             }

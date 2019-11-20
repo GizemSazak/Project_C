@@ -9,6 +9,21 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // import axios from 'axios'
  const notities_beschrijven = (props) => {
+    function Verwijderen() {
+        const request = new Request('http://localhost:3001/api/notities', {
+        method: 'DELETE',
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ 'id': parseInt(props.location.id),})
+        });
+        fetch(request)
+        .then(response => {
+            response.json().then(data => { });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+            }
+
     return (
         <div className="App">
             <h1 className='titleOefeningen'>Notities</h1>
@@ -21,7 +36,7 @@ import { Link } from 'react-router-dom';
                 <a href = "./Notities_Updaten">
                 <button className="wijzigenButton">Wijzigen</button>
                 </a>
-                <img src={trash} className="trash"/>
+                <img src={trash} onClick= {() => Verwijderen()} className="trash"/>
 
             </div>
             

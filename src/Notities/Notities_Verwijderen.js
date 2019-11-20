@@ -4,64 +4,44 @@ import '../App.css'
 import trash from './trash.svg' // Tell Webpack this JS file uses this image
 import Check from '../components/Menu/Check'
 import axios from 'axios'
-export default  class Notities_Verwijderen extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      titel: '',
-      notitie: '', 
-      id: ''
-    }
-  }
 
-  changeHandler = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-
-  submitHandler = e => {
-    e.preventDefault()
-    console.log(this.state)
-    axios
-      .delete('http://localhost:3001/api/notities', this.state)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  render() {
-    const { id,titel, notitie } = this.state
+import { Link } from 'react-router-dom';
+// import axios from 'axios'
+ const Notities_Verwijderen = (props) => {
+  function Verwijderen() {
+    const request = new Request('http://localhost:3001/api/notities', {
+    method: 'DELETE',
+    headers: new Headers({ 'Content-Type': 'application/json' }),
+    body: JSON.stringify({ 'id': parseInt(props.location.id),})
+    });
+    fetch(request)
+    .then(response => {
+        response.json().then(data => { });
+    })
+    .catch(err => {
+        console.log(err);
+    });
+        }
     return (
         <div className="App">
-     <h1 className='titleOefeningen'>Notities</h1>
-        {/* <div>
-           <input
-              type="text"
-              name="titel"
-              id = "title" 
-              placeholder="Titel"
-              value={titel}
-              onChange={this.changeHandler}
-            />
-          </div>
-          <form onSubmit={this.submitHandler}>
-          <div>
-            <input
-              type="text"
-              placeholder="Beschrijven"
-              id = "beschrijven"
-              name="notitie"
-              value={notitie}
-              onChange={this.changeHandler}
-            />
-          </div>
-          <button id="opslaan"  type="submit">Submit</button>
-        </form>
-     <div className = "column1"> </div>  */}
-     <Check/>
-    </div>
-        )
-      }
+            <h1 className='titleOefeningen'>Notities</h1>
+            <div className="uitslagBody">
+                <div className="notitie">
+                    <div id="Notitietitel">{props.location.titel}&emsp;&emsp;&emsp;</div>    
+                    <div id="NotitieText">{props.location.notitie}<br></br>
+                    </div>  
+                </div>
+                <a href = "./Notities_Updaten">
+                <button onClick="" className="opslaanbutton">Opslaan</button><img src={trash} onClick= {() => Verwijderen()} className="trashbutton"/>
+                </a>
+                <img src={trash} className="trash"/>
+
+            </div>
+            
+            <Check />
+        </div>
+    );
     }
+
+export default Notities_Verwijderen;
+        
