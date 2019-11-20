@@ -22,17 +22,13 @@ class Registreren extends Component {
   }
 
   handleSubmit() {
-    console.log("from submidded")
+    console.log('submitted')
 
     const request = new Request("http://localhost:3001/api/registration", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
       body: JSON.stringify({
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        password: this.state.password,
-        teamcode: this.state.teamcode
+        'email': this.state.email, 'password': this.state.password, 'firstname': this.state.firstName, 'lastname': this.state.lastName, 'teamcode': this.state.teamcode
       })
     });
     fetch(request)
@@ -50,29 +46,7 @@ class Registreren extends Component {
         <div className="wrapper">
           <div className="form-wrapper">
             <h1>Create Account for trainer</h1>
-            <form onSubmit={this.handleSubmit} noValidate>
-              <div className="firstName">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  className=""
-                  placeholder="First Name"
-                  type="text"
-                  name="firstName"
-                  noValidate
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="lastName">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  className=""
-                  placeholder="Last Name"
-                  type="text"
-                  name="lastName"
-                  noValidate
-                  onChange={this.handleChange}
-                />
-              </div>
+            <form onSubmit={this.handleSubmit}>
               <div className="email">
                 <label htmlFor="email">Email</label>
                 <input
@@ -91,6 +65,28 @@ class Registreren extends Component {
                   placeholder="Password"
                   type="password"
                   name="password"
+                  noValidate
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="firstName">
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  className=""
+                  placeholder="First Name"
+                  type="text"
+                  name="firstName"
+                  noValidate
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="lastName">
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  className=""
+                  placeholder="Last Name"
+                  type="text"
+                  name="lastName"
                   noValidate
                   onChange={this.handleChange}
                 />
@@ -112,28 +108,6 @@ class Registreren extends Component {
           <div className="form-wrapper">
             <h1>Create Account for player</h1>
             <form onSubmit={this.handleSubmit} noValidate>
-              <div className="firstName">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  className=""
-                  placeholder="First Name"
-                  type="text"
-                  name="firstName"
-                  noValidate
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="lastName">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  className=""
-                  placeholder="Last Name"
-                  type="text"
-                  name="lastName"
-                  noValidate
-                  onChange={this.handleChange}
-                />
-              </div>
               <div className="email">
                 <label htmlFor="email">Email</label>
                 <input
@@ -152,6 +126,28 @@ class Registreren extends Component {
                   placeholder="Password"
                   type="password"
                   name="password"
+                  noValidate
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="firstName">
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  className=""
+                  placeholder="First Name"
+                  type="text"
+                  name="firstName"
+                  noValidate
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="lastName">
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  className=""
+                  placeholder="Last Name"
+                  type="text"
+                  name="lastName"
                   noValidate
                   onChange={this.handleChange}
                 />

@@ -163,7 +163,7 @@ app.post("/api/registreren", (req, res) => {
     }
 
     db.query(
-      "INSERT INTO registration  email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4)",
+      "INSERT INTO registration (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4, $5)",
       [...values],
       err => {
         if (err) {
