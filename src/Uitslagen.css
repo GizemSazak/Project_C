@@ -5,17 +5,16 @@
     }
     }
 
-.AddBody{
-  text-align: center;
-  background-color: transparent;
-  overflow: auto;
-  color: white;
-  font-size: 1.5rem;
-  padding: 150px 0;
-  width: 179vh;
-  position: fixed;
-  right: 0;
+.verslagBody {
+  background-color: rgba(128,128,128, .8);
+  margin-left: 10vh;
+  margin-right: 10vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  border: 0.2vh solid black;
+  min-height: 50vh;
 }
+
 
 .uitslagBody {
   background: rgba(128,128,128, .7);
@@ -52,12 +51,15 @@
 }
 
 .addbutton {
-  height: 10vh;
-  padding-top: 1vh;
-  bottom: 4vh;
+  font-size: 15vh;
+  color: white;
+  background-color: transparent;
+  border: none;
+  bottom: 0;;
   right: 4vh;
   position: fixed;
   color:white;
+  cursor: pointer;
 }
 
 .reportimg {
@@ -113,9 +115,6 @@ a{
   width: 500px;
 }
 
-#titlelabel{
-  
-}
 
 #toevoegenbutton {
   margin-left: 38%;

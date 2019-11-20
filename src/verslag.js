@@ -77,7 +77,7 @@ class verslagen extends Component {
   
                       
                 </div>
-                <Link to="./Uitslagen"><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick= {() => this.Verwijderen()} className="trashbutton"/></Link>
+                <Link to="./Uitslagen" ><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick= {() => this.Verwijderen()} className="trashbutton"/></Link>
             </div>
             
             <Check />

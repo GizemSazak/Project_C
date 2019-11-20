@@ -57,7 +57,7 @@ function Uitslagen() {
                         )
                     })}
                 
-         <Link to="/uitslagtoevoegen"><img src={addbutton} alt="add" className="addbutton"/></Link>                  
+         <Link to="/uitslagtoevoegen"><button className="addbutton">+</button></Link>                  
             </div>
             <Check />
         </div>
