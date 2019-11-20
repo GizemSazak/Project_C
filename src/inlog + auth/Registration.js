@@ -30,19 +30,9 @@ class Registreren extends Component {
 
   handleSubmit() {
     console.log('submitted')
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-      axios.get('http://localhost:3001/api/registreren')
-        .then(res => {
-          console.log(res)
-          setPosts(res.data)
-        })
-        .catch()
-    }, []);
 
 
-    const request = new Request("http://localhost:3001/api/registreren", {
+    const request = new Request('http://localhost:3001/api/registration', {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
       body: JSON.stringify({
@@ -76,7 +66,7 @@ class Registreren extends Component {
                   type="email"
                   name="email"
                   noValidate
-                  onChange={this.handleChange}
+                  onChange={this.updateInput}
                 />
               </div>
               <div className="password">
@@ -87,7 +77,7 @@ class Registreren extends Component {
                   type="password"
                   name="password"
                   noValidate
-                  onChange={this.handleChange}
+                  onChange={this.updateInput}
                 />
               </div>
               <div className="firstName">
@@ -98,7 +88,7 @@ class Registreren extends Component {
                   type="text"
                   name="firstName"
                   noValidate
-                  onChange={this.handleChange}
+                  onChange={this.updateInput}
                 />
               </div>
               <div className="lastName">
@@ -109,7 +99,7 @@ class Registreren extends Component {
                   type="text"
                   name="lastName"
                   noValidate
-                  onChange={this.handleChange}
+                  onChange={this.updateInput}
                 />
               </div>
               <div className="createAccount">
@@ -128,7 +118,7 @@ class Registreren extends Component {
         <div className="wrapper2">
           <div className="form-wrapper">
             <h1>Create Account for player</h1>
-            <form onSubmit={this.handleSubmit} noValidate>
+            <form onSubmit={this.handleSubmit}>
               <div className="email">
                 <label htmlFor="email">Email</label>
                 <input
@@ -137,7 +127,7 @@ class Registreren extends Component {
                   type="email"
                   name="email"
                   noValidate
-                  onChange={this.handleChange}
+                  onChange={this.updateInput}
                 />
               </div>
               <div className="password">
@@ -148,7 +138,7 @@ class Registreren extends Component {
                   type="password"
                   name="password"
                   noValidate
-                  onChange={this.handleChange}
+                  onChange={this.updateInput}
                 />
               </div>
               <div className="firstName">
@@ -159,7 +149,7 @@ class Registreren extends Component {
                   type="text"
                   name="firstName"
                   noValidate
-                  onChange={this.handleChange}
+                  onChange={this.updateInput}
                 />
               </div>
               <div className="lastName">
@@ -170,7 +160,7 @@ class Registreren extends Component {
                   type="text"
                   name="lastName"
                   noValidate
-                  onChange={this.handleChange}
+                  onChange={this.updateInput}
                 />
               </div>
               <div className="teamcode">
@@ -181,7 +171,7 @@ class Registreren extends Component {
                   type="text"
                   name="teamcode"
                   noValidate
-                  onChange={this.handleChange}
+                  onChange={this.updateInput}
                 />
               </div>
 
@@ -203,54 +193,3 @@ class Registreren extends Component {
 }
 
 export default Registreren;
-
-// export default class Login extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       email: "",
-//       password: ""
-//     };
-
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//     this.handleChange = this.handleChange.bind(this);
-//   }
-
-//   handleChange(event) {
-//     console.log("handeld change", event);
-//   }
-
-//   handleSubmit(event) {
-//     console.log("from submidded");
-//     event.preventDefault();
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <form onSubmit={this.handleSubmit}>
-//           <input
-//             type="email"
-//             name="email"
-//             placeholder="Email"
-//             value={this.state.email}
-//             onChange={this.handleChange}
-//             required
-//           />
-
-//           <input
-//             type="password"
-//             name="password"
-//             placeholder="Password"
-//             value={this.state.password}
-//             onChange={this.handleChange}
-//             required
-//           />
-//           <button type="submit">Login</button>
-//           <a href="/Registreren"> Registreren?</a>
-//         </form>
-//       </div>
-//     );
-//   }
-// }

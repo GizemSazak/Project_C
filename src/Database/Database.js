@@ -146,7 +146,27 @@ app.post("/api/wedstrijduitslag", (req, res) => {
   });
 });
 
-app.post("/api/registreren", (req, res) => {
+app.get("/api/registration", (req, res) => {
+  pool.connect((err, db, done) => {
+    if (err) {
+      return res.status(400).send(err);
+    }
+
+    db.query(
+      "SELECT * from public.registration",
+      (err, table) => {
+        done();
+        if (err) {
+          return res.status(400).send(err);
+        }
+        return res.status(200).send(table.rows);
+        console.log(table.rows);
+      }
+    );
+  });
+});
+
+app.post("/api/registration", (req, res) => {
   console.log(req.body);
   const email = req.body.email;
   const password = req.body.password;
@@ -158,7 +178,7 @@ app.post("/api/registreren", (req, res) => {
 
   pool.connect((err, db, done) => {
     if (err) {
-      console.log(err + "eerste");
+      console.log(err + "derde");
       return res.status(400).send(err);
     }
 

@@ -12,12 +12,14 @@
     "morgan": "^1.9.1",
     "pg": "^7.12.1",
     "ramda": "^0.26.1",
-    "react": "^16.10.2",
+    "react": "^16.8.6",
     "react-contextmenu": "^2.11.0",
     "react-device-detect": "^1.9.10",
-    "react-dom": "^16.10.2",
+    "react-dom": "^16.8.6",
+    "react-is": "^16.8.6",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "styled-components": "^5.0.0-rc.2"
   },
   "scripts": {
     "start": "react-scripts start",
