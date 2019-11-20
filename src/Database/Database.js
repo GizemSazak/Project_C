@@ -146,6 +146,39 @@ app.post("/api/wedstrijduitslag", (req, res) => {
   });
 });
 
+app.post("/api/registreren", (req, res) => {
+  console.log(req.body);
+  const email = req.body.email;
+  const password = req.body.password;
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const teamcode = req.body.teamcode;
+
+  const values = [firstName, lastName, email, password, teamcode];
+
+  pool.connect((err, db, done) => {
+    if (err) {
+      console.log(err + "eerste");
+      return res.status(400).send(err);
+    }
+
+    db.query(
+      "INSERT INTO registration  email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4)",
+      [...values],
+      err => {
+        if (err) {
+          return res.status(400).send(err);
+        }
+
+        console.log("INSERTED DATA SUCCESS");
+
+        res.status(201).send({ message: "Data inserted!" });
+      }
+    );
+  });
+});
+
+
 app.listen(PORT, () => console.log("Listening on port " + PORT));
 
 // link used:
