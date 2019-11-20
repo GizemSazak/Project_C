@@ -8,16 +8,19 @@
       background-color: rgba(205, 207, 206, 0.8);        
       margin-left: 30vh;
       margin-right: 10vh;
-      margin-top: 10vh;
       margin-bottom: 10vh;
       border: 0.2vh solid black;
       min-height: 50vh;
       width: 150vh;
     }
     #Notitietitel {
-      font-size: 4vh;
-      text-align: center;
-      border-bottom: 0.2vh solid black;
+      margin-left: 30vh;
+      margin-right: 10vh;
+      margin-top: 10vh;
+      margin-bottom: -1vh;
+      border: 0.2vh solid black;
+      min-height: 10vh;
+      width: 150vh;
       background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
 
     }

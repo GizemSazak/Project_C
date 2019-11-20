@@ -65,23 +65,6 @@ app.get('/api/speler', (req, res) => {
         });
     });
 });
-
-// app.get('/api/notities', (req, res) => {
-//     pool.connect((err, db, done) => {
-//         if (err) {
-//             return res.status(400).send(err);
-//         }
-
-//         db.query('SELECT * from notities', (err, table) => {
-//             done();
-//             if (err) {
-//                 return res.status(400).send(err);
-//             }
-//             return res.status(200).send(table.rows);
-//             console.log(table.rows)
-//         });
-//     });
-// });
 app.get('/api/notities', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) {
@@ -128,16 +111,17 @@ app.post('/api/notities', (req, res) => {
 app.put('/api/notities', (req, res) => {
     console.log(req.body);
     const id = req.body.id;
-    const titel = req.body.titel;
     const notitie = req.body.notitie;
+    const titel = req.body.titel;
     pool.connect((err, db, done) => {
+        done();
         if (err) {
             console.log(err + 'eerste');
             return res.status(400).send(err);
         }
 
         db.query(
-            'UPDATE notities SET titel = $2, notitie = $3 WHERE id = $1',
+            'UPDATE notities SET titel = $2 , notitie = $3 WHERE id = $1',
             [id,titel,notitie],
             err => {
                 if (err) {

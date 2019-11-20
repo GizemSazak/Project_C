@@ -56,7 +56,7 @@ export default  class Notities_toevoegen extends Component {
               onChange={this.changeHandler}
             />
           </div>
-          <button id="opslaan"  type="submit">Submit</button>
+          <button id="opslaan"  type="submit" onChange={event => this.handleChange(event)}>Submit</button>
         </form>
      <div className = "column1"> </div> 
      <Check/>
