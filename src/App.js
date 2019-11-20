@@ -20,7 +20,6 @@ import Uitslagen from './Uitslagen';
 import Notities from './Notities//Notities'
 import Notities_toevoegen from './Notities//Notities_toevoegen'
 import notities_beschrijven from './Notities//notities_beschrijven'
-import Notities_Verwijderen from './Notities//Notities_Verwijderen'
 import Notities_Updaten from './Notities//Notities_Updaten'
 
 
@@ -47,7 +46,6 @@ function App() {
       <Route exact path='/Notities' component={Notities} />
       <Route exact path='/Notities_toevoegen' component={Notities_toevoegen} />
       <Route exact path='/notities_beschrijven' component={notities_beschrijven} />
-      <Route exact path='/Notities_Verwijderen' component={Notities_Verwijderen} />
       <Route exact path='/Notities_Updaten' component={Notities_Updaten} />
 
     </div>
