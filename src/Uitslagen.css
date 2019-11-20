@@ -5,6 +5,18 @@
     }
     }
 
+.AddBody{
+  text-align: center;
+  background-color: transparent;
+  overflow: auto;
+  color: white;
+  font-size: 1.5rem;
+  padding: 150px 0;
+  width: 179vh;
+  position: fixed;
+  right: 0;
+}
+
 .uitslagBody {
   background: rgba(128,128,128, .7);
   margin-left: 18vh;
@@ -45,6 +57,7 @@
   bottom: 4vh;
   right: 4vh;
   position: fixed;
+  color:white;
 }
 
 .reportimg {
@@ -60,15 +73,7 @@ a{
   color: black;
 }
 
-.verslagBody {
-  background-color: rgba(128,128,128, .8);
-  margin-left: 10vh;
-  margin-right: 10vh;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-  border: 0.2vh solid black;
-  min-height: 50vh;
-}
+
 
 
 #titleverslag {
@@ -88,21 +93,57 @@ a{
 
 
 
-.standForm {
-  text-align: center;
-  background-color: rgba(128,128,128, .8);
-  margin-top: 10vh;
-  padding: 5vh;
-  
-}
 
 #formp1 {
-  margin-bottom: 1vh;
+  font-size: 1.2rem;
+  background-color: rgb(255, 255, 255,0.5);
+  border-radius: 5px;
+  text-align: center;
 }
 
 #formp2 {
+  font-size: 1.2rem;
   height: 50px;
   word-break: break-word;
+  background-color: rgb(255, 255, 255,0.5);
+  border-radius: 5px;
+  resize: none;
+  outline: none;
+  min-height: 44vh;
+  width: 500px;
+}
+
+#titlelabel{
+  
+}
+
+#toevoegenbutton {
+  margin-left: 38%;
+  
+}
+
+
+.place1{
+  margin-left: 20vh;
+  margin-top: 5vh;
+  float: left;
+}
+
+.place2{
+  float: right;
+  margin-right: 20vh;
+  margin-top: 5vh;
+}
+
+
+.SubmitBtn{
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  background-image:  radial-gradient(rgb(0, 50, 0,0.8),rgb(0, 150, 0,0.8));
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px 50px;
 }
 
 .opslaanbutton {
@@ -142,22 +183,7 @@ a{
 
 }
 
-.Inputfield{
-  font-size: 1.2rem;
-  text-align: center;
-  background-color: rgb(255, 255, 255,0.5);
-  border-radius: 5px;
-}
 
-.SubmitBtn{
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: white;
-  background-image:  radial-gradient(rgb(0, 50, 0,0.8),rgb(0, 150, 0,0.8));
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 5px 50px;
-}
 
 
 

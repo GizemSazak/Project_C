@@ -55,14 +55,22 @@ class uitslagtoevoegen extends Component {
         <div className="uitslagBody">
           <div className="standtoevoegenBody">
 
-            <form useRef="dataForm" className="standForm">
-              <input id="formp1" name="id" type="text" placeholder="week" className="Inputfield" onChange={this.updateInput} /><br></br>
-              <input id="formp1" name="thuis" type="text" placeholder="thuis" className="Inputfield" onChange={this.updateInput} /><br></br>
-              <input id="formp1" name="uit" type="text" placeholder="uit" className="Inputfield" onChange={this.updateInput}/><br></br>
-              <input id="formp1" name="stand" type="text" placeholder="stand" className="Inputfield" onChange={this.updateInput} /><br></br>
-              <textarea cols="23" name="verslag" rows="20" id="formp2" type="text" placeholder="verslag" className="Inputfield" onChange={this.updateInput} ></textarea>
-              <br></br>
-              <Link to='./Uitslagen' refresh="true"><button className="SubmitBtn" onClick={()=> this.addUitslag()}>Toevoegen</button></Link>
+            <form useRef="dataForm" ><div class="place1">
+            <label id="titlelabel">Week</label><br />
+              <input id="formp1" name="id" type="text"  onChange={this.updateInput} /><br></br><br />
+              <label id="titlelabel">Thuis</label><br />
+              <input id="formp1" name="thuis" type="text" onChange={this.updateInput} /><br></br><br />
+              <label id="titlelabel">Uit</label><br />
+              <input id="formp1" name="uit" type="text"  onChange={this.updateInput}/><br></br><br />
+              <label id="titlelabel">Stand</label><br />
+              <input id="formp1" name="stand" type="text"  onChange={this.updateInput} /><br></br><br />
+              </div>
+              <div class="place2">
+              <label id="titlelabel">Verslag</label><br />
+              <textarea  name="verslag" id="formp2" type="text" onChange={this.updateInput} ></textarea>
+              <br></br><br />
+              </div>
+              <Link to='./Uitslagen' refresh="true"><button id="toevoegenbutton" className="SubmitBtn" onClick={()=> this.addUitslag()}>Toevoegen</button></Link>
             </form>
 
           </div>
