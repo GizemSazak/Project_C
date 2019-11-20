@@ -106,14 +106,15 @@ a{
 }
 
 .opslaanbutton {
-  background-color: rgba(15, 202, 15, 0.8);
+  font-size: 1.5rem;
+  font-weight: 500;
   color: white;
-  border-radius: 25px;
-  border: 0.2vh solid black;
+  background-image:  radial-gradient(rgb(0, 50, 0,0.8),rgb(0, 150, 0,0.8));
+  border: 1px solid black;
+  border-radius: 5px;
   right: 18vh;
   bottom: 2vh;
   position: fixed;
-  font-size: 4vh;
   width: 30vh;
   cursor: pointer;
 }
@@ -140,6 +141,25 @@ a{
   width: 100%;
 
 }
+
+.Inputfield{
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: rgb(255, 255, 255,0.5);
+  border-radius: 5px;
+}
+
+.SubmitBtn{
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  background-image:  radial-gradient(rgb(0, 50, 0,0.8),rgb(0, 150, 0,0.8));
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px 50px;
+}
+
+
 
 
 
