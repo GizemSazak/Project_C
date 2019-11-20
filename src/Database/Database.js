@@ -66,13 +66,28 @@ app.get('/api/speler', (req, res) => {
     });
 });
 
+// app.get('/api/notities', (req, res) => {
+//     pool.connect((err, db, done) => {
+//         if (err) {
+//             return res.status(400).send(err);
+//         }
+
+//         db.query('SELECT * from notities', (err, table) => {
+//             done();
+//             if (err) {
+//                 return res.status(400).send(err);
+//             }
+//             return res.status(200).send(table.rows);
+//             console.log(table.rows)
+//         });
+//     });
+// });
 app.get('/api/notities', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) {
             return res.status(400).send(err);
         }
-
-        db.query('SELECT * from notities', (err, table) => {
+        db.query('SELECT * from notities order by id DESC', (err, table) => {
             done();
             if (err) {
                 return res.status(400).send(err);
@@ -82,7 +97,6 @@ app.get('/api/notities', (req, res) => {
         });
     });
 });
-
 
 app.post('/api/notities', (req, res) => {
     console.log(req.body);

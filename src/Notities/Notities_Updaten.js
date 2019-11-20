@@ -8,7 +8,7 @@ import axios from 'axios'
       constructor(props) {
         super(props)
         this.state = {
-          id: '10',
+          id: '',
           titel: '',
           notitie: ''
         }

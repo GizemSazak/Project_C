@@ -1,26 +1,17 @@
-@media (max-width: 600px) {
+ @media (max-width: 600px) {
     .App {
       width: 110%;
       height: 200vh;
     }
     }
-    .column1 { 
-      padding: 5vh;
-      cursor: pointer;
-      display: block;
-      color: white;
-      border: 0.2vh solid black;
-      background-color: rgba(138, 143, 144, 0.4); 
-      height: 539.5px;     
-    }
- 
-    /* @media (max-width: 600px) {
-      .column1  {
-      }
-      } */
-  #Toevoegen{
+
+  a{
+    color: white;
+  }
+
+   #Toevoegen{
     position: absolute;
-    top: 600px;
+    top: 650px;
     left: 50%;
     right: 50%;    ;
     display: inline-block;
@@ -33,23 +24,31 @@
     font-size: 18px;
     color:white;
     background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
-  }  
+  } 
   a{
     color: white;
   }
   .tablerow{
     display: grid;
     width: 500px;
-    left: 35%;
+    left: 500px;
     padding-left:100px ;
     top: 500px;
     border-radius: 0.1vh solid black;
-    margin: 0 0 3px 0;
     position: relative;
     border-collapse: collapse;
   }
+  .column1 { 
+    padding: 5vh;
+    cursor: pointer;
+    display: block;
+    color: white;
+    border: 0.2vh solid black;
+    background-color: rgba(138, 143, 144, 0.4); 
+    height: 539.5px;     
+  }
   #rowss{
-    display: inline-block;
+    display: block;
     text-align: left;
     width: 500px;
     height: 80px;
@@ -57,4 +56,9 @@
     font-size: 18px;
     color:white;
     background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
-  }
+  }  
+
+
+  
+  
+  
