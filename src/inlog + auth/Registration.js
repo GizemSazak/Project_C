@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import "./login.css";
 import Menu from "../Menu/Menu";
 import axios from "axios";
 
+
+
+
 class Registreren extends Component {
   constructor(props) {
+
+
     super(props);
 
     this.state = { firstName: "" };
@@ -15,6 +20,8 @@ class Registreren extends Component {
 
     this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+
   }
 
   updateInput(event) {
@@ -23,8 +30,19 @@ class Registreren extends Component {
 
   handleSubmit() {
     console.log('submitted')
+    const [posts, setPosts] = useState([])
 
-    const request = new Request("http://localhost:3001/api/registration", {
+    useEffect(() => {
+      axios.get('http://localhost:3001/api/registreren')
+        .then(res => {
+          console.log(res)
+          setPosts(res.data)
+        })
+        .catch()
+    }, []);
+
+
+    const request = new Request("http://localhost:3001/api/registreren", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
       body: JSON.stringify({
@@ -38,7 +56,10 @@ class Registreren extends Component {
       .catch(err => {
         console.log(err);
       });
+
   }
+
+
 
   render() {
     return (
