@@ -10,7 +10,7 @@ const pool = new pg.Pool({
     host:"salt.db.elephantsql.com",
     database:"cligxofj",
     user:"cligxofj",
-    password:"MMdvlDXsE73zeBxtbKvigi5ALP6_pRVo",
+    password:"MMdvlDXsE73zeBxtbKvigi5ALP6_pRVo"
 });
 
 const app = express();
@@ -64,6 +64,32 @@ app.get('/api/speler', (req, res) => {
             return res.status(200).send(table.rows);
             console.log(table.rows)
         });
+    });
+});
+
+app.delete('/api/wedstrijduitslag', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const values = [id];
+
+    pool.connect((err, db, done) => {
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+
+        db.query('DELETE FROM wedstrijduitslag WHERE id = $1',[id], err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+
+                console.log('Delete DATA SUCCESS');
+                console.log(id);
+
+                res.status(201).send({ message: 'Data deleted!' });
+            }
+        );
     });
 });
 

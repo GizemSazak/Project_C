@@ -10,10 +10,26 @@ import trashimg from './trash.png'
 
 
 
+
+
     const verslagen = (props) => {
 
-    
+        function Verwijderen() {
+            const request = new Request('http://localhost:3001/api/wedstrijduitslag', {
+            method: 'DELETE',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify({ 'id': parseInt(props.location.id),})
+            });
+            fetch(request)
+            .then(response => {
+                response.json().then(data => { });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+                }
 
+    
     return (
         <div className="App">
             <h1 className='titleOefeningen'>Wedstrijduitslagen</h1>
@@ -26,7 +42,7 @@ import trashimg from './trash.png'
   
                     </div>  
                 </div>
-                <button className="opslaanbutton">Opslaan</button><img src={trashimg} className="trashbutton"/>
+                <button onClick="" className="opslaanbutton">Opslaan</button><img src={trashimg} onClick= {() => Verwijderen()} className="trashbutton"/>
             </div>
             
             <Check />
