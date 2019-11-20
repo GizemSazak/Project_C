@@ -22,7 +22,6 @@
   width: 16vh;
   text-align: center;
   border-bottom: 2px solid black;
-  border-right: 1px solid black;
   padding: 3vh;
 }
 
@@ -37,7 +36,6 @@
   width: 16vh;
   text-align: center;
   border-bottom: 1px solid black;
-  border-right: 1px solid black;
   padding: 2vh;
 }
 
@@ -88,12 +86,7 @@ a{
   background-color: rgba(15, 202, 15, 0.8);
 }
 
-#tekstverslag{
-  margin-left: 3vh;
-  margin-right: 3vh;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-}
+
 
 .standForm {
   text-align: center;
@@ -122,7 +115,7 @@ a{
   position: fixed;
   font-size: 4vh;
   width: 30vh;
-
+  cursor: pointer;
 }
 
 .trashbutton {
@@ -130,6 +123,21 @@ a{
   right: 10vh;
   bottom: 2vh;
   position: fixed;
+
+}
+
+#editverslag{
+  font-size: 2vh;
+  background: transparent;
+  resize: none;
+  border: 0 none;
+  outline: none;
+  min-height: 30vh;
+  margin-left: 3vh;
+  right: 3vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  width: 100%;
 
 }
 

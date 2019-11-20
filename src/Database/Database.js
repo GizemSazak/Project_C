@@ -126,6 +126,32 @@ app.post('/api/wedstrijduitslag', (req, res) => {
     });
 });
 
+app.put('/api/wedstrijduitslag', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const verslag = req.body.verslag;
+    pool.connect((err, db, done) => {
+        done();
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+
+        db.query(
+            'UPDATE wedstrijduitslag SET verslag = $2 WHERE id = $1',
+            [id,verslag],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+                console.log('Update DATA SUCCESS');
+                res.status(201).send({ message: 'Data updated!' });
+            }
+        );
+    });
+});
+
 
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 

@@ -37,7 +37,7 @@ function Uitslagen() {
                             </tbody> 
                     {posts.map(function(post, id){
                     return(<Link className="linkk" to={{pathname:"/verslag", id: post.id, verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
-                        <tbody id="tt">
+                        
                             <tr key={id} >
                             <th id="tableL" >
                                 {post.id} 
@@ -52,7 +52,7 @@ function Uitslagen() {
                                 {post.uit} 
                             </td>
                             </tr>
-                            </tbody>
+                            
                             </Link>
                         )
                     })}
