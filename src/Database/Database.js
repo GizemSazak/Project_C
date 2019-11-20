@@ -10,7 +10,7 @@ const pool = new pg.Pool({
     host:"salt.db.elephantsql.com",
     database:"cligxofj",
     user:"cligxofj",
-    password:"MMdvlDXsE73zeBxtbKvigi5ALP6_pRVo"
+    password:"MMdvlDXsE73zeBxtbKvigi5ALP6_pRVo",
 });
 
 const app = express();
@@ -45,6 +45,7 @@ app.get('/api/wedstrijduitslag', (req, res) => {
             }
             return res.status(200).send(table.rows);
             console.log(table.rows)
+            
         });
     });
 });
@@ -101,6 +102,7 @@ app.post('/api/wedstrijduitslag', (req, res) => {
 
 
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
+
 
 
 

@@ -29,8 +29,8 @@ function Uitslagen() {
             <div className="uitslagBody">
                 <tbody id="tt">
                             <tr >
-                                <th id="HtableL" >#</th>
-                                <th id="HtableR"  >Thuis</th>
+                                <th id="HtableL" >Week</th>
+                                <th id="HtableR" >Thuis</th>
                                 <th id="HtableR" >Stand</th>
                                 <th id="HtableR" >Uit</th>
                             </tr>   

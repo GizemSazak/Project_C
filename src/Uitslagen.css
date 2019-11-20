@@ -67,9 +67,9 @@ a{
   margin-left: 10vh;
   margin-right: 10vh;
   margin-top: 10vh;
-  margin-bottom: 15vh;
+  margin-bottom: 10vh;
   border: 0.2vh solid black;
-  min-height: 45vh;
+  min-height: 50vh;
 }
 
 
@@ -78,6 +78,7 @@ a{
   text-align: center;
   border-bottom: 0.2vh solid black;
   background-color: rgba(6, 126, 6, 0.8);
+  color: white;
 }
 
 #titlestand {
@@ -109,6 +110,27 @@ a{
 #formp2 {
   height: 50px;
   word-break: break-word;
+}
+
+.opslaanbutton {
+  background-color: rgba(15, 202, 15, 0.8);
+  color: white;
+  border-radius: 25px;
+  border: 0.2vh solid black;
+  right: 18vh;
+  bottom: 2vh;
+  position: fixed;
+  font-size: 4vh;
+  width: 30vh;
+
+}
+
+.trashbutton {
+  height: 6.5vh;
+  right: 10vh;
+  bottom: 2vh;
+  position: fixed;
+
 }
 
 
