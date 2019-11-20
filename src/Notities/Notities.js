@@ -69,11 +69,10 @@ function Notities() {
           <div className = "tablerow" >
           <div className="uitslagBody">
                   {posts.map(function(post, id){
-                  return(<Link className="linkk" to={{pathname:"/Notities_beschrijven", id: post.id, titel: post.titel, notitie: post.notitie}}>
+                  return(<Link  refresh="true" className="linkk" to={{pathname:"/Notities_beschrijven", id: post.id, titel: post.titel, notitie: post.notitie}}>
                           <button id="rowss" >
                               {post.titel} 
                           </button>   
-                          
                           </Link>
                       )
                       

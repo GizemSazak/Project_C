@@ -40,8 +40,8 @@
         color:black;
         text-align: center;
       }
-      #opslaan{
-        position: absolute;
+      .opslaan{
+        position: fixed;
         right: 360px;
         bottom: 5px;
         display: inline-block;
@@ -54,12 +54,9 @@
         color:white;
         background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5))
       }
-      #trash{
-          width:120px;
-          height:80px;
-          display:inline-block;
-          right: 230px;
-          bottom: 40px;
-          position: absolute;
-          background-image: none;
+      .trashToevoegen{
+        height: 9vh;
+        right: 35vh;
+        bottom: 0vh;
+        position: fixed;
         }
