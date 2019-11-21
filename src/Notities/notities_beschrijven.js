@@ -36,6 +36,7 @@ class notities_beschrijven extends Component {
             .catch(err => {
                 console.log(err);
             });
+            window.location = './Notities';
                 }
 
     Notities_Wijzigen() {
@@ -53,6 +54,7 @@ class notities_beschrijven extends Component {
               console.log(err);
           });
           console.log({ 'id': parseInt(this.props.location.id),'notitie': this.state.notitie,'titel': this.state.titel})
+          window.location = './Notities';
               }
  
     render(){
@@ -64,10 +66,10 @@ class notities_beschrijven extends Component {
                    defaultValue={this.state.titel}/>
                 <textarea className="notitie" col="200" type="text" name="notitie"  onChange={event => this.handleChange(event)} 
                    defaultValue={this.state.notitie}/>
-                 <Link to="./Notities" refresh="true"><button tye="button" onClick={() => this.Notities_Wijzigen()} className="wijzigenButton">Wijzigen</button>
+                 <Link to="./Notities" onClick={this.forceUpdate}><button tye="button" onClick={() => this.Notities_Wijzigen()} className="wijzigenButton">Wijzigen</button>
              </Link>
             </div>
-            <Link to="./Notities" refresh="true"><img src={trash} onClick= {() => this.Notities_Verwijderen()} className="trash"/></Link> 
+            <Link to="./Notities"  onClick={this.forceUpdate}><img src={trash} onClick= {() => this.Notities_Verwijderen()} className="trash"/></Link> 
             <Check />
         </div>
   );

@@ -34,6 +34,7 @@ export default  class Notities_toevoegen extends Component {
       console.log(err);
       });
       console.log({ 'notitie': this.state.notitie,'titel': this.state.titel})
+      window.location = './Notities';
       }
 
   render() {
@@ -63,8 +64,8 @@ export default  class Notities_toevoegen extends Component {
               onChange={event => this.handleChange(event)} 
             />
           </div>
-          <Link to="./Notities" > <button className="opslaan" type="submit"  onClick={() => this.Notities_toevoegen()}>Toevoegen</button></Link>
-          <Link to="./Notities" refresh="true"> <img src={trash} className="trash2"/></Link>
+          <Link to="./Notities" onClick={this.forceUpdate} > <button className="opslaan" type="submit"  onClick={() => this.Notities_toevoegen()}>Toevoegen</button></Link>
+          <Link to="./Notities"> <img src={trash} className="trash2"/></Link>
         </form>
      <Check/>
     </div>
