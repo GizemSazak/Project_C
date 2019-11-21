@@ -39,6 +39,7 @@ class verslagen extends Component {
             .catch(err => {
                 console.log(err);
             });
+            window.location = './Uitslagen';
                 }
 
     
@@ -58,6 +59,7 @@ class verslagen extends Component {
               console.log(err);
           });
           console.log({ 'id': parseInt(this.props.location.id),'verslag': this.state.verslag})
+          window.location = './Uitslagen';
               }
 
     
@@ -77,7 +79,7 @@ class verslagen extends Component {
   
                       
                 </div>
-                <Link to="./Uitslagen" ><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick= {() => this.Verwijderen()} className="trashbutton"/></Link>
+                <Link to="./Uitslagen" onClick={this.forceUpdate}><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick= {() => this.Verwijderen()} className="trashbutton"/></Link>
             </div>
             
             <Check />

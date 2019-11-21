@@ -97,11 +97,11 @@ app.post('/api/wedstrijduitslag', (req, res) => {
     console.log(req.body);
     const id = req.body.id;
     const thuis = req.body.thuis;
-    const stand = req.body.stand;
     const uit = req.body.uit;
+    const stand = req.body.stand;
     const verslag = req.body.verslag;
 
-    const values = [id, thuis, stand, uit, verslag];
+    const values = [id, thuis, uit, stand, verslag];
 
     pool.connect((err, db, done) => {
         if (err) {
