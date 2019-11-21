@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import trash from './trash.svg' // Tell Webpack this JS file uses this image
 
-
 function Notities() {
 
   const [posts, setPosts] = useState([])

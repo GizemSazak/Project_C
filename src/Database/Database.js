@@ -153,7 +153,6 @@ app.delete('/api/notities', (req, res) => {
 
                 console.log('Delete DATA SUCCESS');
                 console.log(id);
-
                 res.status(201).send({ message: 'Data deleted!' });
             }
         );

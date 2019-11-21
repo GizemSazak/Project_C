@@ -20,7 +20,7 @@
         margin-top: 100px;
         margin-left: 30%;
         width: 800px;
-        color: black;
+        color: white;
         position: absolute;
         font-size: 28px;
         text-align: center;
@@ -37,7 +37,7 @@
         width: 800px;
         position: absolute;
         font-size: 28px;
-        color:black;
+        color:white;
         text-align: center;
       }
       .opslaan{
@@ -54,7 +54,7 @@
         color:white;
         background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5))
       }
-      .trashToevoegen{
+      .terug{
         height: 9vh;
         right: 35vh;
         bottom: 0vh;

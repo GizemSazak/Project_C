@@ -46,6 +46,7 @@
     border: 0.2vh solid black;
     background-color: rgba(138, 143, 144, 0.4); 
     height: 539.5px;     
+    bottom: 0px;
   }
   #rowss{
     display: block;
