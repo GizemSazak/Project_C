@@ -49,13 +49,20 @@ function SpelerOverzicht() {
         <body className="Body">
 
             {posts.map(post =>
-                <div className="Speler">
-                    <div className="Image" />
-                    <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
+                <div >
+                    <div className="CardHeader">Positie</div>
+
+                    <div className="CardBody" style={{ fontSize: '1.5rem' }}>
+                        Rugnummer:<br />
+                        {post.spelernummer}
+                    </div>
+
+                    <div className="CardBottom">
+                        {post.voornaam} {post.achternaam}
+                    </div>
                 </div>
             )}
-
-        </body>
+        </body >
     );
 }
 export default Spelers;

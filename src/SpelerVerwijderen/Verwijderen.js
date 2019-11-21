@@ -53,6 +53,7 @@ class SpelerVerwijderen extends Component {
         fetch(request)
             .then(response => { response.json().then(data => { }); })
             .catch(err => { console.log(err); });
+        window.location.reload()
     }
 
     Submit() { }
