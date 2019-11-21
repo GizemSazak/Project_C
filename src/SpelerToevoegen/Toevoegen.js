@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Component } from 'react'
-import axios from 'axios'
 import './Toevoegen.css'
 import Menu from '../Menu/Menu'
 
@@ -55,6 +54,7 @@ class Toevoegen extends Component {
 
                         <label>Achternaam</label><br />
                         <input type="text" name="achternaam" className="Inputfield" onChange={this.updateInput} /><br /><br />
+
                         <label>Email</label><br />
                         <input type="email" name="email" className="Inputfield" onChange={this.updateInput} /><br /><br />
 

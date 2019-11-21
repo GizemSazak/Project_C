@@ -22,7 +22,7 @@ import verslag from "./verslag";
 import Home from "./Home";
 import Uitslagen from "./Uitslagen";
 import registreren from "./inlog + auth/Registration";
-import tactics from "./tactieken/tactieken";
+// import tactics from "./tactieken/tactieken";
 
 function App() {
   return (
@@ -42,8 +42,7 @@ function App() {
       <Route exact path="/oefening_11" component={oefening_11} />
       <Route exact path="/oefening_12" component={oefening_12} />
       <Route exact path="/SpelerOverzicht/Spelers" component={Spelers} />
-      <Route
-        exact
+      <Route exact
         path="/SpelerToevoegen/Toevoegen"
         component={SpelerToevoegen}
       />
@@ -56,7 +55,6 @@ function App() {
       <Route exact path="/uitslagtoevoegen" component={uitslagtoevoegen} />
       <Route exact path="/verslag" component={verslag} />
       <Route exact path="/registreren" component={registreren} />
-      <route exact path="/tactieken" component={tactics} />
     </div>
   );
 }

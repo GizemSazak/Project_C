@@ -146,14 +146,15 @@ app.post("/api/wedstrijduitslag", (req, res) => {
   });
 });
 
-app.get("/api/registration", (req, res) => {
+
+app.get("/api/registratie", (req, res) => {
   pool.connect((err, db, done) => {
     if (err) {
       return res.status(400).send(err);
     }
 
     db.query(
-      "SELECT * from public.registration",
+      "SELECT * from public.registratie",
       (err, table) => {
         done();
         if (err) {
@@ -166,24 +167,23 @@ app.get("/api/registration", (req, res) => {
   });
 });
 
-app.post("/api/registration", (req, res) => {
+app.post("/api/registratie", (req, res) => {
+  //   // Ik heb teamcode voor nu weggehaald
   console.log(req.body);
   const email = req.body.email;
   const password = req.body.password;
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
-  const teamcode = req.body.teamcode;
 
-  const values = [firstName, lastName, email, password, teamcode];
+  const values = [email, password, firstName, lastName];
 
   pool.connect((err, db, done) => {
     if (err) {
-      console.log(err + "derde");
       return res.status(400).send(err);
     }
 
     db.query(
-      "INSERT INTO registration (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4, $5)",
+      "INSERT INTO registratie (email, password, firstname, lastname) VALUES($1, $2, $3, $4)",
       [...values],
       err => {
         if (err) {
