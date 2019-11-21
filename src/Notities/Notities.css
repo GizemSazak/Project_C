@@ -1,29 +1,49 @@
- @media (max-width: 600px) {
-    .App {
-      width: 110%;
-      height: 200vh;
-    }
-    }
+.Notitiebody{
+  background: url("../bg.png")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  width: 203vh;
+  position: fixed;
+  right: 0;
+  overflow: scroll;
+}
+.titleNotitiel{
+  text-align: center;
+  height: 10%;
+  padding: 50px 0px;
+  font-weight: 700;
+  color: white;
+  width: 185vh;
+  font-size: 6vh;
+  position: fixed;
+  right: 0;
+}
 
   a{
     color: white;
   }
 
    #Toevoegen{
-    position: absolute;
-    top: 650px;
+    top: 28vh;
     left: 50%;
-    right: 50%;    ;
-    display: inline-block;
+    right: 50%;    
     width: 200px;
     padding-right: 10px;
     height: 50px;
-    border: 0.1vh solid black;
     border-radius: 25px;
     text-align: center;
     font-size: 18px;
+    cursor: pointer;
     color:white;
     background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+    background-color: transparent;
+    border: none;
+    position: fixed;
+    box-shadow: 5px 5px rgb(0, 10, 0,0.3);
+
   } 
   a{
     color: white;
@@ -39,24 +59,35 @@
     border-collapse: collapse;
   }
   .column1 { 
-    padding: 5vh;
-    cursor: pointer;
-    display: block;
+    padding: 30px 200px;
+    display: grid;
     color: white;
-    border: 0.2vh solid black;
-    background-color: rgba(138, 143, 144, 0.4); 
-    height: 539.5px;     
+    border: 1px solid black;
+    background-color: rgb(128, 128, 128,0.8);
+    height: 75%;
+    width: 185vh;  
     bottom: 0px;
+    grid-template-columns: auto auto auto auto auto;
+    position: fixed;
+    overflow: auto;
+    right: 0;
   }
   #rowss{
     display: block;
     text-align: left;
     width: 500px;
     height: 80px;
-    border: 0.1vh solid black;
     font-size: 18px;
     color:white;
+    cursor: pointer;
+    border: 1px solid black;
     background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+    background-color: transparent;
+    border-left: 3px solid rgb(0, 100, 0,0.6);
+    border-right: 3px solid rgb(0, 150, 0,0.6); 
+    box-shadow: 5px 5px rgb(0, 10, 0,0.3);
+    text-align: center;
+    background-color: rgb(0, 60, 0,0.6) ;
   }  
 
 

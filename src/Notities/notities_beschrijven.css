@@ -16,13 +16,13 @@
     #Notitietitel {
       margin-left: 30vh;
       margin-right: 10vh;
-      margin-top: 10vh;
+      margin-top: 1vh;
       margin-bottom: -1vh;
       border: 0.2vh solid black;
       min-height: 10vh;
       width: 150vh;
       background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
-
+      background-color: transparent;
     }
     
   #NotitieText{
@@ -32,17 +32,19 @@
     margin-bottom: 2vh;
   }
   .wijzigenButton {
+    cursor: pointer;
     background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+    background-color: transparent;
+    box-shadow: 5px 5px rgb(0, 10, 0,0.3);
+    border: none;
     color: white;
     border-radius: 25px;
-    border: 0.2vh solid black;
     right: 28vh;
     bottom: 2vh;
     position: fixed;
     font-size: 18px;
     width: 200px;
     height: 50px;
-    border: 0.1vh solid black;
     border-radius: 25px;
     text-align: center;
     font-size: 18px;

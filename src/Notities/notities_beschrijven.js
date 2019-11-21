@@ -1,4 +1,3 @@
-// import React from 'react'
 import Check from '../components/Menu/Check'
 import './notities_beschrijven.css'
 import axios from 'axios'
@@ -7,7 +6,6 @@ import trash from './trash.svg' // Tell Webpack this JS file uses this image
 import React, { Component,useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
-// import axios from 'axios'
 class notities_beschrijven extends Component {
     constructor(props) {
       super(props);

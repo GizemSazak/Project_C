@@ -3,7 +3,7 @@ import './Notities_toevoegen.css'
 import '../App.css'
 import Check from '../components/Menu/Check'
 import { Link } from 'react-router-dom';
-import terug from './terug.svg' // Tell Webpack this JS file uses this image
+import trash from './trash.svg' // Tell Webpack this JS file uses this image
 export default  class Notities_toevoegen extends Component {
   constructor(props) {
     super(props);
@@ -39,8 +39,9 @@ export default  class Notities_toevoegen extends Component {
   render() {
     const { titel, notitie } = this.state
     return (
-        <div className="App">
-     <h1 className='titleOefeningen'>Notities</h1>
+      <div className="Notitiebody">
+     <h1 className='titleNotitiel'>Notities</h1>
+     <div className = "column1"></div>
         <div>
            <input
               type="text"
@@ -53,7 +54,7 @@ export default  class Notities_toevoegen extends Component {
           </div>
           <form onSubmit={this.submitHandler}>
           <div>
-            <input
+            <textarea
               type="text"
               placeholder="Beschrijven"
               id = "beschrijven"
@@ -63,9 +64,8 @@ export default  class Notities_toevoegen extends Component {
             />
           </div>
           <Link to="./Notities" > <button className="opslaan" type="submit"  onClick={() => this.Notities_toevoegen()}>Toevoegen</button></Link>
-          <Link to="./Notities" refresh="true"> <img src={terug} className="terug"/></Link>
+          <Link to="./Notities" refresh="true"> <img src={trash} className="trash2"/></Link>
         </form>
-     <div className = "column1"> </div> 
      <Check/>
     </div>
         )
