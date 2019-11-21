@@ -12,10 +12,12 @@ class SpelerVerwijderen extends Component {
 
         this.state = { voornaam: '' }
         this.state = { achternaam: '' }
+        this.state = { checked: "" }
+        this.state = { radio: "Right now" }
 
         this.Spelers = this.Spelers.bind(this);
         this.Delete = this.Delete.bind(this);
-        this.Submit = this.Submit.bind(this);
+        this.Popup = this.Popup.bind(this);
     }
 
 
@@ -52,6 +54,18 @@ class SpelerVerwijderen extends Component {
         )
     }
 
+    Popup(voornaam, achternaam) {
+        console.log('U made it!')
+        console.log(voornaam, achternaam)
+        return (
+            <div className="Popup">
+                <p>Weet je zeker dat je x wil verwijderen?</p>
+                <button >Ja</button>
+            </div>
+        )
+    }
+    // onClick={() => this.Delete(voornaam, achternaam)}
+
     Delete(Name, LastName) {
 
         const request = new Request('http://localhost:3001/api/speler', {
@@ -64,8 +78,6 @@ class SpelerVerwijderen extends Component {
             .catch(err => { console.log(err); });
         window.location.reload()
     }
-
-    Submit() { }
 
     render() {
         return (
