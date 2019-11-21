@@ -19,9 +19,9 @@ function Verwijderen() {
 
     }, [])
 
-    // const [Speler, setSpelers] = useState([
-    //     { voornaam: '', achternaam: '' }
-    // ])
+    const [Speler, setSpelers] = useState([
+        { voornaam: 'SALOUA', achternaam: '' }
+    ])
 
     // const addSpeler = () => {
     //     setSpelers([...Speler, { voornaam: 'S', achternaam: 'O' }])
@@ -34,6 +34,7 @@ function Verwijderen() {
             <body className="Body">
 
                 <h2 className="BodyHeader">Kies een speler of spelers om te verwijderen</h2>
+                <h2>{console.log(Speler.voornaam)}</h2>
 
                 {posts.map(post =>
                     <div className="Speler">
@@ -50,37 +51,37 @@ function Verwijderen() {
     );
 }
 
-function SpelerOverzicht() {
+// function SpelerOverzicht() {
 
-    // const [spelers] = useState([
-    //     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
-    //     { link: "openTab('b1');", title: "Notities", icon: faStickyNote }
-    // ]);
+//     // const [spelers] = useState([
+//     //     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
+//     //     { link: "openTab('b1');", title: "Notities", icon: faStickyNote }
+//     // ]);
 
-    const [posts, setPosts] = useState([])
+//     const [posts, setPosts] = useState([])
 
-    useEffect(() => {
-        axios.get('http://localhost:3001/api/speler')
-            .then(res => {
-                console.log(res)
-                setPosts(res.data)
-            })
-            .catch()
-    }, []);
+//     useEffect(() => {
+//         axios.get('http://localhost:3001/api/speler')
+//             .then(res => {
+//                 console.log(res)
+//                 setPosts(res.data)
+//             })
+//             .catch()
+//     }, []);
 
-    return (
-        <body className="Body">
+//     return (
+//         <body className="Body">
 
-            {posts.map(post =>
-                <div className="Speler">
-                    <div className="Image" />
-                    <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
-                </div>
-            )}
+//             {posts.map(post =>
+//                 <div className="Speler">
+//                     <div className="Image" />
+//                     <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
+//                 </div>
+//             )}
 
-        </body>
-    );
-}
+//         </body>
+//     );
+// }
 
 // class Verwijderen extends Component {
 //     constructor(props) {
