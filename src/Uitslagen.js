@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import './Uitslagen.css';
 import Check from './Menu/Menu';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import { tsAnyKeyword } from '@babel/types';
-import addbutton from './addbutton.png'
-import reportimg from './reportimg.png'
-
 
 
 function Uitslagen() {

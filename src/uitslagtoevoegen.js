@@ -1,11 +1,7 @@
-import React, { useState, useEffect, Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import './Uitslagen.css';
 import Check from './Menu/Check';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
-import { tsAnyKeyword } from '@babel/types';
-import addbutton from './addbutton.png'
 
 class uitslagtoevoegen extends Component {
   constructor(props) {

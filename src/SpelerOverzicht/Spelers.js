@@ -5,9 +5,6 @@ import Menu from '../Menu/Menu'
 
 
 class Spelers extends Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         return (

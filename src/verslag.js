@@ -24,8 +24,6 @@ class verslagen extends Component {
         this.setState({ [nam]: val });
     }
 
-
-
     Verwijderen() {
         const request = new Request('http://localhost:3001/api/wedstrijduitslag', {
             method: 'DELETE',
@@ -60,9 +58,6 @@ class verslagen extends Component {
         console.log({ 'id': parseInt(this.props.location.id), 'verslag': this.state.verslag })
     }
 
-
-
-
     render() {
         return (
             <div className="App">
@@ -73,11 +68,11 @@ class verslagen extends Component {
                         <div id="titleverslag">Verslag</div>
                         <textarea id="editverslag" col="200" type="text" name="verslag" onChange={event => this.handleChange(event)}
                             defaultValue={this.state.verslag} />
-
-
-
                     </div>
-                    <Link to="./Uitslagen" ><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick={() => this.Verwijderen()} className="trashbutton" /></Link>
+                    <Link to="./Uitslagen" >
+                        <button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button>
+                        <img src={trashimg} onClick={() => this.Verwijderen()} className="trashbutton" />
+                    </Link>
                 </div>
 
                 <Check />

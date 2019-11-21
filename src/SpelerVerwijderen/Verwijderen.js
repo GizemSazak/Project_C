@@ -6,138 +6,74 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-function Verwijderen() {
-    const [posts, setPosts] = useState([])
+class SpelerVerwijderen extends Component {
+    constructor(props) {
+        super(props);
 
-    useEffect(() => {
-        axios.get('http://localhost:3001/api/speler')
-            .then(res => {
-                console.log(res)
-                setPosts(res.data)
-            })
-            .catch()
+        this.state = { voornaam: '' }
+        this.state = { achternaam: '' }
 
-    }, [])
+        this.Spelers = this.Spelers.bind(this);
+        this.Delete = this.Delete.bind(this);
+        this.Submit = this.Submit.bind(this);
+    }
 
-    const [Speler, setSpelers] = useState([
-        { voornaam: 'SALOUA', achternaam: '' }
-    ])
 
-    // const addSpeler = () => {
-    //     setSpelers([...Speler, { voornaam: 'S', achternaam: 'O' }])
-    // }
+    Spelers() {
+        const [posts, setPosts] = useState([])
 
-    return (
-        <div className="Page">
-            <header className="PageHeader">Speler Verwijderen</header>
+        useEffect(() => {
+            axios.get('http://localhost:3001/api/speler')
+                .then(res => {
+                    console.log(res)
+                    setPosts(res.data)
+                })
+                .catch()
+        }, [])
 
-            <body className="Body">
-
-                <h2 className="BodyHeader">Kies een speler of spelers om te verwijderen</h2>
-                <h2>{console.log(Speler.voornaam)}</h2>
-
+        return (
+            <body className="Body" style={{ backgroundColor: 'transparent' }}>
                 {posts.map(post =>
                     <div className="Speler">
-                        <button className="Image"  ></button>
-                        <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
+                        <button className="Image" onClick={() => this.Delete(post.voornaam, post.achternaam)}></button>
+                        <div className="Spelernaam" >{post.voornaam} {post.achternaam}</div>
                     </div>
                 )}
-
-                <FontAwesomeIcon icon={faTrashAlt} className="DeletePlayer" />
-
             </body>
-            <Menu />
-        </div>
-    );
+        )
+    }
+
+    Delete(Name, LastName) {
+
+        const request = new Request('http://localhost:3001/api/speler', {
+            method: 'DELETE',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify({ 'voornaam': Name, 'achternaam': LastName })
+        });
+        fetch(request)
+            .then(response => { response.json().then(data => { }); })
+            .catch(err => { console.log(err); });
+    }
+
+    Submit() { }
+
+    render() {
+        return (
+            <div className="Page">
+                <header className="PageHeader">Speler Verwijderen</header>
+
+                <body className="Body">
+
+                    <h2 className="BodyHeader">Kies een speler of spelers om te verwijderen</h2>
+                    <this.Spelers />
+
+                    <FontAwesomeIcon icon={faTrashAlt} className="DeletePlayer" />
+
+                </body>
+                <Menu />
+            </div>
+        )
+    }
 }
 
-// function SpelerOverzicht() {
-
-//     // const [spelers] = useState([
-//     //     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
-//     //     { link: "openTab('b1');", title: "Notities", icon: faStickyNote }
-//     // ]);
-
-//     const [posts, setPosts] = useState([])
-
-//     useEffect(() => {
-//         axios.get('http://localhost:3001/api/speler')
-//             .then(res => {
-//                 console.log(res)
-//                 setPosts(res.data)
-//             })
-//             .catch()
-//     }, []);
-
-//     return (
-//         <body className="Body">
-
-//             {posts.map(post =>
-//                 <div className="Speler">
-//                     <div className="Image" />
-//                     <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
-//                 </div>
-//             )}
-
-//         </body>
-//     );
-// }
-
-// class Verwijderen extends Component {
-//     constructor(props) {
-//         super(props);
-
-//         this.state = { spelernummer: '' }
-//         this.state = { voornaam: '' }
-//         this.state = { achternaam: '' }
-//         this.state = { email: '' }
-
-//         this.Spelers = this.Spelers.bind(this);
-//         this.Submit = this.Submit.bind(this);
-//     }
-
-//     Spelers() {
-//         const [posts, setPosts] = useState([])
-
-//         useEffect(() => {
-//             axios.get('http://localhost:3001/api/speler')
-//                 .then(res => {
-//                     console.log(res)
-//                     setPosts(res.data)
-//                 })
-//                 .catch()
-//         }, [])
-//         return (
-//             <h>
-//                 {posts.map(post =>
-//                     <div className="Speler">
-//                         <button className="Image" >{''}</button>
-//                         <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
-//                     </div>
-//                 )}
-//             </h>
-//         )
-//     }
-
-//     Submit() {
-//     }
-
-//     render() {
-//         return (
-//             <div className="Page">
-//                 <header className="PageHeader">Speler Verwijderen</header>
-
-//                 <body className="Body">
-
-//                     <h2 className="BodyHeader">Kies een speler of spelers om te verwijderen</h2>
-//                     <this.Spelers />
-
-//                     <FontAwesomeIcon icon={faTrashAlt} className="DeletePlayer" />
-
-//                 </body>
-//                 <Menu />
-//             </div>
-//         )
-//     }
-// }
-export default Verwijderen;
+export default SpelerVerwijderen;

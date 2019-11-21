@@ -30,6 +30,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+
 app.get('/api/speler', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
@@ -43,7 +44,6 @@ app.get('/api/speler', (req, res) => {
     });
 });
 
-
 app.post('/api/speler', (req, res) => {
     console.log(req.body);
     const spelernummer = req.body.spelernummer;
@@ -54,39 +54,35 @@ app.post('/api/speler', (req, res) => {
     const values = [spelernummer, voornaam, achternaam, email];
 
     pool.connect((err, db, done) => {
-        if (err) {
-            return res.status(400).send(err);
-        }
+        if (err) { return res.status(400).send(err); }
 
         db.query(
-            'INSERT INTO speler (spelernummer, voornaam, achternaam, email) VALUES($1, $2, $3, $4)',
-            [...values],
+            'INSERT INTO speler (spelernummer, voornaam, achternaam, email) VALUES($1, $2, $3, $4)', [...values],
             err => {
                 if (err) { return res.status(400).send(err); }
-
                 console.log('INSERTED DATA SUCCESS');
-                res.status(201).send({ message: 'Data inserted!' });
             }
-            return res.status(200).send(table.rows);
-        console.log(table.rows)
-
+        );
+        res.status(200).send({ message: 'Data inserted!' });
+        // return res.status(200).send(table.rows);
     });
 });
-});
 
+app.delete('/api/speler', (req, res) => {
+    console.log(req.body);
+    const voornaam = req.body.voornaam;
+    const achternaam = req.body.achternaam;
 
-app.get('/api/speler', (req, res) => {
-    // const id = parseInt(request.params.id)
-    const id = req.body.id;
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
-        db.query('DELETE from speler WHERE id = $1', [id], (err, table) => {
-            done();
+        db.query('DELETE FROM speler WHERE voornaam = $1 AND achternaam = $2', [voornaam, achternaam], err => {
+            if (err) { return res.status(400).send(err); }
 
-            // If err is True than send err else send table.rows
-            err ? res.status(400).send(err) : res.status(200).send(table.rows)
-        });
+            console.log('Delete DATA SUCCESS');
+            res.status(201).send({ message: 'Data deleted!' });
+        }
+        );
     });
 });
 
@@ -194,8 +190,6 @@ app.put('/api/wedstrijduitslag', (req, res) => {
 
 
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
-
-
 
 
 // link used:
