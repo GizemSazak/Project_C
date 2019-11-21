@@ -30,6 +30,64 @@ app.use(function (req, res, next) {
   next();
 });
 
+
+app.get("/api/registratie", (req, res) => {
+  pool.connect((err, db, done) => {
+    if (err) {
+      return res.status(400).send(err);
+    }
+
+    db.query(
+      "SELECT * from registratie",
+      (err, table) => {
+        done();
+        if (err) {
+          return res.status(400).send(err);
+        }
+        return res.status(200).send(table.rows);
+        console.log(table.rows);
+      }
+    );
+  });
+});
+
+app.post("/api/registratie", (req, res) => {
+  //   // Ik heb teamcode voor nu weggehaald
+  console.log(req.body);
+  const email = req.body.email;
+  const password = req.body.password;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+
+  const values = [email, password, firstname, lastname];
+
+  pool.connect((err, db, done) => {
+    if (err) {
+      return res.status(400).send(err);
+    }
+
+    db.query(
+      "INSERT INTO registratie (email, password, firstname, lastname) VALUES($1, $2, $3, $4)",
+      [...values],
+      err => {
+        if (err) {
+          return res.status(400).send(err);
+        }
+
+        console.log("INSERTED DATA SUCCESS");
+
+        res.status(201).send({ message: "Data inserted!" });
+      }
+    );
+  });
+});
+
+
+
+
+
+
+
 app.get("/api/speler", (req, res) => {
   pool.connect((err, db, done) => {
     if (err) {
@@ -135,58 +193,6 @@ app.post("/api/wedstrijduitslag", (req, res) => {
       err => {
         if (err) {
           console.log(err + "tweede");
-          return res.status(400).send(err);
-        }
-
-        console.log("INSERTED DATA SUCCESS");
-
-        res.status(201).send({ message: "Data inserted!" });
-      }
-    );
-  });
-});
-
-
-app.get("/api/registratie", (req, res) => {
-  pool.connect((err, db, done) => {
-    if (err) {
-      return res.status(400).send(err);
-    }
-
-    db.query(
-      "SELECT * from public.registratie",
-      (err, table) => {
-        done();
-        if (err) {
-          return res.status(400).send(err);
-        }
-        return res.status(200).send(table.rows);
-        console.log(table.rows);
-      }
-    );
-  });
-});
-
-app.post("/api/registratie", (req, res) => {
-  //   // Ik heb teamcode voor nu weggehaald
-  console.log(req.body);
-  const email = req.body.email;
-  const password = req.body.password;
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
-
-  const values = [email, password, firstName, lastName];
-
-  pool.connect((err, db, done) => {
-    if (err) {
-      return res.status(400).send(err);
-    }
-
-    db.query(
-      "INSERT INTO registratie (email, password, firstname, lastname) VALUES($1, $2, $3, $4)",
-      [...values],
-      err => {
-        if (err) {
           return res.status(400).send(err);
         }
 

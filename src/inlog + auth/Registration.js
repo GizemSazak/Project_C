@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect } from "react";
 import "./login.css";
-import Menu from "../Menu/Menu";
 
 class Registreren extends Component {
+  "use normal"
   constructor(props) {
     super(props);
 
@@ -44,29 +44,29 @@ class Registreren extends Component {
   render() {
     return (
       <div className="Page">
-        <div className="wrapper">
-          <div className="form-wrapper">
+        <header className="wrapper">
+          <body className="form-wrapper">
             <h1>Create Account for trainer</h1>
-            <form onSubmit={this.handleSubmit}>
+            <form>
 
               <div className="email">
                 <label htmlFor="email">Email</label>
-                <input className="" placeholder="Email" type="email" name="email" noValidate onChange={this.updateInput} />
+                <input className="" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
               </div>
 
               <div className="password">
                 <label htmlFor="password">Password</label>
-                <input className="" placeholder="Password" type="password" name="password" noValidate onChange={this.updateInput} />
+                <input className="" placeholder="Password" type="password" name="password" onChange={this.updateInput} />
               </div>
 
               <div className="firstName">
                 <label htmlFor="firstName">First Name</label>
-                <input className="" placeholder="First Name" type="text" name="firstname" noValidate onChange={this.updateInput} />
+                <input className="" placeholder="First Name" type="text" name="firstname" onChange={this.updateInput} />
               </div>
 
               <div className="lastName">
                 <label htmlFor="lastName">Last Name</label>
-                <input className="" placeholder="Last Name" type="text" name="lastname" noValidate onChange={this.updateInput} />
+                <input className="" placeholder="Last Name" type="text" name="lastname" onChange={this.updateInput} />
               </div>
 
               <div className="createAccount">
@@ -75,8 +75,8 @@ class Registreren extends Component {
               </div>
 
             </form>
-          </div>
-        </div>
+          </body>
+        </header>
 
         {/* <div className="wrapper2">
           <div className="form-wrapper">
@@ -89,7 +89,6 @@ class Registreren extends Component {
                   placeholder="Email"
                   type="email"
                   name="email"
-                  noValidate
                   onChange={this.updateInput}
                 />
               </div>
@@ -100,7 +99,6 @@ class Registreren extends Component {
                   placeholder="Password"
                   type="password"
                   name="password"
-                  noValidate
                   onChange={this.updateInput}
                 />
               </div>
@@ -111,7 +109,6 @@ class Registreren extends Component {
                   placeholder="First Name"
                   type="text"
                   name="firstName"
-                  noValidate
                   onChange={this.updateInput}
                 />
               </div>
@@ -122,7 +119,6 @@ class Registreren extends Component {
                   placeholder="Last Name"
                   type="text"
                   name="lastName"
-                  noValidate
                   onChange={this.updateInput}
                 />
               </div>
@@ -133,7 +129,6 @@ class Registreren extends Component {
                   placeholder="teamcode"
                   type="text"
                   name="teamcode"
-                  noValidate
                   onChange={this.updateInput}
                 />
               </div>
