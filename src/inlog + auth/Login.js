@@ -1,65 +1,75 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
+import "./login.css";
+import axios from "axios";
 
-export default class Registration extends Component {
+
+class Loginpage extends Component {
   constructor(props) {
     super(props);
+    this.state = { email: "" }
+    this.state = { password: "" }
+    // this.state = { teamcode: "" };
 
-    this.state = {
-      email: "",
-      password: "",
-      password_confirmation: "",
-      registrationErrors: ""
-    };
-
+    this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    console.log("handeld change", event);
-  }
+  // updateInput(event) {
+  //   this.setState({ [event.target.name]: event.target.value });
+  // }
 
-  handleSubmit(event) {
-    console.log("from submidded");
-    event.preventDefault();
-  }
+  // handleSubmit = e => {
+  //   console.log(this.state)
+  //   axios
+  //     .post('http://localhost:3001/api/registratie', this.state)
+  //     .then(response => {
+  //       console.log(response)
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // }
+
 
   render() {
     return (
-      <div className="wrapper">
-        <div className="form-wrapper">
-          <h1>Login</h1>
-          <form onSubmit={this.handleSubmit} noValidate>
-            <div className="email">
-              <label htmlFor="email">Email</label>
-              <input
-                className=""
-                placeholder="Email"
-                type="email"
-                name="email"
-                noValidate
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="password">
-              <label htmlFor="password">Password</label>
-              <input
-                className=""
-                placeholder="Password"
-                type="password"
-                name="password"
-                noValidate
-                onChange={this.handleChange}
-              />
-            </div>
+      <div className="Page">
+        <header className="wrapper">
+          <body className="form-wrapper">
+            <h1>Create Account for trainer</h1>
+            <form>
 
-            <div className="createAccount">
-              <button type="submit">Login</button>
-              <a href="/Registreren"> Don't have an account yet?</a>
-            </div>
-          </form>
-        </div>
-      </div>
+              <div className="email">
+                <label htmlFor="email">Email</label>
+                <input classname="" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
+              </div>
+
+              <div className="password">
+                <label htmlFor="password">Password</label>
+                <input classname="" placeholder="Password" type="password" name="password" onChange={this.updateInput} />
+              </div>
+
+              <div className="firstName">
+                <label htmlFor="firstName">First Name</label>
+                <input classname="" placeholder="First Name" type="text" name="firstname" onChange={this.updateInput} />
+              </div>
+
+              <div className="lastName">
+                <label htmlFor="lastName">Last Name</label>
+                <input classname="" placeholder="Last Name" type="text" name="lastname" onChange={this.updateInput} />
+              </div>
+
+              <div className="createAccount">
+                <input classname="" type="submit" value="Submit" onClick={this.handleSubmit} />
+                <a href="/login"> Already have an account?</a>
+              </div>
+
+            </form>
+          </body>
+        </header>
+      </div >
     );
   }
 }
+
+export default Loginpage;
