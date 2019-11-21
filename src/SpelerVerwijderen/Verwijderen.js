@@ -32,11 +32,20 @@ class SpelerVerwijderen extends Component {
         }, [])
 
         return (
-            <body className="Body" style={{ backgroundColor: 'transparent' }}>
+            <body className="Body">
+
                 {posts.map(post =>
-                    <div className="Speler">
-                        <button className="Image" onClick={() => this.Delete(post.voornaam, post.achternaam)}></button>
-                        <div className="Spelernaam" >{post.voornaam} {post.achternaam}</div>
+                    <div onClick={() => this.Delete(post.voornaam, post.achternaam)}>
+                        <div className="CardHeader">Positie</div>
+
+                        <div className="CardBody" style={{ fontSize: '1.5rem' }}>
+                            Rugnummer:<br />
+                            {post.spelernummer}
+                        </div>
+
+                        <div className="CardBottom">
+                            {post.voornaam} {post.achternaam}
+                        </div>
                     </div>
                 )}
             </body>
@@ -61,16 +70,13 @@ class SpelerVerwijderen extends Component {
     render() {
         return (
             <div className="Page">
-                <header className="PageHeader">Speler Verwijderen</header>
+                <header className="PageHeader">
+                    Speler Verwijderen<br /><br />
+                    <p className="BodyHeader">Kies een speler om te verwijderen</p>
+                </header>
 
-                <body className="Body">
+                <this.Spelers />
 
-                    <h2 className="BodyHeader">Kies een speler of spelers om te verwijderen</h2>
-                    <this.Spelers />
-
-                    <FontAwesomeIcon icon={faTrashAlt} className="DeletePlayer" />
-
-                </body>
                 <Menu />
             </div>
         )
