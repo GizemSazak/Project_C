@@ -21,7 +21,7 @@ function Uitslagen() {
         setPosts(res.data)
         })
         .catch()
-    }, []);
+    },[]);
 
     return (
         <div className="App">
@@ -29,14 +29,14 @@ function Uitslagen() {
             <div className="uitslagBody">
                 <tbody id="tt">
                             <tr >
-                                <th id="HtableL" >#</th>
-                                <th id="HtableR"  >Thuis</th>
+                                <th id="HtableL" >Week</th>
+                                <th id="HtableR" >Thuis</th>
                                 <th id="HtableR" >Stand</th>
                                 <th id="HtableR" >Uit</th>
-                                <th id="HtableR" >Verslag</th>
-                            </tr>    
+                            </tr>   
+                            </tbody> 
                     {posts.map(function(post, id){
-                    return(
+                    return(<Link className="linkk" to={{pathname:"/verslag", id: post.id, verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
                         
                             <tr key={id} >
                             <th id="tableL" >
@@ -51,17 +51,13 @@ function Uitslagen() {
                             <td id="tableR" >
                                 {post.uit} 
                             </td>
-                            <td id="tableR"  >
-                            <Link className="linkk" to={{pathname:"/verslag", verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
-                            <img src={reportimg} ald="verslag" className="reportimg"/>
-                            </Link>
-                            </td>
                             </tr>
                             
+                            </Link>
                         )
                     })}
-                </tbody>
-         <Link to="/uitslagtoevoegen"><img src={addbutton} alt="add" className="addbutton"/></Link>                  
+                
+         <Link to="/uitslagtoevoegen"><button className="addbutton">+</button></Link>                  
             </div>
             <Check />
         </div>
