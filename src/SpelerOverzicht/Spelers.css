@@ -23,7 +23,7 @@
 }
 .Body{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto;
     overflow: auto;
     color: white;
     font-size: 1.2rem;
@@ -46,7 +46,7 @@
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     box-shadow: 5px 5px rgb(0, 10, 0,0.3);
-    width: 250px;
+    width: 230px;
     text-align: center;
     padding: 5px;
 }
@@ -55,7 +55,7 @@
     border-left: 3px solid rgb(0, 100, 0,0.6);
     border-right: 3px solid rgb(0, 150, 0,0.6);
     box-shadow: 5px 5px rgb(0, 10, 0,0.3);
-    width: 250px;
+    width: 230px;
     height: 250px;
     display: table-cell;
     vertical-align: middle;
@@ -67,7 +67,7 @@
     border-bottom-left-radius: 5px;
     box-shadow: 5px 5px rgb(0, 10, 0,0.3);
     background-image:linear-gradient(to right,rgb(0, 150, 0,0.6),rgb(0, 200, 0,0.6));
-    width: 250px;
+    width: 230px;
     margin-bottom: 10px;
     text-align: center;
     padding: 5px;

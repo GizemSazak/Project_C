@@ -50,7 +50,7 @@ function SpelerOverzicht() {
 
             {posts.map(post =>
                 <div >
-                    <div className="CardHeader">Positie</div>
+                    <div className="CardHeader">{/* Positie */}</div>
 
                     <div className="CardBody" style={{ fontSize: '1.5rem' }}>
                         Rugnummer:<br />
