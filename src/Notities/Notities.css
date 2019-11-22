@@ -22,10 +22,10 @@
   right: 0;
 }
 
-  a{
-    color: white;
-  }
-
+#Toevoegencolor{
+  color: white;
+}
+ 
    #Toevoegen{
     top: 28vh;
     left: 50%;
@@ -45,9 +45,6 @@
     box-shadow: 5px 5px rgb(0, 10, 0,0.3);
 
   } 
-  a{
-    color: white;
-  }
   .tablerow{
     display: grid;
     width: 500px;
