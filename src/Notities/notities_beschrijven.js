@@ -7,7 +7,6 @@ import trash from './trash.svg' // Tell Webpack this JS file uses this image
 import React, { Component, useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
-// import axios from 'axios'
 class notities_beschrijven extends Component {
     constructor(props) {
         super(props);
@@ -38,6 +37,7 @@ class notities_beschrijven extends Component {
             .catch(err => {
                 console.log(err);
             });
+        window.location = './Notities';
     }
 
     Notities_Wijzigen() {
@@ -56,10 +56,8 @@ class notities_beschrijven extends Component {
                 console.log(err);
             });
         console.log({ 'id': parseInt(this.props.location.id), 'notitie': this.state.notitie, 'titel': this.state.titel })
+        window.location = './Notities';
     }
-
-
-
 
     render() {
         return (
@@ -70,10 +68,10 @@ class notities_beschrijven extends Component {
                         defaultValue={this.state.titel} />
                     <textarea className="notitie" col="200" type="text" name="notitie" onChange={event => this.handleChange(event)}
                         defaultValue={this.state.notitie} />
-                    <Link to="./Notities" refresh="true"><button onClick={() => this.Notities_Wijzigen()} className="wijzigenButton">Wijzigen</button>
+                    <Link to="./Notities" onClick={this.forceUpdate}><button tye="button" onClick={() => this.Notities_Wijzigen()} className="wijzigenButton">Wijzigen</button>
                     </Link>
                 </div>
-                <Link to="./Notities" refresh="true"><img src={trash} onClick={() => this.Notities_Verwijderen()} className="trash" /></Link>
+                <Link to="./Notities" onClick={this.forceUpdate}><img src={trash} onClick={() => this.Notities_Verwijderen()} className="trash" /></Link>
                 <Check />
             </div>
         );
