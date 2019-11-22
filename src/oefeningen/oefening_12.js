@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../components/Menu/Check'
+import Check from './Menu/Check'
 
 
 
@@ -9,7 +9,7 @@ function oefening_12() {
   return (
     <div>
       <div id="space">
-        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/9d14ac433996dfe6f31bf3790da1f0c09b1a9605.png" />
+        <img id="oefen_img" src="//www.yoursportplanner.com/uploads/9d14ac433996dfe6f31bf3790da1f0c09b1a9605.png" alt="Oefening 2" />
         <h2>Veldopstelling</h2>
         <p5>Per groepje van 2 spelers 2 x 2 pionnen opstellen.</p5><br></br><p5> Elke 2 spelers 1 bal.</p5>
         <h5>Terug koppen</h5><br></br>

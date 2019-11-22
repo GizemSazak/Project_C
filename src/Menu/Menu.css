@@ -5,12 +5,10 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     position: fixed;
     bottom: 0;
 }
-
-
 .menu :first-child {
     font-size: 2rem;
     margin-top: 10px;
@@ -22,8 +20,7 @@
     color: white;
     background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.9));
     border: 1.5px solid black;
-    cursor: pointer;
-    
+    cursor: pointer;  
 }
 .menu:hover{
     background-image: radial-gradient(rgb(0, 150, 0,0.6),rgb(0, 250, 0,0.8));

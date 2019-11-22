@@ -25,11 +25,8 @@
   bottom: 0;
   left: 0;
 }
-
 @media (max-width: 600px) {
-  .row {
-    grid-template-columns: 1fr 1fr;
-  }
+  .row {grid-template-columns: 1fr 1fr;}
   }
 
 /* The grid: Three equal columns that floats next to each other */
@@ -41,7 +38,6 @@
   color: white;
   border: 0.1vh solid black;
   background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.8));
-  
 }
 
 a:hover{

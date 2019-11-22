@@ -1,0 +1,32 @@
+.BodyHeader{
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    width: 180vh;
+}
+.DeletePlayer{
+    color: black;
+    font-size: 3rem;
+    position: fixed;
+
+    right: 0;
+    bottom: 0;
+    margin: 50px 50px;
+}
+.Popup{
+    background-color: white;
+    width: 200px;
+    height: 200px;
+}
+/* .Delete{
+    height: 100px;
+    width: 100px;
+    color: red;
+    font-weight: 900;
+    font-size: 4rem;
+    margin-right: 10px;
+    float: left;
+    background-color: teal;
+    border: 1px solid black;
+    border-radius: 5px;
+} */

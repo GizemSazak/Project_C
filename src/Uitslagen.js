@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import './Uitslagen.css';
-import Check from './components/Menu/Check';
+import Check from './Menu/Menu';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+
 
 function Uitslagen() {
 
@@ -11,54 +11,55 @@ function Uitslagen() {
 
     useEffect(() => {
         axios.get('http://localhost:3001/api/wedstrijduitslag')
-        .then(res => {
-            console.log(res)
-            setPosts(res.data)
-        })
-        .catch()
-    })
+            .then(res => {
+                console.log(res)
+                setPosts(res.data)
+            })
+            .catch()
+    }, []);
 
     return (
-        <div>
-            <h1 className='titleOefeningen'>Wedstrijduistslagen</h1>
-            <ul>
-                {posts.map(post =>
-                    <li>
-                        {post.thuis} {post.stand} {post.uit}
-                    </li>
-                )}
-            </ul>
+        <div className="App">
+            <h1 className='titleOefeningen'>Wedstrijduitslagen</h1>
+            <div className="uitslagBody">
+                <tbody id="tt">
+                    <tr >
+                        <th id="HtableL" >Week</th>
+                        <th id="HtableR" >Thuis</th>
+                        <th id="HtableR" >Stand</th>
+                        <th id="HtableR" >Uit</th>
+                    </tr>
+                </tbody>
+                {posts.map(function (post, id) {
+                    return (<Link className="linkk" to={{ pathname: "/verslag", id: post.id, verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
+
+                        <tr key={id} >
+                            <th id="tableL" >
+                                {post.id}
+                            </th>
+                            <td id="tableR" >
+                                {post.thuis}
+                            </td>
+                            <td id="tableR" >
+                                {post.stand}
+                            </td>
+                            <td id="tableR" >
+                                {post.uit}
+                            </td>
+                        </tr>
+
+                    </Link>
+                    )
+                })}
+
+                <Link to="/uitslagtoevoegen"><button className="addbutton">+</button></Link>
+            </div>
             <Check />
         </div>
     );
 }
 export default Uitslagen;
-// class Uitslagen extends React.Component {
-//     render() {
-//         const [posts, setPosts] = useState([])
 
-//         // useEffect(() => {
-//         //     axios.get('http://localhost:3001/api/wedstrijduitslag')
-//         //         .then(res => {
-//         //             console.log(res)
-//         //         })
-//         //         .catch()
-//         // })
-
-//         return (
-//             <div className="App">
-//                 <h1 className='titleOefeningen'>Wedstrijduistslagen</h1>
-//                 {/* <ul>
-//                     {posts.map(post => <li>
-//                         {post.thuis} {post.stand} {post.uit}
-//                     </li>
-//                     )}
-//                 </ul> */}
-//                 <Check />
-//             </div>
-//         )
-//     }
-// }
 
 
 
