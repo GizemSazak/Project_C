@@ -1,6 +1,6 @@
 import React from 'react';
 import './Oefeningen.css'
-import Check from './Menu/Check'
+import Check from '../Menu/Check'
 import { Link } from 'react-router-dom';
 
 

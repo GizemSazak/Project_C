@@ -77,7 +77,7 @@ class Toevoegen extends Component {
                         <label>Spelernummer</label><br />
                         <input type="number" name="spelernummer" className="Inputfield" onChange={this.updateInput} /><br /><br />
 
-                        <input type="submit" value="Opslaan" className={this.state.visible ? 'fadeIn' : 'fadeOut'} onClick={this.handleSubmit} />
+                        <input type="submit" value="Opslaan" className="SubmitBtn" onClick={this.handleSubmit} />
                     </form>
                 </body>
                 <Menu />

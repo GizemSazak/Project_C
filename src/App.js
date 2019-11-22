@@ -14,7 +14,7 @@ import oefening_9 from './oefeningen//oefening_9'
 import oefening_10 from './oefeningen//oefening_10'
 import oefening_11 from './oefeningen//oefening_11'
 import oefening_12 from './oefeningen//oefening_12'
-import Spelers from './Spelers'
+import Spelers from './SpelerOverzicht/Spelers'
 import SpelerToevoegen from './SpelerToevoegen/Toevoegen'
 import SpelerVerwijderen from './SpelerVerwijderen/Verwijderen'
 import uitslagtoevoegen from './uitslagtoevoegen'
@@ -58,7 +58,7 @@ function App() {
       <Route exact path='/oefening_10' component={oefening_10} />
       <Route exact path='/oefening_11' component={oefening_11} />
       <Route exact path='/oefening_12' component={oefening_12} />
-      <Route exact path='/SpelerOverzicht/Spelers' component={Spelers} />
+      <Route exact path='/Spelers' component={Spelers} />
       <Route exact path='/SpelerToevoegen/Toevoegen' component={SpelerToevoegen} />
       <Route exact path='/SpelerVerwijderen/Verwijderen' component={SpelerVerwijderen} />
       <Route exact path='/Uitslagen' component={Uitslagen} />

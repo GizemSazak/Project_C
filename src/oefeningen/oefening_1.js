@@ -1,9 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from './Menu/Check'
-
-
-import Check from '../components/Menu/Check'
+import Check from '../Menu/Check'
 
 function oefening_1() {
   return (

@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import './Notities_toevoegen.css'
 import '../App.css'
 import trash from './trash.svg' // Tell Webpack this JS file uses this image
-import Check from '../components/Menu/Check'
+import Check from '../Menu/Check'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
-export default  class Notities_toevoegen extends Component {
+export default class Notities_toevoegen extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,7 +14,7 @@ export default  class Notities_toevoegen extends Component {
       notitie: ''
     }
   }
-  
+
 
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value })
@@ -32,43 +32,43 @@ export default  class Notities_toevoegen extends Component {
         console.log(error)
       })
   }
-  
+
 
   render() {
     const { titel, notitie } = this.state
     return (
-        <div className="App">
-     <h1 className='titleOefeningen'>Notities</h1>
+      <div className="App">
+        <h1 className='titleOefeningen'>Notities</h1>
         <div>
-           <input
-              type="text"
-              name="titel"
-              id = "title" 
-              placeholder="Titel"
-              value={titel}
-              onChange={this.changeHandler}
-            />
-          </div>
-          <form onSubmit={this.submitHandler}>
+          <input
+            type="text"
+            name="titel"
+            id="title"
+            placeholder="Titel"
+            value={titel}
+            onChange={this.changeHandler}
+          />
+        </div>
+        <form onSubmit={this.submitHandler}>
           <div>
             <input
               type="text"
               placeholder="Beschrijven"
-              id = "beschrijven"
+              id="beschrijven"
               name="notitie"
               value={notitie}
               onChange={this.changeHandler}
             />
           </div>
-          <Link to="./Notities" refresh="true"> <button className="opslaan" type="submit" onClick = "./Notities">Toevoegen</button></Link>
-          <Link to="./Notities" refresh="true"> <img src={trash} className="trashToevoegen"/></Link>
+          <Link to="./Notities" refresh="true"> <button className="opslaan" type="submit" onClick="./Notities">Toevoegen</button></Link>
+          <Link to="./Notities" refresh="true"> <img src={trash} className="trashToevoegen" /></Link>
         </form>
-     <div className = "column1"> </div> 
-     <Check/>
-    </div>
-        )
-      }
-    }
+        <div className="column1"> </div>
+        <Check />
+      </div>
+    )
+  }
+}
 
 
 
