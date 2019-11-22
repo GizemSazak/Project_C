@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 class uitslagtoevoegen extends Component {
   constructor(props) {
     super(props);
-    this.state = { id: 0 }
-    this.state = { thuis: '' }
-    this.state = { stand: '' }
-    this.state = { uit: '' }
-    this.state = { verslag: '' }
-
+    this.state = {id: 0}
+      this.state = {thuis: ''}
+      this.state = {uit: ''}
+      this.state = {stand: ''}
+      this.state = {verslag: ''}
+    
     this.updateInput = this.updateInput.bind(this);
   }
 
@@ -19,8 +19,8 @@ class uitslagtoevoegen extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  handleChange(event) {
-    const values = [this.state.id, this.state.thuis, this.state.stand, this.state.uit, this.state.verslag]
+  handleChange (event) {
+    const values = [this.state.id, this.state.thuis, this.state.uit, this.state.stand, this.state.verslag]
   }
 
 
@@ -31,7 +31,7 @@ class uitslagtoevoegen extends Component {
     const request = new Request('http://localhost:3001/api/wedstrijduitslag', {
       method: 'POST',
       headers: new Headers({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify({ 'id': parseInt(this.state.id), 'thuis': this.state.thuis, 'stand': this.state.stand, 'uit': this.state.uit, 'verslag': this.state.verslag })
+      body: JSON.stringify({ 'id': parseInt(this.state.id), 'thuis': this.state.thuis, 'uit': this.state.uit, 'stand': this.state.stand,  'verslag': this.state.verslag })
     });
     fetch(request)
       .then(response => {
@@ -40,7 +40,7 @@ class uitslagtoevoegen extends Component {
       .catch(err => {
         console.log(err);
       });
-
+      window.location = './Uitslagen';
   }
 
 
@@ -66,7 +66,7 @@ class uitslagtoevoegen extends Component {
                 <textarea name="verslag" id="formp2" type="text" onChange={this.updateInput} ></textarea>
                 <br></br><br />
               </div>
-              <Link to='./Uitslagen' refresh="true"><button id="toevoegenbutton" className="SubmitBtn" onClick={() => this.addUitslag()}>Toevoegen</button></Link>
+              <Link to='./Uitslagen' onClick={this.forceUpdate}><button id="toevoegenbutton" className="SubmitBtn" onClick={()=> this.addUitslag()}>Toevoegen</button></Link>
             </form>
 
           </div>

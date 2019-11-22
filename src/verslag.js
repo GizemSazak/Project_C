@@ -37,7 +37,8 @@ class verslagen extends Component {
             .catch(err => {
                 console.log(err);
             });
-    }
+            window.location = './Uitslagen';
+                }
 
 
     Opslaan() {
@@ -49,14 +50,15 @@ class verslagen extends Component {
             }
         });
         fetch(request)
-            .then(response => {
-                response.json().then(data => { });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-        console.log({ 'id': parseInt(this.props.location.id), 'verslag': this.state.verslag })
-    }
+        .then(response => {
+              response.json().then(data => { });
+          })
+          .catch(err => {
+              console.log(err);
+          });
+          console.log({ 'id': parseInt(this.props.location.id),'verslag': this.state.verslag})
+          window.location = './Uitslagen';
+              }
 
     render() {
         return (
@@ -74,8 +76,8 @@ class verslagen extends Component {
                         <img src={trashimg} onClick={() => this.Verwijderen()} className="trashbutton" />
                     </Link>
                 </div>
-
-                <Check />
+                <Link to="./Uitslagen" onClick={this.forceUpdate}><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick= {() => this.Verwijderen()} className="trashbutton"/></Link>
+           <Check />
             </div>
         );
     }
