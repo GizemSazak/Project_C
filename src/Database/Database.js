@@ -245,7 +245,7 @@ app.post('/api/wedstrijduitslag', (req, res) => {
 
         db.query(
             'INSERT INTO wedstrijduitslag (id, thuis, uit, stand, verslag) VALUES($1, $2, $3, $4, $5)',
-            [id, thuis, stand, uit, verslag],
+            [id, thuis, uit, stand, verslag],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
