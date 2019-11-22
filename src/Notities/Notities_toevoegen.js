@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Notities_toevoegen.css'
 import '../App.css'
-import Check from '../components/Menu/Check'
+import Check from '../Menu/Check'
 import { Link } from 'react-router-dom';
 import trash from './trash.svg' // Tell Webpack this JS file uses this image
 export default class Notities_toevoegen extends Component {
