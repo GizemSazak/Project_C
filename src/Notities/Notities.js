@@ -20,7 +20,7 @@ function Notities() {
         <div className="Notitiebody">
             <h1 className='titleNotitiel'>Notities</h1>
             <div className="column1"></div>
-            <a href="./Notities_toevoegen">
+            <a  id = "Toevoegencolor" href="./Notities_toevoegen">
                 <button id="Toevoegen" type="button">Notities Toevoegen</button>
             </a>
             <div className="tablerow" >
