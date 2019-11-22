@@ -56,7 +56,7 @@ function App() {
       <Route exact path="/uitslagtoevoegen" component={uitslagtoevoegen} />
       <Route exact path="/verslag" component={verslag} />
       <Route exact path="/registreren" component={registreren} />
-      <route exact path="/login" component={Loginpage} />
+      <Route exact path="/login" component={Loginpage} />
     </div>
   );
 }
