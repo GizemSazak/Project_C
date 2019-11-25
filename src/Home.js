@@ -10,7 +10,7 @@ function Home() {
     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
     { link: "./Notities", title: "Notities", icon: faStickyNote },
     { link: "./Spelers", title: "Spelers", icon: faUsers },
-    { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },
+    { link: "./Aanwezigheid", title: "Aanwezig", icon: faUserCheck },
     { link: "openTab('b1');", title: "Tactiek", icon: faBezierCurve },
     { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
     { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },

@@ -1,0 +1,53 @@
+.Body_Aanwezigheid{
+    overflow: auto;
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+
+    height: 75%;
+    width: 185vh;
+    padding: 30px 300px;
+
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    background-color: rgb(128, 128, 128,0.8);
+    border: 1px solid black;
+}
+.ColumnHeader1,.ColumnHeader2{
+    background-color: green;
+    padding: 5px;
+    margin-top: 20px;
+    
+}
+.ColumnHeader1{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.ColumnHeader2{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.Spelersrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: transparent;
+  }
+.Spelerscolumn {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    text-align: center;
+  }
+
+  .Speler, .Aanwezigheidicons{
+      border-bottom: 1px solid #000;
+      margin-top: 25px;
+  }
+  .Aanwezigheidicons{
+      color: rgb(0, 0, 0);
+  }

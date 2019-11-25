@@ -2,9 +2,6 @@ import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
 import './Verwijderen.css'
 import Menu from '../Menu/Menu'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 
 class SpelerVerwijderen extends Component {
     constructor(props) {
@@ -51,17 +48,6 @@ class SpelerVerwijderen extends Component {
                     </div>
                 )}
             </body>
-        )
-    }
-
-    Popup(voornaam, achternaam) {
-        console.log('U made it!')
-        console.log(voornaam, achternaam)
-        return (
-            <div className="Popup">
-                <p>Weet je zeker dat je x wil verwijderen?</p>
-                <button >Ja</button>
-            </div>
         )
     }
     // onClick={() => this.Delete(voornaam, achternaam)}

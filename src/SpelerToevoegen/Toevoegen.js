@@ -28,8 +28,6 @@ class Toevoegen extends Component {
         console.log('Your achternaam is: ' + this.state.achternaam)
         console.log('Your email is: ' + this.state.email)
 
-        const values = [this.state.spelernummer, this.state.voornaam, this.state.achternaam, this.state.email];
-
         //Send state to the server code
         const request = new Request('http://localhost:3001/api/speler', {
             method: 'POST',
@@ -43,18 +41,6 @@ class Toevoegen extends Component {
             .catch(err => {
                 console.log(err);
             });
-    }
-
-    handleClickShowAlert() {
-        this.setState({
-            showingAlert: true
-        });
-
-        setTimeout(() => {
-            this.setState({
-                showingAlert: false
-            });
-        }, 2000);
     }
 
     render() {
