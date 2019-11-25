@@ -19,6 +19,8 @@ import SpelerToevoegen from './SpelerToevoegen/Toevoegen'
 import SpelerVerwijderen from './SpelerVerwijderen/Verwijderen'
 import uitslagtoevoegen from './uitslagtoevoegen'
 import verslag from './verslag'
+import Agenda from './Agenda/Agenda'
+
 // import Oefeningen from './Oefeningen'
 // import oefening_1 from './oefening_1'
 // import oefening_2 from './oefening_2'
@@ -67,6 +69,8 @@ function App() {
       <Route exact path='/notities_beschrijven' component={notities_beschrijven} />
       <Route exact path='/uitslagtoevoegen' component={uitslagtoevoegen} />
       <Route exact path='/verslag' component={verslag} />
+      <Route exact path='/Agenda' component={Agenda} />
+
     </div>
   );
 }
