@@ -84,10 +84,6 @@ app.post("/api/registratie", (req, res) => {
 
 
 
-
-
-
-
 app.get("/api/speler", (req, res) => {
   pool.connect((err, db, done) => {
     if (err) {

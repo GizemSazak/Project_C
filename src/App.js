@@ -23,7 +23,7 @@ import Home from "./Home";
 import Uitslagen from "./Uitslagen";
 import registreren from "./inlog + auth/Registration";
 import Loginpage from "./inlog + auth/Login";
-// import tactics from "./tactieken/tactieken";
+import tacktics from "./tactieken/tactieken";
 
 function App() {
   return (
@@ -57,6 +57,7 @@ function App() {
       <Route exact path="/verslag" component={verslag} />
       <Route exact path="/registreren" component={registreren} />
       <Route exact path="/login" component={Loginpage} />
+      <Route exact path="/test" component={tacktics} />
     </div>
   );
 }
