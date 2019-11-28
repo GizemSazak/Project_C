@@ -4,15 +4,15 @@ import axios from "axios";
 
 
 class Loginpage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { email: "" }
-    this.state = { password: "" }
-    // this.state = { teamcode: "" };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { email: "" }
+  //   this.state = { password: "" }
+  //   // this.state = { teamcode: "" };
 
-    this.updateInput = this.updateInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  //   this.updateInput = this.updateInput.bind(this);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  // }
 
   // updateInput(event) {
   //   this.setState({ [event.target.name]: event.target.value });
@@ -36,7 +36,7 @@ class Loginpage extends Component {
       <div className="Page">
         <header className="wrapper">
           <body className="form-wrapper">
-            <h1>Create Account for trainer</h1>
+            <h1>Login</h1>
             <form>
 
               <div className="email">
@@ -49,21 +49,10 @@ class Loginpage extends Component {
                 <input classname="" placeholder="Password" type="password" name="password" onChange={this.updateInput} />
               </div>
 
-              <div className="firstName">
-                <label htmlFor="firstName">First Name</label>
-                <input classname="" placeholder="First Name" type="text" name="firstname" onChange={this.updateInput} />
-              </div>
-
-              <div className="lastName">
-                <label htmlFor="lastName">Last Name</label>
-                <input classname="" placeholder="Last Name" type="text" name="lastname" onChange={this.updateInput} />
-              </div>
-
               <div className="createAccount">
                 <input classname="" type="submit" value="Submit" onClick={this.handleSubmit} />
-                <a href="/login"> Already have an account?</a>
+                <a href="/registreren"> Already have an account?</a>
               </div>
-
             </form>
           </body>
         </header>
