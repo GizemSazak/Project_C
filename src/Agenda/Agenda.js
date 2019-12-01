@@ -3,257 +3,279 @@ import Check from '../Menu/Check'
 import React, { Component } from 'react';
 import moment from 'moment';
 
-import { ReactAgenda , ReactAgendaCtrl , guid ,  Modal } from 'react-agenda';
-var now = new Date();
-
-require('moment/locale/nl.js'); // this is important for traduction purpose
  
-var colors= {
-    'color-1':"rgba(102, 195, 131 , 1)" ,
-    "color-2":"rgba(242, 177, 52, 1)" ,
-    "color-3":"rgba(235, 85, 59, 1)" ,
-    "color-4":"rgba(70, 159, 213, 1)",
-    "color-5":"rgba(170, 59, 123, 1)"
-  }
-
-
-var items = [
-{
- _id            :guid(),
-  name          : 'Meeting , dev staff!',
-  startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
-  endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
-  classes       : 'color-1 color-4'
-},
-{
- _id            :guid(),
-  name          : 'Working lunch , Holly',
-  startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+1, 11, 0),
-  endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate()+1, 13, 0),
-  classes       : 'color-2'
-},
-{
- _id            :guid(),
-  name          : 'Conference , plaza',
-  startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+1, 11 , 0),
-  endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate()+1, 14 ,30),
-  classes       : 'color-4'
-},
-{
- _id            :'event-4',
-  name          : 'Customers issues review',
-  startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+2, 10, 0),
-  endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate()+2, 15, 0),
-  classes       : 'color-3'
-
-},
-{
-  _id           :'event-5',
-  name          : 'Group activity',
-  startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+3, 10, 0),
-  endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate()+3, 16, 30),
-  classes       : 'color-4'
-},
-{
-  _id           :'event-6',
-  name          : 'Fun Day !',
-  startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate()+7, 9, 14),
-  endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate()+7, 17),
-  classes       : 'color-3'
-}
-];
-
-export default class Agenda extends Component {
-constructor(props){
-super(props);
-
-
-
-this.state = {
-items:[],
-selected:[],
-cellHeight:(60 / 4),
-showModal:false,
-locale:"fr",
-rowsPerHour:4,
-numberOfDays:4,
-startDate: new Date()
-}
-this.handleRangeSelection = this.handleRangeSelection.bind(this)
-this.handleItemEdit = this.handleItemEdit.bind(this)
-this.zoomIn = this.zoomIn.bind(this)
-this.zoomOut = this.zoomOut.bind(this)
-this._openModal = this._openModal.bind(this)
-this._closeModal = this._closeModal.bind(this)
-this.addNewEvent = this.addNewEvent.bind(this)
-this.removeEvent = this.removeEvent.bind(this)
-this.editEvent = this.editEvent.bind(this)
-this.changeView = this.changeView.bind(this)
-this.handleCellSelection = this.handleCellSelection.bind(this)
-
+class Agenda extends Component {
+  state = {
+    dateContext: moment(),
+    today: moment(),
+    showMonthPopup: false,
+    showYearPopup: false,
+    selectedDay: null
 }
 
-componentDidMount(){
-
-  this.setState({items:items})
-
-
+constructor(props) {
+    super(props);
+    this.width = props.width || "350px";
+    this.style = props.style || {};
+    this.style.width = this.width; // add this
 }
 
 
-componentWillReceiveProps(next , last){
-if(next.items){
+weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
+weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+months = moment.months();
 
-  this.setState({items:next.items})
+year = () => {
+    return this.state.dateContext.format("Y");
 }
+month = () => {
+    return this.state.dateContext.format("MMMM");
 }
-handleItemEdit(item, openModal) {
-
-  if(item && openModal === true){
-    this.setState({selected:[item] })
-    return this._openModal();
-  }
-
-
-
+daysInMonth = () => {
+    return this.state.dateContext.daysInMonth();
 }
-handleCellSelection(item, openModal) {
-
-  if(this.state.selected && this.state.selected[0] === item){
-    return  this._openModal();
-  }
-     this.setState({selected:[item] })
-
+currentDate = () => {
+    console.log("currentDate: ", this.state.dateContext.get("date"));
+    return this.state.dateContext.get("date");
+}
+currentDay = () => {
+    return this.state.dateContext.format("D");
 }
 
-zoomIn(){
-var num = this.state.cellHeight + 15
-  this.setState({cellHeight:num})
-}
-zoomOut(){
-var num = this.state.cellHeight - 15
-  this.setState({cellHeight:num})
+firstDayOfMonth = () => {
+    let dateContext = this.state.dateContext;
+    let firstDay = moment(dateContext).startOf('month').format('d'); // Day of week 0...1..5...6
+    return firstDay;
 }
 
-
-handleDateRangeChange (startDate, endDate) {
-    this.setState({startDate:startDate })
-
+setMonth = (month) => {
+    let monthNo = this.months.indexOf(month);
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).set("month", monthNo);
+    this.setState({
+        dateContext: dateContext
+    });
 }
 
-handleRangeSelection (selected) {
-
-
-this.setState({selected:selected , showCtrl:true})
-this._openModal();
-
+nextMonth = () => {
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).add(1, "month");
+    this.setState({
+        dateContext: dateContext
+    });
+    this.props.onNextMonth && this.props.onNextMonth();
 }
 
-_openModal(){
-this.setState({showModal:true})
-}
-_closeModal(e){
-if(e){
-  e.stopPropagation();
-  e.preventDefault();
-}
-  this.setState({showModal:false})
+prevMonth = () => {
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).subtract(1, "month");
+    this.setState({
+        dateContext: dateContext
+    });
+    this.props.onPrevMonth && this.props.onPrevMonth();
 }
 
-handleItemChange(items , item){
-
-this.setState({items:items})
-}
-
-handleItemSize(items , item){
-
-this.setState({items:items})
+onSelectChange = (e, data) => {
+    this.setMonth(data);
+    this.props.onMonthChange && this.props.onMonthChange();
 
 }
+SelectList = (props) => {
+    let popup = props.data.map((data) => {
+        return (
+            <div key={data}>
+                <a href="#" onClick={(e)=> {this.onSelectChange(e, data)}}>
+                    {data}
+                </a>
+            </div>
+        );
+    });
 
-removeEvent(items , item){
-
-  this.setState({ items:items});
+    return (
+        <div className="month-popup">
+            {popup}
+        </div>
+    );
 }
 
-addNewEvent (items , newItems){
-
-this.setState({showModal:false ,selected:[] , items:items});
-this._closeModal();
-}
-editEvent (items , item){
-
-this.setState({showModal:false ,selected:[] , items:items});
-this._closeModal();
+onChangeMonth = (e, month) => {
+    this.setState({
+        showMonthPopup: !this.state.showMonthPopup
+    });
 }
 
-changeView (days , event ){
-this.setState({numberOfDays:days})
+MonthNav = () => {
+    return (
+        <span className="label-month"
+            onClick={(e)=> {this.onChangeMonth(e, this.month())}}>
+            {this.month()}
+            {this.state.showMonthPopup &&
+             <this.SelectList data={this.months} />
+            }
+        </span>
+    );
 }
 
+showYearEditor = () => {
+    this.setState({
+        showYearNav: true
+    });
+}
+
+setYear = (year) => {
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).set("year", year);
+    this.setState({
+        dateContext: dateContext
+    })
+}
+onYearChange = (e) => {
+    this.setYear(e.target.value);
+    this.props.onYearChange && this.props.onYearChange(e, e.target.value);
+}
+
+onKeyUpYear = (e) => {
+    if (e.which === 13 || e.which === 27) {
+        this.setYear(e.target.value);
+        this.setState({
+            showYearNav: false
+        })
+    }
+}
+
+YearNav = () => {
+    return (
+        this.state.showYearNav ?
+        <input
+            defaultValue = {this.year()}
+            className="editor-year"
+            ref={(yearInput) => { this.yearInput = yearInput}}
+            onKeyUp= {(e) => this.onKeyUpYear(e)}
+            onChange = {(e) => this.onYearChange(e)}
+            type="number"
+            placeholder="year"/>
+        :
+        <span
+            className="label-year"
+            onDoubleClick={(e)=> { this.showYearEditor()}}>
+            {this.year()}
+        </span>
+    );
+}
+
+onDayClick = (e, day) => {
+    this.setState({
+        selectedDay: day
+    }, () => {
+        console.log("SELECTED DAY: ", this.state.selectedDay);
+    });
+
+    this.props.onDayClick && this.props.onDayClick(e, day);
+}
 
 render() {
+    // Map the weekdays i.e Sun, Mon, Tue etc as <td>
+    let weekdays = this.weekdaysShort.map((day) => {
+        return (
+            <td key={day} className="week-day">{day}</td>
+        )
+    });
 
-  var AgendaItem = function(props){
-    console.log( ' item component props' , props)
-    return <div style={{display:'block', position:'absolute' , background:'#FFF'}}>{props.item.name} <button onClick={()=> props.edit(props.item)}>Edit </button></div>
-  }
-  return (
-    <div className='App'>
-    <h1 className='titleOefeningen'>Agenda</h1>
+    let blanks = [];
+    for (let i = 0; i < this.firstDayOfMonth(); i++) {
+        blanks.push(<td key={i * 80} className="emptySlot">
+            {""}
+            </td>
+        );
+    }
 
-    <div className="content-expanded ">
+    console.log("blanks: ", blanks);
 
-      <div className="control-buttons">
-        <button  className="button-control" onClick={this.zoomIn}> <i className="zoom-plus-icon"></i> </button>
-        <button  className="button-control" onClick={this.zoomOut}> <i className="zoom-minus-icon"></i> </button>
-        <button  className="button-control" onClick={this._openModal}> <i className="schedule-icon"></i> </button>
-        <button  className="button-control" onClick={this.changeView.bind(null , 7)}> {moment.duration(7, "days").humanize()}  </button>
-        <button  className="button-control" onClick={this.changeView.bind(null , 4)}> {moment.duration(4, "days").humanize()}  </button>
-        <button  className="button-control" onClick={this.changeView.bind(null , 3)}> {moment.duration(3, "days").humanize()}  </button>
-        <button  className="button-control" onClick={this.changeView.bind(null , 1)}> {moment.duration(1, "day").humanize()} </button>
-      </div>
+    let daysInMonth = [];
+    for (let d = 1; d <= this.daysInMonth(); d++) {
+        let className = (d == this.currentDay() ? "day current-day": "day");
+        let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
+        daysInMonth.push(
+            <td key={d} className={className + selectedClass} >
+                <span onClick={(e)=>{this.onDayClick(e, d)}}>{d}</span>
+            </td>
+        );
+    }
 
-      <ReactAgenda
-        minDate={new Date(now.getFullYear(), now.getMonth()-3)}
-        maxDate={new Date(now.getFullYear(), now.getMonth()+3)}
-        startDate={this.state.startDate}
-        startAtTime={8}
-        endAtTime={23}
-        cellHeight={this.state.cellHeight}
-        locale="fr"
-        items={this.state.items}
-        numberOfDays={this.state.numberOfDays}
-        headFormat={"ddd DD MMM"}
-        rowsPerHour={this.state.rowsPerHour}
-        itemColors={colors}
-        helper={true}
-        //itemComponent={AgendaItem}
-        view="calendar"
-        autoScale={false}
-        fixedHeader={true}
-        onRangeSelection={this.handleRangeSelection.bind(this)}
-        onChangeEvent={this.handleItemChange.bind(this)}
-        onChangeDuration={this.handleItemSize.bind(this)}
-        onItemEdit={this.handleItemEdit.bind(this)}
-        onCellSelect={this.handleCellSelection.bind(this)}
-        onItemRemove={this.removeEvent.bind(this)}
-        onDateRangeChange={this.handleDateRangeChange.bind(this)} />
-      {
-        this.state.showModal? <Modal clickOutside={this._closeModal} >
-        <div className="modal-content">
-           <ReactAgendaCtrl items={this.state.items} itemColors={colors} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}  />
+
+    console.log("days: ", daysInMonth);
+
+    var totalSlots = [...blanks, ...daysInMonth];
+    let rows = [];
+    let cells = [];
+
+    totalSlots.forEach((row, i) => {
+        if ((i % 7) !== 0) {
+            cells.push(row);
+        } else {
+            let insertRow = cells.slice();
+            rows.push(insertRow);
+            cells = [];
+            cells.push(row);
+        }
+        if (i === totalSlots.length - 1) {
+            let insertRow = cells.slice();
+            rows.push(insertRow);
+        }
+    });
+
+    let trElems = rows.map((d, i) => {
+        return (
+            <tr key={i*100}>
+                {d}
+            </tr>
+        );
+    })
+
+    return (
+      <div className="App">
+        <h1 className='titleOefeningen'>Agenda</h1>
+        <div className="agendaBody">
+        <div className="calendar-container" style={this.style}>
+            <table className="calendar">
+                <thead>
+                    <tr className="calendar-header">
+                        <td colSpan="5">
+                            <this.MonthNav />
+                            {" "}
+                            <this.YearNav />
+                        </td>
+                        <td colSpan="2" className="nav-month">
+                            <i className="prev fa fa-fw fa-chevron-left"
+                                onClick={(e)=> {this.prevMonth()}}>
+                            </i>
+                            <i className="prev fa fa-fw fa-chevron-right"
+                                onClick={(e)=> {this.nextMonth()}}>
+                            </i>
+
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {weekdays}
+                    </tr>
+                    {trElems}
+                </tbody>
+            </table>
 
         </div>
- </Modal>:''
-}
-
-
-     </div>
-     <Check />
+        
         </div>
-  );
+        <Check />
+        </div>
+
+    );
 }
 }
-//gebruikste link: https://github.com/Revln9/react-agenda/blob/master/example/src/agenda/agenda.js
-//gebruikste link: https://www.npmjs.com/package/react-agenda
+ 
+
+  
+
+export default Agenda;
+//link: https://github.com/rajeshpillai/youtube-react-calendar
