@@ -50,4 +50,7 @@
   }
   .Aanwezigheidicons{
       color: rgb(0, 0, 0);
+      size: 1.2rem;
   }
+  .checkTrue{color: green;}
+  .crossTrue{color: red;}

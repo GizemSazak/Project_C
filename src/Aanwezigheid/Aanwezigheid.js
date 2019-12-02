@@ -22,14 +22,10 @@ class Aanwezigheid extends Component {
     togglecheck() {
         this.setState({ aanwezig: true })
         console.log('aanwezigheid: ' + this.state.aanwezig)
-        // checkcolor='green'
-        // crosscolor='black'
     }
     togglecross() {
         this.setState({ aanwezig: false })
         console.log('aanwezigheid: ' + this.state.aanwezig)
-        //     crosscolor=red
-        //     checkcolor=black
     }
 
     updateInput(event) {
@@ -75,6 +71,7 @@ class Aanwezigheid extends Component {
                     <div className="ColumnHeader1">Naam</div>
                     {posts.map(post =>
                         <div className="Speler">{post.voornaam} {post.achternaam}</div>
+
                     )}
                 </div>
 
@@ -84,10 +81,10 @@ class Aanwezigheid extends Component {
                         <div className="Aanwezigheidicons">
 
                             <a onClick={() => this.togglecheck()}>
-                                <FontAwesomeIcon icon={faCheckCircle} /> {" "}
+                                <FontAwesomeIcon icon={faCheckCircle} className={this.state.aanwezig ? "checkTrue" : "Aanwezigheidsicons"} /> {" "}
                             </a>
                             <a onClick={() => this.togglecross()}>
-                                <FontAwesomeIcon icon={faTimesCircle} />
+                                <FontAwesomeIcon icon={faTimesCircle} className={this.state.aanwezig ? "Aanwezigheidsicons" : "crossTrue"} />
                             </a>
 
                         </div>
