@@ -1,9 +1,10 @@
 import './Agenda.css';
 import Check from '../Menu/Check'
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect  } from 'react';
 import moment from 'moment';
+import 'react-day-picker/lib/style.css';
+import axios from 'axios'
 
- 
 class Agenda extends Component {
   state = {
     dateContext: moment(),
@@ -11,6 +12,7 @@ class Agenda extends Component {
     showMonthPopup: false,
     showYearPopup: false,
     selectedDay: null
+    
 }
 
 constructor(props) {
@@ -18,9 +20,16 @@ constructor(props) {
     this.width = props.width || "350px";
     this.style = props.style || {};
     this.style.width = this.width; // add this
+    this.handleDayClick = this.handleDayClick.bind(this);
+
+    
 }
-
-
+handleDayClick(day, { selected }) {
+  this.setState({
+    selectedDay: selected ? undefined : day,
+    
+  });
+}
 weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
 weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 months = moment.months();
@@ -194,10 +203,13 @@ render() {
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
         let className = (d == this.currentDay() ? "day current-day": "day");
-        let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
+        let selectedClass = (d == this.state.selectedDay ?window.open('http://localhost:3000/Agenda_Toevoegen' ,"_self") && " selected-day " : "" )
+        
+               
         daysInMonth.push(
             <td key={d} className={className + selectedClass} >
-                <span onClick={(e)=>{this.onDayClick(e, d)}}>{d}</span>
+              <span onClick={(e)=>{this.onDayClick(e, d)}} >{d}</span>
+              
             </td>
         );
     }
@@ -261,11 +273,13 @@ render() {
                         {weekdays}
                     </tr>
                     {trElems}
+
                 </tbody>
+    
             </table>
 
         </div>
-        
+
         </div>
         <Check />
         </div>
@@ -273,9 +287,7 @@ render() {
     );
 }
 }
- 
 
-  
 
 export default Agenda;
 //link: https://github.com/rajeshpillai/youtube-react-calendar

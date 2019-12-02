@@ -3,11 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@datepicker-react/styled": "^2.1.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
+    "@progress/kendo-react-dateinputs": "^3.9.0",
+    "@progress/kendo-react-dropdowns": "^3.9.0",
+    "@progress/kendo-react-intl": "^3.9.0",
     "axios": "^0.19.0",
     "babel-preset-es2015": "^6.24.1",
+    "classnames": "^2.2.6",
     "cors": "^2.8.5",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
@@ -16,15 +21,19 @@
     "pg-native": "^3.0.0",
     "ramda": "^0.26.1",
     "react": "^16.10.2",
+    "react-add-to-calendar": "^0.1.5",
     "react-agenda": "0.0.8",
     "react-big-scheduler": "^0.2.7",
+    "react-calendar": "^2.19.2",
     "react-contextmenu": "^2.11.0",
+    "react-day-picker": "^7.4.0",
     "react-device-detect": "^1.9.10",
     "react-dom": "^16.10.2",
     "react-responsive": "^8.0.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "reactjs-popup": "^1.5.0",
+    "styled-components": "^4.4.1",
     "usestate": "^1.1.3"
   },
   "scripts": {
@@ -50,7 +59,9 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/runtime-corejs2": "^7.7.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GizemSazak/Project_C.git"

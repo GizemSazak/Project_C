@@ -20,6 +20,8 @@ import SpelerVerwijderen from './SpelerVerwijderen/Verwijderen'
 import uitslagtoevoegen from './uitslagtoevoegen'
 import verslag from './verslag'
 import Agenda from './Agenda/Agenda'
+import Agenda_Toevoegen from './Agenda/Agenda_Toevoegen'
+
 
 // import Oefeningen from './Oefeningen'
 // import oefening_1 from './oefening_1'
@@ -70,6 +72,8 @@ function App() {
       <Route exact path='/uitslagtoevoegen' component={uitslagtoevoegen} />
       <Route exact path='/verslag' component={verslag} />
       <Route exact path='/Agenda' component={Agenda} />
+      <Route exact path='/Agenda_Toevoegen' component={Agenda_Toevoegen} />
+
 
     </div>
   );

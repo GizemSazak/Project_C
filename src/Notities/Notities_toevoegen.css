@@ -41,6 +41,21 @@
         position: relative;
         text-align: center;
       }
+      #beschrijvenn{
+        padding: 5vh;
+        cursor: pointer;
+        display: block;
+        border: 0.2vh solid black;
+        background-color: rgba(205, 207, 206, 0.8);        
+        height: 300px;     
+        margin-top: 42vh;
+        margin-left: 30%;
+        width: 800px;
+        font-size: 28px;
+        color:black;
+        position: relative;
+        text-align: center;
+      }
       .opslaan{
         position: fixed;
         right: 360px;
