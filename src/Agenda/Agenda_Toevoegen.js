@@ -59,42 +59,58 @@ export default class Agenda_Toevoegen extends Component {
       <div className="Notitiebody">
         <h1 className='titleNotitiel'>Agenda</h1>
         <div className="column1"></div>
-        <p>
+        <p id="AgednaP">
             {this.state.selectedDay
               ?this.state.selectedDay.toLocaleDateString() 
               : ''}
           </p>
-        <div>
-          <input
-            name="starttijd"
-            id="title"
-            placeholder="starttijd"
-            value={this.state.starttijd}
-            onChange={event => this.handleChange(event)}
-          />
-        </div>
-        <form onSubmit={this.submitHandler}>
-          <div>
-            <textarea
-              placeholder="eindtijd"
-              id="beschrijven"
+  <table id="Agendatable">
+  <tr>
+    <th id="Agenda_row1">Starttijd</th>
+    <th id="Agenda_row1">Eindtijd</th> 
+    <th id="Agenda_row1">Beschrijven</th>
+  </tr>
+  <tr>
+    <td id = "Agenda_col">
+    <textarea
+              placeholder="Starttijd"
+              id="starttijd"
+              name="starttijd"
+              value={this.state.starttijd}
+              onChange={event => this.handleChange(event)}
+            />
+    </td>
+    <td id = "Agenda_col">  
+      <textarea
+              placeholder="Eindtijd"
+              id="eindtijd"
               name="eindtijd"
               value={this.state.eindtijd}
               onChange={event => this.handleChange(event)}
-            />
-          </div>
-          <div>
-            <textarea
-              placeholder="beschrijving"
-              id="beschrijvenn"
+            /></td>
+    <td id = "Agenda_col">
+    <textarea
+              placeholder="Beschrijving"
+              id="beschrijving"
               name="beschrijving"
               value={this.state.beschrijving}
               onChange={event => this.handleChange(event)}
             />
-          </div>
+    </td>
+  </tr>
+  </table>
+  {/* <tr>
+    <td id = "Agenda_col">Eve</td>
+    <td id = "Agenda_col">Jackson</td>
+    <td id = "Agenda_col">94</td>
+  </tr>
+  <tr>
+    <td id = "Agenda_col">John</td>
+    <td id = "Agenda_col">Doe</td>
+    <td id = "Agenda_col">80</td>
+  </tr> */}
 
-          <Link to="./agenda" onClick={this.forceUpdate} > <button className="opslaan" type="submit" onClick={() => this.agenda_toevoegen()}>Toevoegen</button></Link>
-        </form>
+<Link to="./Notities" onClick={this.forceUpdate} > <button className="AgendaOpslaan" type="submit" onClick={() => this.agenda_toevoegen()}>Opslaan</button></Link>
         <Check />
       </div>
     )

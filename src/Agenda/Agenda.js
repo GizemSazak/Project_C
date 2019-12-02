@@ -4,6 +4,7 @@ import React, { Component, useState, useEffect  } from 'react';
 import moment from 'moment';
 import 'react-day-picker/lib/style.css';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 class Agenda extends Component {
   state = {
@@ -33,7 +34,6 @@ handleDayClick(day, { selected }) {
 weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
 weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 months = moment.months();
-
 year = () => {
     return this.state.dateContext.format("Y");
 }
@@ -204,8 +204,8 @@ render() {
     for (let d = 1; d <= this.daysInMonth(); d++) {
         let className = (d == this.currentDay() ? "day current-day": "day");
         let selectedClass = (d == this.state.selectedDay ?window.open('http://localhost:3000/Agenda_Toevoegen' ,"_self") && " selected-day " : "" )
-        
-               
+        //I will use this for adding a day to database this.state.selectedDay
+ 
         daysInMonth.push(
             <td key={d} className={className + selectedClass} >
               <span onClick={(e)=>{this.onDayClick(e, d)}} >{d}</span>
@@ -264,7 +264,6 @@ render() {
                             <i className="prev fa fa-fw fa-chevron-right"
                                 onClick={(e)=> {this.nextMonth()}}>
                             </i>
-
                         </td>
                     </tr>
                 </thead>
@@ -273,21 +272,56 @@ render() {
                         {weekdays}
                     </tr>
                     {trElems}
-
                 </tbody>
-    
             </table>
-
         </div>
-
         </div>
+        <GetAgenda />
         <Check />
         </div>
 
+    )
+    }
+  
+}
+function GetAgenda() {
+
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/api/agenda')
+            .then(res => {
+                console.log(res)
+                setPosts(res.data)
+            })
+            .catch()
+    }, []);
+
+    return (
+ <div>
+  {posts.map(function (post, id) {
+            return (<Link className="linkk" to={{ pathname: "/Agenda",id: post.id, starttijd: post.starttijd, eindtijd: post.eindtijd, beschrijving: post.beschrijving}}>
+                <tr key={id} >
+                    <th id="tableL" >
+                        {post.id}
+                    </th>
+                    <td id="tableR" >
+                        {post.starttijd}
+                    </td>
+                    <td id="tableR" >
+                        {post.eindtijd}
+                    </td>
+                    <td id="tableR" >
+                        {post.beschrijving}
+                    </td>
+                </tr>
+                    </Link>
+
+                    )
+                })}
+        </div>
     );
 }
-}
-
 
 export default Agenda;
 //link: https://github.com/rajeshpillai/youtube-react-calendar

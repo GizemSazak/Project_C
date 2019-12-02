@@ -5,7 +5,6 @@ import Check from '../Menu/Check'
 function oefening_1() {
   return (
     <div >
-
       <div id="space">
         {/* <div div class="rowww"> */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

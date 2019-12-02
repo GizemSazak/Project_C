@@ -110,3 +110,50 @@ tr {
   margin-left: 18vh;
   flex-grow : 1;
 }
+#Agendatable{
+ width: 50%;   
+ left:30% ;
+ top: 50%;
+ position: relative;
+}
+#Agendatable, #Agenda_col, #Agenda_row1{
+    border: 2px solid black;
+    border-collapse: collapse;
+    
+}
+#Agenda_col, #Agenda_row1 {
+    padding: 15px;
+  }
+ #Agenda_row1{
+    background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+ } 
+ .AgendaOpslaan{
+    position: fixed;
+    bottom: 6vh;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    border: none;
+    left:50% ;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 18px;
+    color:white;
+    background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+    background-color: transparent;
+    box-shadow: 5px 5px rgb(0, 10, 0,0.3);
+ }
+ #AgednaP{
+    position: fixed;
+    bottom: 6vh;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    border: none;
+    left:50% ;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 18px;
+    color:white;
+  
+ }
