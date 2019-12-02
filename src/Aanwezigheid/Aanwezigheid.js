@@ -11,29 +11,29 @@ class Aanwezigheid extends Component {
 
         this.state = { datum: '' }
         this.state = { aanwezig: null }
-        this.state = { check: false }
-        this.state = { cross: false }
 
         this.updateInput = this.updateInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.togglecheck = this.togglecheck.bind(this);
+        this.togglecross = this.togglecross.bind(this);
+        this.Spelers = this.Spelers.bind(this);
+    }
+
+    togglecheck() {
+        this.setState({ aanwezig: true })
+        console.log('aanwezigheid: ' + this.state.aanwezig)
+        // checkcolor='green'
+        // crosscolor='black'
+    }
+    togglecross() {
+        this.setState({ aanwezig: false })
+        console.log('aanwezigheid: ' + this.state.aanwezig)
+        //     crosscolor=red
+        //     checkcolor=black
     }
 
     updateInput(event) {
         this.setState({ [event.target.name]: event.target.value })
-
-        // if (this.check= true){
-        //     this.aanwezig=true
-        //     checkcolor=green
-        // }
-        // else if(this.cross=true){
-        //     this.aanwezig=false
-        //     crosscolor=red
-        // }
-        // else{
-        //     this.aanwezig=null
-        //     checkcolor=black
-        //     crosscolor=black
-        // }
     }
 
     handleSubmit() {
@@ -43,7 +43,7 @@ class Aanwezigheid extends Component {
         console.log('The date is : ' + this.state.datum)
 
         // //Send state to the server code
-        // const request = new Request('http://localhost:3001/api/speler', {
+        // const request = new Request('http://localhost:3001/api/aanwezigheid', {
         //     method: 'POST',
         //     headers: new Headers({ 'Content-Type': 'application/json' }),
         //     body: JSON.stringify({ 'spelernummer': this.state.spelernummer, 'voornaam': this.state.voornaam, 'achternaam': this.state.achternaam, 'email': this.state.email })
@@ -57,7 +57,7 @@ class Aanwezigheid extends Component {
         //     });
     }
 
-    Spelers() {
+    Spelers(check) {
         const [posts, setPosts] = useState([])
 
         useEffect(() => {
@@ -68,7 +68,6 @@ class Aanwezigheid extends Component {
                 })
                 .catch()
         }, [])
-
         return (
             <div className="Spelersrow">
 
@@ -83,18 +82,25 @@ class Aanwezigheid extends Component {
                     <div className="ColumnHeader2">Aanwezigheid</div>
                     {posts.map(post =>
                         <div className="Aanwezigheidicons">
-                            <FontAwesomeIcon icon={faCheckCircle} /> {" "}
-                            <FontAwesomeIcon icon={faTimesCircle} />
+
+                            <a onClick={() => this.togglecheck()}>
+                                <FontAwesomeIcon icon={faCheckCircle} /> {" "}
+                            </a>
+                            <a onClick={() => this.togglecross()}>
+                                <FontAwesomeIcon icon={faTimesCircle} />
+                            </a>
+
                         </div>
                     )}
                 </div>
-
             </div>
         )
     }
     render() {
         return (
+
             <div className="Page">
+
                 <header className="PageHeader">Aanwezigheid</header>
 
                 <body className="Body_Aanwezigheid">

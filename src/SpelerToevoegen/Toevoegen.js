@@ -14,8 +14,6 @@ class Toevoegen extends Component {
 
         this.updateInput = this.updateInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleClickShowAlert = this.handleClickShowAlert(this);
-
     }
 
     updateInput(event) {

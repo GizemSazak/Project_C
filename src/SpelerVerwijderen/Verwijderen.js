@@ -14,7 +14,6 @@ class SpelerVerwijderen extends Component {
 
         this.Spelers = this.Spelers.bind(this);
         this.Delete = this.Delete.bind(this);
-        this.Popup = this.Popup.bind(this);
     }
 
 
