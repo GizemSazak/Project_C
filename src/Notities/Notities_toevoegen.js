@@ -39,7 +39,6 @@ export default class Notities_toevoegen extends Component {
   }
 
   render() {
-    const { titel, notitie } = this.state
     return (
       <div className="Notitiebody">
         <h1 className='titleNotitiel'>Notities</h1>
@@ -66,7 +65,7 @@ export default class Notities_toevoegen extends Component {
             />
           </div>
           <Link to="./Notities" onClick={this.forceUpdate} > <button className="opslaan" type="submit" onClick={() => this.Notities_toevoegen()}>Toevoegen</button></Link>
-          <Link to="./Notities"> <img src={trash} className="trash2" /></Link>
+          <Link to="./Notities"> <img src={trash} className="trash2" alt='' /></Link>
         </form>
         <Check />
       </div>

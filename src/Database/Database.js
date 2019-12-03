@@ -86,6 +86,29 @@ app.delete('/api/speler', (req, res) => {
     });
 });
 
+app.post('/api/aanwezigheid', (req, res) => {
+    console.log(req.body);
+    const datum = req.body.datum;
+    const aanwezig = req.body.aanwezig;
+    const speler_id = req.body.speler_id;
+
+    const values = [datum, aanwezig, speler_id];
+
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query(
+            'INSERT INTO speler (datum, aanwezig, speler_id) VALUES($1, $2, $3)', [...values],
+            err => {
+                if (err) { return res.status(400).send(err); }
+                console.log('INSERTED DATA SUCCESS');
+            }
+        );
+        res.status(200).send({ message: 'Data inserted!' });
+        // return res.status(200).send(table.rows);
+    });
+});
+
 // View Notitie
 app.get('/api/notities', (req, res) => {
     pool.connect((err, db, done) => {

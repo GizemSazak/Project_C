@@ -1,11 +1,7 @@
-import React, { useState, useEffect, Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import './Uitslagen.css';
 import Check from './Menu/Check';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
-import { tsAnyKeyword, tsPropertySignature } from '@babel/types';
-import addbutton from './addbutton.png'
 import trashimg from './trash.png'
 
 
@@ -37,8 +33,8 @@ class verslagen extends Component {
             .catch(err => {
                 console.log(err);
             });
-            window.location = './Uitslagen';
-                }
+        window.location = './Uitslagen';
+    }
 
 
     Opslaan() {
@@ -50,15 +46,15 @@ class verslagen extends Component {
             }
         });
         fetch(request)
-        .then(response => {
-              response.json().then(data => { });
-          })
-          .catch(err => {
-              console.log(err);
-          });
-          console.log({ 'id': parseInt(this.props.location.id),'verslag': this.state.verslag})
-          window.location = './Uitslagen';
-              }
+            .then(response => {
+                response.json().then(data => { });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        console.log({ 'id': parseInt(this.props.location.id), 'verslag': this.state.verslag })
+        window.location = './Uitslagen';
+    }
 
     render() {
         return (
@@ -73,11 +69,11 @@ class verslagen extends Component {
                     </div>
                     <Link to="./Uitslagen" >
                         <button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button>
-                        <img src={trashimg} onClick={() => this.Verwijderen()} className="trashbutton" />
+                        <img src={trashimg} onClick={() => this.Verwijderen()} className="trashbutton" alt='' />
                     </Link>
                 </div>
-                <Link to="./Uitslagen" onClick={this.forceUpdate}><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick= {() => this.Verwijderen()} className="trashbutton"/></Link>
-           <Check />
+                <Link to="./Uitslagen" onClick={this.forceUpdate}><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick={() => this.Verwijderen()} className="trashbutton" alt='' /></Link>
+                <Check />
             </div>
         );
     }

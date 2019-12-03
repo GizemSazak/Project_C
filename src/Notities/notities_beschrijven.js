@@ -1,10 +1,9 @@
 // import React from 'react'
 import Check from '../Menu/Check'
 import './notities_beschrijven.css'
-import axios from 'axios'
 import '../App.css'
 import trash from './trash.svg' // Tell Webpack this JS file uses this image
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 class notities_beschrijven extends Component {
@@ -71,7 +70,7 @@ class notities_beschrijven extends Component {
                     <Link to="./Notities" onClick={this.forceUpdate}><button tye="button" onClick={() => this.Notities_Wijzigen()} className="wijzigenButton">Wijzigen</button>
                     </Link>
                 </div>
-                <Link to="./Notities" onClick={this.forceUpdate}><img src={trash} onClick={() => this.Notities_Verwijderen()} className="trash" /></Link>
+                <Link to="./Notities" onClick={this.forceUpdate}><img src={trash} onClick={() => this.Notities_Verwijderen()} className="trash" alt='' /></Link>
                 <Check />
             </div>
         );

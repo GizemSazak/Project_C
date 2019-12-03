@@ -10,7 +10,6 @@ class Toevoegen extends Component {
         this.state = { voornaam: '' }
         this.state = { achternaam: '' }
         this.state = { email: '' }
-        this.state = { visible: false }
 
         this.updateInput = this.updateInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);

@@ -1,6 +1,6 @@
 .Body_Aanwezigheid{
     overflow: auto;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: white;
     text-align: center;
 
@@ -50,7 +50,6 @@
   }
   .Aanwezigheidicons{
       color: rgb(0, 0, 0);
-      size: 1.2rem;
   }
-  .checkTrue{color: green;}
-  .crossTrue{color: red;}
+  .checkTrue{color: rgb(0, 200, 0);}
+  .crossTrue{color: rgb(230, 0, 0);}

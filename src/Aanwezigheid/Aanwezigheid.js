@@ -9,11 +9,11 @@ class Aanwezigheid extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { datum: '' }
+        this.state = { datum: new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear() }
         this.state = { aanwezig: null }
+        this.state = { speler_id: 11 }
 
-        this.updateInput = this.updateInput.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.Submit = this.Submit.bind(this);
         this.togglecheck = this.togglecheck.bind(this);
         this.togglecross = this.togglecross.bind(this);
         this.Spelers = this.Spelers.bind(this);
@@ -21,39 +21,36 @@ class Aanwezigheid extends Component {
 
     togglecheck() {
         this.setState({ aanwezig: true })
-        console.log('aanwezigheid: ' + this.state.aanwezig)
+        // this.setState({ [event.target.name]: event.target.value })  //event is a parameter
     }
     togglecross() {
         this.setState({ aanwezig: false })
-        console.log('aanwezigheid: ' + this.state.aanwezig)
+        // this.setState({ [event.target.name]: event.target.value })
+    }
+    // Default() {
+    //     //Send state to the server code
+    //     const request = new Request('http://localhost:3001/api/aanwezigheid', {
+    //         method: 'POST',
+    //         headers: new Headers({ 'Content-Type': 'application/json' }),
+    //         body: JSON.stringify({ 'datum': this.state.datum, 'aanwezig': this.state.aanwezig, 'speler_id': this.state.speler_id })
+    //     });
+    //     fetch(request)
+    //         .then(response => {
+    //             response.json().then(data => { });
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // }
+    Submit(voornaam, id, aanwezig, datum) {
+        console.log('Your voornaam is: ' + voornaam)
+        console.log('Your id is: ' + id)
+        console.log("You're : " + aanwezig)
+        console.log('The date is : ' + datum)
+        return <h1>test</h1>
     }
 
-    updateInput(event) {
-        this.setState({ [event.target.name]: event.target.value })
-    }
-
-    handleSubmit() {
-        console.log('Your voornaam is: ' + this.state.voornaam)
-        console.log('Your achternaam is: ' + this.state.achternaam)
-        console.log('You re : ' + this.state.aanwezig)
-        console.log('The date is : ' + this.state.datum)
-
-        // //Send state to the server code
-        // const request = new Request('http://localhost:3001/api/aanwezigheid', {
-        //     method: 'POST',
-        //     headers: new Headers({ 'Content-Type': 'application/json' }),
-        //     body: JSON.stringify({ 'spelernummer': this.state.spelernummer, 'voornaam': this.state.voornaam, 'achternaam': this.state.achternaam, 'email': this.state.email })
-        // });
-        // fetch(request)
-        //     .then(response => {
-        //         response.json().then(data => { });
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     });
-    }
-
-    Spelers(check) {
+    Spelers() {
         const [posts, setPosts] = useState([])
 
         useEffect(() => {
@@ -67,18 +64,20 @@ class Aanwezigheid extends Component {
         return (
             <div className="Spelersrow">
 
-                <div class='Spelerscolumn'>
+                <div className='Spelerscolumn'>
                     <div className="ColumnHeader1">Naam</div>
                     {posts.map(post =>
-                        <div className="Speler">{post.voornaam} {post.achternaam}</div>
-
+                        <div>
+                            <div className="Speler">{post.voornaam} {post.achternaam}</div>
+                        </div>
                     )}
                 </div>
 
-                <div class='Spelerscolumn'>
+                <div className='Spelerscolumn'>
                     <div className="ColumnHeader2">Aanwezigheid</div>
                     {posts.map(post =>
                         <div className="Aanwezigheidicons">
+                            {/* <button onClick={() => this.Submit(post.voornaam, post.id, this.state.aanwezig, this.state.datum)}>test</button> */}
 
                             <a onClick={() => this.togglecheck()}>
                                 <FontAwesomeIcon icon={faCheckCircle} className={this.state.aanwezig ? "checkTrue" : "Aanwezigheidsicons"} /> {" "}
@@ -93,15 +92,15 @@ class Aanwezigheid extends Component {
             </div>
         )
     }
+
     render() {
         return (
-
             <div className="Page">
 
                 <header className="PageHeader">Aanwezigheid</header>
 
                 <body className="Body_Aanwezigheid">
-                    <div className="Datum">25-11-2019</div>
+                    <div className="Datum">{this.state.datum}</div>
                     <this.Spelers />
                 </body>
 
