@@ -12,7 +12,8 @@ export default class Agenda_Toevoegen extends Component {
     this.state = {
       starttijd: this.props.location.starttijd,
       eindtijd: this.props.location.eindtijd,
-      beschrijving: this.props.location.beschrijving
+      beschrijving: this.props.location.beschrijving,
+      dag: this.props.location.dag
 
     }
   }
@@ -37,7 +38,7 @@ export default class Agenda_Toevoegen extends Component {
   agenda_toevoegen() {
     const request = new Request('http://localhost:3001/api/agenda', {
       method: 'POST',
-      body: JSON.stringify({ 'starttijd': this.state.starttijd, 'eindtijd': this.state.eindtijd,'beschrijving': this.state.beschrijving }),
+      body: JSON.stringify({ 'starttijd': this.state.starttijd, 'eindtijd': this.state.eindtijd,'beschrijving': this.state.beschrijving, 'dag': this.props.location.dag }),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -68,7 +69,7 @@ export default class Agenda_Toevoegen extends Component {
   <tr>
     <th id="Agenda_row1">Starttijd</th>
     <th id="Agenda_row1">Eindtijd</th> 
-    <th id="Agenda_row1">Beschrijven</th>
+    <th id="Agenda_row1">Beschrijving</th>
   </tr>
   <tr>
     <td id = "Agenda_col">

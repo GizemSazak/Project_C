@@ -307,8 +307,9 @@ app.post('/api/agenda', (req, res) => {
     const beschrijving = req.body.beschrijving;
     const starttijd = req.body.starttijd;
     const eindtijd = req.body.eindtijd;
+    const dag = req.body.dag;
 
-    const values = [ beschrijving, starttijd, eindtijd];
+    const values = [ beschrijving, starttijd, eindtijd, dag];
 
     pool.connect((err, db, done) => {
         if (err) {
@@ -317,8 +318,8 @@ app.post('/api/agenda', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO agenda (beschrijving, starttijd, eindtijd) VALUES($1, $2, $3)',
-            [ beschrijving, starttijd, eindtijd],
+            'INSERT INTO agenda (beschrijving, starttijd, eindtijd) VALUES($1, $2, $3, $4)',
+            [ beschrijving, starttijd, eindtijd, dag],
             err => {
                 if (err) {
                     console.log(err + 'tweede');

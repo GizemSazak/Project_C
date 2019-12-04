@@ -12,7 +12,7 @@ class Agenda extends Component {
     today: moment(),
     showMonthPopup: false,
     showYearPopup: false,
-    selectedDay: null
+    selectedDay: moment().format('D')
     
 }
 
@@ -176,10 +176,60 @@ onDayClick = (e, day) => {
     this.setState({
         selectedDay: day
     }, () => {
-        console.log("SELECTED DAY: ", this.state.selectedDay);
+        console.log("SELECTED DAY: ", this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y"));
+        console.log("date", moment().calendar())
     });
 
     this.props.onDayClick && this.props.onDayClick(e, day);
+}
+
+GetAgenda = () => {
+
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/api/agenda')
+            .then(res => {
+                console.log(res)
+                setPosts(res.data)
+            })
+            .catch()
+    }, []);
+    const datum = this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")
+    
+
+    return (
+ <div className="tableAgenda"> 
+ {"SELECTED DAY: ", this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}             
+                    <tbody >
+                    <tr >
+                        <th className="columnAgenda">Datum</th>
+                        <th className="columnAgenda">Starttijd</th>
+                        <th className="columnAgenda">Eindtijd</th>
+                        <th className="columnAgenda">Beschrijving</th>
+                    </tr>
+  {posts.map(function (post, id) {
+            return (
+                
+                <tr key={id} >
+                     <td className="columnAgenda">
+                        {post.dag}
+                    </td>
+                    <td className="columnAgenda">
+                        {post.starttijd}
+                    </td>
+                    <td  className="columnAgenda">
+                        {post.eindtijd}
+                    </td>
+                    <td className="columnAgenda">
+                        {post.beschrijving}
+                    </td>
+                </tr>
+                    )
+                })}
+                </tbody>
+        </div>
+    );
 }
 
 render() {
@@ -203,7 +253,7 @@ render() {
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
         let className = (d == this.currentDay() ? "day current-day": "day");
-        let selectedClass = (d == this.state.selectedDay ?window.open('http://localhost:3000/Agenda_Toevoegen' ,"_self") && " selected-day " : "" )
+        let selectedClass = (d == this.state.selectedDay ? " selected-day " : "" )
         //I will use this for adding a day to database this.state.selectedDay
  
         daysInMonth.push(
@@ -244,6 +294,7 @@ render() {
         );
     })
 
+
     return (
       <div className="App">
         <h1 className='titleOefeningen'>Agenda</h1>
@@ -275,8 +326,9 @@ render() {
                 </tbody>
             </table>
         </div>
+        <this.GetAgenda />
+        <Link to={{ pathname: "/Agenda_Toevoegen", dag: this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}}><button className="addbutton">+</button></Link>
         </div>
-        <GetAgenda />
         <Check />
         </div>
 
@@ -284,44 +336,8 @@ render() {
     }
   
 }
-function GetAgenda() {
 
-    const [posts, setPosts] = useState([])
 
-    useEffect(() => {
-        axios.get('http://localhost:3001/api/agenda')
-            .then(res => {
-                console.log(res)
-                setPosts(res.data)
-            })
-            .catch()
-    }, []);
-
-    return (
- <div>
-  {posts.map(function (post, id) {
-            return (<Link className="linkk" to={{ pathname: "/Agenda",id: post.id, starttijd: post.starttijd, eindtijd: post.eindtijd, beschrijving: post.beschrijving}}>
-                <tr key={id} >
-                    <th id="tableL" >
-                        {post.id}
-                    </th>
-                    <td id="tableR" >
-                        {post.starttijd}
-                    </td>
-                    <td id="tableR" >
-                        {post.eindtijd}
-                    </td>
-                    <td id="tableR" >
-                        {post.beschrijving}
-                    </td>
-                </tr>
-                    </Link>
-
-                    )
-                })}
-        </div>
-    );
-}
 
 export default Agenda;
 //link: https://github.com/rajeshpillai/youtube-react-calendar
