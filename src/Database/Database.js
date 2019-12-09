@@ -299,6 +299,7 @@ app.get('/api/agenda', (req, res) => {
             return res.status(200).send(table.rows);
             console.log(table.rows)
         });
+        
     });
 });
 // Insert Agenda
@@ -318,8 +319,8 @@ app.post('/api/agenda', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO agenda (beschrijving, starttijd, eindtijd) VALUES($1, $2, $3, $4)',
-            [ beschrijving, starttijd, eindtijd, dag],
+            'INSERT INTO agenda (beschrijving, starttijd, eindtijd, dag) VALUES($1, $2, $3, $4)',
+            [beschrijving, starttijd, eindtijd, dag],
             err => {
                 if (err) {
                     console.log(err + 'tweede');

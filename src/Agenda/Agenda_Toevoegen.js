@@ -16,6 +16,7 @@ export default class Agenda_Toevoegen extends Component {
       dag: this.props.location.dag
 
     }
+    console.log(this.props.location.dag)
   }
 
   handleChange(event) {

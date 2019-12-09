@@ -196,6 +196,10 @@ GetAgenda = () => {
             .catch()
     }, []);
     const datum = this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")
+
+    const filterdatum = posts.filter(dag=>{
+        return (dag.dag===this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y"))
+    });
     
 
     return (
@@ -208,9 +212,8 @@ GetAgenda = () => {
                         <th className="columnAgenda">Eindtijd</th>
                         <th className="columnAgenda">Beschrijving</th>
                     </tr>
-  {posts.map(function (post, id) {
+  {filterdatum.map(function (post, id) {
             return (
-                
                 <tr key={id} >
                      <td className="columnAgenda">
                         {post.dag}
@@ -329,6 +332,7 @@ render() {
         <this.GetAgenda />
         <Link to={{ pathname: "/Agenda_Toevoegen", dag: this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}}><button className="addbutton">+</button></Link>
         </div>
+        
         <Check />
         </div>
 
