@@ -335,7 +335,7 @@ app.post('/api/agenda', (req, res) => {
     });
 });
 
-// Update Wedstrijd
+// Update agenda
 app.put('/api/Agenda', (req, res) => {
     console.log(req.body);
     const id = req.body.id;
@@ -361,6 +361,33 @@ app.put('/api/Agenda', (req, res) => {
                 console.log('Update DATA SUCCESS');
                 res.status(201).send({ message: 'Data updated!' });
             }
+        );
+    });
+});
+
+// Delete agenda
+app.delete('/api/agenda', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+
+    pool.connect((err, db, done) => {
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+
+        db.query('DELETE FROM agenda WHERE id = $1',
+        [id], err => {
+            if (err) {
+                console.log(err + 'tweede');
+                return res.status(400).send(err);
+            }
+
+            console.log('Delete DATA SUCCESS');
+            console.log(id);
+
+            res.status(201).send({ message: 'Data deleted!' });
+        }
         );
     });
 });
