@@ -1,3 +1,5 @@
+// npm install react-dropdown --save
+
 import React, { Component, useState, useEffect } from 'react'
 import Menu from '../Menu/Menu'
 import axios from 'axios'
@@ -9,7 +11,7 @@ class Aanwezigheid extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { datum: new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear() }
+        this.state = { datum: null }
         this.state = { aanwezig: null }
         this.state = { speler_id: 11 }
 
@@ -20,6 +22,19 @@ class Aanwezigheid extends Component {
     }
 
     togglecheck() {
+        //Send state to the server code
+        const request = new Request('http://localhost:3001/api/aanwezigheid', {
+            method: 'POST',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify({ 'datum': '10-12-2019', 'aanwezig': '', 'speler_id': '15' })
+        });
+        fetch(request)
+            .then(response => {
+                response.json().then(data => { });
+            })
+            .catch(err => {
+                console.log(err);
+            });
         this.setState({ aanwezig: true })
         // this.setState({ [event.target.name]: event.target.value })  //event is a parameter
     }
@@ -100,7 +115,7 @@ class Aanwezigheid extends Component {
                 <header className="PageHeader">Aanwezigheid</header>
 
                 <body className="Body_Aanwezigheid">
-                    <div className="Datum">{this.state.datum}</div>
+                    <div className="Datum">{new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()}</div>
                     <this.Spelers />
                 </body>
 

@@ -30,6 +30,41 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.get('/api/aanwezigheid', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query('SELECT * from aanwezigheid', (err, table) => {
+            done();
+
+            // If err is True than send err else send table.rows
+            err ? res.status(400).send(err) : res.status(200).send(table.rows)
+        });
+    });
+});
+
+app.post('/api/aanwezigheid', (req, res) => {
+    console.log(req.body);
+    const datum = req.body.datum;
+    const aanwezig = req.body.aanwezig;
+    const speler_id = req.body.speler_id;
+
+    const values = [datum, aanwezig, speler_id];
+
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query(
+            'INSERT INTO speler (datum, aanwezig, speler_id) VALUES($1, $2, $3)', [...values],
+            err => {
+                if (err) { return res.status(400).send(err); }
+                console.log('INSERTED DATA SUCCESS');
+            }
+        );
+        res.status(200).send({ message: 'Data inserted!' });
+        // return res.status(200).send(table.rows);
+    });
+});
 
 app.get('/api/speler', (req, res) => {
     pool.connect((err, db, done) => {
@@ -83,29 +118,6 @@ app.delete('/api/speler', (req, res) => {
             res.status(201).send({ message: 'Data deleted!' });
         }
         );
-    });
-});
-
-app.post('/api/aanwezigheid', (req, res) => {
-    console.log(req.body);
-    const datum = req.body.datum;
-    const aanwezig = req.body.aanwezig;
-    const speler_id = req.body.speler_id;
-
-    const values = [datum, aanwezig, speler_id];
-
-    pool.connect((err, db, done) => {
-        if (err) { return res.status(400).send(err); }
-
-        db.query(
-            'INSERT INTO speler (datum, aanwezig, speler_id) VALUES($1, $2, $3)', [...values],
-            err => {
-                if (err) { return res.status(400).send(err); }
-                console.log('INSERTED DATA SUCCESS');
-            }
-        );
-        res.status(200).send({ message: 'Data inserted!' });
-        // return res.status(200).send(table.rows);
     });
 });
 
