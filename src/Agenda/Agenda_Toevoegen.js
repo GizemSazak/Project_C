@@ -67,6 +67,7 @@ export default class Agenda_Toevoegen extends Component {
               : ''}
           </p>
   <table id="Agendatable">
+  <th id="Agenda_row1" className="titleDatum" colspan="3">{this.props.location.dag}</th>
   <tr>
     <th id="Agenda_row1">Starttijd</th>
     <th id="Agenda_row1">Eindtijd</th> 

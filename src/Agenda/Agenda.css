@@ -74,6 +74,10 @@ tr {
     color: black;
 }
 
+#activityColor {
+    color:red;
+}
+
 .month-popup {
     position: absolute;
     padding: 5px;
@@ -117,17 +121,32 @@ tr {
  top: 50%;
  position: relative;
 }
-#Agendatable, #Agenda_col, #Agenda_row1{
+#AgendaBewerkTable, #Agendatable, #Agenda_col, #Agenda_row1{
     border: 2px solid black;
     border-collapse: collapse;
-    
 }
+
 #Agenda_col, #Agenda_row1 {
     padding: 15px;
   }
+
  #Agenda_row1{
     background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
- } 
+    text-align: center;
+}
+
+.titleDatum {
+    font-size: 4vh;
+}
+
+ 
+ #AgendaBewerkTable{
+    width: 50%;   
+    left:25% ;
+    margin-top: 20vh;
+    position: relative;
+   }
+
  .AgendaOpslaan{
     position: fixed;
     bottom: 6vh;
@@ -162,16 +181,30 @@ tr {
  .tableAgenda {
     position:absolute; /*it can be fixed too*/
     margin-right: 50vh;
-    margin-left:20vh;
+    margin-left:10vh;
     margin-top: 10vh;
     font-size: 5vh;
     text-align: center;
  }
 
  .columnAgenda {
-     padding: 2vh;
+     width: 20vh;
+     height: 5vh;
      font-size: 2vh;
      text-align: center;
      border: 0.2vh solid black;
      background-color: rgba(128,128,128, .7);
+   
  }
+
+ .addbutton2 {
+    font-size: 15vh;
+    color: white;
+    background-color: transparent;
+    border: none;
+    bottom: 0;;
+    right: 45%;
+    position: fixed;
+    color:white;
+    cursor: pointer;
+  }

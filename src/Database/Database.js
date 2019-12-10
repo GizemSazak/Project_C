@@ -335,6 +335,36 @@ app.post('/api/agenda', (req, res) => {
     });
 });
 
+// Update Wedstrijd
+app.put('/api/Agenda', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const dag = req.body.dag;
+    const starttijd = req.body.starttijd;
+    const eindtijd = req.body.eindtijd;
+    const beschrijving = req.body.beschrijving;
+    pool.connect((err, db, done) => {
+        done();
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+
+        db.query(
+            'UPDATE agenda SET dag = $2,  starttijd = $3,  eindtijd = $4,  beschrijving = $5 WHERE id = $1',
+            [id, dag, starttijd, eindtijd, beschrijving],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+                console.log('Update DATA SUCCESS');
+                res.status(201).send({ message: 'Data updated!' });
+            }
+        );
+    });
+});
+
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 
 

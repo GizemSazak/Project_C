@@ -12,7 +12,8 @@ class Agenda extends Component {
     today: moment(),
     showMonthPopup: false,
     showYearPopup: false,
-    selectedDay: moment().format('D')
+    selectedDay: moment().format('D'),
+    activitydate: false
     
 }
 
@@ -183,6 +184,7 @@ onDayClick = (e, day) => {
     this.props.onDayClick && this.props.onDayClick(e, day);
 }
 
+
 GetAgenda = () => {
 
     const [posts, setPosts] = useState([])
@@ -200,20 +202,25 @@ GetAgenda = () => {
     const filterdatum = posts.filter(dag=>{
         return (dag.dag===this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y"))
     });
-    
+
+
+ 
 
     return (
  <div className="tableAgenda"> 
  {"SELECTED DAY: ", this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}             
-                    <tbody >
+ 
+                    <tbody>
                     <tr >
                         <th className="columnAgenda">Datum</th>
                         <th className="columnAgenda">Starttijd</th>
                         <th className="columnAgenda">Eindtijd</th>
                         <th className="columnAgenda">Beschrijving</th>
                     </tr>
+                    </tbody>
   {filterdatum.map(function (post, id) {
-            return (
+            return (<Link className="linkk" to={{ pathname: "./Agenda_Bewerken", id: post.id, datum: post.dag, starttijd: post.starttijd, eindtijd: post.eindtijd, beschrijving: post.beschrijving}}>
+                <tbody>
                 <tr key={id} >
                      <td className="columnAgenda">
                         {post.dag}
@@ -228,9 +235,10 @@ GetAgenda = () => {
                         {post.beschrijving}
                     </td>
                 </tr>
+                </tbody>
+                </Link>
                     )
                 })}
-                </tbody>
         </div>
     );
 }
@@ -253,18 +261,20 @@ render() {
 
     console.log("blanks: ", blanks);
 
+
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
+
         let className = (d == this.currentDay() ? "day current-day": "day");
         let selectedClass = (d == this.state.selectedDay ? " selected-day " : "" )
-        //I will use this for adding a day to database this.state.selectedDay
+        let actcolor = (this.state.activitydate== true ? "activityColor": "")
  
         daysInMonth.push(
-            <td key={d} className={className + selectedClass} >
-              <span onClick={(e)=>{this.onDayClick(e, d)}} >{d}</span>
+            <td key={d} className={className + selectedClass} id={actcolor}>
+              <span key={d + this.month + this.year} onClick={(e)=>{this.onDayClick(e, d)}} >{d}</span>
               
             </td>
-        );
+        ); 
     }
 
 
@@ -330,7 +340,7 @@ render() {
             </table>
         </div>
         <this.GetAgenda />
-        <Link to={{ pathname: "/Agenda_Toevoegen", dag: this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}}><button className="addbutton">+</button></Link>
+        <Link to={{ pathname: "/Agenda_Toevoegen", dag: this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}}><button className="addbutton2">+</button></Link>
         </div>
         
         <Check />
