@@ -4,7 +4,8 @@ const morgan = require("morgan");
 const pg = require("pg");
 const cors = require("cors");
 const PORT = 3001;
-
+const saltRounds = 10;
+const bcrypt = require('bcrypt');
 const pool = new pg.Pool({
   // Connect to database
   host: "salt.db.elephantsql.com",
@@ -58,17 +59,17 @@ app.post("/api/registratie", (req, res) => {
   const password = req.body.password;
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
-
-  const values = [email, password, firstname, lastname];
+  // const values = [email, password, firstname, lastname];
 
   pool.connect((err, db, done) => {
     if (err) {
       return res.status(400).send(err);
     }
-
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+  
     db.query(
       "INSERT INTO registratie (email, password, firstname, lastname) VALUES($1, $2, $3, $4)",
-      [...values],
+      [email, hash, firstname, lastname],
       err => {
         if (err) {
           return res.status(400).send(err);
@@ -79,6 +80,7 @@ app.post("/api/registratie", (req, res) => {
         res.status(201).send({ message: "Data inserted!" });
       }
     );
+      });
   });
 });
 
