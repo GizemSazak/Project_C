@@ -286,6 +286,24 @@ app.put('/api/wedstrijduitslag', (req, res) => {
     });
 });
 
+// View Oefeningen
+app.get('/api/oefeningen', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+
+        db.query('SELECT * from oefeningen order by id ASC', (err, table) => {
+            done();
+            if (err) {
+                return res.status(400).send(err);
+            }
+            return res.status(200).send(table.rows);
+            console.log(table.rows)
+        });
+    });
+});
+
 
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 
