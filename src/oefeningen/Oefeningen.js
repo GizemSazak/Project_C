@@ -29,7 +29,7 @@ class Oefeningen extends Component {
                     {posts.map(function (post, id) {
                         return(
                             <div class="columnn">
-                        <Link className="linkk" to={{ pathname: "/oefening_"+post.id }}>
+                        <Link className="linkk" to={{ pathname: "/oefening_x", titel: post.titel, veldopstelling: post.veldopstelling, spelverloop: post.spelverloop, spelregels: post.spelregels }}>
                             <img id="oefimg" src={post.afbeelding} alt="Oefening" />
                             <p >{post.soort}</p><h4>{post.titel}</h4>
                         </Link>
