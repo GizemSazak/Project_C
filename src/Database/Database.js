@@ -52,39 +52,42 @@ app.get("/api/registratie", (req, res) => {
   });
 });
 
+
 app.post("/api/registratie", (req, res) => {
-  //   // Ik heb teamcode voor nu weggehaald
-  console.log(req.body);
-  const email = req.body.email;
-  const password = req.body.password;
-  const firstname = req.body.firstname;
-  const lastname = req.body.lastname;
-  // const values = [email, password, firstname, lastname];
-
-  pool.connect((err, db, done) => {
-    if (err) {
-      return res.status(400).send(err);
-    }
-    bcrypt.hash(password, saltRounds, function(err, hash) {
-  
-    db.query(
-      "INSERT INTO registratie (email, password, firstname, lastname) VALUES($1, $2, $3, $4)",
-      [email, hash, firstname, lastname],
-      err => {
-        if (err) {
-          return res.status(400).send(err);
-        }
-
-        console.log("INSERTED DATA SUCCESS");
-
-        res.status(201).send({ message: "Data inserted!" });
+    //   // Ik heb teamcode voor nu weggehaald
+    console.log(req.body);
+    const email = req.body.email;
+    const password = req.body.password;
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    // const values = [email, password, firstname, lastname];
+    pool.connect((err, db, done) => {
+        db.query("SELECT COUNT(*) AS cnt FROM registratie WHERE email = $1",[email], function(err,data){
+      if (err) {
+        return res.status(400).send(err);
       }
-    );
-      });
-  });
+      else{
+        if(data.rows > 0){  
+            console.log("Email Already exist ");     
+              // Already exist 
+        }else{
+            bcrypt.hash(password, saltRounds, function(err, hash) {
+            db.query("INSERT INTO registratie (email, password, firstname, lastname) VALUES($1, $2, $3, $4)" , [email, hash, firstname, lastname], function(err , insert){
+                if(err){
+                    return res.status(400).send(err);
+                }else{
+                    console.log("INSERTED DATA SUCCESS");     
+                    res.status(201).send({ message: "Data inserted!" });           
+                }
+            })    
+        });
+              
+        }
+    }
+
+    });
 });
-
-
+  
 
 app.get("/api/speler", (req, res) => {
   pool.connect((err, db, done) => {
@@ -201,7 +204,7 @@ app.post("/api/wedstrijduitslag", (req, res) => {
     );
   });
 });
-
+});
 
 app.listen(PORT, () => console.log("Listening on port " + PORT));
 
