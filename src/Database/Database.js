@@ -4,8 +4,12 @@ const morgan = require("morgan");
 const pg = require("pg");
 const cors = require("cors");
 const PORT = 3001;
+const Password = require("node-php-password");
 const saltRounds = 10;
 const bcrypt = require('bcrypt');
+const session = require('express-session');
+var hash = Password.hash("password123");
+
 const pool = new pg.Pool({
   // Connect to database
   host: "salt.db.elephantsql.com",
@@ -19,7 +23,13 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboardssaacat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 app.use(morgan("dev"));
 
 app.use(function (req, res, next) {
@@ -32,22 +42,41 @@ app.use(function (req, res, next) {
 });
 
 
-app.get("/api/registratie", (req, res) => {
+app.post("/api/login", (req, res) => {
   pool.connect((err, db, done) => {
     if (err) {
       return res.status(400).send(err);
     }
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(email);
 
     db.query(
-      "SELECT * from registratie",
+      "SELECT * from registratie where email = $1", [email],
       (err, table) => {
         done();
         if (err) {
           return res.status(400).send(err);
         }
+        else{
+          if (err) {
+            return res.status(400).send(err);
+          }
+          // bcrypt.hash(password, saltRounds, function(err, password) {
+            try{
+              if(Password.verify(password, table.rows[0].password)){
+              req.session.id = table.rows[0].id;
+              req.session.email = table.rows[0].email;
+              console.log("Inlogggggg DATA SUCCESS"); 
+              console.log(req.session.email);    
+              } 
+            } catch (err){
+              console.log("Inlog not successed")
+            }
+      } 
+
         return res.status(200).send(table.rows);
-        console.log(table.rows);
-      }
+      } 
     );
   });
 });
@@ -71,7 +100,7 @@ app.post("/api/registratie", (req, res) => {
             console.log("Email Already exist ");     
               // Already exist 
         }else{
-            bcrypt.hash(password, saltRounds, function(err, hash) {
+            hash = Password.hash(password);
             db.query("INSERT INTO registratie (email, password, firstname, lastname) VALUES($1, $2, $3, $4)" , [email, hash, firstname, lastname], function(err , insert){
                 if(err){
                     return res.status(400).send(err);
@@ -80,14 +109,14 @@ app.post("/api/registratie", (req, res) => {
                     res.status(201).send({ message: "Data inserted!" });           
                 }
             })    
-        });
+        // });
               
         }
     }
 
     });
 });
-  
+});
 
 app.get("/api/speler", (req, res) => {
   pool.connect((err, db, done) => {
@@ -204,7 +233,7 @@ app.post("/api/wedstrijduitslag", (req, res) => {
     );
   });
 });
-});
+
 
 app.listen(PORT, () => console.log("Listening on port " + PORT));
 

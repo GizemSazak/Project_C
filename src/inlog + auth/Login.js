@@ -4,31 +4,32 @@ import axios from "axios";
 
 
 class Loginpage extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { email: "" }
-  //   this.state = { password: "" }
-  //   // this.state = { teamcode: "" };
+  constructor(props) {
+    super(props);
+    this.state = { email: "" }
+    this.state = { password: "" }
+    // this.state = { teamcode: "" };
 
-  //   this.updateInput = this.updateInput.bind(this);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
+    this.updateInput = this.updateInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  // updateInput(event) {
-  //   this.setState({ [event.target.name]: event.target.value });
-  // }
+  updateInput(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
-  // handleSubmit = e => {
-  //   console.log(this.state)
-  //   axios
-  //     .post('http://localhost:3001/api/registratie', this.state)
-  //     .then(response => {
-  //       console.log(response)
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //     })
-  // }
+  handleSubmit = e => {
+    console.log(this.state)
+    axios
+      .post('http://localhost:3001/api/login', this.state)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      
+  }
 
 
   render() {
