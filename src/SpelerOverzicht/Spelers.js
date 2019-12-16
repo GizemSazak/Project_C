@@ -1,9 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
 import './Spelers.css'
 import Menu from '../Menu/Menu'
 
-function Spelers() {
+
+class Spelers extends Component {
+
+    render() {
+        return (
+            <div className="Page">
+                <header className="PageHeader">Spelers</header>
+
+                <SpelerOverzicht />
+
+                <a href="../SpelerToevoegen/Toevoegen">
+                    <button className="btnAddPlayer">+</button>
+                </a>
+
+                <a href="../SpelerVerwijderen/Verwijderen">
+                    <button className="btnDeletePlayer">-</button>
+                </a>
+                <Menu />
+            </div>
+
+        )
+    }
+}
+
+function SpelerOverzicht() {
 
     // const [spelers] = useState([
     //     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
@@ -22,29 +46,23 @@ function Spelers() {
     }, []);
 
     return (
-        <div className="Page">
-            <header className="PageHeader">Spelers</header>
+        <body className="Body">
 
-            <body className="Body">
+            {posts.map(post =>
+                <div >
+                    <div className="CardHeader">{/* Positie */}</div>
 
-                {posts.map(post =>
-                    <div className="Speler">
-                        <div className="Image" />
-                        <div className="Spelernaam">{post.voornaam} {post.achternaam}</div>
+                    <div className="CardBody" style={{ fontSize: '1.5rem' }}>
+                        Rugnummer:<br />
+                        {post.spelernummer}
                     </div>
-                )}
 
-            </body>
-
-            <a href="../SpelerToevoegen/Toevoegen">
-                <button className="btnAddPlayer">+</button>
-            </a>
-
-            <a href="../SpelerVerwijderen/Verwijderen">
-                <button className="btnDeletePlayer">-</button>
-            </a>
-            <Menu />
-        </div>
+                    <div className="CardBottom">
+                        {post.voornaam} {post.achternaam}
+                    </div>
+                </div>
+            )}
+        </body >
     );
 }
 export default Spelers;
