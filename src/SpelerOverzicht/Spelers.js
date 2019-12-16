@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
 import './Spelers.css'
-import Menu from '../Menu/Menu'
+import Menu from '../SideMenu/SideMenu'
 
 
 class Spelers extends Component {

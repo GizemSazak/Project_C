@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Toevoegen.css'
 import Menu from '../Menu/Menu'
+import { Button, Form, FormGroup, FormControl } from "react-bootstrap"
 
 class Toevoegen extends Component {
     constructor(props) {
@@ -16,16 +17,16 @@ class Toevoegen extends Component {
     }
 
     updateInput(event) {
-        this.setState({ [event.target.name]: event.target.value })
-    }
-
-    handleSubmit() {
-        console.log('Your spelernummer is: ' + this.state.spelernummer)
+        this.setState({ [event.target.placeholder]: event.target.value })
         console.log('Your voornaam is: ' + this.state.voornaam)
         console.log('Your achternaam is: ' + this.state.achternaam)
         console.log('Your email is: ' + this.state.email)
+        console.log('Your spelernummer is: ' + this.state.spelernummer)
+    }
 
+    handleSubmit() {
         //Send state to the server code
+        console.log("HALLO")
         const request = new Request('http://localhost:3001/api/speler', {
             method: 'POST',
             headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -47,21 +48,28 @@ class Toevoegen extends Component {
                 <header className="PageHeader">Speler Toevoegen</header>
 
                 <body className="AddBody">
-
-                    <form>
-                        <label>Voornaam</label><br />
-                        <input type="text" name="voornaam" className="Inputfield" onChange={this.updateInput} /><br />
-
-                        <label>Achternaam</label><br />
-                        <input type="text" name="achternaam" className="Inputfield" onChange={this.updateInput} /><br />
-                        <label>Email</label><br />
-                        <input type="email" name="email" className="Inputfield" onChange={this.updateInput} /><br />
-
-                        <label>Spelernummer</label><br />
-                        <input type="number" name="spelernummer" className="Inputfield" onChange={this.updateInput} /><br /><br />
-
-                        <input type="submit" value="Opslaan" className="SubmitBtn" onClick={this.handleSubmit} />
-                    </form>
+                    <Form>
+                        <FormGroup>
+                            <label>Voornaam</label>
+                            <FormControl type="text" placeholder="voornaam" className="Inputfield" onChange={this.updateInput} />
+                        </FormGroup>
+                        <FormGroup>
+                            <label>Achternaam</label>
+                            <FormControl type="text" placeholder="achternaam" className="Inputfield" onChange={this.updateInput} />
+                        </FormGroup>
+                        <FormGroup>
+                            <label>Email</label>
+                            <FormControl type="email" placeholder="email" className="Inputfield" onChange={this.updateInput} />
+                        </FormGroup>
+                        <FormGroup>
+                            <label>Spelernummer</label>
+                            <FormControl type="number" placeholder="spelernummer" className="Inputfield" onChange={this.updateInput} />
+                        </FormGroup>
+                        <FormGroup>
+                            <FormControl type="submit" className="SubmitBtn" onChange={this.handleSubmit} />
+                        </FormGroup>
+                        {/* <Button className="SubmitBtn" onChange={this.handleSubmit}>Opslaan</Button> */}
+                    </Form>
                 </body>
                 <Menu />
             </div >
@@ -70,6 +78,21 @@ class Toevoegen extends Component {
 }
 
 export default Toevoegen;
+{/* <form>
+                        <label>Voornaam</label><br />
+                        <input type="text" name="voornaam" className="Inputfield" onChange={this.updateInput} /><br />
+
+                        <label>Achternaam</label><br />
+                        <input type="text" name="achternaam" className="Inputfield" onChange={this.updateInput} /><br />
+
+                        <label>Email</label><br />
+                        <input type="email" name="email" className="Inputfield" onChange={this.updateInput} /><br />
+
+                        <label>Spelernummer</label><br />
+                        <input type="number" name="spelernummer" className="Inputfield" onChange={this.updateInput} /><br /><br />
+
+                        <input type="submit" value="Opslaan" className="SubmitBtn" onClick={this.handleSubmit} />
+                    </form> */}
 
     // formulier() {
     //     const [forms] = useState([
