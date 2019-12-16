@@ -37,12 +37,12 @@ class Loginpage extends Component {
       <div className="Page">
         <header className="wrapper">
           <body className="form-wrapper">
-            <h1>Login</h1>
-            <form>
+            <h1 className="login-header">Login</h1>
+            <form className="inlogform">
 
               <div className="email">
                 <label htmlFor="email">Email</label>
-                <input classname="" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
+                <input classname="inputt" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
               </div>
 
               <div className="password">
@@ -51,7 +51,7 @@ class Loginpage extends Component {
               </div>
 
               <div className="createAccount">
-                <input classname="" type="submit" value="Submit" onClick={this.handleSubmit} />
+                <input classname="inputt" type="submit" value="Submit" onClick={this.handleSubmit} />
                 <a href="/registreren"> Already have an account?</a>
               </div>
             </form>

@@ -47,13 +47,13 @@ light green: #A3C4BC
   background-color: #ffffff;
 }
 
-form {
+.inlogform {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-h1 {
+.login-header {
   text-align: center;
   width: 100%;
   color: #111;
@@ -69,7 +69,7 @@ label {
   font-weight: lighter;
 }
 
-input {
+.inputt {
   padding: 10px 10px;
   border-radius: 5px;
   outline: none;
