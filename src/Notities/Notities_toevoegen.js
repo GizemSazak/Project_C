@@ -74,6 +74,3 @@ export default class Notities_toevoegen extends Component {
   }
 }
 
-
-
-

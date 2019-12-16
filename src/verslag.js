@@ -86,6 +86,3 @@ class verslagen extends Component {
 
 export default verslagen;
 
-
-
-

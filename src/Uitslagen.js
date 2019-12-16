@@ -59,7 +59,3 @@ function Uitslagen() {
     );
 }
 export default Uitslagen;
-
-
-
-

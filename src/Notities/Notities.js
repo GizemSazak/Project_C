@@ -40,5 +40,3 @@ function Notities() {
     );
 }
 export default Notities;
-
-

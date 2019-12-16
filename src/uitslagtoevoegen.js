@@ -104,8 +104,3 @@ class uitslagtoevoegen extends Component {
 // }
 
 export default uitslagtoevoegen;
-
-
-
-
-
