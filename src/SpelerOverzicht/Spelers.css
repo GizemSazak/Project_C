@@ -1,25 +1,28 @@
-.Page{  
+.Page{
+    background-color: green;  
     background: url("../bg.png")no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100vh;
-    width: 203vh;
-    position: fixed;
-    right: 0;
+    display: flexbox;
+    /* width: 203vh; */
+    /* position: fixed; */
+    /* right: 0; */
 }
 .PageHeader{
     text-align: center;
-    height: 10%;
-    padding: 50px 0px;
+    /* height: 10%; */
+    /* padding: 50px 0px; */
     font-size: 2rem;
     font-weight: 700;
     color: white;
+    display: flexbox;
 
-    width: 185vh;
-    position: fixed;
-    right: 0;
+    /* width: 185vh; */
+    position: relative;
+    /* right: 0; */
 }
 .Body{
     display: grid;

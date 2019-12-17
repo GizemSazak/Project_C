@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Toevoegen.css'
 import Menu from '../Menu/Menu'
-import { Button, Form, FormGroup, FormControl } from "react-bootstrap"
+import { Container, Row, Col, Form, FormGroup, FormControl } from "react-bootstrap"
 
 class Toevoegen extends Component {
     constructor(props) {
@@ -19,14 +19,10 @@ class Toevoegen extends Component {
     updateInput(event) {
         this.setState({ [event.target.placeholder]: event.target.value })
         console.log('Your voornaam is: ' + this.state.voornaam)
-        console.log('Your achternaam is: ' + this.state.achternaam)
-        console.log('Your email is: ' + this.state.email)
-        console.log('Your spelernummer is: ' + this.state.spelernummer)
     }
 
     handleSubmit() {
         //Send state to the server code
-        console.log("HALLO")
         const request = new Request('http://localhost:3001/api/speler', {
             method: 'POST',
             headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -44,40 +40,50 @@ class Toevoegen extends Component {
     render() {
         return (
             <div className="Page">
+                <Container>
+                    <Row>
+                        {/* <Col>
+                            <Menu />
+                        </Col> */}
+                        <Col>
+                            <header className="PageHeader">Speler Toevoegen</header>
+                        </Col>
+                        <Col>
+                            <Form className="AddBody">
+                                <FormGroup>
+                                    <label>Voornaam</label>
+                                    <FormControl type="text" placeholder="voornaam" className="Inputfield" onChange={this.updateInput} />
+                                </FormGroup>
+                                <FormGroup>
+                                    <label>Achternaam</label>
+                                    <FormControl type="text" placeholder="achternaam" className="Inputfield" onChange={this.updateInput} />
+                                </FormGroup>
+                                <FormGroup>
+                                    <label>Email</label>
+                                    <FormControl type="email" placeholder="email" className="Inputfield" onChange={this.updateInput} />
+                                </FormGroup>
+                                <FormGroup>
+                                    <label>Spelernummer</label>
+                                    <FormControl type="number" placeholder="spelernummer" className="Inputfield" onChange={this.updateInput} />
+                                </FormGroup>
+                                <input type="submit" value="Opslaan" className="SubmitBtn" onClick={this.handleSubmit} />
+                            </Form>
+                        </Col>
+                    </Row>
+                </Container>
 
-                <header className="PageHeader">Speler Toevoegen</header>
-
-                <body className="AddBody">
-                    <Form>
-                        <FormGroup>
-                            <label>Voornaam</label>
-                            <FormControl type="text" placeholder="voornaam" className="Inputfield" onChange={this.updateInput} />
-                        </FormGroup>
-                        <FormGroup>
-                            <label>Achternaam</label>
-                            <FormControl type="text" placeholder="achternaam" className="Inputfield" onChange={this.updateInput} />
-                        </FormGroup>
-                        <FormGroup>
-                            <label>Email</label>
-                            <FormControl type="email" placeholder="email" className="Inputfield" onChange={this.updateInput} />
-                        </FormGroup>
-                        <FormGroup>
-                            <label>Spelernummer</label>
-                            <FormControl type="number" placeholder="spelernummer" className="Inputfield" onChange={this.updateInput} />
-                        </FormGroup>
-                        <FormGroup>
-                            <FormControl type="submit" className="SubmitBtn" onChange={this.handleSubmit} />
-                        </FormGroup>
-                        {/* <Button className="SubmitBtn" onChange={this.handleSubmit}>Opslaan</Button> */}
-                    </Form>
-                </body>
-                <Menu />
             </div >
         )
     }
 }
 
 export default Toevoegen;
+
+{/* <FormGroup>
+                            <FormControl type="submit" className="SubmitBtn" onChange={this.handleSubmit} />
+                        </FormGroup> */}
+{/* <Button className="SubmitBtn" onChange={this.handleSubmit}>Opslaan</Button> */ }
+
 {/* <form>
                         <label>Voornaam</label><br />
                         <input type="text" name="voornaam" className="Inputfield" onChange={this.updateInput} /><br />
