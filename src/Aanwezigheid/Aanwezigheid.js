@@ -10,23 +10,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class Aanwezigheid extends Component {
     constructor(props) {
         super(props);
-
-        this.state = { datum: null }
-        this.state = { aanwezig: null }
-        this.state = { speler_id: 11 }
-
-        this.Submit = this.Submit.bind(this);
         this.togglecheck = this.togglecheck.bind(this);
-        this.togglecross = this.togglecross.bind(this);
         this.Spelers = this.Spelers.bind(this);
     }
 
-    togglecheck() {
+
+    todaysdate=new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()
+
+    togglecheck(speler_id, present) {
         //Send state to the server code
         const request = new Request('http://localhost:3001/api/aanwezigheid', {
             method: 'POST',
             headers: new Headers({ 'Content-Type': 'application/json' }),
-            body: JSON.stringify({ 'datum': '10-12-2019', 'aanwezig': '', 'speler_id': '15' })
+            body: JSON.stringify({ 'datum': this.todaysdate, 'aanwezig': present, 'speler_id': speler_id })
         });
         fetch(request)
             .then(response => {
@@ -35,41 +31,15 @@ class Aanwezigheid extends Component {
             .catch(err => {
                 console.log(err);
             });
-        this.setState({ aanwezig: true })
-        // this.setState({ [event.target.name]: event.target.value })  //event is a parameter
     }
-    togglecross() {
-        this.setState({ aanwezig: false })
-        // this.setState({ [event.target.name]: event.target.value })
-    }
-    // Default() {
-    //     //Send state to the server code
-    //     const request = new Request('http://localhost:3001/api/aanwezigheid', {
-    //         method: 'POST',
-    //         headers: new Headers({ 'Content-Type': 'application/json' }),
-    //         body: JSON.stringify({ 'datum': this.state.datum, 'aanwezig': this.state.aanwezig, 'speler_id': this.state.speler_id })
-    //     });
-    //     fetch(request)
-    //         .then(response => {
-    //             response.json().then(data => { });
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    // }
-    Submit(voornaam, id, aanwezig, datum) {
-        console.log('Your voornaam is: ' + voornaam)
-        console.log('Your id is: ' + id)
-        console.log("You're : " + aanwezig)
-        console.log('The date is : ' + datum)
-        return <h1>test</h1>
-    }
+
+
 
     Spelers() {
         const [posts, setPosts] = useState([])
 
         useEffect(() => {
-            axios.get('http://localhost:3001/api/speler')
+            axios.get('http://localhost:3001/api/aanwezigheid')
                 .then(res => {
                     console.log(res)
                     setPosts(res.data)
@@ -94,11 +64,11 @@ class Aanwezigheid extends Component {
                         <div className="Aanwezigheidicons">
                             {/* <button onClick={() => this.Submit(post.voornaam, post.id, this.state.aanwezig, this.state.datum)}>test</button> */}
 
-                            <a onClick={() => this.togglecheck()}>
-                                <FontAwesomeIcon icon={faCheckCircle} className={this.state.aanwezig ? "checkTrue" : "Aanwezigheidsicons"} /> {" "}
+                            <a onClick={() => this.togglecheck(post.id, post.aanwezig=true)}>
+                                <FontAwesomeIcon icon={faCheckCircle} className={post.aanwezig ? "checkTrue" : "Aanwezigheidsicons"} /> {" "}
                             </a>
-                            <a onClick={() => this.togglecross()}>
-                                <FontAwesomeIcon icon={faTimesCircle} className={this.state.aanwezig ? "Aanwezigheidsicons" : "crossTrue"} />
+                            <a onClick={() => this.togglecheck(post.id, post.aanwezig=false)}>
+                                <FontAwesomeIcon icon={faTimesCircle} className={post.aanwezig ? "Aanwezigheidsicons" : "crossTrue"} />
                             </a>
 
                         </div>
@@ -115,7 +85,7 @@ class Aanwezigheid extends Component {
                 <header className="PageHeader">Aanwezigheid</header>
 
                 <body className="Body_Aanwezigheid">
-                    <div className="Datum">{new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()}</div>
+                    <div className="Datum">{this.todaysdate}</div>
                     <this.Spelers />
                 </body>
 

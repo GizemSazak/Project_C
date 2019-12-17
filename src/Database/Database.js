@@ -34,7 +34,7 @@ app.get('/api/aanwezigheid', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
-        db.query('SELECT * from aanwezigheid', (err, table) => {
+        db.query('SELECT * from aanwezigheid right join speler on speler_id=id', (err, table) => {
             done();
 
             // If err is True than send err else send table.rows
@@ -55,14 +55,18 @@ app.post('/api/aanwezigheid', (req, res) => {
         if (err) { return res.status(400).send(err); }
 
         db.query(
-            'INSERT INTO speler (datum, aanwezig, speler_id) VALUES($1, $2, $3)', [...values],
+            'INSERT INTO aanwezigheid (datum, aanwezig, speler_id) VALUES($1, $2, $3)', [datum,aanwezig,speler_id],
             err => {
-                if (err) { return res.status(400).send(err); }
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+
                 console.log('INSERTED DATA SUCCESS');
+
+                res.status(201).send({ message: 'Data inserted!' });
             }
         );
-        res.status(200).send({ message: 'Data inserted!' });
-        // return res.status(200).send(table.rows);
     });
 });
 
@@ -98,6 +102,7 @@ app.post('/api/speler', (req, res) => {
                 console.log('INSERTED DATA SUCCESS');
             }
         );
+        
         res.status(200).send({ message: 'Data inserted!' });
         // return res.status(200).send(table.rows);
     });
