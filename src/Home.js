@@ -8,8 +8,8 @@ function Home() {
 
   const [buttons] = useState([
     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
-    { link: "openTab('b1');", title: "Notities", icon: faStickyNote },
-    { link: "./SpelerOverzicht/Spelers", title: "Spelers", icon: faUsers },
+    { link: "./Notities", title: "Notities", icon: faStickyNote },
+    { link: "./Spelers", title: "Spelers", icon: faUsers },
     { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },
     { link: "./tactieken", title: "Tactiek", icon: faBezierCurve },
     { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },

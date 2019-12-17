@@ -38,31 +38,31 @@ class Registreren extends Component {
       <div className="Page">
         <header className="wrapper">
           <body className="form-wrapper">
-            <h1>Create Account for trainer</h1>
-            <form>
+            <h1 className="login-header">Create Account for trainer</h1>
+            <form className="inlogform">
 
               <div className="email">
                 <label htmlFor="email">Email</label>
-                <input classname="" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
+                <input classname="inputt" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
               </div>
 
               <div className="password">
                 <label htmlFor="password">Password</label>
-                <input classname="" placeholder="Password" type="password" name="password" onChange={this.updateInput} />
+                <input classname="inputt" placeholder="Password" type="password" name="password" onChange={this.updateInput} />
               </div>
 
               <div className="firstName">
                 <label htmlFor="firstName">First Name</label>
-                <input classname="" placeholder="First Name" type="text" name="firstname" onChange={this.updateInput} />
+                <input id="placeholderid" placeholder="First Name" type="text" name="firstname" onChange={this.updateInput} />
               </div>
 
               <div className="lastName">
                 <label htmlFor="lastName">Last Name</label>
-                <input classname="" placeholder="Last Name" type="text" name="lastname" onChange={this.updateInput} />
+                <input classname="inputt" placeholder="Last Name" type="text" name="lastname" onChange={this.updateInput} />
               </div>
 
               <div className="createAccount">
-                <input classname="" type="submit" value="Submit" onClick={this.handleSubmit} />
+                <input classname="inputt" type="submit" value="Submit" onClick={this.handleSubmit} />
                 <a href="/login"> Already have an account?</a>
               </div>
 

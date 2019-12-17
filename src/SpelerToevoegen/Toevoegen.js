@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react'
+import React, { Component } from 'react'
 import './Toevoegen.css'
 import Menu from '../Menu/Menu'
 
@@ -10,9 +10,12 @@ class Toevoegen extends Component {
         this.state = { voornaam: '' }
         this.state = { achternaam: '' }
         this.state = { email: '' }
+        this.state = { visible: false }
 
         this.updateInput = this.updateInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClickShowAlert = this.handleClickShowAlert(this);
+
     }
 
     updateInput(event) {
@@ -42,26 +45,39 @@ class Toevoegen extends Component {
             });
     }
 
+    handleClickShowAlert() {
+        this.setState({
+            showingAlert: true
+        });
+
+        setTimeout(() => {
+            this.setState({
+                showingAlert: false
+            });
+        }, 2000);
+    }
+
     render() {
         return (
             <div className="Page">
+
                 <header className="PageHeader">Speler Toevoegen</header>
 
                 <body className="AddBody">
+
                     <form>
                         <label>Voornaam</label><br />
-                        <input type="text" name="voornaam" className="Inputfield" onChange={this.updateInput} /><br /><br />
+                        <input type="text" name="voornaam" className="Inputfield" onChange={this.updateInput} /><br />
 
                         <label>Achternaam</label><br />
-                        <input type="text" name="achternaam" className="Inputfield" onChange={this.updateInput} /><br /><br />
-
+                        <input type="text" name="achternaam" className="Inputfield" onChange={this.updateInput} /><br />
                         <label>Email</label><br />
-                        <input type="email" name="email" className="Inputfield" onChange={this.updateInput} /><br /><br />
+                        <input type="email" name="email" className="Inputfield" onChange={this.updateInput} /><br />
 
                         <label>Spelernummer</label><br />
-                        <input type="number" name="spelernummer" className="Inputfield" onChange={this.updateInput} /><br /><br /><br />
+                        <input type="number" name="spelernummer" className="Inputfield" onChange={this.updateInput} /><br /><br />
 
-                        <input type="submit" value="Submit" className="SubmitBtn" onClick={this.handleSubmit} />
+                        <input type="submit" value="Opslaan" className="SubmitBtn" onClick={this.handleSubmit} />
                     </form>
                 </body>
                 <Menu />
@@ -70,51 +86,21 @@ class Toevoegen extends Component {
     }
 }
 
-// function Form() {
-
-//     const [forms] = useState([
-//         { label: "Voornaam", type: "text", name: "voornaam", className: "Inputfield" },
-//         { label: "Achternaam", type: "text", name: "achternaam", className: "Inputfield" },
-//         { label: "Email", type: "email", name: "email", className: "Inputfield" },
-//         { label: "Spelernummer", type: "number", name: "Spelernummer", className: "Inputfield" }
-//     ]);
-
-//     return (
-//         forms.map(forms => (
-//             <form>
-//                 <label>{forms.label}</label><br />
-//                 <input type={forms.type} name={forms.name} className={forms.className} value={forms.value} onChange={this.updateInput} /> <br />
-//             </form>
-//         ))
-//     )
-// }
-
-
-// function Toevoegen() {
-// const [forms] = useState([
-//     { label: "Voornaam", type: "text", name: "voornaam", className: "Inputfield" },
-//     { label: "Achternaam", type: "text", name: "achternaam", className: "Inputfield" },
-//     { label: "Email", type: "email", name: "email", className: "Inputfield" },
-//     { label: "Spelernummer", type: "number", name: "Spelernummer", className: "Inputfield" }
-// ]);
-
-//     return (
-//         <div className="Page">
-//             <header className="PageHeader">Speler Toevoegen</header>
-//             <body className="AddBody">
-
-// {forms.map(forms => (
-//     <form>
-//         <label>{forms.label}</label><br />
-//         <input type={forms.type} name={forms.name} className={forms.className} value={forms.value} /> <br />
-//     </form>
-// ))}
-{/* <input type="submit" value="Submit" className="SubmitBtn" onClick={this.handleSubmit} /> */ }
-
-//             </body>
-//             <Menu />
-//         </div >
-//     );
-// }
-
 export default Toevoegen;
+
+    // formulier() {
+    //     const [forms] = useState([
+    //         { label: "Voornaam", type: "text", name: "voornaam", className: "Inputfield" },
+    //         { label: "Achternaam", type: "text", name: "achternaam", className: "Inputfield" },
+    //         { label: "Email", type: "email", name: "email", className: "Inputfield" },
+    //         { label: "Spelernummer", type: "number", name: "Spelernummer", className: "Inputfield" }
+    //     ]);
+    //     return (
+    //         forms.map(forms => (
+    //             <form>
+    //                 <label>{forms.label}</label><br />
+    //                 <input type={forms.type} name={forms.name} className={forms.className} onChange={this.updateInput} /> <br />
+    //             </form>
+    //         ))
+    //     )
+    // }
