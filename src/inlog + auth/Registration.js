@@ -70,7 +70,16 @@ class Registreren extends Component {
           </body>
         </header>
 
-        {/* <div className="wrapper2">
+
+      </div >
+    );
+  }
+}
+
+export default Registreren;
+
+
+/* <div className="wrapper2">
           <div className="form-wrapper">
             <h1>Create Account for player</h1>
             <form onSubmit={this.handleSubmit}>
@@ -133,13 +142,7 @@ class Registreren extends Component {
                   onClick={this.handleSubmit}
                 />
                 <a href="/"> Already have an account?</a>
-      //         </div> */}
-      {/* //       </form> */}
-      //     </div > 
-      // </div > * /}
-      // </div > * /}
-    );
-  }
-}
-
-export default Registreren;
+        //       </div> */
+        //  </form>}
+        //   </div > 
+        //  </div > */

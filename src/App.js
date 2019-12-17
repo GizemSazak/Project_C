@@ -57,7 +57,7 @@ function App() {
       <Route exact path="/verslag" component={verslag} />
       <Route exact path="/registreren" component={registreren} />
       <Route exact path="/login" component={Loginpage} />
-      <Route exact path="/test" component={tacktics} />
+      <Route exact path="/tactieken" component={tacktics} />
     </div>
   );
 }
