@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 // import React from "react"
 // import Redirect from "react"
-=======
->>>>>>> a37967ac9ff98471d9826bcfdae40060eaddad85
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -113,10 +110,7 @@ app.post("/api/login", (req, res) => {
                             req.session.email = table.rows[0].email;
                             console.log("Login successed");
                             console.log(req.session.email);
-<<<<<<< HEAD
                             this.props.history.push("/home");
-=======
->>>>>>> a37967ac9ff98471d9826bcfdae40060eaddad85
                         }
                     } catch (err) {
                         console.log("Login not successed")
