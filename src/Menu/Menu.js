@@ -3,6 +3,7 @@ import './Menu.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import { Container, Row, Col } from "react-bootstrap"
 
 function Menu() {
     // Here the values of the buttons are filled in
@@ -18,15 +19,21 @@ function Menu() {
     ]);
 
     return (
-        <nav className="sidebar" >
+
+        <Container className="sidebar d-flex flex-column text-center"  >
             {/* We're making all the buttons and filling the values in by mapping through all buttons */}
             {buttons.map(buttons => (
-                <Link to={buttons.link} className="menu">
-                    <FontAwesomeIcon icon={buttons.icon} />
-                    <br />{buttons.title}
-                </Link>
+                <Row >
+                    <Col className="menu  d-table">
+                        <Link to={buttons.link} className="d-table-cell align-middle text-white">
+                            <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "3vh" }} />
+                            <br />{buttons.title}
+                        </Link>
+                    </Col>
+                </Row>
+
             ))}
-        </nav >
+        </Container>
     )
 }
 
