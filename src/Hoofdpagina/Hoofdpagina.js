@@ -26,7 +26,7 @@ function Hoofdpagina() {
             <br></br>
             <button className="LoginSpeler" type="submit">Login Speler</button>
             <br></br>
-            <Link to="./Registreren"> <button className="RegistrerenBtn" type="submit">Toevoegen</button></Link>
+            <Link to="./Registreren"> <button className="RegistrerenBtn" type="submit">Registreren</button></Link>
         </div>
 
 
