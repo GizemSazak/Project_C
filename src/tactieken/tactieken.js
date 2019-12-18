@@ -6,38 +6,36 @@ import { faCross, faClone } from "@fortawesome/free-solid-svg-icons";
 import { copyFile } from "fs";
 
 
-class App extends Component {
+class tactieken extends Component {
 
-    handlecopy = (e) => {
-        React.cloneElement(this.props.className);
-
-    };
-
-
+    objects=()=>{
+        return (<tbody>
+        <Draggable   ><div className="cross"></div></Draggable>
+        <Draggable ><div className="circle"></div></Draggable>
+        <Draggable ><div className="arrowleft"> </div></Draggable>
+        <Draggable ><div className="arrowup"></div></Draggable>
+        <Draggable  ><div className="arrowright"></div></Draggable>
+        <Draggable  ><div className="arrowdown"></div></Draggable>
+        </tbody>)
+        
+    }
 
     render() {
         return (
             <div className="app">
                 <div className="body" targetKey="dropzone">
                     <div className="boardtools">
-                        <Draggable   >
-                            <div className="cross" onClick={this.handlecopy} >
-                            </div></Draggable>
-                        <Draggable >
-                            <div className="circle">
-                            </div></Draggable>
-                        <Draggable >
-                            <div className="arrowleft">
-                            </div></Draggable>
-                        <Draggable >
-                            <div className="arrowup">
-                            </div></Draggable>
-                        <Draggable  >
-                            <div className="arrowright">
-                            </div></Draggable>
-                        <Draggable  >
-                            <div className="arrowdown">
-                            </div></Draggable>
+                    <this.objects />
+                    <this.objects />
+                    <this.objects />
+                    <this.objects />
+                    <this.objects />
+                    <this.objects />
+                    <this.objects />
+                    <this.objects />
+                    <this.objects />
+                    <this.objects />
+                    
                     </div>
 
                 </div>
@@ -50,7 +48,7 @@ class App extends Component {
 }
 
 
-export default App;
+export default tactieken;
 
 {/* <div className="container">
     <Draggable disabled={disabled} bounds="parent">
