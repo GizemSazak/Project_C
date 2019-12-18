@@ -110,7 +110,6 @@ app.post("/api/login", (req, res) => {
                             req.session.email = table.rows[0].email;
                             console.log("Login successed");
                             console.log(req.session.email);
-                            this.props.history.push("/home");
                         }
                     } catch (err) {
                         console.log("Login not successed")
