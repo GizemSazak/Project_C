@@ -71,7 +71,10 @@ app.post("/api/registratie", (req, res) => {
                                 return res.status(400).send(err);
                             } else {
                                 console.log("INSERTED DATA SUCCESS");
+                                console.log(req.session.email);
+                                var redir = { redirect: "/" };
                                 res.status(201).send({ message: "Data inserted!" });
+                                return res.json(redir);
                             }
                         })
                     }
@@ -110,9 +113,13 @@ app.post("/api/login", (req, res) => {
                             req.session.email = table.rows[0].email;
                             console.log("Login successed");
                             console.log(req.session.email);
+                            var redir = { redirect: "/" };
+                            return res.json(redir);
                         }
                     } catch (err) {
                         console.log("Login not successed")
+                         redir = { redirect: '/login'};
+                        return res.json(redir);
                     }
                 }
 
