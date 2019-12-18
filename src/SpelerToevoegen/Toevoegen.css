@@ -2,9 +2,9 @@
     background-color: transparent;
     overflow: auto;
 }
-.Inputfield{
-    max-width: 250px;
-    padding: 15px;
-    margin: auto;
-    background-color: rgb(255, 255, 255,0.5);
+.Inputfield::placeholder{
+    color:rgb(255, 255, 255,0) ;
+}
+.FormLabel{
+    font-size: 2.2vh;
 }

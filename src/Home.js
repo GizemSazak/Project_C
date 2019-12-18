@@ -3,6 +3,7 @@ import './App.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import { Container, Row, Col } from "react-bootstrap"
 
 function Home() {
 
@@ -17,24 +18,39 @@ function Home() {
     { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
   ]);
 
+
   return (
-    <div className="App">
-      <header>
-      </header>
-      <div className="row" >
-        {/* We're making all the buttons and filling the values in by mapping through all buttons */}
+    <Container className="Background d-flex align-items-end p-0 m-0">
+      <Row>
         {buttons.map(buttons => (
-          <Link to={buttons.link} className="link">
-            <div className="column" onclick={buttons.link}>
-              <FontAwesomeIcon icon={buttons.icon} className="App-logo" />
+          /* We're making all the buttons and filling the values in by mapping through all buttons */
+          <Col className="MenuColumn  d-table">
+            <Link to={buttons.link} className="d-table-cell align-middle text-white" onclick={buttons.link}>
+              <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "5vh" }} />
               <br />{buttons.title}
-            </div>
-          </Link>
+            </Link>
+          </Col>
         ))}
-      </div >
-    </div>
+      </Row>
+    </Container>
   );
 }
+
+{/* <Container className="App">
+<div className="row" > */}
+{/* We're making all the buttons and filling the values in by mapping through all buttons */ }
+{/* {buttons.map(buttons => (
+    <Link to={buttons.link} className="link">
+      <div className="column" onclick={buttons.link}>
+        <FontAwesomeIcon icon={buttons.icon} className="App-logo" />
+        <br />{buttons.title}
+      </div>
+    </Link>
+  ))}
+</div >
+</Container> */}
+
+export default Home;
 
 // function openTab(tabName) {
 //   var i, x;
@@ -44,5 +60,3 @@ function Home() {
 //   }
 //   document.getElementById(tabName).style.display = "block";
 // }
-
-export default Home;

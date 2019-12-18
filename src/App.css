@@ -1,47 +1,32 @@
- /* .App {
-  background: url("bg.png")no-repeat center center fixed;
+.Inputfield{
+  max-width: 250px;
+  margin: auto;
+  background-color: rgb(255, 255, 255,0.5);
+}
+.Background{
+  background-color: green;  
+  background: url("./bg.png")no-repeat center center fixed;
+  height: 100vh;
+  max-width: initial;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-} */
-/*.App-logo{
-  font-size: 7rem;
-  max-width: 10vh;
-  max-height: 10vh;
 }
-.App-link {
-  color: #09d3ac;
-} */
-/* .row{
-  display: grid;  
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-@media (max-width: 600px) {
-  .row {grid-template-columns: 1fr 1fr;}
-  }
-
 /* The grid: Three equal columns that floats next to each other */
-/* .column { 
-  font-size: 1.5rem;
-  padding: 5vh;
+ .MenuColumn { 
   text-align: center;
+  font-size: 1.3vw;
+  height: 25vh;
+  min-width: 24.9vw;
+  max-width: 24.9vw;
   cursor: pointer;
   color: white;
   border: 0.1vh solid black;
   background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.8));
-}  */
-
-/* a:hover{
+} 
+.MenuColumn:hover{
   background-image: radial-gradient(rgb(0, 150, 0,1),rgb(0, 250, 0,1));
-  font-size: 0.95rem;
+  font-size: 5 vw;
   cursor: pointer;
-} */
+}
