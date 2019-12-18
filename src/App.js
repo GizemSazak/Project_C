@@ -16,6 +16,8 @@ import notities_beschrijven from './Notities//notities_beschrijven'
 import registreren from "./inlog + auth/Registration";
 import Loginpage from "./inlog + auth/Login";
 import tacktics from "./tactieken/tactieken";
+import Hoofdpagina from "./Hoofdpagina/Hoofdpagina";
+
 
 function App() {
 
@@ -36,6 +38,8 @@ function App() {
       <Route exact path="/registreren" component={registreren} />
       <Route exact path="/login" component={Loginpage} />
       <Route exact path="/tactieken" component={tacktics} />
+      <Route exact path="/" component={Hoofdpagina} />
+
     </div>
   );
 }
