@@ -1,5 +1,3 @@
-import React from "react"
-import Redirect from "react"
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -110,7 +108,6 @@ app.post("/api/login", (req, res) => {
                             req.session.email = table.rows[0].email;
                             console.log("Login successed");
                             console.log(req.session.email);
-                            return <Redirect to={{ pathname: '/' }} />;
                         }
                     } catch (err) {
                         console.log("Login not successed")
