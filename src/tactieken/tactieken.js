@@ -9,16 +9,21 @@ import { copyFile } from "fs";
 class tactieken extends Component {
 
     objects=()=>{
-        return (<tbody>
+
+        const n = 8; // Or something else
+        return(
+        [...Array(n)].map((e, i) =>
+        <tbody>
         <Draggable   ><div className="cross"></div></Draggable>
         <Draggable ><div className="circle"></div></Draggable>
         <Draggable ><div className="arrowleft"> </div></Draggable>
         <Draggable ><div className="arrowup"></div></Draggable>
         <Draggable  ><div className="arrowright"></div></Draggable>
         <Draggable  ><div className="arrowdown"></div></Draggable>
-        </tbody>)
-        
+        </tbody>
+        ));
     }
+    
 
     render() {
         return (
