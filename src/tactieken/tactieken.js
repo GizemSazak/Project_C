@@ -10,7 +10,7 @@ class tactieken extends Component {
 
     objects=()=>{
 
-        const n = 8; // Or something else
+        const n = 15;
         return(
         [...Array(n)].map((e, i) =>
         <tbody>
@@ -30,17 +30,7 @@ class tactieken extends Component {
             <div className="app">
                 <div className="body" targetKey="dropzone">
                     <div className="boardtools">
-                    <this.objects />
-                    <this.objects />
-                    <this.objects />
-                    <this.objects />
-                    <this.objects />
-                    <this.objects />
-                    <this.objects />
-                    <this.objects />
-                    <this.objects />
-                    <this.objects />
-                    
+                    <this.objects />  
                     </div>
 
                 </div>
