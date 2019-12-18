@@ -39,80 +39,45 @@ class Toevoegen extends Component {
 
     render() {
         return (
-            <div className="Page">
-                <Container>
-                    <Row>
-                        {/* <Col>
-                            <Menu />
-                        </Col> */}
-                        <Col>
-                            <header className="PageHeader">Speler Toevoegen</header>
-                        </Col>
-                        <Col>
-                            <Form className="AddBody">
-                                <FormGroup>
-                                    <label>Voornaam</label>
-                                    <FormControl type="text" placeholder="voornaam" className="Inputfield" onChange={this.updateInput} />
-                                </FormGroup>
-                                <FormGroup>
-                                    <label>Achternaam</label>
-                                    <FormControl type="text" placeholder="achternaam" className="Inputfield" onChange={this.updateInput} />
-                                </FormGroup>
-                                <FormGroup>
-                                    <label>Email</label>
-                                    <FormControl type="email" placeholder="email" className="Inputfield" onChange={this.updateInput} />
-                                </FormGroup>
-                                <FormGroup>
-                                    <label>Spelernummer</label>
-                                    <FormControl type="number" placeholder="spelernummer" className="Inputfield" onChange={this.updateInput} />
-                                </FormGroup>
-                                <input type="submit" value="Opslaan" className="SubmitBtn" onClick={this.handleSubmit} />
-                            </Form>
-                        </Col>
-                    </Row>
-                </Container>
+            <Container className="Page">
+                <Row>
+                    <Col xs={3} sm={1} lg={1} className="bg-primary p-0"><Menu /></Col>
 
-            </div >
+                    <Col xs={9} sm={11} lg={11}>
+                        <Row>
+                            <Col className="text-center text-white my-5">
+                                <h3>Speler Toevoegen</h3>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col>
+                                <Form className="text-center text-white">
+                                    <FormGroup >
+                                        <label >Voornaam</label>
+                                        <FormControl type="text" placeholder="voornaam" className="text-center Inputfield" onChange={this.updateInput} />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <label >Achternaam</label>
+                                        <FormControl type="text" placeholder="achternaam" className="text-center Inputfield" onChange={this.updateInput} />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <label >Email</label>
+                                        <FormControl type="email" placeholder="email" className="text-center Inputfield" onChange={this.updateInput} />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <label >Spelernummer</label>
+                                        <FormControl type="number" placeholder="spelernummer" className="text-center Inputfield" onChange={this.updateInput} />
+                                    </FormGroup>
+                                    <input type="submit" value="Opslaan" className="btn btn-success py-2 px-5 my-2" onClick={this.handleSubmit} />
+                                </Form>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
 
 export default Toevoegen;
-
-{/* <FormGroup>
-                            <FormControl type="submit" className="SubmitBtn" onChange={this.handleSubmit} />
-                        </FormGroup> */}
-{/* <Button className="SubmitBtn" onChange={this.handleSubmit}>Opslaan</Button> */ }
-
-{/* <form>
-                        <label>Voornaam</label><br />
-                        <input type="text" name="voornaam" className="Inputfield" onChange={this.updateInput} /><br />
-
-                        <label>Achternaam</label><br />
-                        <input type="text" name="achternaam" className="Inputfield" onChange={this.updateInput} /><br />
-
-                        <label>Email</label><br />
-                        <input type="email" name="email" className="Inputfield" onChange={this.updateInput} /><br />
-
-                        <label>Spelernummer</label><br />
-                        <input type="number" name="spelernummer" className="Inputfield" onChange={this.updateInput} /><br /><br />
-
-                        <input type="submit" value="Opslaan" className="SubmitBtn" onClick={this.handleSubmit} />
-                    </form> */}
-
-    // formulier() {
-    //     const [forms] = useState([
-    //         { label: "Voornaam", type: "text", name: "voornaam", className: "Inputfield" },
-    //         { label: "Achternaam", type: "text", name: "achternaam", className: "Inputfield" },
-    //         { label: "Email", type: "email", name: "email", className: "Inputfield" },
-    //         { label: "Spelernummer", type: "number", name: "Spelernummer", className: "Inputfield" }
-    //     ]);
-    //     return (
-    //         forms.map(forms => (
-    //             <form>
-    //                 <label>{forms.label}</label><br />
-    //                 <input type={forms.type} name={forms.name} className={forms.className} onChange={this.updateInput} /> <br />
-    //             </form>
-    //         ))
-    //     )
-    // }

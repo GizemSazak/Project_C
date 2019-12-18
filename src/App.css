@@ -1,4 +1,4 @@
-.App {
+ /* .App {
   background: url("bg.png")no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -8,16 +8,16 @@
   display: flex;
   flex-direction: column;
   position: relative;
-}
-.App-logo{
+} */
+/*.App-logo{
   font-size: 7rem;
   max-width: 10vh;
   max-height: 10vh;
 }
 .App-link {
   color: #09d3ac;
-}
-.row{
+} */
+/* .row{
   display: grid;  
   grid-template-columns: 1fr 1fr 1fr 1fr;
   position: fixed;
@@ -30,7 +30,7 @@
   }
 
 /* The grid: Three equal columns that floats next to each other */
-.column { 
+/* .column { 
   font-size: 1.5rem;
   padding: 5vh;
   text-align: center;
@@ -38,10 +38,10 @@
   color: white;
   border: 0.1vh solid black;
   background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.8));
-}
+}  */
 
-a:hover{
+/* a:hover{
   background-image: radial-gradient(rgb(0, 150, 0,1),rgb(0, 250, 0,1));
   font-size: 0.95rem;
   cursor: pointer;
-}
+} */
