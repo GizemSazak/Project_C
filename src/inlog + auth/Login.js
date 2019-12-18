@@ -26,7 +26,7 @@ class Loginpage extends Component {
       .post('http://localhost:3001/api/login', this.state)
       .then(function (response) {
         if (response.data.redirect == '/') {
-            window.location = "./Home"
+            window.location = "/Home"
         } else if (response.data.redirect == '/login'){
             window.location = "/login"
         }

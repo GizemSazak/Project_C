@@ -19,19 +19,24 @@ class Registreren extends Component {
   updateInput(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-
   handleSubmit = e => {
     console.log(this.state)
+    e.preventDefault()
+    const {email, password,firstName,lastName} = this.state;
     axios
       .post('http://localhost:3001/api/registratie', this.state)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+      .then(function (response) {
+        if (response.data.redirect == '/') {
+            window.location = "/login"
+        } else if (response.data.redirect == '/registreren'){
+            window.location = "/registreren"
+        }
+    })
+    .catch(function(error) {
+      window.location = "/registreren"
+    })
+      
   }
-
 
   render() {
     return (

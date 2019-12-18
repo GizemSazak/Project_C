@@ -71,15 +71,15 @@ app.post("/api/registratie", (req, res) => {
                                 return res.status(400).send(err);
                             } else {
                                 console.log("INSERTED DATA SUCCESS");
-                                console.log(req.session.email);
                                 var redir = { redirect: "/" };
-                                res.status(201).send({ message: "Data inserted!" });
                                 return res.json(redir);
                             }
                         })
                     }
                     catch (err) {
                         console.log("INSERTED DATA NOT SUCCESSED");
+                       var redir = { redirect: '/registreren'};
+                        return res.json(redir);
                     }
                 }
             }
@@ -197,7 +197,6 @@ app.get('/api/notities', (req, res) => {
                 return res.status(400).send(err);
             }
             return res.status(200).send(table.rows);
-            console.log(table.rows)
         });
     });
 });
