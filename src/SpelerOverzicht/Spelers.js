@@ -56,17 +56,15 @@ function SpelerOverzicht() {
     return (
         <Row className="align-content-start" style={{ height: '90%' }} >
             {posts.map(post =>
-                <Col>
-                    <CardDeck>
-                        <Card className="m-1 border-dark " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }}>
-                            <Card.Header style={{ backgroundColor: 'rgb(0, 140, 0,0.9)', padding: '4%' }}>{/* Positie */}</Card.Header>
-                            <Card.Body style={{ backgroundColor: 'rgb(0, 110, 0,0.8)', padding: '4%' }}>
-                                Rugnummer:<br />
-                                {post.spelernummer}
-                            </Card.Body>
-                            <Card.Footer style={{ backgroundColor: 'rgb(0, 140, 0,0.9)', padding: '4%' }}>{post.voornaam} {post.achternaam}</Card.Footer>
-                        </Card>
-                    </CardDeck>
+                <Col className="m-1 " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }}>
+                    <Card className="border-dark " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }}>
+                        <Card.Header style={{ backgroundColor: 'rgb(0, 140, 0,0.9)', padding: '4%' }}>{/* Positie */}</Card.Header>
+                        <Card.Body style={{ backgroundColor: 'rgb(0, 110, 0,0.8)', padding: '4%' }}>
+                            Rugnummer:<br />
+                            {post.spelernummer}
+                        </Card.Body>
+                        <Card.Footer style={{ backgroundColor: 'rgb(0, 140, 0,0.9)', padding: '4%' }}>{post.voornaam} {post.achternaam}</Card.Footer>
+                    </Card>
                 </Col>
             )}
         </Row >
