@@ -351,4 +351,3 @@ render() {
 
 
 export default Agenda;
-//link: https://github.com/rajeshpillai/youtube-react-calendar
