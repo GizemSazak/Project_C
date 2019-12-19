@@ -38,32 +38,61 @@ class Loginpage extends Component {
   }
 
 
-  render() {
-    return (
-      <div className="Page">
-        <header className="wrapper">
-          <body className="form-wrapper">
-            <h1 className="login-header">Login</h1>
-            <form className="inlogform">
+  // render() {
+  //   return (
+//       <div className="Page">
+//         <header className="wrapper">
+//           <body className="form-wrapper">
+//             <h1 className="login-header">Login</h1>
+//             <form className="inlogform">
 
-              <div className="email">
-                <label htmlFor="email">Email</label>
-                <input classname="inputt" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
-              </div>
+//               <div className="email">
+//                 <label htmlFor="email">Email</label>
+//                 <input classname="inputt" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
+//               </div>
 
-              <div className="password">
-                <label htmlFor="password">Password</label>
-                <input classname="" placeholder="Password" type="password" name="password" onChange={this.updateInput} />
-              </div>
+//               <div className="password">
+//                 <label htmlFor="password">Password</label>
+//                 <input classname="inputt" placeholder="Password" type="password" name="password" onChange={this.updateInput} />
+//               </div>
 
-              <div className="createAccount">
-                <input classname="inputt" type="submit" value="Submit" onClick={this.handleSubmit} />
-                <a href="/registreren"> Already have an account?</a>
-              </div>
-            </form>
-          </body>
-        </header>
-      </div >
+//               <div className="createAccount">
+//                 <input classname="inputt" type="submit" value="Submit" onClick={this.handleSubmit} />
+//                 <a href="/registreren"> Already have an account?</a>
+//               </div>
+//             </form>
+//           </body>
+//         </header>
+//       </div >
+//     );
+//   }
+// }
+
+render() {
+  return (
+    <div className= "HoofdpaginaImage">
+     <h1 className="login-header">Login - Tranier</h1>
+     <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            onChange={this.updateInput}
+      />
+      <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Wachtwoord"
+            onChange={this.updateInput}
+      />
+       <input 
+       id="loginbutton"
+        type="submit" 
+        value="Login" 
+        onClick={this.handleSubmit} 
+      />
+  </div>  
     );
   }
 }
