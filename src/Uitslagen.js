@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Uitslagen.css';
-import Check from './Menu/Menu';
+import Menu from './Menu/Menu';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 
@@ -54,7 +54,7 @@ function Uitslagen() {
 
                 <Link to="/uitslagtoevoegen"><button className="addbutton">+</button></Link>
             </div>
-            <Check />
+            <Menu />
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -26,7 +26,7 @@ function oefening_10() {
           <li>De bal moet langs alle pionnen gaan alvorens de ontvangende speler de bal mag aannemen.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 

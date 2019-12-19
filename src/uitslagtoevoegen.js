@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Uitslagen.css';
-import Check from './Menu/Check';
+import Menu from './Menu/Menu';
 import { Link } from 'react-router-dom';
 
 class uitslagtoevoegen extends Component {
@@ -64,7 +64,7 @@ class uitslagtoevoegen extends Component {
 
           </div>
         </div>
-        <Check />
+        <Menu />
       </div>
 
     )

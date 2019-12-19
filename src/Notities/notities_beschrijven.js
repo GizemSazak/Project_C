@@ -1,5 +1,5 @@
 // import React from 'react'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 import './notities_beschrijven.css'
 import '../App.css'
 import trash from './trash.svg' // Tell Webpack this JS file uses this image
@@ -71,7 +71,7 @@ class notities_beschrijven extends Component {
                     </Link>
                 </div>
                 <Link to="./Notities" onClick={this.forceUpdate}><img src={trash} onClick={() => this.Notities_Verwijderen()} className="trash" alt='' /></Link>
-                <Check />
+                <Menu />
             </div>
         );
     }

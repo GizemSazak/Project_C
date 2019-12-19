@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Uitslagen.css';
-import Check from './Menu/Check';
+import Menu from './Menu/Menu';
 import { Link } from 'react-router-dom';
 import trashimg from './trash.png'
 
@@ -73,7 +73,7 @@ class verslagen extends Component {
                     </Link>
                 </div>
                 <Link to="./Uitslagen" onClick={this.forceUpdate}><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick={() => this.Verwijderen()} className="trashbutton" alt='' /></Link>
-                <Check />
+                <Menu />
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -24,7 +24,7 @@ function oefening_8() {
           <li>Er moet 2 x heen en terug worden gesprint alvorens de volgende speler mag.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 

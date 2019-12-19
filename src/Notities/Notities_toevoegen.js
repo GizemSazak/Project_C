@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Notities_toevoegen.css'
 import '../App.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 import trash from './trash.svg' // Tell Webpack this JS file uses this image
 export default class Notities_toevoegen extends Component {
@@ -67,7 +67,7 @@ export default class Notities_toevoegen extends Component {
           <Link to="./Notities" onClick={this.forceUpdate} > <button className="opslaan" type="submit" onClick={() => this.Notities_toevoegen()}>Toevoegen</button></Link>
           <Link to="./Notities"> <img src={trash} className="trash2" alt='' /></Link>
         </form>
-        <Check />
+        <Menu />
       </div>
     )
   }

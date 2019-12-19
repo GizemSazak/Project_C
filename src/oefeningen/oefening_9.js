@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -22,7 +22,7 @@ function oefening_9() {
           <li>De speler die het laatste in het vierkant is moet een rondje om het totale speelveld sprinten.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 

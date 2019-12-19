@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -23,7 +23,7 @@ function oefening_4() {
           <li>De aanvallers moeten scoren op het grote doel en de verdedigers op de 2 kleine plondoeltjes.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 

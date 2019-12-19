@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
 import Menu from '../Menu/Menu'
-import { Container, Row, Col, Button, Card, CardDeck } from "react-bootstrap"
+import { Container, Row, Col, Button, Card } from "react-bootstrap"
 
 class Spelers extends Component {
 

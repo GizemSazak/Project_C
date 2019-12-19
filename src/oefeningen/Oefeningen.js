@@ -1,6 +1,6 @@
 import React from 'react';
 import './Oefeningen.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 
 
@@ -9,7 +9,7 @@ function Oefeningen() {
     return (
         <div className='App'>
             <h1 className='titleOefeningen'>Oefeningen</h1>
-            <Check />
+            <Menu />
             <div class="roww">
                 <div class="columnn">
                     <Link to="/oefening_1" >

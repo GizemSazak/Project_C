@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -24,7 +24,7 @@ function oefening_5() {
           <li>Als de keeper op de lijn staat te keepen dan kun je ook hoog inschieten.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 

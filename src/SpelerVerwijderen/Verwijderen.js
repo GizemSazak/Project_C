@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
-import './Verwijderen.css'
 import Menu from '../Menu/Menu'
+import { Container, Row, Col, Card } from "react-bootstrap"
 
 class SpelerVerwijderen extends Component {
     constructor(props) {
@@ -30,26 +30,22 @@ class SpelerVerwijderen extends Component {
         }, [])
 
         return (
-            <body className="Body">
-
+            <Row className="align-content-start" style={{ height: '90%' }} >
                 {posts.map(post =>
-                    <div onClick={() => this.Delete(post.voornaam, post.achternaam)}>
-                        <div className="CardHeader">Positie</div>
-
-                        <div className="CardBody" style={{ fontSize: '1.5rem' }}>
-                            Rugnummer:<br />
-                            {post.spelernummer}
-                        </div>
-
-                        <div className="CardBottom">
-                            {post.voornaam} {post.achternaam}
-                        </div>
-                    </div>
+                    <Col className="m-1 " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }} onClick={() => this.Delete(post.voornaam, post.achternaam)}>
+                        <Card className="border-dark " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }} >
+                            <Card.Header style={{ backgroundColor: 'rgb(0, 140, 0,0.9)', padding: '4%' }}>{/* Positie */}</Card.Header>
+                            <Card.Body style={{ backgroundColor: 'rgb(0, 110, 0,0.8)', padding: '4%' }}>
+                                Rugnummer:<br />
+                                {post.spelernummer}
+                            </Card.Body>
+                            <Card.Footer style={{ backgroundColor: 'rgb(0, 140, 0,0.9)', padding: '4%' }}>{post.voornaam} {post.achternaam}</Card.Footer>
+                        </Card>
+                    </Col>
                 )}
-            </body>
+            </Row >
         )
     }
-    // onClick={() => this.Delete(voornaam, achternaam)}
 
     Delete(Name, LastName) {
 
@@ -66,16 +62,26 @@ class SpelerVerwijderen extends Component {
 
     render() {
         return (
-            <div className="Page">
-                <header className="PageHeader">
-                    Speler Verwijderen<br /><br />
-                    <p className="BodyHeader">Kies een speler om te verwijderen</p>
-                </header>
+            <Container className="Background">
+                <Row>
+                    <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
 
-                <this.Spelers />
+                    <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white text-center">
+                        {/* Page Header */}
+                        <Row>
+                            <Col className="py-5">
+                                <h4>Spelers</h4><br />
+                                Kies een speler om te verwijderen
+                            </Col>
+                        </Row>
 
-                <Menu />
-            </div>
+                        {/* Page Body */}
+                        <Row className="Body pt-4 p-2">
+                            <this.Spelers />
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }

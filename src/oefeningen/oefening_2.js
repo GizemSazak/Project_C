@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -27,7 +27,7 @@ function oefening_2() {
           <li>Als de keeper de bal vangt moeten de aanvallers gelijk weglopen bij de goel naar het middenveld.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 

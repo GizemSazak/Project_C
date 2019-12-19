@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -22,7 +22,7 @@ function oefening_12() {
           <li>Span altijd je arm spieren aan en beweeg je hoofd nchting de bal.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 

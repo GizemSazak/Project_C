@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -24,7 +24,7 @@ function oefening_7() {
           <li>Je mag pas overlopen op het fluitsignaal van de trainer.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -24,7 +24,7 @@ function oefening_6() {
           <li>Een andere speler mag pas beginnen als de eerste speler zijn bal heeft weggepakt.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 

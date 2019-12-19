@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 function oefening_1() {
   return (
@@ -28,7 +28,7 @@ function oefening_1() {
           <li>Gebruik bij het afschermen van de bal je lichaam goed.</li>
         </ol>
       </div>
-      <Check />
+      <Menu />
     </div>
   );
 

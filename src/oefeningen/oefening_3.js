@@ -1,6 +1,6 @@
 import React from 'react';
 import './oefening_1.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 
 
 
@@ -25,7 +25,7 @@ function oefening_3() {
           Als dit niet wordt gedaan is het een vrije bal voor de tegenpartij. </li>
         </ol>
       </div>
-      <Check />
+      <Menu />
 
     </div>
 
