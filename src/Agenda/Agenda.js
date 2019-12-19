@@ -6,6 +6,7 @@ import 'react-day-picker/lib/style.css';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
+
 class Agenda extends Component {
   state = {
     dateContext: moment(),
@@ -212,7 +213,6 @@ GetAgenda = () => {
  
                     <tbody>
                     <tr >
-                        <th className="columnAgenda">Datum</th>
                         <th className="columnAgenda">Starttijd</th>
                         <th className="columnAgenda">Eindtijd</th>
                         <th className="columnAgenda">Beschrijving</th>
@@ -222,9 +222,6 @@ GetAgenda = () => {
             return (<Link className="linkk" to={{ pathname: "./Agenda_Bewerken", id: post.id, datum: post.dag, starttijd: post.starttijd, eindtijd: post.eindtijd, beschrijving: post.beschrijving}}>
                 <tbody>
                 <tr key={id} >
-                     <td className="columnAgenda">
-                        {post.dag}
-                    </td>
                     <td className="columnAgenda">
                         {post.starttijd}
                     </td>

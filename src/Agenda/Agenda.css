@@ -181,7 +181,7 @@ tr {
  .tableAgenda {
     position:absolute; /*it can be fixed too*/
     margin-right: 50vh;
-    margin-left:10vh;
+    margin-left:15vh;
     margin-top: 10vh;
     font-size: 5vh;
     text-align: center;
