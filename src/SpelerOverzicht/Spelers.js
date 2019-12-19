@@ -1,71 +1,49 @@
-// Responsive
-// Speler Verwijderen hier in toevoegen
 import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
-import './Spelers.css'
 import Menu from '../Menu/Menu'
-import { Container, Row, Col, Form, FormGroup, FormControl } from "react-bootstrap"
+import { Container, Row, Col, Button, Card, CardDeck } from "react-bootstrap"
 
 class Spelers extends Component {
 
     render() {
         return (
             <Container className="Background">
-                <Row>
-                    <Col xs={3} sm={1} lg={1} className="bg-primary p-0"><Menu /></Col>
+                <Row >
+                    {/* Menu */}
+                    <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
 
-                    <Col xs={9} sm={11} lg={11}>
+                    <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white text-center">
+                        {/* Page Header */}
                         <Row>
-                            <Col className="text-center text-white my-5">
-                                <h4>Spelers</h4>
-                            </Col>
+                            <Col className="py-5"><h4>Spelers</h4></Col>
                         </Row>
-
-                        <Row>
+                        {/* Page Body */}
+                        <Row className="Body pt-4 p-2">
                             <Col>
                                 <SpelerOverzicht />
 
-                                <a href="../SpelerToevoegen/Toevoegen">
-                                    <button className="btnAddPlayer">+</button>
-                                </a>
-
-                                <a href="../SpelerVerwijderen/Verwijderen">
-                                    <button className="btnDeletePlayer">-</button>
-                                </a>
+                                <Row className="align-items-end " style={{ height: '10%' }}>
+                                    <Col >
+                                        <Button variant="success" className="m-1 border-dark" href="../SpelerToevoegen/Toevoegen" >Toevoegen</Button>
+                                        <Button variant="danger" className="border-dark" href="../SpelerVerwijderen/Verwijderen">Verwijderen</Button>
+                                    </Col>
+                                </Row>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
             </Container>
-
-            // <div className="Page">
-            //     <header className="PageHeader">Spelers</header>
-
-            //     <SpelerOverzicht />
-
-            //     <a href="../SpelerToevoegen/Toevoegen">
-            //         <button className="btnAddPlayer">+</button>
-            //     </a>
-
-            //     <a href="../SpelerVerwijderen/Verwijderen">
-            //         <button className="btnDeletePlayer">-</button>
-            //     </a>
-            //     <Menu />
-            // </div>
-
         )
     }
 }
 
 function SpelerOverzicht() {
-
     // const [spelers] = useState([
     //     { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
     //     { link: "openTab('b1');", title: "Notities", icon: faStickyNote }
     // ]);
 
     const [posts, setPosts] = useState([])
-
     useEffect(() => {
         axios.get('http://localhost:3001/api/speler')
             .then(res => {
@@ -76,23 +54,22 @@ function SpelerOverzicht() {
     }, []);
 
     return (
-        <body className="Body">
-
+        <Row className="align-content-start" style={{ height: '90%' }} >
             {posts.map(post =>
-                <div >
-                    <div className="CardHeader">{/* Positie */}</div>
-
-                    <div className="CardBody" style={{ fontSize: '1.5rem' }}>
-                        Rugnummer:<br />
-                        {post.spelernummer}
-                    </div>
-
-                    <div className="CardBottom">
-                        {post.voornaam} {post.achternaam}
-                    </div>
-                </div>
+                <Col>
+                    <CardDeck>
+                        <Card className="m-1 border-dark " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }}>
+                            <Card.Header style={{ backgroundColor: 'rgb(0, 140, 0,0.9)', padding: '4%' }}>{/* Positie */}</Card.Header>
+                            <Card.Body style={{ backgroundColor: 'rgb(0, 110, 0,0.8)', padding: '4%' }}>
+                                Rugnummer:<br />
+                                {post.spelernummer}
+                            </Card.Body>
+                            <Card.Footer style={{ backgroundColor: 'rgb(0, 140, 0,0.9)', padding: '4%' }}>{post.voornaam} {post.achternaam}</Card.Footer>
+                        </Card>
+                    </CardDeck>
+                </Col>
             )}
-        </body >
+        </Row >
     );
 }
 export default Spelers;

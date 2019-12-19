@@ -14,6 +14,17 @@
   background-size: cover;
   overflow: hidden;
 }
+.Body{
+  height: 80vh;
+  background-color: rgb(128, 128, 128,0.8);
+  border: 1px solid black;
+  overflow: auto;
+    /* display: grid;
+  grid-template-columns: auto auto auto auto;*/
+}
+
+/* hoofd Menu */
+
 /* The grid: Three equal columns that floats next to each other */
  .MenuColumn { 
   text-align: center;
