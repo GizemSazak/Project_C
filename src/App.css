@@ -12,14 +12,14 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  overflow: hidden;
 }
 /* The grid: Three equal columns that floats next to each other */
  .MenuColumn { 
   text-align: center;
   font-size: 1.3vw;
   height: 25vh;
-  min-width: 24.9vw;
-  max-width: 24.9vw;
+  min-width: 25.2vw;
   cursor: pointer;
   color: white;
   border: 0.1vh solid black;
@@ -27,6 +27,7 @@
 } 
 .MenuColumn:hover{
   background-image: radial-gradient(rgb(0, 150, 0,1),rgb(0, 250, 0,1));
-  font-size: 5 vw;
-  cursor: pointer;
+}
+.Logo{
+  height:50vh;
 }

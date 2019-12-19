@@ -4,26 +4,54 @@ import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
 import './Spelers.css'
 import Menu from '../Menu/Menu'
-
+import { Container, Row, Col, Form, FormGroup, FormControl } from "react-bootstrap"
 
 class Spelers extends Component {
 
     render() {
         return (
-            <div className="Page">
-                <header className="PageHeader">Spelers</header>
+            <Container className="Background">
+                <Row>
+                    <Col xs={3} sm={1} lg={1} className="bg-primary p-0"><Menu /></Col>
 
-                <SpelerOverzicht />
+                    <Col xs={9} sm={11} lg={11}>
+                        <Row>
+                            <Col className="text-center text-white my-5">
+                                <h4>Spelers</h4>
+                            </Col>
+                        </Row>
 
-                <a href="../SpelerToevoegen/Toevoegen">
-                    <button className="btnAddPlayer">+</button>
-                </a>
+                        <Row>
+                            <Col>
+                                <SpelerOverzicht />
 
-                <a href="../SpelerVerwijderen/Verwijderen">
-                    <button className="btnDeletePlayer">-</button>
-                </a>
-                <Menu />
-            </div>
+                                <a href="../SpelerToevoegen/Toevoegen">
+                                    <button className="btnAddPlayer">+</button>
+                                </a>
+
+                                <a href="../SpelerVerwijderen/Verwijderen">
+                                    <button className="btnDeletePlayer">-</button>
+                                </a>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
+
+            // <div className="Page">
+            //     <header className="PageHeader">Spelers</header>
+
+            //     <SpelerOverzicht />
+
+            //     <a href="../SpelerToevoegen/Toevoegen">
+            //         <button className="btnAddPlayer">+</button>
+            //     </a>
+
+            //     <a href="../SpelerVerwijderen/Verwijderen">
+            //         <button className="btnDeletePlayer">-</button>
+            //     </a>
+            //     <Menu />
+            // </div>
 
         )
     }

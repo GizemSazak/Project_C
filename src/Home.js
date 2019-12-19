@@ -3,7 +3,8 @@ import './App.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Image } from "react-bootstrap"
+import logo from './logo.jpg'
 
 function Home() {
 
@@ -18,10 +19,14 @@ function Home() {
     { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
   ]);
 
-
   return (
-    <Container className="Background d-flex align-items-end p-0 m-0">
-      <Row>
+    <Container className="Background d-flex flex-column justify-content-end p-0 m-0">
+      <Row className="text-center  d-table" >
+        <Col className="Logo d-table-cell align-middle ">
+          <Image src={logo} alt="Logo" className="h-50"></Image>
+        </Col>
+      </Row>
+      <Row >
         {buttons.map(buttons => (
           /* We're making all the buttons and filling the values in by mapping through all buttons */
           <Col className="MenuColumn  d-table">
@@ -36,27 +41,4 @@ function Home() {
   );
 }
 
-{/* <Container className="App">
-<div className="row" > */}
-{/* We're making all the buttons and filling the values in by mapping through all buttons */ }
-{/* {buttons.map(buttons => (
-    <Link to={buttons.link} className="link">
-      <div className="column" onclick={buttons.link}>
-        <FontAwesomeIcon icon={buttons.icon} className="App-logo" />
-        <br />{buttons.title}
-      </div>
-    </Link>
-  ))}
-</div >
-</Container> */}
-
 export default Home;
-
-// function openTab(tabName) {
-//   var i, x;
-//   x = document.getElementsByClassName("containerTab");
-//   for (i = 0; i < x.length; i++) {
-//     x[i].style.display = "none";
-//   }
-//   document.getElementById(tabName).style.display = "block";
-// }
