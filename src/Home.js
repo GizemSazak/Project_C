@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 function Home() {
 
   const [buttons] = useState([
-    { link: "./Agenda", title: "Agenda", icon: faCalendar },
+    { link: "openTab('b1');", title: "Agenda", icon: faCalendar },
     { link: "./Notities", title: "Notities", icon: faStickyNote },
     { link: "./Spelers", title: "Spelers", icon: faUsers },
     { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },

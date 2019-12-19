@@ -383,106 +383,6 @@ app.put('/api/wedstrijduitslag', (req, res) => {
         );
     });
 });
-// View Agenda
-app.get('/api/agenda', (req, res) => {
-    pool.connect((err, db, done) => {
-        if (err) {
-            return res.status(400).send(err);
-        }
-        db.query('SELECT * from agenda order by id DESC', (err, table) => {
-            done();
-            if (err) {
-                return res.status(400).send(err);
-            }
-            return res.status(200).send(table.rows);
-            console.log(table.rows)
-        });
-        
-    });
-});
-// Insert Agenda
-app.post('/api/agenda', (req, res) => {
-    console.log(req.body);
-    const beschrijving = req.body.beschrijving;
-    const starttijd = req.body.starttijd;
-    const eindtijd = req.body.eindtijd;
-    const dag = req.body.dag;
-
-    const values = [ beschrijving, starttijd, eindtijd, dag];
-
-    pool.connect((err, db, done) => {
-        if (err) {
-            console.log(err + 'eerste');
-            return res.status(400).send(err);
-        }
-
-        db.query(
-            'INSERT INTO agenda (beschrijving, starttijd, eindtijd, dag) VALUES($1, $2, $3, $4)',
-            [beschrijving, starttijd, eindtijd, dag],
-            err => {
-                if (err) {
-                    console.log(err + 'tweede');
-                    return res.status(400).send(err);
-                }
-
-                console.log('INSERTED DATA SUCCESS');
-
-                res.status(201).send({ message: 'Data inserted!' });
-            }
-        );
-    });
-});
-
-// Update agenda
-app.put('/api/Agenda', (req, res) => {
-    console.log(req.body);
-    const id = req.body.id;
-    const dag = req.body.dag;
-    const starttijd = req.body.starttijd;
-    const eindtijd = req.body.eindtijd;
-    const beschrijving = req.body.beschrijving;
-    pool.connect((err, db, done) => {
-        done();
-        if (err) {
-            console.log(err + 'eerste');
-            return res.status(400).send(err);
-        }
-
-        db.query(
-            'UPDATE agenda SET dag = $2,  starttijd = $3,  eindtijd = $4,  beschrijving = $5 WHERE id = $1',
-            [id, dag, starttijd, eindtijd, beschrijving],
-            err => {
-                if (err) {
-                    console.log(err + 'tweede');
-                    return res.status(400).send(err);
-                }
-                console.log('Update DATA SUCCESS');
-                res.status(201).send({ message: 'Data updated!' });
-            }
-        );
-    });
-});
-
-// Delete agenda
-app.delete('/api/agenda', (req, res) => {
-    console.log(req.body);
-    const id = req.body.id;
-
-    pool.connect((err, db, done) => {
-        if (err) {
-            console.log(err + 'eerste');
-            return res.status(400).send(err);
-        }
-
-        db.query('DELETE FROM agenda WHERE id = $1',
-        [id], err => {
-            if (err) {
-                console.log(err + 'tweede');
-                return res.status(400).send(err);
-            }
-
-            console.log('Delete DATA SUCCESS');
-            console.log(id);
 
 // View Oefeningen
 app.get('/api/oefeningen', (req, res) => {
@@ -502,11 +402,6 @@ app.get('/api/oefeningen', (req, res) => {
     });
 });
 
-            res.status(201).send({ message: 'Data deleted!' });
-        }
-        );
-    });
-});
 
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 

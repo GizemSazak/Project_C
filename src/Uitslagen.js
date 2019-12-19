@@ -29,7 +29,7 @@ function Uitslagen() {
                         <th id="HtableR" >Stand</th>
                         <th id="HtableR" >Uit</th>
                     </tr>
-                    </tbody>
+                </tbody>
                 {posts.map(function (post, id) {
                     return (<Link className="linkk" to={{ pathname: "/verslag", id: post.id, verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
 
@@ -51,6 +51,7 @@ function Uitslagen() {
                     </Link>
                     )
                 })}
+
                 <Link to="/uitslagtoevoegen"><button className="addbutton">+</button></Link>
             </div>
             <Check />
