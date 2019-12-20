@@ -11,6 +11,7 @@
     "bcrypt": "^3.0.7",
     "browser-history": "^1.0.1",
     "cors": "^2.8.5",
+    "custom-id": "^1.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "morgan": "^1.9.1",
@@ -33,6 +34,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-svg": "^10.0.25",
+    "shortid": "^2.2.15",
     "styled-components": "^5.0.0-regexrehydrate"
   },
   "scripts": {

@@ -12,6 +12,9 @@ const session = require('express-session');
 var hash = Password.hash("password123");
 const bcrypt = require('bcrypt');
 const PORT = 3001;
+var customId = require("custom-id");
+customId({});
+// const shortid = require('shortid');
 
 
 const pool = new pg.Pool({
@@ -64,10 +67,11 @@ app.post("/api/registratie", (req, res) => {
                     console.log("Email Already exist ");
                     // Already exist 
                 } else {
-                    // short_id = make short id
+                    var teamcode = customId({});
+                    // console.log(customId({}));
                     try {
                         hash = Password.hash(password);
-                        db.query("INSERT INTO registratie (email, password, firstname, lastname) VALUES($1, $2, $3, $4)", [email, hash, firstname, lastname], function (err, insert) {
+                        db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname,teamcode], function (err, insert) {
                             if (err) {
                                 return res.status(400).send(err);
                             } else {
@@ -130,6 +134,48 @@ app.post("/api/login", (req, res) => {
     });
 });
 
+//Speler login
+// app.post("/api/login", (req, res) => {
+//     pool.connect((err, db, done) => {
+//         if (err) {
+//             return res.status(400).send(err);
+//         }
+//         const email = req.body.email;
+//         const password = req.body.password;
+//         console.log(email);
+
+//         db.query(
+//             "SELECT * from registratie where email = $1", [email],
+//             (err, table) => {
+//                 done();
+//                 if (err) {
+//                     return res.status(400).send(err);
+//                 }
+//                 else {
+//                     if (err) {
+//                         return res.status(400).send(err);
+//                     }
+//                     try {
+//                         if (Password.verify(password, table.rows[0].password)) {
+//                             req.session.id = table.rows[0].id;
+//                             req.session.email = table.rows[0].email;
+//                             console.log("Login successed");
+//                             console.log(req.session.email);
+//                             var redir = { redirect: "/" };
+//                             return res.json(redir);
+//                         }
+//                     } catch (err) {
+//                         console.log("Login not successed")
+//                          redir = { redirect: '/login'};
+//                         return res.json(redir);
+//                     }
+//                 }
+
+//                 return res.status(200).send(table.rows);
+//             }
+//         );
+//     });
+// });
 
 app.get('/api/speler', (req, res) => {
     pool.connect((err, db, done) => {
