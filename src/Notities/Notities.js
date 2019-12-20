@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { Container, Row, Col, Button } from "react-bootstrap"
 
-
 function Notities() {
 
     const [posts, setPosts] = useState([])
@@ -20,43 +19,42 @@ function Notities() {
     }, []);
 
     return (
-        <Container className="Background">
+        <Container className="Background text-center">
             <Row>
                 {/* Menu */}
                 <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
 
-                <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white text-center">
+                <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white">
                     {/* Page Header */}
                     <Row>
                         <Col className="py-5"><h4>Notities</h4></Col>
                     </Row>
                     {/* Page Body */}
-                    <Row className="Body pt-4 p-2">
+                    <Row className="Body pt-4 p-2 ">
+                        <Col>
+                            <Row style={{ height: '13%' }}>
+                                <Col>
+                                    <Button className="btn btn-success p-2 my-2 border-dark" href="./Notities_toevoegen">Notities Toevoegen</Button>
+                                </Col>
+                            </Row>
 
+                            <Row className="h-90% flex-column align-content-center" style={{ height: '87%' }}>
+                                {posts.map(function (post, id) {
+                                    return (
+                                        <Col className="m-1 Not">
+                                            <Link refresh="true" to={{ pathname: "/Notities_beschrijven", id: post.id, titel: post.titel, notitie: post.notitie }}>
+                                                <Button className="Notitie text-white p-2 border-dark"> {post.titel} </Button>
+                                            </Link>
+                                        </Col>
+                                    )
+                                })}
+                            </Row>
+
+                        </Col>
                     </Row>
                 </Col>
             </Row>
         </Container>
-        // <div >
-        //     <h1 >Notities</h1>
-        //     <div className="column1"></div>
-        //     <a id="Toevoegencolor" href="./Notities_toevoegen">
-        //         <button id="Toevoegen" type="button">Notities Toevoegen</button>
-        //     </a>
-        //     <div className="tablerow" >
-        //         {posts.map(function (post, id) {
-        //             return (<Link refresh="true" className="linkk" to={{ pathname: "/Notities_beschrijven", id: post.id, titel: post.titel, notitie: post.notitie }}>
-        //                 <button id="rowss" >
-        //                     {post.titel}
-        //                 </button>
-        //             </Link>
-        //             )
-        //         })}
-        //     </div>
-        //     <Menu />
-        // </div>
     );
 }
 export default Notities;
-
-
