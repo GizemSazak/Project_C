@@ -64,6 +64,7 @@ app.post("/api/registratie", (req, res) => {
                     console.log("Email Already exist ");
                     // Already exist 
                 } else {
+                    // short_id = make short id
                     try {
                         hash = Password.hash(password);
                         db.query("INSERT INTO registratie (email, password, firstname, lastname) VALUES($1, $2, $3, $4)", [email, hash, firstname, lastname], function (err, insert) {

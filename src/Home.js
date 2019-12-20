@@ -3,6 +3,7 @@ import './App.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+// import { browserhistory } from 'react-router'; 
 
 function Home() {
 
@@ -32,7 +33,10 @@ function Home() {
           </Link>
         ))}
       </div >
+      <button id="logout" name="logout" value="submit"  onClick={()=> logout()}>Uitloggen</button>
+
     </div>
+    
   );
 }
 
@@ -44,5 +48,12 @@ function Home() {
 //   }
 //   document.getElementById(tabName).style.display = "block";
 // }
+function logout() {
+  // sessionStorage.clear();
+  localStorage.clear();
+  sessionStorage.clear();
+  window.location.href = '/';
+  window.history.replaceState(null, null, "/");
 
+}
 export default Home;
