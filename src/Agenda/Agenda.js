@@ -219,7 +219,7 @@ GetAgenda = () => {
                     </tr>
                     </tbody>
   {filterdatum.map(function (post, id) {
-            return (<Link className="linkk" to={{ pathname: "./Agenda_Bewerken", id: post.id, datum: post.dag, starttijd: post.starttijd, eindtijd: post.eindtijd, beschrijving: post.beschrijving}}>
+            return (<Link className="linkk" to={{ pathname: "./Agenda/Agenda_Bewerken", id: post.id, datum: post.dag, starttijd: post.starttijd, eindtijd: post.eindtijd, beschrijving: post.beschrijving}}>
                 <tbody>
                 <tr key={id} >
                     <td className="columnAgenda">
@@ -337,7 +337,7 @@ render() {
             </table>
         </div>
         <this.GetAgenda />
-        <Link to={{ pathname: "/Agenda_Toevoegen", dag: this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}}><button className="addbutton2">+</button></Link>
+        <Link to={{ pathname: "./Agenda/Agenda_Toevoegen", dag: this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}}><button className="addbutton2">+</button></Link>
         </div>
         
         <Check />

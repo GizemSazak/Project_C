@@ -17,6 +17,9 @@ import registreren from "./inlog + auth/Registration";
 import Loginpage from "./inlog + auth/Login";
 import tacktics from "./tactieken/tactieken";
 import Hoofdpagina from "./Hoofdpagina/Hoofdpagina";
+import Agenda from "./Agenda/Agenda"
+import Agenda_Toevoegen from "./Agenda/Agenda_Toevoegen"
+import Agenda_Bewerken from "./Agenda/Agenda_Bewerken"
 
 
 function App() {
@@ -39,6 +42,9 @@ function App() {
       <Route exact path="/login" component={Loginpage} />
       <Route exact path="/tactieken" component={tacktics} />
       <Route exact path="/" component={Hoofdpagina} />
+      <Route exact path="/Agenda" component={Agenda} />
+      <Route exact path="/Agenda/Agenda_Toevoegen" component={Agenda_Toevoegen} />
+      <Route exact path="/Agenda/Agenda_Bewerken" component={Agenda_Bewerken} />
 
     </div>
   );
