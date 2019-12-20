@@ -135,47 +135,47 @@ app.post("/api/login", (req, res) => {
 });
 
 //Speler login
-// app.post("/api/login", (req, res) => {
-//     pool.connect((err, db, done) => {
-//         if (err) {
-//             return res.status(400).send(err);
-//         }
-//         const email = req.body.email;
-//         const password = req.body.password;
-//         console.log(email);
+app.post("/api/loginspeler", (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+        const teamcode = req.body.teamcode;
+        // const password = req.body.password;
+        console.log(teamcode);
 
-//         db.query(
-//             "SELECT * from registratie where email = $1", [email],
-//             (err, table) => {
-//                 done();
-//                 if (err) {
-//                     return res.status(400).send(err);
-//                 }
-//                 else {
-//                     if (err) {
-//                         return res.status(400).send(err);
-//                     }
-//                     try {
-//                         if (Password.verify(password, table.rows[0].password)) {
-//                             req.session.id = table.rows[0].id;
-//                             req.session.email = table.rows[0].email;
-//                             console.log("Login successed");
-//                             console.log(req.session.email);
-//                             var redir = { redirect: "/" };
-//                             return res.json(redir);
-//                         }
-//                     } catch (err) {
-//                         console.log("Login not successed")
-//                          redir = { redirect: '/login'};
-//                         return res.json(redir);
-//                     }
-//                 }
+        db.query(
+            "SELECT * from registratie where teamcode = $1", [teamcode],
+            (err, table) => {
+                done();
+                if (err) {
+                    return res.status(400).send(err);
+                }
+                else {
+                    if (err) {
+                        return res.status(400).send(err);
+                    }
+                    try {
+                        if (teamcode === table.rows[0].teamcode) {
+                            req.session.id = table.rows[0].id;
+                            req.session.teamcode = table.rows[0].teamcode;
+                            console.log("Speler Login successed");
+                            console.log(req.session.teamcode);
+                            var redir = { redirect: "/" };
+                            return res.json(redir);
+                        }
+                    } catch (err) {
+                        console.log("Speler Login not successed")
+                         redir = { redirect: '/LoginSpeler'};
+                        return res.json(redir);
+                    }
+                }
 
-//                 return res.status(200).send(table.rows);
-//             }
-//         );
-//     });
-// });
+                return res.status(200).send(table.rows);
+            }
+        );
+    });
+});
 
 app.get('/api/speler', (req, res) => {
     pool.connect((err, db, done) => {
