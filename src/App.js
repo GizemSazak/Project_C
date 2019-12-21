@@ -21,7 +21,15 @@ import Agenda from "./Agenda/Agenda"
 import Agenda_Toevoegen from "./Agenda/Agenda_Toevoegen"
 import Agenda_Bewerken from "./Agenda/Agenda_Bewerken"
 import LoginSpeler from "./inlog + auth/LoginSpeler"
+import teamcode from "./inlog + auth/teamcode"
 
+// function cheacklogin(checklogin){
+//   if(!localStorage.getItem('myData', 'My data') || localStorage === null){
+//     window.location.href = '/';
+//   }
+//   else{
+//   }
+// }
 
 function App() {
 
@@ -47,6 +55,7 @@ function App() {
       <Route exact path="/Agenda/Agenda_Toevoegen" component={Agenda_Toevoegen} />
       <Route exact path="/Agenda/Agenda_Bewerken" component={Agenda_Bewerken} />
       <Route exact path="/LoginSpeler" component={LoginSpeler} />
+      <Route exact path="/teamcode" component={teamcode} />
 
 
     </div>

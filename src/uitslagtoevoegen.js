@@ -45,6 +45,10 @@ class uitslagtoevoegen extends Component {
 
 
   render() {
+    if(!localStorage.getItem('Data') || localStorage === null){
+      window.location.href = '/';
+    }
+    else{
     return (
       <div className="App">
         <h1 className='titleOefeningen'>Wedstrijduitslagen</h1>
@@ -76,6 +80,7 @@ class uitslagtoevoegen extends Component {
 
     )
   }
+}
 
 }
 

@@ -1,12 +1,16 @@
 import React, { Component, useState, useEffect } from "react";
 import "./login.css";
 import axios from "axios";
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 
 class LoginSpeler extends Component {
   constructor(props) {
     super(props);
     this.state = { teamcode: "" }
+    this.state = { cookie: "" };
+    
     // this.state = { password: "" }
     // this.state = { teamcode: "" };
 
@@ -19,6 +23,9 @@ class LoginSpeler extends Component {
   }
   
   handleSubmit = e => {
+    const { user, rememberMe } = this.state;
+    localStorage.setItem('Data', 'login');
+    localStorage.setItem('user', rememberMe ? user : '');
     console.log(this.state)
     e.preventDefault()
     const {email, password} = this.state;
@@ -38,6 +45,9 @@ class LoginSpeler extends Component {
   }
 
 render() {
+  cookies.set('voetbal', 'login', { path: '/' });
+  this.state.cookie = cookies.get('voetbal');
+  console.log(cookies.get('voetbal')); 
   return (
     <div className= "HoofdpaginaImage">
      <h1 className="login-header">Login - Speler</h1>

@@ -19,7 +19,10 @@ class Oefeningen extends Component {
                 .catch()
         }, []);
         
-        
+            if(!localStorage.getItem('Data') || localStorage === null){
+            window.location.href = '/';
+          }
+        else{ 
         return (
             <div className='App'>
                 <h1 className='titleOefeningen'>Oefeningen</h1>
@@ -42,13 +45,19 @@ class Oefeningen extends Component {
             </div>
         ) ;
     }
+}
 
 
     render(){
+        if(!localStorage.getItem('Data') || localStorage === null){
+            window.location.href = '/';
+          }
+        else{ 
         return(
             <this.viewOefeningen />
         )
     }
+}
 }
 
 

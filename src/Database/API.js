@@ -13,9 +13,12 @@ var hash = Password.hash("password123");
 const bcrypt = require('bcrypt');
 const PORT = 3001;
 var customId = require("custom-id");
-customId({});
-// const shortid = require('shortid');
+const Cookies = require('universal-cookie');
+var localStorage = require('localStorage')
 
+const cookies = new Cookies();
+const cookiesMiddleware = require('universal-cookie-express');
+customId({});
 
 const pool = new pg.Pool({
     // Connect to database
@@ -26,7 +29,6 @@ const pool = new pg.Pool({
 });
 
 const app = express();
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,9 +36,16 @@ app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     secret: 'keyboardssaacat',
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    saveUninitialized: false,
+    cookie: { secure: false }
 }))
+app.use(cookiesMiddleware())
+// app.use(function(req, res) {
+//     // get the user cookies using universal-cookie
+//     req.universalCookies.get('voetbal')
+//     console.log(req.universalCookies.get('voetbal'))
+//     console.log('Cookie')
+//   });
 app.use(morgan('dev'));
 
 app.use(function (req, res, next) {
@@ -91,6 +100,7 @@ app.post("/api/registratie", (req, res) => {
         });
     });
 });
+
 //Inloggen
 app.post("/api/login", (req, res) => {
     pool.connect((err, db, done) => {
@@ -98,6 +108,7 @@ app.post("/api/login", (req, res) => {
             return res.status(400).send(err);
         }
         const email = req.body.email;
+        global.email = req.body.email;
         const password = req.body.password;
         console.log(email);
 
@@ -114,11 +125,17 @@ app.post("/api/login", (req, res) => {
                     }
                     try {
                         if (Password.verify(password, table.rows[0].password)) {
+                            // window.localStorage.setItem('myData', 'My data');
                             req.session.id = table.rows[0].id;
                             req.session.email = table.rows[0].email;
                             console.log("Login successed");
                             console.log(req.session.email);
                             var redir = { redirect: "/" };
+                            // setter
+                          console.log(localStorage);
+                            req.session.save(function(err) {
+                                // session saved
+                              })
                             return res.json(redir);
                         }
                     } catch (err) {
@@ -126,6 +143,7 @@ app.post("/api/login", (req, res) => {
                          redir = { redirect: '/login'};
                         return res.json(redir);
                     }
+
                 }
 
                 return res.status(200).send(table.rows);
@@ -133,7 +151,57 @@ app.post("/api/login", (req, res) => {
         );
     });
 });
+//Get teamcode for the tranier
+app.get('/api/registratie', (req, res) => {
+    pool.connect((err, db, done) => {
+    
+        db.query(
+            "SELECT teamcode from registratie where email = $1", [global.email],
+            (err, table) => {
+                done();
+                if (err) {
+                    return res.status(400).send(err);
+                }
+                else {
+                    if (err) {
+                        return res.status(400).send(err);
+                    }
+                    // try {
+                    //     if (Password.verify(password, table.rows[0].password)) {
+                    //         req.session.id = table.rows[0].id;
+                    //         req.session.email = table.rows[0].email;
+                    //         console.log("Login successed");
+                    //         console.log(req.session.email);
+                    //         var redir = { redirect: "/" };
+                    //         return res.json(redir);
+                    //     }
+                    // } catch (err) {
+                    //     console.log("Login not successed")
+                    //      redir = { redirect: '/login'};
+                    //     return res.json(redir);
+                    // }
 
+                }
+
+                return res.status(200).send(table.rows);
+            }
+        );
+    });
+
+});
+//Get spelers
+app.get('/api/speler', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query('SELECT * from speler', (err, table) => {
+            done();
+
+            // If err is True than send err else send table.rows
+            err ? res.status(400).send(err) : res.status(200).send(table.rows)
+        });
+    });
+});
 //Speler login
 app.post("/api/loginspeler", (req, res) => {
     pool.connect((err, db, done) => {
@@ -159,6 +227,7 @@ app.post("/api/loginspeler", (req, res) => {
                         if (teamcode === table.rows[0].teamcode) {
                             req.session.id = table.rows[0].id;
                             req.session.teamcode = table.rows[0].teamcode;
+                            req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // Cookie expires after 30 days
                             console.log("Speler Login successed");
                             console.log(req.session.teamcode);
                             var redir = { redirect: "/" };
@@ -177,18 +246,7 @@ app.post("/api/loginspeler", (req, res) => {
     });
 });
 
-app.get('/api/speler', (req, res) => {
-    pool.connect((err, db, done) => {
-        if (err) { return res.status(400).send(err); }
 
-        db.query('SELECT * from speler', (err, table) => {
-            done();
-
-            // If err is True than send err else send table.rows
-            err ? res.status(400).send(err) : res.status(200).send(table.rows)
-        });
-    });
-});
 
 app.post('/api/speler', (req, res) => {
     console.log(req.body);

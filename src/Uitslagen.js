@@ -17,7 +17,10 @@ function Uitslagen() {
             })
             .catch()
     }, []);
-
+    if(!localStorage.getItem('Data') || localStorage === null){
+        window.location.href = '/';
+      }
+    else{  
     return (
         <div className="App">
             <h1 className='titleOefeningen'>Wedstrijduitslagen</h1>
@@ -57,5 +60,6 @@ function Uitslagen() {
             <Check />
         </div>
     );
+    }
 }
 export default Uitslagen;

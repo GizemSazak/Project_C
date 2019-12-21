@@ -59,6 +59,10 @@ class Agenda_Bewerken extends Component {
               }
 
     render() {
+        if(!localStorage.getItem('Data') || localStorage === null){
+            window.location.href = '/';
+          }
+        else{ 
         return (
             <div className="App">
                 <h1 className='titleOefeningen'>Agenda</h1>
@@ -109,6 +113,7 @@ class Agenda_Bewerken extends Component {
             </div>
         );
     }
+}
 }
 
 

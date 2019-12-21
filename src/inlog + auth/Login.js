@@ -9,7 +9,7 @@ class Loginpage extends Component {
     this.state = { email: "" }
     this.state = { password: "" }
     // this.state = { teamcode: "" };
-
+    
     this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -17,8 +17,11 @@ class Loginpage extends Component {
   updateInput(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-  
+
   handleSubmit = e => {
+    const { user, rememberMe } = this.state;
+    localStorage.setItem('Data', 'login');
+    localStorage.setItem('user', rememberMe ? user : '');
     console.log(this.state)
     e.preventDefault()
     const {email, password} = this.state;
@@ -30,6 +33,7 @@ class Loginpage extends Component {
         } else if (response.data.redirect == '/login'){
             window.location = "/login"
         }
+
     })
     .catch(function(error) {
       window.location = "/login"
@@ -69,6 +73,8 @@ class Loginpage extends Component {
 // }
 
 render() {
+  localStorage.getItem('myData');
+
   return (
     <div className= "HoofdpaginaImage">
      <h1 className="login-header">Login - Tranier</h1>

@@ -3,9 +3,18 @@ import './App.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import App from './App';
 // import { browserhistory } from 'react-router'; 
-
+// function cheacklogin(checklogin){
+  // if(!localStorage.getItem('myData', 'My data') || localStorage === null){
+  //   window.location.href = '/';
+  // }
+//   else{
+//     Home();
+//   }
+// }
 function Home() {
+  // cheacklogin();
 
   const [buttons] = useState([
     { link: "./Agenda", title: "Agenda", icon: faCalendar },
@@ -17,7 +26,10 @@ function Home() {
     { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
     { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
   ]);
-
+  if(!localStorage.getItem('Data') || localStorage === null){
+    window.location.href = '/';
+  }
+  else{
   return (
     <div className="App">
       <header>
@@ -34,10 +46,12 @@ function Home() {
         ))}
       </div >
       <button id="logout" name="logout" value="submit"  onClick={()=> logout()}>Uitloggen</button>
+      <Link to="./teamcode">
+ <button id="spelerteamcode" name="spelerteamcode" value="submit">Teamcode</button>           </Link>
 
     </div>
-    
   );
+}
 }
 
 // function openTab(tabName) {

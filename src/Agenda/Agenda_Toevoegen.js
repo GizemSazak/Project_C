@@ -57,6 +57,10 @@ export default class Agenda_Toevoegen extends Component {
 
   render() {
     const { eindtijd, starttijd,beschrijving } = this.state
+    if(!localStorage.getItem('Data') || localStorage === null){
+      window.location.href = '/';
+    }
+  else{ 
     return (
       <div className="Notitiebody">
         <h1 className='titleNotitiel'>Agenda</h1>
@@ -118,6 +122,7 @@ export default class Agenda_Toevoegen extends Component {
       </div>
     )
   }
+}
 }
 
 

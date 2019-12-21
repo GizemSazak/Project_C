@@ -26,6 +26,10 @@ class tactieken extends Component {
     
 
     render() {
+        if(!localStorage.getItem('Data') || localStorage === null){
+            window.location.href = '/';
+          }
+        else{  
         return (
             <div className="app">
                 <div className="body" targetKey="dropzone">
@@ -38,7 +42,7 @@ class tactieken extends Component {
             </div>
 
 
-        );
+        );}
     }
 }
 

@@ -16,7 +16,10 @@ function Menu() {
         { link: "../Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
         { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
     ]);
-
+    if(!localStorage.getItem('Data') || localStorage === null){
+        window.location.href = '/';
+      }
+    else{ 
     return (
         <nav className="sidebar" >
             {/* We're making all the buttons and filling the values in by mapping through all buttons */}
@@ -28,6 +31,7 @@ function Menu() {
             ))}
         </nav >
     )
+            }
 }
 
 export default Menu;

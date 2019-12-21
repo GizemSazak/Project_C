@@ -40,6 +40,10 @@ export default class Notities_toevoegen extends Component {
 
   render() {
     const { titel, notitie } = this.state
+    if(!localStorage.getItem('Data') || localStorage === null){
+      window.location.href = '/';
+    }
+  else{ 
     return (
       <div className="Notitiebody">
         <h1 className='titleNotitiel'>Notities</h1>
@@ -72,5 +76,6 @@ export default class Notities_toevoegen extends Component {
       </div>
     )
   }
+}
 }
 

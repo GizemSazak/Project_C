@@ -304,7 +304,10 @@ render() {
         );
     })
 
-
+    if(!localStorage.getItem('Data') || localStorage === null){
+        window.location.href = '/';
+      }
+    else{ 
     return (
       <div className="App">
         <h1 className='titleOefeningen'>Agenda</h1>
@@ -345,6 +348,7 @@ render() {
 
     )
     }
+}
   
 }
 

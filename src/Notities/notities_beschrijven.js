@@ -61,6 +61,10 @@ class notities_beschrijven extends Component {
     }
 
     render() {
+        if(!localStorage.getItem('Data') || localStorage === null){
+            window.location.href = '/';
+          }
+        else{ 
         return (
             <div className="App">
                 <h1 className='titleOefeningen'>Notities</h1>
@@ -77,6 +81,7 @@ class notities_beschrijven extends Component {
             </div>
         );
     }
+}
 }
 
 

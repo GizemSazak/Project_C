@@ -8,6 +8,10 @@ import Menu from '../Menu/Menu'
 class Spelers extends Component {
 
     render() {
+        if(!localStorage.getItem('Data') || localStorage === null){
+            window.location.href = '/';
+          }
+        else{ 
         return (
             <div className="Page">
                 <header className="PageHeader">Spelers</header>
@@ -26,6 +30,7 @@ class Spelers extends Component {
 
         )
     }
+}
 }
 
 function SpelerOverzicht() {

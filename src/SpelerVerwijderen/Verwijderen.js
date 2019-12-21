@@ -80,6 +80,10 @@ class SpelerVerwijderen extends Component {
     }
 
     render() {
+        if(!localStorage.getItem('Data') || localStorage === null){
+            window.location.href = '/';
+          }
+        else{  
         return (
             <div className="Page">
                 <header className="PageHeader">
@@ -93,6 +97,7 @@ class SpelerVerwijderen extends Component {
             </div>
         )
     }
+}
 }
 
 export default SpelerVerwijderen;
