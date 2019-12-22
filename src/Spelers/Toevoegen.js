@@ -69,7 +69,7 @@ class Toevoegen extends Component {
                                         <label className="FormLabel" >Spelernummer</label>
                                         <FormControl type="number" placeholder="spelernummer" className="Inputfield" onChange={this.updateInput} />
                                     </FormGroup>
-                                    <input type="submit" value="Opslaan" className="btn btn-success py-2 px-5 my-2" onClick={this.handleSubmit} />
+                                    <input type="submit" value="Opslaan" className="btn btn-success py-2 px-5 my-2 border-dark" onClick={this.handleSubmit} />
                                 </Form>
                             </Col>
                         </Row>

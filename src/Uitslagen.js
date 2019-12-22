@@ -3,7 +3,7 @@ import './Uitslagen.css';
 import Menu from './Menu/Menu';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-
+import { Container, Row, Col, Button } from "react-bootstrap"
 
 function Uitslagen() {
 
@@ -19,47 +19,52 @@ function Uitslagen() {
     }, []);
 
     return (
-        <div className="App">
-            <h1 className='titleOefeningen'>Wedstrijduitslagen</h1>
-            <div className="uitslagBody">
-                <tbody id="tt">
-                    <tr >
-                        <th id="HtableL" >Week</th>
-                        <th id="HtableR" >Thuis</th>
-                        <th id="HtableR" >Stand</th>
-                        <th id="HtableR" >Uit</th>
-                    </tr>
-                </tbody>
-                {posts.map(function (post, id) {
-                    return (<Link className="linkk" to={{ pathname: "/verslag", id: post.id, verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
+        <Container className="Background text-center ">
+            <Row>
+                {/* Menu */}
+                <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
 
-                        <tr key={id} >
-                            <th id="tableL" >
-                                {post.id}
-                            </th>
-                            <td id="tableR" >
-                                {post.thuis}
-                            </td>
-                            <td id="tableR" >
-                                {post.stand}
-                            </td>
-                            <td id="tableR" >
-                                {post.uit}
-                            </td>
-                        </tr>
+                <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white">
+                    {/* Page Header */}
+                    <Row>
+                        <Col className="py-5 "><h4>Wedstrijduitslagen</h4></Col>
+                    </Row>
+                    {/* Page Body */}
+                    <Row className="Body">
+                        <Col className="p-0 ">
+                            <Row style={{ height: '90%' }} >
+                                <Col>
+                                    <tr className="TableHeader" >
+                                        <th className="py-3 px-2" style={{ width: '10vw', borderBottom: "2px solid black" }}>Week</th>
+                                        <th style={{ width: '40vw', borderBottom: "2px solid black" }}>Thuis</th>
+                                        <th style={{ width: '40vw', borderBottom: "2px solid black" }}>Stand</th>
+                                        <th style={{ width: '10vw', borderBottom: "2px solid black" }}>Uit</th>
+                                    </tr>
+                                    {posts.map(function (post, id) {
+                                        return (
+                                            <Link to={{ pathname: "/verslag", id: post.id, verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
+                                                <tr key={id} className="TableBody">
+                                                    <th className="py-2 px-2" style={{ width: '10vw', borderBottom: "1px solid black" }}>{post.id}</th>
+                                                    <td style={{ width: '40vw', borderBottom: "1px solid black" }}>{post.thuis}</td>
+                                                    <td style={{ width: '40vw', borderBottom: "1px solid black" }}>{post.stand}</td>
+                                                    <td style={{ width: '10vw', borderBottom: "1px solid black" }}>{post.uit}</td>
+                                                </tr>
+                                            </Link>
+                                        )
+                                    })}
+                                </Col>
+                            </Row>
 
-                    </Link>
-                    )
-                })}
-
-                <Link to="/uitslagtoevoegen"><button className="addbutton">+</button></Link>
-            </div>
-            <Menu />
-        </div>
+                            <Row className="h-90% flex-column align-content-center" style={{ height: '10%' }}>
+                                <Col>
+                                    <Button href="./uitslagtoevoegen" className="btn btn-success p-2 px-4 my-2 border-dark">Toevoegen</Button>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </Container >
     );
 }
 export default Uitslagen;
-
-
-
-
