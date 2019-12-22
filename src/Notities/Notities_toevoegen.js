@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-import './Notities_toevoegen.css'
-import '../App.css'
 import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
-import trash from './trash.svg' // Tell Webpack this JS file uses this image
+import { Container, Row, Col, Button, Form, FormGroup, FormControl } from "react-bootstrap"
+
 export default class Notities_toevoegen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       notitie: this.props.location.notitie,
       titel: this.props.location.titel
-
     }
   }
 
@@ -40,39 +38,46 @@ export default class Notities_toevoegen extends Component {
 
   render() {
     return (
-      <div className="Notitiebody">
-        <h1 className='titleNotitiel'>Notities</h1>
-        <div className="column1"></div>
-        <div>
-          <input
-            type="text"
-            name="titel"
-            id="title"
-            placeholder="Titel"
-            value={this.state.titel}
-            onChange={event => this.handleChange(event)}
-          />
-        </div>
-        <form onSubmit={this.submitHandler}>
-          <div>
-            <textarea
-              type="text"
-              placeholder="Beschrijven"
-              id="beschrijven"
-              name="notitie"
-              value={this.state.notitie}
-              onChange={event => this.handleChange(event)}
-            />
-          </div>
-          <Link to="./Notities" onClick={this.forceUpdate} > <button className="opslaan" type="submit" onClick={() => this.Notities_toevoegen()}>Toevoegen</button></Link>
-          <Link to="./Notities"> <img src={trash} className="trash2" alt='' /></Link>
-        </form>
-        <Menu />
-      </div>
+      <Container className="Background">
+        <Row >
+          {/* Menu */}
+          <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
+
+          <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white text-center">
+            {/* Page Header */}
+            <Row>
+              <Col className="py-5"><h4>Notitie Toevoegen</h4></Col>
+            </Row>
+            {/* Page Body */}
+            <Row className="Body pt-4 p-2">
+              <Col >
+                <Row style={{ height: '90%' }} className="justify-content-center">
+                  <Form >
+                    <FormGroup >
+                      <FormControl className="text-center NotitieTitel border-dark mt-3 p-4" type="text" placeholder="Titel" name="titel" value={this.state.titel} onChange={event => this.handleChange(event)} />
+                    </FormGroup>
+                    <FormGroup onSubmit={this.submitHandler}>
+                      <FormControl as="textarea" rows="12" className="NotitieBody border-dark p-4" type="text" placeholder="Beschrijven" name="notitie" value={this.state.notitie} onChange={event => this.handleChange(event)}></FormControl>
+                    </FormGroup>
+                  </Form>
+                </Row>
+                {/* Buttons */}
+                <Row className="align-items-start " style={{ height: '10%' }}>
+                  <Col >
+                    <Link to="./Notities" onClick={this.forceUpdate} >
+                      <Button variant="success" className="m-1 border-dark" onClick={() => this.Notities_toevoegen()}>Toevoegen</Button>
+                    </Link>
+
+                    <Link to="./Notities">
+                      <Button variant="danger" className="border-dark">Verwijderen</Button>
+                    </Link>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }
-
-
-
-

@@ -26,7 +26,6 @@ import Notities from './Notities//Notities'
 import Notities_toevoegen from './Notities//Notities_toevoegen'
 import notities_beschrijven from './Notities//notities_beschrijven'
 
-
 function App() {
 
   return (

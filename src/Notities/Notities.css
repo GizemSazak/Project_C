@@ -8,3 +8,15 @@
   width: 500px;
   max-height: 50px;
 }
+.NotitieTitel{
+  background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.9));
+  width: 70vw;
+  max-width: 600px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.NotitieBody{
+ min-height: 52vh;
+  background-color: rgba(205, 207, 206);
+  text-align: center;
+}
