@@ -3,7 +3,7 @@ import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Form, FormGroup, FormControl } from "react-bootstrap"
 
-export default class Notities_toevoegen extends Component {
+export default class Notitie_Toevoegen extends Component {
   constructor(props) {
     super(props);
     this.state = {

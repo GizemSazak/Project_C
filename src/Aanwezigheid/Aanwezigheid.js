@@ -1,11 +1,10 @@
-// npm install react-dropdown --save
-
 import React, { Component, useState, useEffect } from 'react'
 import Menu from '../Menu/Menu'
 import axios from 'axios'
 import './Aanwezigheid.css'
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Container, Row, Col, Button } from "react-bootstrap"
 
 class Aanwezigheid extends Component {
     constructor(props) {
@@ -110,17 +109,34 @@ class Aanwezigheid extends Component {
 
     render() {
         return (
-            <div className="Page">
+            <Container className="Background text-center">
+                <Row>
+                    {/* Menu */}
+                    <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
 
-                <header className="PageHeader">Aanwezigheid</header>
+                    <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white">
+                        {/* Page Header */}
+                        <Row>
+                            <Col className="py-5"><h4>Aanwezigheid</h4></Col>
+                        </Row>
+                        {/* Page Body */}
+                        <Row className="Body pt-4 p-2 ">
+                            <Col>
+                                <Row style={{ height: '13%' }}>
+                                    <Col>
+                                        <Button className="btn btn-success p-2 my-2 border-dark">{new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()}</Button>
+                                    </Col>
+                                </Row>
 
-                <body className="Body_Aanwezigheid">
-                    <div className="Datum">{new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()}</div>
-                    <this.Spelers />
-                </body>
+                                <Row className="h-90% flex-column align-content-center" style={{ height: '87%' }}>
+                                    <this.Spelers />
+                                </Row>
 
-                <Menu />
-            </div>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }

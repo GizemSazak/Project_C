@@ -24,8 +24,8 @@ class Spelers extends Component {
 
                                 <Row className="align-items-end " style={{ height: '10%' }}>
                                     <Col >
-                                        <Button variant="success" className="m-1 border-dark" href="../SpelerToevoegen/Toevoegen" >Toevoegen</Button>
-                                        <Button variant="danger" className="border-dark" href="../SpelerVerwijderen/Verwijderen">Verwijderen</Button>
+                                        <Button variant="success" className="m-1 border-dark" href="../Spelers/Toevoegen" >Toevoegen</Button>
+                                        <Button variant="danger" className="border-dark" href="../Spelers/Verwijderen">Verwijderen</Button>
                                     </Col>
                                 </Row>
                             </Col>

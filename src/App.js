@@ -14,17 +14,17 @@ import oefening_9 from './oefeningen//oefening_9'
 import oefening_10 from './oefeningen//oefening_10'
 import oefening_11 from './oefeningen//oefening_11'
 import oefening_12 from './oefeningen//oefening_12'
-import Spelers from './SpelerOverzicht/Spelers'
-import SpelerToevoegen from './SpelerToevoegen/Toevoegen'
-import SpelerVerwijderen from './SpelerVerwijderen/Verwijderen'
+import Spelers from './Spelers/Spelers'
+import SpelerToevoegen from './Spelers/Toevoegen'
+import SpelerVerwijderen from './Spelers/Verwijderen'
 import Aanwezigheid from './Aanwezigheid/Aanwezigheid'
 import uitslagtoevoegen from './uitslagtoevoegen'
 import verslag from './verslag'
 import Home from './Home'
 import Uitslagen from './Uitslagen';
 import Notities from './Notities//Notities'
-import Notities_toevoegen from './Notities//Notities_toevoegen'
-import notities_beschrijven from './Notities//notities_beschrijven'
+import Notitie_Toevoegen from './Notities//Notitie_Toevoegen'
+import Notitie_Wijzigen from './Notities//Notitie_Wijzigen'
 
 function App() {
 
@@ -45,13 +45,13 @@ function App() {
       <Route exact path='/oefening_11' component={oefening_11} />
       <Route exact path='/oefening_12' component={oefening_12} />
       <Route exact path='/Spelers' component={Spelers} />
-      <Route exact path='/SpelerToevoegen/Toevoegen' component={SpelerToevoegen} />
-      <Route exact path='/SpelerVerwijderen/Verwijderen' component={SpelerVerwijderen} />
+      <Route exact path='/Spelers/Toevoegen' component={SpelerToevoegen} />
+      <Route exact path='/Spelers/Verwijderen' component={SpelerVerwijderen} />
       <Route exact path='/Aanwezigheid' component={Aanwezigheid} />
       <Route exact path='/Uitslagen' component={Uitslagen} />
       <Route exact path='/Notities' component={Notities} />
-      <Route exact path='/Notities_toevoegen' component={Notities_toevoegen} />
-      <Route exact path='/notities_beschrijven' component={notities_beschrijven} />
+      <Route exact path='/Notitie_Toevoegen' component={Notitie_Toevoegen} />
+      <Route exact path='/Notitie_Wijzigen' component={Notitie_Wijzigen} />
       <Route exact path='/uitslagtoevoegen' component={uitslagtoevoegen} />
       <Route exact path='/verslag' component={verslag} />
     </div>

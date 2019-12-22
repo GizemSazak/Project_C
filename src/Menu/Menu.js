@@ -31,7 +31,6 @@ function Menu() {
                         </Link>
                     </Col>
                 </Row>
-
             ))}
         </Container>
     )

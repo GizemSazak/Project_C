@@ -34,7 +34,7 @@ function Notities() {
                         <Col>
                             <Row style={{ height: '13%' }}>
                                 <Col>
-                                    <Button className="btn btn-success p-2 my-2 border-dark" href="./Notities_toevoegen">Notities Toevoegen</Button>
+                                    <Button className="btn btn-success p-2 my-2 border-dark" href="./Notitie_Toevoegen">Notities Toevoegen</Button>
                                 </Col>
                             </Row>
 
@@ -42,7 +42,7 @@ function Notities() {
                                 {posts.map(function (post, id) {
                                     return (
                                         <Col className="m-1 Not">
-                                            <Link refresh="true" to={{ pathname: "/Notities_beschrijven", id: post.id, titel: post.titel, notitie: post.notitie }}>
+                                            <Link refresh="true" to={{ pathname: "/Notitie_Wijzigen", id: post.id, titel: post.titel, notitie: post.notitie }}>
                                                 <Button className="Notitie text-white p-2 border-dark"> {post.titel} </Button>
                                             </Link>
                                         </Col>
