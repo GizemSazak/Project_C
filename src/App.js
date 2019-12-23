@@ -18,10 +18,10 @@ import Spelers from './Spelers/Spelers'
 import SpelerToevoegen from './Spelers/Toevoegen'
 import SpelerVerwijderen from './Spelers/Verwijderen'
 import Aanwezigheid from './Aanwezigheid/Aanwezigheid'
-import uitslagtoevoegen from './uitslagtoevoegen'
-import verslag from './verslag'
+import uitslagtoevoegen from './Uitslagen/UToevoegen'
+import verslag from './Uitslagen/UWijzigen'
 import Home from './Home'
-import Uitslagen from './Uitslagen';
+import Uitslagen from './Uitslagen/Uitslagen';
 import Notities from './Notities//Notities'
 import Notitie_Toevoegen from './Notities//Notitie_Toevoegen'
 import Notitie_Wijzigen from './Notities//Notitie_Wijzigen'

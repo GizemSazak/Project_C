@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Toevoegen.css'
+import './Spelers.css'
 import Menu from '../Menu/Menu'
 import { Container, Row, Col, Form, FormGroup, FormControl } from "react-bootstrap"
 

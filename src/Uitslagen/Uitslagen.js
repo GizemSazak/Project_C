@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Uitslagen.css';
-import Menu from './Menu/Menu';
+import Menu from '../Menu/Menu';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { Container, Row, Col, Button } from "react-bootstrap"

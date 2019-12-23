@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Uitslagen.css';
-import Menu from './Menu/Menu';
+import Menu from '../Menu/Menu';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, FormGroup, FormControl } from "react-bootstrap"
 
