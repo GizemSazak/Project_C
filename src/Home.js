@@ -4,7 +4,7 @@ import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunnin
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Image } from "react-bootstrap"
-import logo from './logo.jpg'
+import logo from './logo.png'
 
 function Home() {
 
