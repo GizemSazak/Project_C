@@ -16,7 +16,8 @@
   font-weight: bold;
 }
 .NotitieBody{
- min-height: 52vh;
-  background-color: rgba(205, 207, 206);
+  min-height: 52vh;
+  background-color: rgb(255, 255, 255,0.5);
   text-align: center;
+  box-shadow: 3px 3px rgb(0, 10, 0,0.2);
 }

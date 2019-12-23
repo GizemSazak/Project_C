@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Uitslagen.css';
 import Menu from './Menu/Menu';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button, Form, FormGroup, FormControl } from "react-bootstrap"
+import { Container, Row, Col, Button, FormGroup, FormControl } from "react-bootstrap"
 
 class uitslagtoevoegen extends Component {
   constructor(props) {
@@ -53,37 +53,39 @@ class uitslagtoevoegen extends Component {
             {/* Page Body */}
             <Row className="Body pt-4 p-2">
               <Col >
-                <Row style={{ height: '90%' }} className="justify-content-center">
+                <Row style={{ height: '85%' }} className="justify-content-center">
                   <Col>
-                    <FormGroup >
-                      <label className="FormLabel" >Voornaam</label>
-                      <FormControl type="text" placeholder="voornaam" className="Inputfield" onChange={this.updateInput} />
+                    <FormGroup>
+                      <label className="Label">Week</label>
+                      <FormControl type="number" name="id" className="Inputfield " onChange={this.updateInput} />
                     </FormGroup>
                     <FormGroup>
-                      <label className="FormLabel" >Achternaam</label>
-                      <FormControl type="text" placeholder="achternaam" className="Inputfield" onChange={this.updateInput} />
+                      <label className="Label" >Thuis</label>
+                      <FormControl type="text" name="thuis" className="Inputfield" onChange={this.updateInput} />
                     </FormGroup>
                     <FormGroup>
-                      <label className="FormLabel">Email</label>
-                      <FormControl type="email" placeholder="email" className="Inputfield" onChange={this.updateInput} />
+                      <label className="Label">Uit</label>
+                      <FormControl type="text" name="uit" className="Inputfield" onChange={this.updateInput} />
                     </FormGroup>
                     <FormGroup>
-                      <label className="FormLabel" >Spelernummer</label>
-                      <FormControl type="number" placeholder="spelernummer" className="Inputfield" onChange={this.updateInput} />
+                      <label className="Label" >Stand</label>
+                      <FormControl type="text" name="stand" className="Inputfield" onChange={this.updateInput} />
                     </FormGroup>
                   </Col>
+
                   <Col>
                     <FormGroup onSubmit={this.submitHandler}>
-                      <FormControl as="textarea" rows="12" className="NotitieBody border-dark p-4" type="text" placeholder="Beschrijven" name="notitie" value={this.state.notitie} onChange={event => this.handleChange(event)}></FormControl>
+                      <label className="Label" style={{ maxWidth: '900px' }}>Verslag</label>
+                      <FormControl as="textarea" rows="10" className="NotitieBody border-dark p-4 " type="text" name="verslag" onChange={this.updateInput}></FormControl>
                     </FormGroup>
                   </Col>
 
                 </Row>
                 {/* Buttons */}
-                <Row className="align-items-start " style={{ height: '10%' }}>
+                <Row className="align-items-start" style={{ height: '15%' }}>
                   <Col >
-                    <Link to="./Notities" onClick={this.forceUpdate} >
-                      <Button variant="success" className="m-1 border-dark" onClick={() => this.Notities_toevoegen()}>Toevoegen</Button>
+                    <Link to="./Uitslagen" onClick={this.forceUpdate} >
+                      <Button className="btn-success m-1 px-4 border-dark" onClick={() => this.addUitslag()}>Toevoegen</Button>
                     </Link>
                   </Col>
                 </Row>
@@ -92,35 +94,6 @@ class uitslagtoevoegen extends Component {
           </Col>
         </Row>
       </Container>
-
-      // <div className="App">
-      //   <h1 className='titleOefeningen'>Wedstrijduitslagen</h1>
-      //   <div className="uitslagBody">
-      //     <div className="standtoevoegenBody">
-
-      //       <form useRef="dataForm" ><div class="place1">
-      //         <label id="titlelabel">Week</label><br />
-      //         <input id="formp1" name="id" type="text" onChange={this.updateInput} /><br></br><br />
-      //         <label id="titlelabel">Thuis</label><br />
-      //         <input id="formp1" name="thuis" type="text" onChange={this.updateInput} /><br></br><br />
-      //         <label id="titlelabel">Uit</label><br />
-      //         <input id="formp1" name="uit" type="text" onChange={this.updateInput} /><br></br><br />
-      //         <label id="titlelabel">Stand</label><br />
-      //         <input id="formp1" name="stand" type="text" onChange={this.updateInput} /><br></br><br />
-      //       </div>
-      //         <div class="place2">
-      //           <label id="titlelabel">Verslag</label><br />
-      //           <textarea name="verslag" id="formp2" type="text" onChange={this.updateInput} ></textarea>
-      //           <br></br><br />
-      //         </div>
-      //         <Link to='./Uitslagen' onClick={this.forceUpdate}><button id="toevoegenbutton" className="SubmitBtn" onClick={() => this.addUitslag()}>Toevoegen</button></Link>
-      //       </form>
-
-      //     </div>
-      //   </div>
-      //   <Menu />
-      // </div>
-
     )
   }
 

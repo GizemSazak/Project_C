@@ -3,6 +3,7 @@
   max-width: 250px;
   margin: auto;
   background-color: rgb(255, 255, 255,0.5);
+  box-shadow: 3px 3px rgb(0, 10, 0,0.2);
 }
 .Background{
   background-color: green;  
