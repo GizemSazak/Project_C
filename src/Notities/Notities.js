@@ -17,10 +17,7 @@ function Notities() {
             })
             .catch()
     }, []);
-    if(!localStorage.getItem('Data') || localStorage === null){
-        window.location.href = '/';
-      }
-    else{ 
+
     return (
         <Container className="Background text-center">
             <Row>
@@ -59,6 +56,5 @@ function Notities() {
             </Row>
         </Container>
     );
-            }
 }
 export default Notities;
