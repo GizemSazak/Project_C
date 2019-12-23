@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './Uitslagen.css';
 import Menu from './Menu/Menu';
 import { Link } from 'react-router-dom';
-import trashimg from './trash.png'
-
+import { Container, Row, Col, Button, FormGroup, FormControl, Table } from "react-bootstrap"
 
 class verslagen extends Component {
     constructor(props) {
@@ -36,14 +35,11 @@ class verslagen extends Component {
         window.location = './Uitslagen';
     }
 
-
     Opslaan() {
         const request = new Request('http://localhost:3001/api/wedstrijduitslag', {
             method: 'PUT',
             body: JSON.stringify({ 'id': parseInt(this.props.location.id), 'verslag': this.state.verslag }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: { 'Content-Type': 'application/json' }
         });
         fetch(request)
             .then(response => {
@@ -58,30 +54,54 @@ class verslagen extends Component {
 
     render() {
         return (
-            <div className="App">
-                <h1 className='titleOefeningen'>Wedstrijduitslagen</h1>
-                <div className="uitslagBody">
-                    <div className="verslagBody">
-                        <div id="titlestand">{this.props.location.thuis}&emsp;&emsp;&emsp;{this.props.location.stand}&emsp;&emsp;&emsp;{this.props.location.uit}</div>
-                        <div id="titleverslag">Verslag</div>
-                        <textarea id="editverslag" col="200" type="text" name="verslag" onChange={event => this.handleChange(event)}
-                            defaultValue={this.state.verslag} />
-                    </div>
-                    <Link to="./Uitslagen" >
-                        <button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button>
-                        <img src={trashimg} onClick={() => this.Verwijderen()} className="trashbutton" alt='' />
-                    </Link>
-                </div>
-                <Link to="./Uitslagen" onClick={this.forceUpdate}><button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button><img src={trashimg} onClick={() => this.Verwijderen()} className="trashbutton" alt='' /></Link>
-                <Menu />
-            </div>
+            <Container className="Background">
+                <Row >
+                    {/* Menu */}
+                    <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
+
+                    <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white text-center">
+                        {/* Page Header */}
+                        <Row>
+                            <Col className="py-5"><h4>Wedstrijduitslag Wijzigen</h4></Col>
+                        </Row>
+                        {/* Page Body */}
+                        <Row className="Body pt-4 p-2">
+                            <Col >
+                                <Row style={{ height: '90%' }} className="justify-content-center" >
+                                    <Table style={{ maxWidth: '1000px' }}>
+                                        <tr className="TableHeader">
+                                            <th style={{ width: '33%', border: "1px solid black" }} >{this.props.location.thuis}</th>
+                                            <th style={{ width: '33%', border: "1px solid black" }}>{this.props.location.stand}</th>
+                                            <th style={{ width: '33%', border: "1px solid black" }}>{this.props.location.uit}</th>
+                                        </tr>
+                                        <tr className="TableSubHeader" >
+                                            <td colSpan="4" style={{ border: "1px solid black" }}>Verslag</td>
+                                        </tr>
+                                        <tr >
+                                            <td colSpan="4" className="p-0" >
+                                                <FormGroup >
+                                                    <FormControl as="textarea" col="200" style={{ height: '100%' }} className="NotitieBody border-dark p-4" type="text" name="verslag" onChange={event => this.handleChange(event)} defaultValue={this.state.verslag} />
+                                                </FormGroup>
+                                            </td>
+                                        </tr>
+                                    </Table>
+                                </Row>
+                                {/* Buttons */}
+                                <Row className="align-items-start " style={{ height: '10%' }}>
+                                    <Col >
+                                        <Link to="./Uitslagen" onClick={this.forceUpdate} >
+                                            <Button variant="success" className="m-1 border-dark" onClick={() => this.Opslaan()}>Opslaan</Button>
+                                            <Button variant="danger" className="border-dark" onClick={() => this.Verwijderen()}>Verwijderen</Button>
+                                        </Link>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container >
         );
     }
 }
 
-
 export default verslagen;
-
-
-
-

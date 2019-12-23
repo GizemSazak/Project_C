@@ -16,22 +16,27 @@
   background-size: cover;
   overflow: hidden;
 }
+.Body{
+  height: 80vh;
+  background-color: rgb(128, 128, 128,0.8);
+  border: 1px solid black;
+  overflow: auto;
+}
+
 .btn{
   box-shadow: 3px 3px rgb(0, 10, 0,0.2);
 }
 .btn-success{
   background-image: linear-gradient(rgb(0, 200, 0, 0.5), rgb(0, 100, 0, 0.5),rgb(0, 200, 0, 0.5) );
 }
+.btn-success:hover{
+  background-image: linear-gradient(rgb(0, 200, 0), rgb(0, 100, 0),rgb(0, 200, 0) );
+}
 .btn-danger{
   background-image: linear-gradient(rgb(200, 0, 0,0.5), rgb(100, 0, 0, 0.5),rgb(200,0, 0, 0.5) );
 }
-.Body{
-  height: 80vh;
-  background-color: rgb(128, 128, 128,0.8);
-  border: 1px solid black;
-  overflow: auto;
-    /* display: grid;
-  grid-template-columns: auto auto auto auto;*/
+.btn-danger:hover{
+  background-image: linear-gradient(rgb(200, 0, 0), rgb(100, 0, 0),rgb(200,0, 0) );
 }
 
 /* hoofd Menu */
