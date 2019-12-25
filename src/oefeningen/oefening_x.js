@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { Component } from 'react';
 import './oefening_1.css'
 import Menu from '../Menu/Menu'
 
