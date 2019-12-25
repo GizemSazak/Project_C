@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import '../Notities/Notities.css';
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 function Teamcode() {
@@ -15,29 +15,29 @@ function Teamcode() {
             })
             .catch()
     }, []);
-    if(!localStorage.getItem('Data') || localStorage === null){
+    if (!localStorage.getItem('Data') || localStorage === null) {
         window.location.href = '/';
-      }
-    else{ 
-    return (
-        <div className="Notitiebody">
-            <h1 className='titleNotitiel'>Teamcode</h1>
-            <div className="column1"></div>
-            <div className="tablerow" >
-                {posts.map(function (post, id) {
-                    return (
-                        <button id="rowss" >
-                            {post.teamcode}
-                        </button>
-    
-                    )
+    }
+    else {
+        return (
+            <div className="Notitiebody">
+                <h1 className='titleNotitiel'>Teamcode</h1>
+                <div className="column1"></div>
+                <div className="tablerow" >
+                    {posts.map(function (post, id) {
+                        return (
+                            <button id="rowss" >
+                                {post.teamcode}
+                            </button>
 
-                })}
+                        )
 
+                    })}
+
+                </div>
+                <Menu />
             </div>
-            <Check />
-        </div>
-    );
-     }
+        );
+    }
 }
 export default Teamcode;

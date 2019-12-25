@@ -1,7 +1,7 @@
-import React, { Component,useState, useEffect } from 'react'
-import '../Notities/Notities_toevoegen'
+import React, { Component, useState, useEffect } from 'react'
+import '../Notities/Notitie_Toevoegen'
 import '../App.css'
-import Check from '../Menu/Check'
+import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import './Agenda.js'
@@ -24,22 +24,22 @@ export default class Agenda_Toevoegen extends Component {
     let val = event.target.value;
     this.setState({ [nam]: val });
   }
-  agenda(){
+  agenda() {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:3001/api/agenda')
-            .then(res => {
-                console.log(res)
-                setPosts(res.data)
-            })
-            .catch()
+      axios.get('http://localhost:3001/api/agenda')
+        .then(res => {
+          console.log(res)
+          setPosts(res.data)
+        })
+        .catch()
     }, []);
   }
   agenda_toevoegen() {
     const request = new Request('http://localhost:3001/api/agenda', {
       method: 'POST',
-      body: JSON.stringify({ 'starttijd': this.state.starttijd, 'eindtijd': this.state.eindtijd,'beschrijving': this.state.beschrijving, 'dag': this.props.location.dag }),
+      body: JSON.stringify({ 'starttijd': this.state.starttijd, 'eindtijd': this.state.eindtijd, 'beschrijving': this.state.beschrijving, 'dag': this.props.location.dag }),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -56,57 +56,57 @@ export default class Agenda_Toevoegen extends Component {
   }
 
   render() {
-    const { eindtijd, starttijd,beschrijving } = this.state
-    if(!localStorage.getItem('Data') || localStorage === null){
+    const { eindtijd, starttijd, beschrijving } = this.state
+    if (!localStorage.getItem('Data') || localStorage === null) {
       window.location.href = '/';
     }
-  else{ 
-    return (
-      <div className="Notitiebody">
-        <h1 className='titleNotitiel'>Agenda</h1>
-        <div className="column1"></div>
-        <p id="AgednaP">
+    else {
+      return (
+        <div className="Notitiebody">
+          <h1 className='titleNotitiel'>Agenda</h1>
+          <div className="column1"></div>
+          <p id="AgednaP">
             {this.state.selectedDay
-              ?this.state.selectedDay.toLocaleDateString() 
+              ? this.state.selectedDay.toLocaleDateString()
               : ''}
           </p>
-  <table id="Agendatable">
-  <th id="Agenda_row1" className="titleDatum" colspan="3">{this.props.location.dag}</th>
-  <tr>
-    <th id="Agenda_row1">Starttijd</th>
-    <th id="Agenda_row1">Eindtijd</th> 
-    <th id="Agenda_row1">Beschrijving</th>
-  </tr>
-  <tr>
-    <td id = "Agenda_col">
-    <textarea
-              placeholder="Starttijd"
-              id="starttijd"
-              name="starttijd"
-              value={this.state.starttijd}
-              onChange={event => this.handleChange(event)}
-            />
-    </td>
-    <td id = "Agenda_col">  
-      <textarea
-              placeholder="Eindtijd"
-              id="eindtijd"
-              name="eindtijd"
-              value={this.state.eindtijd}
-              onChange={event => this.handleChange(event)}
-            /></td>
-    <td id = "Agenda_col">
-    <textarea
-              placeholder="Beschrijving"
-              id="beschrijving"
-              name="beschrijving"
-              value={this.state.beschrijving}
-              onChange={event => this.handleChange(event)}
-            />
-    </td>
-  </tr>
-  </table>
-  {/* <tr>
+          <table id="Agendatable">
+            <th id="Agenda_row1" className="titleDatum" colspan="3">{this.props.location.dag}</th>
+            <tr>
+              <th id="Agenda_row1">Starttijd</th>
+              <th id="Agenda_row1">Eindtijd</th>
+              <th id="Agenda_row1">Beschrijving</th>
+            </tr>
+            <tr>
+              <td id="Agenda_col">
+                <textarea
+                  placeholder="Starttijd"
+                  id="starttijd"
+                  name="starttijd"
+                  value={this.state.starttijd}
+                  onChange={event => this.handleChange(event)}
+                />
+              </td>
+              <td id="Agenda_col">
+                <textarea
+                  placeholder="Eindtijd"
+                  id="eindtijd"
+                  name="eindtijd"
+                  value={this.state.eindtijd}
+                  onChange={event => this.handleChange(event)}
+                /></td>
+              <td id="Agenda_col">
+                <textarea
+                  placeholder="Beschrijving"
+                  id="beschrijving"
+                  name="beschrijving"
+                  value={this.state.beschrijving}
+                  onChange={event => this.handleChange(event)}
+                />
+              </td>
+            </tr>
+          </table>
+          {/* <tr>
     <td id = "Agenda_col">Eve</td>
     <td id = "Agenda_col">Jackson</td>
     <td id = "Agenda_col">94</td>
@@ -117,12 +117,12 @@ export default class Agenda_Toevoegen extends Component {
     <td id = "Agenda_col">80</td>
   </tr> */}
 
-<Link to="./Notities" onClick={this.forceUpdate} > <button className="AgendaOpslaan" type="submit" onClick={() => this.agenda_toevoegen()}>Opslaan</button></Link>
-        <Check />
-      </div>
-    )
+          <Link to="./Notities" onClick={this.forceUpdate} > <button className="AgendaOpslaan" type="submit" onClick={() => this.agenda_toevoegen()}>Opslaan</button></Link>
+          <Menu />
+        </div>
+      )
+    }
   }
-}
 }
 
 

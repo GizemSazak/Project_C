@@ -26,7 +26,7 @@ class Oefeningen extends Component {
             return (
                 <div className='App'>
                     <h1 className='titleOefeningen'>Oefeningen</h1>
-                    <Check />
+                    <Menu />
                     <div class="roww">
 
                         {posts.map(function (post, id) {
