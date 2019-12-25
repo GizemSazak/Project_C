@@ -48,3 +48,36 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",monospace;
 }
+#logout{
+  position: fixed;
+  position: relative;
+  display: inline-block;
+  width: 15vh;
+  left: 188.4vh;
+  height: 50px;
+  border: black;
+  text-align: center;
+  font-size: 20px;
+  color:white;
+  cursor: pointer;
+  background-image:radial-gradient(rgb(0, 300, 0,0.9),rgba(94, 131, 92, 0.8));
+  background-color: transparent;
+  box-shadow: 5px 5px rgb(0, 10, 0,0.1);  
+}
+#spelerteamcode{
+  position: fixed;
+  position: relative;
+  display: inline-block;
+  width: 15vh;
+  top:2vh;
+  left: 188.4vh;
+  height: 50px;
+  border: black;
+  text-align: center;
+  font-size: 20px;
+  color:white;
+  cursor: pointer;
+  background-image:radial-gradient(rgb(0, 300, 0,0.9),rgba(94, 131, 92, 0.8));
+  background-color: transparent;
+  box-shadow: 5px 5px rgb(0, 10, 0,0.1);  
+}
