@@ -2,7 +2,6 @@ import React, { Component, useState, useEffect } from "react";
 import "./registration.css";
 import axios from "axios";
 
-
 class Registreren extends Component {
   constructor(props) {
     super(props);
@@ -22,107 +21,77 @@ class Registreren extends Component {
   handleSubmit = e => {
     console.log(this.state)
     e.preventDefault()
-    const {email, password,firstName,lastName} = this.state;
+    const { email, password, firstName, lastName } = this.state;
     axios
       .post('http://localhost:3001/api/registratie', this.state)
       .then(function (response) {
         if (response.data.redirect == '/') {
-            window.location = "/login"
-        } else if (response.data.redirect == '/registreren'){
-            window.location = "/registreren"
+          window.location = "/login"
+        } else if (response.data.redirect == '/registreren') {
+          window.location = "/registreren"
         }
-    })
-    .catch(function(error) {
-      window.location = "/registreren"
-    })
-      
+      })
+      .catch(function (error) {
+        window.location = "/registreren"
+      })
+
   }
-
-//   render() {
-//     return (
-//       <div className="Page">
-//         <header className="wrapper">
-//           <body className="form-wrapper">
-//             <h1 className="login-header">Create Account for trainer</h1>
-//             <form className="inlogform">
-
-//               <div className="email">
-//                 <label htmlFor="email">Email</label>
-//                 <input classname="inputt" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
-//               </div>
-
-//               <div className="password">
-//                 <label htmlFor="password">Password</label>
-//                 <input classname="inputt" placeholder="Password" type="password" name="password" onChange={this.updateInput} />
-//               </div>
-
-//               <div className="firstName">
-//                 <label htmlFor="firstName">First Name</label>
-//                 <input id="placeholderid" placeholder="First Name" type="text" name="firstname" onChange={this.updateInput} />
-//               </div>
-
-//               <div className="lastName">
-//                 <label htmlFor="lastName">Last Name</label>
-//                 <input classname="inputt" placeholder="Last Name" type="text" name="lastname" onChange={this.updateInput} />
-//               </div>
-
-//               <div className="createAccount">
-//                 <input classname="inputt" type="submit" value="Submit" onClick={this.handleSubmit} />
-//                 <a href="/login"> Already have an account?</a>
-//               </div>
-
-//             </form>
-//           </body>
-//         </header>
-
-
-//       </div >
-//     );
-//   }
-// }
-render() {
-  return (
-    <div className= "HoofdpaginaImage">
-     <h1 className="login-header">Registreren</h1>
-     <input
-            type="text"
-            name="firstname"
-            id="firstname"
-            placeholder="Voornaam"
-            onChange={this.updateInput}
-      />
-       <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            placeholder="Achternaam"
-            onChange={this.updateInput}
-      />
-     <input
-            type="email"
-            name="email"
-            id="email_re"
-            placeholder="Email"
-            onChange={this.updateInput}
-      />
-      <input
-            type="password"
-            name="password"
-            id="password_re"
-            placeholder="Wachtwoord"
-            onChange={this.updateInput}
-      />
-       <input 
-       id="Registrerenbutton"
-        type="submit" 
-        value="Registreren" 
-        onClick={this.handleSubmit} 
-      />
-  </div>  
+  render() {
+    return (
+      <div className="HoofdpaginaImage">
+        <h1 className="login-header">Registreren</h1>
+        <input type="text" name="firstname" id="firstname" placeholder="Voornaam" onChange={this.updateInput} />
+        <input type="text" name="lastname" id="lastname" placeholder="Achternaam" onChange={this.updateInput} />
+        <input type="email" name="email" id="email_re" placeholder="Email" onChange={this.updateInput} />
+        <input type="password" name="password" id="password_re" placeholder="Wachtwoord" onChange={this.updateInput} />
+        <input id="Registrerenbutton" type="submit" value="Registreren" onClick={this.handleSubmit} />
+      </div>
     );
   }
 }
 export default Registreren;
+  //   render() {
+  //     return (
+  //       <div className="Page">
+  //         <header className="wrapper">
+  //           <body className="form-wrapper">
+  //             <h1 className="login-header">Create Account for trainer</h1>
+  //             <form className="inlogform">
+
+  //               <div className="email">
+  //                 <label htmlFor="email">Email</label>
+  //                 <input classname="inputt" placeholder="Email" type="email" name="email" onChange={this.updateInput} />
+  //               </div>
+
+  //               <div className="password">
+  //                 <label htmlFor="password">Password</label>
+  //                 <input classname="inputt" placeholder="Password" type="password" name="password" onChange={this.updateInput} />
+  //               </div>
+
+  //               <div className="firstName">
+  //                 <label htmlFor="firstName">First Name</label>
+  //                 <input id="placeholderid" placeholder="First Name" type="text" name="firstname" onChange={this.updateInput} />
+  //               </div>
+
+  //               <div className="lastName">
+  //                 <label htmlFor="lastName">Last Name</label>
+  //                 <input classname="inputt" placeholder="Last Name" type="text" name="lastname" onChange={this.updateInput} />
+  //               </div>
+
+  //               <div className="createAccount">
+  //                 <input classname="inputt" type="submit" value="Submit" onClick={this.handleSubmit} />
+  //                 <a href="/login"> Already have an account?</a>
+  //               </div>
+
+  //             </form>
+  //           </body>
+  //         </header>
+
+
+  //       </div >
+  //     );
+  //   }
+  // }
 
 
 /* <div className="wrapper2">

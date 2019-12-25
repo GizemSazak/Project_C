@@ -51,19 +51,8 @@ class LoginSpeler extends Component {
     return (
       <div className="HoofdpaginaImage">
         <h1 className="login-header">Login - Speler</h1>
-        <input
-          type="txt"
-          name="teamcode"
-          id="email"
-          placeholder="Teamcode"
-          onChange={this.updateInput}
-        />
-        <input
-          id="loginbutton"
-          type="submit"
-          value="Login"
-          onClick={this.handleSubmit}
-        />
+        <input type="txt" name="teamcode" id="email" placeholder="Teamcode" onChange={this.updateInput} />
+        <input id="loginbutton" type="submit" value="Login" onClick={this.handleSubmit} />
       </div>
     );
   }

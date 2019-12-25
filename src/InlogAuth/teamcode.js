@@ -26,14 +26,9 @@ function Teamcode() {
                 <div className="tablerow" >
                     {posts.map(function (post, id) {
                         return (
-                            <button id="rowss" >
-                                {post.teamcode}
-                            </button>
-
+                            <button id="rowss" >{post.teamcode}</button>
                         )
-
                     })}
-
                 </div>
                 <Menu />
             </div>
