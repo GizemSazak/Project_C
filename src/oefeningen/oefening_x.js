@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './oefening_1.css'
 import Menu from '../Menu/Menu'
+import { Container, Row, Col } from "react-bootstrap"
 
 class oefening_x extends Component {
   constructor(props) {
@@ -18,31 +18,36 @@ class oefening_x extends Component {
     }
     else {
       return (
-        <div >
+        <Container className="Background">
+          <Row>
+            {/* Menu */}
+            <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
 
-          <div id="space">
-            {/* <div div class="rowww"> */}
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <img id="oefen_img" src="//www.yoursportplanner.com/uploads/69b52cb3b2a2dec7e432d618a268cf2799034128.png" />
-            <h2 >Veldopstelling</h2>
-            <p5>{this.state.veldopstelling}</p5>
-            <h5>{this.state.titel}</h5>
-            <h3>Spelverloop:</h3>
-            <br></br>
-            <br></br>
-            <p6>
-              {this.state.spelverloop}</p6>
-            <h6>Spelregels:</h6>
-            <ol>
-              <li>{this.state.spelregels}</li>
-            </ol>
-          </div>
-          <Menu />
-        </div>
+            <Col xs={9} sm={11} lg={11} className="flex-column text-white">
+              {/* Page Body */}
+              <Row style={{ height: "100vh", overflow: "auto" }} className="pt-4 pl-0">
+                <Col>
+                  <img style={{ height: "50%", maxWidth: "65vw" }} src="//www.yoursportplanner.com/uploads/69b52cb3b2a2dec7e432d618a268cf2799034128.png" />
+                  <div className="h-50 p-4 mt-4 OefBody1">
+                    <h4 >Veldopstelling</h4>
+                    <p5>{this.state.veldopstelling}</p5>
+                  </div>
+
+                </Col>
+                <Col className="m-3 pb-3 OefBody2">
+                  <br /><h5 style={{ color: "black", textAlign: "center" }}>{this.state.titel}</h5><br />
+                  <h3>Spelverloop:</h3>
+                  {this.state.spelverloop}<br /><br />
+                  <h5>Spelregels:</h5>
+                  {this.state.spelregels}
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       );
     }
   }
 }
-
 
 export default oefening_x;
