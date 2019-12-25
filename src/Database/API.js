@@ -1,22 +1,17 @@
-// import React from "react"
-// import Redirect from "react"
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const pg = require('pg');
 const cors = require('cors');
-const saltRounds = 10;
 const Password = require("node-php-password");
 const session = require('express-session');
 var hash = Password.hash("password123");
-const bcrypt = require('bcrypt');
 const PORT = 3001;
 var customId = require("custom-id");
-const Cookies = require('universal-cookie');
+// const Cookies = require('universal-cookie');
 var localStorage = require('localStorage')
 
-const cookies = new Cookies();
+// const cookies = new Cookies();
 const cookiesMiddleware = require('universal-cookie-express');
 customId({});
 
