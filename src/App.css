@@ -1,4 +1,15 @@
 /* All default Values will be put here */
+.HomeBackground{
+  background-color: blue; 
+  background: url("./soccer.jpg")no-repeat center center fixed;
+  height: 100vh;
+  max-width: 100vw;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+}
 .Background{
   background-color: green;  
   background: url("./bg.png")no-repeat center center fixed;
@@ -22,7 +33,9 @@
   background-color: rgb(255, 255, 255,0.5);
   box-shadow: 3px 3px rgb(0, 10, 0,0.2);
 }
-
+a:hover{
+  text-decoration: none;
+}
 .btn{
   box-shadow: 3px 3px rgb(0, 10, 0,0.2);
 }

@@ -38,7 +38,7 @@ class Oefeningen extends Component {
                             <Row className="Body pt-4 p-3 ">
                                 {posts.map(function (post, id) {
                                     return (
-                                        <Link to={{ pathname: "/oefening_x", titel: post.titel, veldopstelling: post.veldopstelling, spelverloop: post.spelverloop, spelregels: post.spelregels }}>
+                                        <Link to={{ pathname: "/Oefening_X", titel: post.titel, veldopstelling: post.veldopstelling, spelverloop: post.spelverloop, spelregels: post.spelregels }}>
                                             <Card className="OefCard">
                                                 <Card.Img id="oefimg" variant="top" src={post.afbeelding} alt="Oefening" />
                                                 <Card.Footer style={{ border: "none", backgroundColor: "white" }}>

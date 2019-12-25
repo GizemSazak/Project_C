@@ -2,47 +2,45 @@ import React, { Component } from "react";
 import Draggable from "react-draggable";
 import Menu from '../Menu/Menu';
 import './tactieken.css';
-import { faCross, faClone } from "@fortawesome/free-solid-svg-icons";
-import { copyFile } from "fs";
-
 
 class tactieken extends Component {
 
-    objects=()=>{
+    objects = () => {
 
         const n = 15;
-        return(
-        [...Array(n)].map((e, i) =>
-        <tbody>
-        <Draggable   ><div className="cross"></div></Draggable>
-        <Draggable ><div className="circle"></div></Draggable>
-        <Draggable ><div className="arrowleft"> </div></Draggable>
-        <Draggable ><div className="arrowup"></div></Draggable>
-        <Draggable  ><div className="arrowright"></div></Draggable>
-        <Draggable  ><div className="arrowdown"></div></Draggable>
-        </tbody>
-        ));
+        return (
+            [...Array(n)].map((e, i) =>
+                <tbody>
+                    <Draggable   ><div className="cross"></div></Draggable>
+                    <Draggable ><div className="circle"></div></Draggable>
+                    <Draggable ><div className="arrowleft"> </div></Draggable>
+                    <Draggable ><div className="arrowup"></div></Draggable>
+                    <Draggable  ><div className="arrowright"></div></Draggable>
+                    <Draggable  ><div className="arrowdown"></div></Draggable>
+                </tbody>
+            ));
     }
-    
+
 
     render() {
-        if(!localStorage.getItem('Data') || localStorage === null){
+        if (!localStorage.getItem('Data') || localStorage === null) {
             window.location.href = '/';
-          }
-        else{  
-        return (
-            <div className="app">
-                <div className="body" targetKey="dropzone">
-                    <div className="boardtools">
-                    <this.objects />  
+        }
+        else {
+            return (
+                <div className="app">
+                    <div className="body" targetKey="dropzone">
+                        <div className="boardtools">
+                            <this.objects />
+                        </div>
+
                     </div>
-
+                    <Menu />
                 </div>
-                <Menu />
-            </div>
 
 
-        );}
+            );
+        }
     }
 }
 

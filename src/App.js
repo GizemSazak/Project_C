@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom'
-import Oefeningen from './oefeningen/Oefeningen'
-import oefening_x from './oefeningen//oefening_x'
+import Oefeningen from './Oefeningen/Oefeningen'
+import Oefening_X from './Oefeningen/Oefening_X'
 import Spelers from './Spelers/Spelers'
 import SpelerToevoegen from './Spelers/Toevoegen'
 import SpelerVerwijderen from './Spelers/Verwijderen'
@@ -14,15 +14,15 @@ import Uitslagen from './Uitslagen/Uitslagen';
 import Notities from './Notities//Notities'
 import Notitie_Toevoegen from './Notities//Notitie_Toevoegen'
 import Notitie_Wijzigen from './Notities//Notitie_Wijzigen'
-import registreren from "./inlog + auth/Registration";
-import Loginpage from "./inlog + auth/Login";
+import registreren from "./InlogAuth/Registration";
+import Loginpage from "./InlogAuth/Login";
 import tacktics from "./tactieken/tactieken";
 import Hoofdpagina from "./Hoofdpagina/Hoofdpagina";
 import Agenda from "./Agenda/Agenda"
 import Agenda_Toevoegen from "./Agenda/Agenda_Toevoegen"
 import Agenda_Bewerken from "./Agenda/Agenda_Bewerken"
-import LoginSpeler from "./inlog + auth/LoginSpeler"
-import teamcode from "./inlog + auth/teamcode"
+import LoginSpeler from "./InlogAuth/LoginSpeler"
+import teamcode from "./InlogAuth/teamcode"
 
 // function cheacklogin(checklogin){
 //   if(!localStorage.getItem('myData', 'My data') || localStorage === null){
@@ -38,7 +38,7 @@ function App() {
     <div >
       <Route exact path='/Home' component={Home} />
       <Route exact path='/Oefeningen' component={Oefeningen} />
-      <Route exact path='/oefening_x' component={oefening_x} />
+      <Route exact path='/Oefening_X' component={Oefening_X} />
       <Route exact path='/Spelers' component={Spelers} />
       <Route exact path='/Spelers/Toevoegen' component={SpelerToevoegen} />
       <Route exact path='/Spelers/Verwijderen' component={SpelerVerwijderen} />
@@ -58,8 +58,6 @@ function App() {
       <Route exact path="/Agenda/Agenda_Bewerken" component={Agenda_Bewerken} />
       <Route exact path="/LoginSpeler" component={LoginSpeler} />
       <Route exact path="/teamcode" component={teamcode} />
-
-
     </div>
   );
 }

@@ -5,7 +5,7 @@ import moment from 'moment';
 import 'react-day-picker/lib/style.css';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-
+import { Container, Row, Col, Button, Table } from "react-bootstrap"
 
 class Agenda extends Component {
     state = {
@@ -15,7 +15,6 @@ class Agenda extends Component {
         showYearPopup: false,
         selectedDay: moment().format('D'),
         activitydate: false
-
     }
 
     constructor(props) {
@@ -24,8 +23,6 @@ class Agenda extends Component {
         this.style = props.style || {};
         this.style.width = this.width; // add this
         this.handleDayClick = this.handleDayClick.bind(this);
-
-
     }
     handleDayClick(day, { selected }) {
         this.setState({
@@ -36,22 +33,16 @@ class Agenda extends Component {
     weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
     weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     months = moment.months();
-    year = () => {
-        return this.state.dateContext.format("Y");
-    }
-    month = () => {
-        return this.state.dateContext.format("MMMM");
-    }
-    daysInMonth = () => {
-        return this.state.dateContext.daysInMonth();
-    }
+
+    year = () => { return this.state.dateContext.format("Y"); }
+    month = () => { return this.state.dateContext.format("MMMM"); }
+    daysInMonth = () => { return this.state.dateContext.daysInMonth(); }
+
     currentDate = () => {
         console.log("currentDate: ", this.state.dateContext.get("date"));
         return this.state.dateContext.get("date");
     }
-    currentDay = () => {
-        return this.state.dateContext.format("D");
-    }
+    currentDay = () => { return this.state.dateContext.format("D"); }
 
     firstDayOfMonth = () => {
         let dateContext = this.state.dateContext;
@@ -185,9 +176,7 @@ class Agenda extends Component {
         this.props.onDayClick && this.props.onDayClick(e, day);
     }
 
-
     GetAgenda = () => {
-
         const [posts, setPosts] = useState([])
 
         useEffect(() => {
@@ -204,39 +193,32 @@ class Agenda extends Component {
             return (dag.dag === this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y"))
         });
 
-
-
-
         return (
-            <div className="tableAgenda">
-                {"SELECTED DAY: ", this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}
+            <Container className="p-0">
+                <Col className="p-1" >
+                    <h4 className="mt-2">
+                        {"SELECTED DAY: ", this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}
+                    </h4>
 
-                <tbody>
-                    <tr >
-                        <th className="columnAgenda">Starttijd</th>
-                        <th className="columnAgenda">Eindtijd</th>
-                        <th className="columnAgenda">Beschrijving</th>
+                    <tr className="AgendaHeader1 p-2 mt-3">
+                        <th style={{ width: "33%" }}>Starttijd</th>
+                        <th style={{ width: "33%" }}>Eindtijd</th>
+                        <th style={{ width: "33%" }} >Beschrijving</th>
                     </tr>
-                </tbody>
-                {filterdatum.map(function (post, id) {
-                    return (<Link className="linkk" to={{ pathname: "./Agenda/Agenda_Bewerken", id: post.id, datum: post.dag, starttijd: post.starttijd, eindtijd: post.eindtijd, beschrijving: post.beschrijving }}>
-                        <tbody>
-                            <tr key={id} >
-                                <td className="columnAgenda">
-                                    {post.starttijd}
-                                </td>
-                                <td className="columnAgenda">
-                                    {post.eindtijd}
-                                </td>
-                                <td className="columnAgenda">
-                                    {post.beschrijving}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </Link>
-                    )
-                })}
-            </div>
+
+                    {filterdatum.map(function (post, id) {
+                        return (
+                            <Link to={{ pathname: "./Agenda/Agenda_Bewerken", id: post.id, datum: post.dag, starttijd: post.starttijd, eindtijd: post.eindtijd, beschrijving: post.beschrijving }}>
+                                <tr key={id} className="AgendaBody1 p-1">
+                                    <td style={{ width: "33%" }}>{post.starttijd}</td>
+                                    <td style={{ width: "33%" }}>{post.eindtijd}</td>
+                                    <td style={{ width: "33%" }}>{post.beschrijving}</td>
+                                </tr>
+                            </Link>
+                        )
+                    })}
+                </Col>
+            </Container>
         );
     }
 
@@ -255,9 +237,7 @@ class Agenda extends Component {
             </td>
             );
         }
-
         console.log("blanks: ", blanks);
-
 
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
@@ -269,11 +249,9 @@ class Agenda extends Component {
             daysInMonth.push(
                 <td key={d} className={className + selectedClass} id={actcolor}>
                     <span key={d + this.month + this.year} onClick={(e) => { this.onDayClick(e, d) }} >{d}</span>
-
                 </td>
             );
         }
-
 
         console.log("days: ", daysInMonth);
 
@@ -298,9 +276,7 @@ class Agenda extends Component {
 
         let trElems = rows.map((d, i) => {
             return (
-                <tr key={i * 100}>
-                    {d}
-                </tr>
+                <tr key={i * 100}>{d}</tr>
             );
         })
 
@@ -309,49 +285,88 @@ class Agenda extends Component {
         }
         else {
             return (
-                <div className="App">
-                    <h1 className='titleOefeningen'>Agenda</h1>
-                    <div className="agendaBody">
-                        <div className="calendar-container" style={this.style}>
-                            <table className="calendar">
-                                <thead>
-                                    <tr className="calendar-header">
-                                        <td colSpan="5">
-                                            <this.MonthNav />
-                                            {" "}
-                                            <this.YearNav />
-                                        </td>
-                                        <td colSpan="2" className="nav-month">
-                                            <i className="prev fa fa-fw fa-chevron-left"
-                                                onClick={(e) => { this.prevMonth() }}>
-                                            </i>
-                                            <i className="prev fa fa-fw fa-chevron-right"
-                                                onClick={(e) => { this.nextMonth() }}>
-                                            </i>
-                                        </td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        {weekdays}
-                                    </tr>
-                                    {trElems}
-                                </tbody>
-                            </table>
-                        </div>
-                        <this.GetAgenda />
-                        <Link to={{ pathname: "./Agenda/Agenda_Toevoegen", dag: this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y") }}><button className="addbutton2">+</button></Link>
-                    </div>
+                <Container className="Background">
+                    <Row >
+                        {/* Menu */}
+                        <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
 
-                    <Menu />
-                </div>
+                        <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white text-center">
+                            {/* Page Header */}
+                            <Row>
+                                <Col className="py-5"><h4>Agenda</h4></Col>
+                            </Row>
+                            {/* Page Body */}
+                            <Row className="Body pt-4">
+                                <Col>
+                                    <Row style={{ height: '90%' }}>
+                                        <this.GetAgenda />
+                                    </Row>
+                                    <Row className="d-flex justify-content-center align-items-center" style={{ height: '10%' }}>
+                                        <Col>
+                                            <Link to={{ pathname: "./Agenda/Agenda_Toevoegen", dag: this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y") }}>
+                                                <Button className="btn-success">Toevoegen</Button>
+                                            </Link>
+                                        </Col>
+                                    </Row>
+                                </Col>
 
+                                <Col >
+                                    <Table className="Calender align-items-start">
+                                        <tr>
+                                            <td colSpan="5">
+                                                <h4><this.MonthNav />{" "}<this.YearNav /></h4>
+                                            </td>
+                                            <td colSpan="2" className="nav-month">
+                                                <i className="prev fa fa-fw fa-chevron-left"
+                                                    onClick={(e) => { this.prevMonth() }}>
+                                                </i>
+                                                <i className="prev fa fa-fw fa-chevron-right"
+                                                    onClick={(e) => { this.nextMonth() }}>
+                                                </i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            {weekdays}
+                                        </tr>
+                                        {trElems}
+                                    </Table>
+
+
+                                    {/* <table className="calendar">
+                                        <thead>
+                                            <tr className="calendar-header">
+                                                <td colSpan="5">
+                                                    <this.MonthNav />
+                                                    {" "}
+                                                    <this.YearNav />
+                                                </td>
+                                                <td colSpan="2" className="nav-month">
+                                                    <i className="prev fa fa-fw fa-chevron-left"
+                                                        onClick={(e) => { this.prevMonth() }}>
+                                                    </i>
+                                                    <i className="prev fa fa-fw fa-chevron-right"
+                                                        onClick={(e) => { this.nextMonth() }}>
+                                                    </i>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                {weekdays}
+                                            </tr>
+                                            {trElems}
+                                        </tbody>
+                                    </table> */}
+
+                                </Col>
+
+                            </Row>
+                        </Col>
+                    </Row>
+                </Container >
             )
         }
     }
-
 }
-
-
 
 export default Agenda;
