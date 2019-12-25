@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css'
-import './Hoofdpagina.css';
 import { Container, Row, Col, Button } from "react-bootstrap"
 
 import SplitText from 'react-pose-text';
@@ -47,16 +46,3 @@ function Hoofdpagina() {
     );
 }
 export default Hoofdpagina;
-
-{/* <div className="HoofdpaginaImage">
-    <div className="container" id="Hoofdpagina">
-        <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-            Wij maken jouw voetbaltraining makkelijker!
-        </SplitText>
-        <div className="HomeButtons">
-            <Link to="./login"> <button className="LoginTranier" type="submit">Login Tranier</button></Link>
-            <Link to="./LoginSpeler"> <button className="LoginSpeler" type="submit">Login Speler</button></Link>
-            <Link to="./Registreren"> <button className="RegistrerenBtn" type="submit">Registreren</button></Link>
-        </div>
-    </div>
-</div> */}
