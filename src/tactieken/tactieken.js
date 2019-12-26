@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import Draggable from "react-draggable";
 import Menu from '../Menu/Menu';
 import './tactieken.css';
+import { Container, Row, Col } from "react-bootstrap"
 
 class tactieken extends Component {
 
     objects = () => {
-
         const n = 15;
         return (
             [...Array(n)].map((e, i) =>
                 <tbody>
-                    <Draggable   ><div className="cross"></div></Draggable>
-                    <Draggable ><div className="circle"></div></Draggable>
-                    <Draggable ><div className="arrowleft"> </div></Draggable>
-                    <Draggable ><div className="arrowup"></div></Draggable>
-                    <Draggable  ><div className="arrowright"></div></Draggable>
-                    <Draggable  ><div className="arrowdown"></div></Draggable>
+                    <Draggable><div className="cross"></div></Draggable>
+                    <Draggable><div className="circle"></div></Draggable>
+                    <Draggable><div className="arrowleft"> </div></Draggable>
+                    <Draggable><div className="arrowup"></div></Draggable>
+                    <Draggable><div className="arrowright"></div></Draggable>
+                    <Draggable><div className="arrowdown"></div></Draggable>
                 </tbody>
             ));
     }
@@ -28,17 +28,39 @@ class tactieken extends Component {
         }
         else {
             return (
-                <div className="app">
-                    <div className="body" targetKey="dropzone">
-                        <div className="boardtools">
-                            <this.objects />
-                        </div>
+                <Container className="Background text-center ">
+                    <Row>
+                        {/* Menu */}
+                        <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
 
-                    </div>
-                    <Menu />
-                </div>
+                        <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white">
+                            {/* Page Header */}
+                            <Row>
+                            </Row>
+                            {/* Page Body */}
+                            <Row >
+                                <Col style={{ width: "100vw" }}>
+                                    {/* I CHANGED MIN-HEIGHT IN CLASSNAME "BODY" BECAUSE IT DIDNT FIT */}
+                                    <div className="body" targetKey="dropzone">
+                                        <div className="boardtools">
+                                            <this.objects />
+                                        </div>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Container >
 
+                // <div className="app">
+                //     <div className="body" targetKey="dropzone">
+                //         <div className="boardtools">
+                //             <this.objects />
+                //         </div>
 
+                //     </div>
+                //     <Menu />
+                // </div> 
             );
         }
     }
