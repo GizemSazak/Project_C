@@ -2,8 +2,9 @@ import React, { Component, useState, useEffect } from "react";
 import "./login.css";
 import axios from "axios";
 import Cookies from 'universal-cookie';
-const cookies = new Cookies();
+import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"
 
+const cookies = new Cookies();
 
 class LoginSpeler extends Component {
   constructor(props) {
@@ -17,7 +18,6 @@ class LoginSpeler extends Component {
     this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
   updateInput(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
@@ -41,19 +41,36 @@ class LoginSpeler extends Component {
       .catch(function (error) {
         window.location = "/LoginSpeler"
       })
-
   }
 
   render() {
     cookies.set('voetbal', 'login', { path: '/' });
     this.state.cookie = cookies.get('voetbal');
     console.log(cookies.get('voetbal'));
+
     return (
-      <div className="HoofdpaginaImage">
-        <h1 className="login-header">Login - Speler</h1>
-        <input type="txt" name="teamcode" id="email" placeholder="Teamcode" onChange={this.updateInput} />
-        <input id="loginbutton" type="submit" value="Login" onClick={this.handleSubmit} />
-      </div>
+      <Container className="HomeBackground d-flex flex-column justify-content-center">
+        <Row >
+          <Col >
+            <Row>
+              <Col className="text-center text-white mb-5">
+                <Col className="py-5"><h4>Login - Speler</h4></Col>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="d-flex flex-column text-center" >
+                <Form>
+                  <FormGroup >
+                    <label className="text-white" >Teamcode</label>
+                    <FormControl type="text" name="teamcode" className="Inputfield" onChange={this.updateInput} />
+                  </FormGroup>
+                  <Button className="btn-success" onClick={this.handleSubmit} style={{ width: "150px" }} >Login</Button>
+                </Form>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container >
     );
   }
 }
