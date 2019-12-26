@@ -1,0 +1,71 @@
+input::placeholder {
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: black;
+  } 
+  
+  #firstname{
+    font-size: 1.2rem;
+    text-align: center;
+    margin-left: 87vh;
+    border-radius: 5px;
+    margin-top: 5vh;
+    height: 6vh;
+    margin-bottom: 10px;
+  }
+  #lastname{
+    font-size: 1.2rem;
+    text-align: center;
+    margin-left: 87vh;
+    border-radius: 5px;
+    margin-top: 5vh;
+    height: 6vh;
+    margin-bottom: 10px;
+  }
+  #email_re{
+        font-size: 1.2rem;
+        text-align: center;
+        margin-left: 87vh;
+        border-radius: 5px;
+        margin-top: 5vh;
+        height: 6vh;
+        margin-bottom: 10px;
+  }
+  
+  #password_re{
+    font-size: 1.2rem;
+    text-align: center;
+    margin-left: 87vh;
+    border-radius: 5px;
+    margin-top: 5vh;
+    height: 6vh;
+    margin-bottom: 10px;
+  }
+  .login-header{
+    color: #fff;
+    font-size: 40px;
+    font-family: PT Sans, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 200;
+    text-align: center;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+    padding-top: 17vh;
+  }
+  #Registrerenbutton{
+    position: fixed;
+    bottom: 0;
+    top: 15vh;
+    position: relative;
+    display: inline-block;
+    width: 30vh;
+    height: 50px;
+    right: 29vh;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 20px;
+    color:white;
+    cursor: pointer;
+    background-image:radial-gradient(rgb(0, 300, 0,0.9),rgba(94, 131, 92, 0.8));
+    background-color: transparent;
+    box-shadow: 5px 5px rgb(0, 10, 0,0.1);
+  }

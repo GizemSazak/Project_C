@@ -1,8 +1,26 @@
-.calendar-container,
-.calendar,
-.calendar-header,
-td,
-tr {
+.AgendaHeader1{
+    background-image: linear-gradient(rgb(0, 200, 0, 0.8), rgb(0, 150, 0, 0.8),rgb(0, 200, 0, 0.8) );
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+.AgendaBody1{
+    background-image: linear-gradient(rgb(200, 200, 200, 0.5), rgb(250, 250, 250, 0.5), rgb(200, 200, 200, 0.5));
+    color: black;
+    display: flex;
+}
+.AgendaBody1:hover{
+    background-image: linear-gradient(rgb(200, 200, 200, 0.8), rgb(250, 250, 250, 0.8), rgb(200, 200, 200, 0.8));
+}
+.Calender{
+    border:2px solid black;
+}
+
+
+
+.calendar-container, .calendar, .calendar-header, td, tr {
     padding: 0;
     margin: 0;
 }
@@ -10,7 +28,6 @@ tr {
   width: 100%;
   height: 330px;
 }
-
 .calendar {
     background-color: none;
     border-spacing: 0;
@@ -24,39 +41,30 @@ tr {
     margin-top:25vh;
     border-left:0.2vh solid black;
 }
-
 .calendar-header {
     border-bottom: 0.2vh solid black;
     font-size: 2em;
 }
-
 .calendar-header td {
     border-spacing: 0;
     padding-left: 5vh;
 }
-
-.day,
-.empty-slot,
-.week-day {
+.day,.empty-slot,.week-day {
     text-align: center;
     height: 40px;
 }
-
 .week-day {
     font-size: 0.8em;
 }
-
 .day {
     font-size: 0.8em;
 }
-
 .day {
     cursor: pointer;
     width: 12vh;
     height: 12vh;
     line-height: 24px;
 }
-
 .current-day {
     background-color: #4285f4;
     width: 28px;
@@ -73,43 +81,31 @@ tr {
     border-radius: 2%;
     color: black;
 }
-
 #activityColor {
     color:red;
 }
-
 .month-popup {
     position: absolute;
     padding: 5px;
     background: white;
     border: 0.2vh solid black;;
 }
-
 .month-popup div {
     padding: 0.3em;
 }
-
 .nav-month {
     position: absolute;
     top: 0.6em;
     font-size: 0.6em;
     right:3px;
 }
-
-
 .editor-year {
     max-width: 3.6em;
 }
-
-.label-month,
-.label-year {
+.label-month,.label-year {
     font-size: 0.6em;
 }
-
-.label-month {
-    cursor: pointer;
-}
-
+.label-month {cursor: pointer;}
 .agendaBody {
  background: rgba(128,128,128, .7);
   margin-left: 18vh;
@@ -125,28 +121,22 @@ tr {
     border: 2px solid black;
     border-collapse: collapse;
 }
-
 #Agenda_col, #Agenda_row1 {
     padding: 15px;
   }
-
  #Agenda_row1{
     background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
     text-align: center;
 }
-
 .titleDatum {
     font-size: 4vh;
 }
-
- 
  #AgendaBewerkTable{
     width: 50%;   
     left:25% ;
     margin-top: 20vh;
     position: relative;
    }
-
  .AgendaOpslaan{
     position: fixed;
     bottom: 6vh;
@@ -175,9 +165,7 @@ tr {
     text-align: center;
     font-size: 18px;
     color:white;
-  
  }
-
  .tableAgenda {
     position:absolute; /*it can be fixed too*/
     margin-right: 50vh;
@@ -186,7 +174,6 @@ tr {
     font-size: 5vh;
     text-align: center;
  }
-
  .columnAgenda {
      width: 20vh;
      height: 5vh;
@@ -194,9 +181,7 @@ tr {
      text-align: center;
      border: 0.2vh solid black;
      background-color: rgba(128,128,128, .7);
-   
  }
-
  .addbutton2 {
     font-size: 15vh;
     color: white;

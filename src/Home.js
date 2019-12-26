@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './Home.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import App from './App';
+import { Container, Row, Col, Image } from "react-bootstrap"
+import logo from './logo.png'
 // import { browserhistory } from 'react-router'; 
 // function cheacklogin(checklogin){
-  // if(!localStorage.getItem('myData', 'My data') || localStorage === null){
-  //   window.location.href = '/';
-  // }
+// if(!localStorage.getItem('myData', 'My data') || localStorage === null){
+//   window.location.href = '/';
+// }
 //   else{
 //     Home();
 //   }
@@ -40,45 +42,45 @@ function Home() {
     { link: "./Agenda", title: "Agenda", icon: faCalendar },
     { link: "./Notities", title: "Notities", icon: faStickyNote },
     { link: "./Spelers", title: "Spelers", icon: faUsers },
-    { link: "openTab('b1');", title: "Aanwezig", icon: faUserCheck },
+    { link: "./Aanwezigheid", title: "Aanwezig", icon: faUserCheck },
     { link: "./tactieken", title: "Tactiek", icon: faBezierCurve },
     { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
     { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
-    { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
+    { link: "./Instellingen", title: "Instellingen", icon: faCogs }
   ]);
-  if(!localStorage.getItem('Data') || localStorage === null){
+  if (!localStorage.getItem('Data') || localStorage === null) {
     window.location.href = '/';
   }
-  else{
-  return (
-    <div className="App">
-      <header>
-      </header>
-      <div className="row" >
-        {/* We're making all the buttons and filling the values in by mapping through all buttons */}
-        {buttons.map(buttons => (
-          posts.map(function (post, id) {
-            return(
-          <Link to={{pathname: buttons.link, teamcode: post.teamcode }} className="link">
-            <div className="column" onclick={buttons.link}>
-              <FontAwesomeIcon icon={buttons.icon} className="App-logo" />
-              <br />{buttons.title}
-            </div>
-          </Link>)
-          })
-        ))}
-      </div >
-      <button id="logout" name="logout" value="submit"  onClick={()=> logout()}>Uitloggen</button>
-      {posts.map(function (post, id) {
-        return(
-      <Link to={{pathname:"./teamcode", teamcode:post.teamcode}}>
-      <button id="spelerteamcode" name="spelerteamcode" value="submit">Teamcode</button>           
-      </Link>)
-      })}
+  else {
+    return (
+      <Container className="Background d-flex flex-column justify-content-end p-0 m-0">
+        <Row className="text-center  d-table" >
+          <Col className="Logo d-table-cell align-middle ">
+            <Image src={logo} alt="Logo" className="h-50"></Image>
+          </Col>
+        </Row>
+        <Row >
+          {buttons.map(buttons => (
+            /* We're making all the buttons and filling the values in by mapping through all buttons */
+            posts.map(function (post, id) {
+              return(
+            <Col className="MenuColumn  d-table">
+              <Link to={{pathname: buttons.link, teamcode: post.teamcode }} className="d-table-cell align-middle text-white" onclick={buttons.link}>
+                <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "5vh" }} />
+                <br />{buttons.title}
+              </Link> 
+            </Col>)})
+          ))}
+        </Row>
+      </Container>
+      //       </div >
+      //       <button id="logout" name="logout" value="submit"  onClick={()=> logout()}>Uitloggen</button>
+      //       <Link to="./teamcode">
+      //  <button id="spelerteamcode" name="spelerteamcode" value="submit">Teamcode</button>           </Link>
 
-    </div>
-  );
-}
+      //     </div>
+    );
+  }
 }
 
 // function openTab(tabName) {
