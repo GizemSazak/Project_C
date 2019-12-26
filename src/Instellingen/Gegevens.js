@@ -1,5 +1,5 @@
-import Check from '../Menu/Check'
-import '../Notities/notities_beschrijven.css'
+import Menu from '../Menu/Menu'
+import '../Notities/Notities.css'
 import axios from 'axios'
 import '../App.css'
 import './Gegevens.css';
@@ -13,7 +13,7 @@ class Gegevens extends Component {
             id: this.props.location.id,
             firstname: this.props.location.firstname,
             lastname: this.props.location.lastname,
-            
+
 
         }
     }
@@ -44,49 +44,49 @@ class Gegevens extends Component {
     }
 
     render() {
-        if(!localStorage.getItem('Data') || localStorage === null){
+        if (!localStorage.getItem('Data') || localStorage === null) {
             window.location.href = '/';
-          }
-        else{ 
-        return (
-            <div className="App">
-                <h1 className='titleOefeningen'>Gegevens</h1>
-                <div className="uitslagBody">
-                    <div className="Voornaam">
-                    <label id="Voornaam">Voornaam</label>
-                    <br></br>
-                    <input id="firstname_wijzigen" type="text" name="firstname" onChange={event => this.handleChange(event)}
-                        defaultValue={this.state.firstname} />
-                     </div>
-                    <div className="Achternaam">
-                    <br></br>  
-                     <label id="Achternaam">Achternaam</label>
-                     <br></br>
-                    <input type="text" name="lastname" onChange={event => this.handleChange(event)}
-                        defaultValue={this.state.lastname} />
+        }
+        else {
+            return (
+                <div className="App">
+                    <h1 className='titleOefeningen'>Gegevens</h1>
+                    <div className="uitslagBody">
+                        <div className="Voornaam">
+                            <label id="Voornaam">Voornaam</label>
+                            <br></br>
+                            <input id="firstname_wijzigen" type="text" name="firstname" onChange={event => this.handleChange(event)}
+                                defaultValue={this.state.firstname} />
+                        </div>
+                        <div className="Achternaam">
+                            <br></br>
+                            <label id="Achternaam">Achternaam</label>
+                            <br></br>
+                            <input type="text" name="lastname" onChange={event => this.handleChange(event)}
+                                defaultValue={this.state.lastname} />
+                        </div>
+                        <div className="Oudewachtwoord">
+                            <br></br>
+                            <label id="Oudewachtwoord">Oude Wachtwoord</label>
+                            <br></br>
+                            <input type="password" name="oudewachtwoord" onChange={event => this.handleChange(event)}
+                                defaultValue={this.state.password} />
+                        </div>
+                        <div className="Nieuwewachtwoord">
+                            <br></br>
+                            <label id="Nieuwewachtwoord">Nieuwe Wachtwoord</label>
+                            <br></br>
+                            <input type="text" name="nieuwewachtwoord" onChange={event => this.handleChange(event)}
+                                defaultValue={this.state.password} />
+                        </div>
+                        <Link to="./Instellingen" onClick={this.forceUpdate}><button tye="button" onClick={() => this.Gegevens_Wijzigen()} className="wijzigenButton">Wijzigen</button>
+                        </Link>
                     </div>
-                    <div className="Oudewachtwoord">
-                          <br></br>  
-                     <label id="Oudewachtwoord">Oude Wachtwoord</label>
-                     <br></br>
-                    <input type="password" name="oudewachtwoord" onChange={event => this.handleChange(event)}
-                        defaultValue={this.state.password} />
-                    </div>
-                    <div className="Nieuwewachtwoord">
-                          <br></br>  
-                     <label id="Nieuwewachtwoord">Nieuwe Wachtwoord</label>
-                     <br></br>
-                    <input type="text" name="nieuwewachtwoord" onChange={event => this.handleChange(event)}
-                        defaultValue={this.state.password} />
-                    </div>
-                    <Link to="./Instellingen" onClick={this.forceUpdate}><button tye="button" onClick={() => this.Gegevens_Wijzigen()} className="wijzigenButton">Wijzigen</button>
-                    </Link>
+                    <Menu />
                 </div>
-                <Check />
-            </div>
-        );
+            );
+        }
     }
-}
 }
 
 
