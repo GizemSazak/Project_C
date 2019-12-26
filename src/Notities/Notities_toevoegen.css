@@ -1,0 +1,67 @@
+  
+@media (max-width: 600px) {
+  .App {
+    width: 110%;
+    height: 200vh;
+  }
+  }
+  ::-webkit-input-placeholder { 
+      color: white;
+    }
+    input[type=text]:focus {
+      background-color: radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+    }
+    #title{
+      padding: 5vh;
+      cursor: pointer;
+      display: block;
+      border: 0.2vh solid black;
+      background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+      background-color: transparent;
+      height: 50px;     
+      margin-top: 32vh;
+      margin-left: 30%;
+      width: 800px;
+      color: black;
+      position: absolute;
+      font-size: 28px;
+      text-align: center;
+    }
+    #beschrijven{
+      padding: 5vh;
+      cursor: pointer;
+      display: block;
+      border: 0.2vh solid black;
+      background-color: rgba(205, 207, 206, 0.8);        
+      height: 300px;  
+      margin-top: 42vh;
+      margin-left: 30%;
+      width: 800px;
+      font-size: 28px;
+      color:black;
+      position: relative;
+      text-align: center;
+    }
+    .opslaan{
+      position: fixed;
+      right: 360px;
+      bottom: 6vh;
+      display: inline-block;
+      width: 200px;
+      height: 50px;
+      border: none;
+      border-radius: 25px;
+      text-align: center;
+      font-size: 18px;
+      color:white;
+      cursor: pointer;
+      background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+      background-color: transparent;
+      box-shadow: 5px 5px rgb(0, 10, 0,0.3);
+    }
+    .trash2{
+      height: 9vh;
+      right: 35vh;
+      bottom: 5vh;
+      position: fixed;
+      }

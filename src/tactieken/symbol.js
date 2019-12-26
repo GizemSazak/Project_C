@@ -19,7 +19,12 @@ function Symbol(props) {
 
     return (
         <div id={props.id} className={props.className} draggable={props.draggable} onDragStart={DragStart} onDragOver={DragOver} >
+
+
         </div>
+
+
+
     )
 }
 
