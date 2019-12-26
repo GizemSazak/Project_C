@@ -82,10 +82,10 @@ class uitslagtoevoegen extends Component {
 
                 </Row>
                 {/* Buttons */}
-                <Row className="align-items-start" style={{ height: '15%' }}>
+                <Row className="align-items-end" style={{ height: '15%' }}>
                   <Col >
                     <Link to="./Uitslagen" onClick={this.forceUpdate} >
-                      <Button className="btn-success m-1 px-4 border-dark" onClick={() => this.addUitslag()}>Toevoegen</Button>
+                      <Button className="btn-success mt-0 mb-4 px-4 border-dark" onClick={() => this.addUitslag()}>Toevoegen</Button>
                     </Link>
                   </Col>
                 </Row>

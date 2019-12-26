@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Menu.css';
-import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
+import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs, faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col } from "react-bootstrap"
@@ -8,6 +8,7 @@ import { Container, Row, Col } from "react-bootstrap"
 function Menu() {
     // Here the values of the buttons are filled in
     const [buttons] = useState([
+        { link: "../Home", title: "Home", icon: faHome },
         { link: "../Agenda", title: "Agenda", icon: faCalendar },
         { link: "../Notities", title: "Notities", icon: faStickyNote },
         { link: "../Spelers", title: "Spelers", icon: faUsers },
@@ -22,7 +23,6 @@ function Menu() {
     }
     else {
         return (
-
             <Container className="sidebar d-flex flex-column text-center"  >
                 {/* We're making all the buttons and filling the values in by mapping through all buttons */}
                 {buttons.map(buttons => (

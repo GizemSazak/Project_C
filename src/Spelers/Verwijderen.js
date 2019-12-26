@@ -32,7 +32,7 @@ class SpelerVerwijderen extends Component {
         return (
             <Row className="align-content-start" style={{ height: '90%' }} >
                 {posts.map(post =>
-                    <Col className="m-1 " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }} onClick={() => this.Delete(post.voornaam, post.achternaam)}>
+                    <Col className="m-1" style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }} onClick={() => this.Delete(post.voornaam, post.achternaam)}>
                         <Card className="border-dark " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }} >
                             <Card.Header style={{ backgroundColor: 'rgb(0, 140, 0,0.9)', padding: '4%' }}>{/* Positie */}</Card.Header>
                             <Card.Body style={{ backgroundColor: 'rgb(0, 110, 0,0.8)', padding: '4%' }}>

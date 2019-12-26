@@ -74,9 +74,8 @@ class Notitie_Wijzigen extends Component {
                                         <FormGroup >
                                             <FormControl className="text-center NotitieTitel border-dark mt-3 p-4" col="200" type="text" placeholder="Titel" name="titel" onChange={event => this.handleChange(event)} defaultValue={this.state.titel} />
                                         </FormGroup>
-
                                         <FormGroup onSubmit={this.submitHandler}>
-                                            <FormControl as="textarea" col="200" rows="12" className="NotitieBody border-dark p-4" type="text" placeholder="Beschrijven" name="notitie" onChange={event => this.handleChange(event)} defaultValue={this.state.notitie}></FormControl>
+                                            <FormControl as="textarea" col="200" className="NotitieBody border-dark p-4" type="text" placeholder="Beschrijven" name="notitie" onChange={event => this.handleChange(event)} defaultValue={this.state.notitie} />
                                         </FormGroup>
                                     </Form>
                                 </Row>
@@ -84,7 +83,7 @@ class Notitie_Wijzigen extends Component {
                                 <Row className="align-items-start " style={{ height: '10%' }}>
                                     <Col >
                                         <Link to="./Notities" onClick={this.forceUpdate} >
-                                            <Button variant="success" className="m-1 border-dark" onClick={() => this.Notities_Wijzigen()}>Wijzigen</Button>
+                                            <Button variant="success" className="m-1 border-dark" onClick={() => this.Notities_Wijzigen()}>Opslaan</Button>
                                         </Link>
 
                                         <Link to="./Notities" onClick={this.forceUpdate}>

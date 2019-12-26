@@ -1,26 +1,32 @@
-.Notitie{
-  background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.9));
+.Notes{
+  width: 500px;
+  max-height: 50px;
+}
+.Note{
+  background-image: linear-gradient(rgba(210, 210, 0),rgba(160, 160, 0));
   width: 100%;
   height: 100%;
   box-shadow: 3px 3px rgb(0, 10, 0,0.2);
 }
-.Not{
-  width: 500px;
-  max-height: 50px;
+.Note:hover{
+  background-image: linear-gradient(rgba(240, 240, 0),rgba(190, 190, 0));
 }
 .NotitieTitel{
-  background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.9));
+  background-image: linear-gradient(rgba(210, 210, 0),rgba(160, 160, 0));
   width: 70vw;
   max-width: 600px;
   font-size: 1.2rem;
   font-weight: bold;
 }
+.NotitieTitel:hover{
+  background-image: linear-gradient(rgba(240, 240, 0),rgba(190, 190, 0));
+}
 .NotitieBody{
   min-height: 52vh;
-  background-color: rgb(255, 255, 255,0.5);
+  background-color: rgb(220, 220, 220);
   text-align: start;
   box-shadow: 3px 3px rgb(0, 10, 0,0.2);
 }
 .NotitieBody:hover{
-  background-color: rgb(255, 255, 255,0.8);
+  background-color: rgb(255, 255, 255);
 }

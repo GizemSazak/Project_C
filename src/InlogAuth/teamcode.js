@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"
 
 function Teamcode() {
 

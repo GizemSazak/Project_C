@@ -54,7 +54,7 @@ function SpelerOverzicht() {
     }, []);
 
     return (
-        <Row className="align-content-start" style={{ height: '90%' }} >
+        <Row className="align-content-start justify-content-center" style={{ height: '90%' }} >
             {posts.map(post =>
                 <Col className="m-1 " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }}>
                     <Card className="border-dark " style={{ minWidth: '16vh', maxWidth: '16vh', height: '25vh' }}>
