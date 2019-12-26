@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import App from './App';
 // import { browserhistory } from 'react-router'; 
 // function cheacklogin(checklogin){
@@ -16,25 +15,6 @@ import App from './App';
 // }
 function Home() {
   // cheacklogin();
-
-
-  const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-        axios.get('http://localhost:3001/api/registratie')
-            .then(res => {
-                console.log(res)
-                setPosts(res.data)
-            })
-            .catch()
-    }, []);
-
-    posts.map(function (post, id) {
-      axios.post('http://localhost:3001/api/teamcode', {'teamcode': post.teamcode})
-    }
-    )
-
-    
 
   const [buttons] = useState([
     { link: "./Agenda", title: "Agenda", icon: faCalendar },
@@ -57,24 +37,17 @@ function Home() {
       <div className="row" >
         {/* We're making all the buttons and filling the values in by mapping through all buttons */}
         {buttons.map(buttons => (
-          posts.map(function (post, id) {
-            return(
-          <Link to={{pathname: buttons.link, teamcode: post.teamcode }} className="link">
+          <Link to={buttons.link} className="link">
             <div className="column" onclick={buttons.link}>
               <FontAwesomeIcon icon={buttons.icon} className="App-logo" />
               <br />{buttons.title}
             </div>
-          </Link>)
-          })
+          </Link>
         ))}
       </div >
       <button id="logout" name="logout" value="submit"  onClick={()=> logout()}>Uitloggen</button>
-      {posts.map(function (post, id) {
-        return(
-      <Link to={{pathname:"./teamcode", teamcode:post.teamcode}}>
-      <button id="spelerteamcode" name="spelerteamcode" value="submit">Teamcode</button>           
-      </Link>)
-      })}
+      <Link to="./teamcode">
+ <button id="spelerteamcode" name="spelerteamcode" value="submit">Teamcode</button>           </Link>
 
     </div>
   );
