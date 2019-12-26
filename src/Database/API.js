@@ -8,7 +8,10 @@ const session = require('express-session');
 var hash = Password.hash("password123");
 const PORT = 3001;
 var customId = require("custom-id");
+// const Cookies = require('universal-cookie');
 var localStorage = require('localStorage')
+
+// const cookies = new Cookies();
 const cookiesMiddleware = require('universal-cookie-express');
 customId({});
 
@@ -65,7 +68,7 @@ app.post("/api/registratie", (req, res) => {
                     // console.log(customId({}));
                     try {
                         hash = Password.hash(password);
-                        db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname,teamcode], function (err, insert) {
+                        db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname, teamcode], function (err, insert) {
                             if (err) {
                                 return res.status(400).send(err);
                             } else {
@@ -77,7 +80,7 @@ app.post("/api/registratie", (req, res) => {
                     }
                     catch (err) {
                         console.log("INSERTED DATA NOT SUCCESSED");
-                       var redir = { redirect: '/registreren'};
+                        var redir = { redirect: '/registreren' };
                         return res.json(redir);
                     }
                 }
@@ -117,15 +120,15 @@ app.post("/api/login", (req, res) => {
                             console.log(req.session.email);
                             var redir = { redirect: "/" };
                             // setter
-                          console.log(localStorage);
-                            req.session.save(function(err) {
+                            console.log(localStorage);
+                            req.session.save(function (err) {
                                 // session saved
-                              })
+                            })
                             return res.json(redir);
                         }
                     } catch (err) {
                         console.log("Login not successed")
-                         redir = { redirect: '/login'};
+                        redir = { redirect: '/login' };
                         return res.json(redir);
                     }
 
@@ -165,7 +168,7 @@ app.get('/api/registratie', (req, res) => {
         if (err) {
             return res.status(400).send(err);
         }
-        db.query('SELECT * from registratie WHERE email = $1',[global.email], (err, table) => {
+        db.query('SELECT * from registratie WHERE email = $1', [global.email], (err, table) => {
             done();
             if (err) {
                 return res.status(400).send(err);
@@ -197,10 +200,10 @@ app.put('/api/registratie', (req, res) => {
                 console.log('Update DATA SUCCESS');
                 res.status(201).send({ message: 'Data updated!' });
             }
-            
+
         );
     });
-    
+
 });
 
 //Get spelers
@@ -249,7 +252,7 @@ app.post("/api/loginspeler", (req, res) => {
                         }
                     } catch (err) {
                         console.log("Speler Login not successed")
-                         redir = { redirect: '/LoginSpeler'};
+                        redir = { redirect: '/LoginSpeler' };
                         return res.json(redir);
                     }
                 }
@@ -544,8 +547,8 @@ app.post('/api/agenda', (req, res) => {
     const starttijd = req.body.starttijd;
     const eindtijd = req.body.eindtijd;
     const dag = req.body.dag;
-    
-    const values = [ beschrijving, starttijd, eindtijd, dag];
+
+    const values = [beschrijving, starttijd, eindtijd, dag];
 
     pool.connect((err, db, done) => {
         if (err) {
@@ -612,17 +615,17 @@ app.delete('/api/agenda', (req, res) => {
         }
 
         db.query('DELETE FROM agenda WHERE id = $1',
-        [id], err => {
-            if (err) {
-                console.log(err + 'tweede');
-                return res.status(400).send(err);
+            [id], err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+
+                console.log('Delete DATA SUCCESS');
+                console.log(id);
+
+                res.status(201).send({ message: 'Data deleted!' });
             }
-
-            console.log('Delete DATA SUCCESS');
-            console.log(id);
-
-            res.status(201).send({ message: 'Data deleted!' });
-        }
         );
     });
 });

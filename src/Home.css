@@ -1,0 +1,16 @@
+.MenuColumn { 
+    text-align: center;
+    font-size: 1.3vw;
+    height: 25vh;
+    min-width: 25.2vw;
+    cursor: pointer;
+    color: white;
+    border: 0.1vh solid black;
+    background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.8));
+  } 
+  .MenuColumn:hover{
+    background-image: radial-gradient(rgb(0, 150, 0,1),rgb(0, 250, 0,1));
+  }
+  .Logo{
+    height:60vh;
+  }
