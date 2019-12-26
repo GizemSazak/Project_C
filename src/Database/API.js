@@ -1,22 +1,14 @@
-// import React from "react"
-// import Redirect from "react"
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const pg = require('pg');
 const cors = require('cors');
-const saltRounds = 10;
 const Password = require("node-php-password");
 const session = require('express-session');
 var hash = Password.hash("password123");
-const bcrypt = require('bcrypt');
 const PORT = 3001;
 var customId = require("custom-id");
-const Cookies = require('universal-cookie');
 var localStorage = require('localStorage')
-
-const cookies = new Cookies();
 const cookiesMiddleware = require('universal-cookie-express');
 customId({});
 
@@ -40,12 +32,6 @@ app.use(session({
     cookie: { secure: false }
 }))
 app.use(cookiesMiddleware())
-// app.use(function(req, res) {
-//     // get the user cookies using universal-cookie
-//     req.universalCookies.get('voetbal')
-//     console.log(req.universalCookies.get('voetbal'))
-//     console.log('Cookie')
-//   });
 app.use(morgan('dev'));
 
 app.use(function (req, res, next) {
@@ -59,7 +45,6 @@ app.use(function (req, res, next) {
 
 //Registreren
 app.post("/api/registratie", (req, res) => {
-    //   // Ik heb teamcode voor nu weggehaald
     console.log(req.body);
     const email = req.body.email;
     const password = req.body.password;
@@ -152,9 +137,8 @@ app.post("/api/login", (req, res) => {
     });
 });
 //Get teamcode for the tranier
-app.get('/api/registratie', (req, res) => {
+app.get('/api/registratie/teamcode', (req, res) => {
     pool.connect((err, db, done) => {
-    
         db.query(
             "SELECT teamcode from registratie where email = $1", [global.email],
             (err, table) => {
@@ -166,20 +150,6 @@ app.get('/api/registratie', (req, res) => {
                     if (err) {
                         return res.status(400).send(err);
                     }
-                    // try {
-                    //     if (Password.verify(password, table.rows[0].password)) {
-                    //         req.session.id = table.rows[0].id;
-                    //         req.session.email = table.rows[0].email;
-                    //         console.log("Login successed");
-                    //         console.log(req.session.email);
-                    //         var redir = { redirect: "/" };
-                    //         return res.json(redir);
-                    //     }
-                    // } catch (err) {
-                    //     console.log("Login not successed")
-                    //      redir = { redirect: '/login'};
-                    //     return res.json(redir);
-                    // }
 
                 }
 
@@ -189,6 +159,50 @@ app.get('/api/registratie', (req, res) => {
     });
 
 });
+// View gegevens
+app.get('/api/registratie', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+        db.query('SELECT * from registratie WHERE email = $1',[global.email], (err, table) => {
+            done();
+            if (err) {
+                return res.status(400).send(err);
+            }
+            return res.status(200).send(table.rows);
+        });
+    });
+});
+//Update gegevens
+app.put('/api/registratie', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    pool.connect((err, db, done) => {
+        done();
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+        db.query(
+            'UPDATE registratie SET firstname = $2 , lastname = $3 where id = $1',
+            [id, firstname, lastname],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+                console.log('Update DATA SUCCESS');
+                res.status(201).send({ message: 'Data updated!' });
+            }
+            
+        );
+    });
+    
+});
+
 //Get spelers
 app.get('/api/speler', (req, res) => {
     pool.connect((err, db, done) => {

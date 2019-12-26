@@ -24,7 +24,7 @@ function Home() {
     { link: "./tactieken", title: "Tactiek", icon: faBezierCurve },
     { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
     { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
-    { link: "openTab('b1');", title: "Instellingen", icon: faCogs }
+    { link: "./Instellingen", title: "Instellingen", icon: faCogs }
   ]);
   if(!localStorage.getItem('Data') || localStorage === null){
     window.location.href = '/';

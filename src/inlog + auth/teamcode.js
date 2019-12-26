@@ -8,7 +8,7 @@ function Teamcode() {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:3001/api/registratie')
+        axios.get('http://localhost:3001/api/registratie/teamcode')
             .then(res => {
                 console.log(res)
                 setPosts(res.data)
