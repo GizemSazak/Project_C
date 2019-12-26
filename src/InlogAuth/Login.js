@@ -83,7 +83,7 @@ class Loginpage extends Component {
               <Col className="d-flex flex-column text-center" >
                 <Form>
                   <FormGroup >
-                    <label className="text-white" >Voornaam</label>
+                    <label className="text-white" >Email</label>
                     <FormControl type="email" name="email" className="Inputfield" onChange={this.updateInput} />
                   </FormGroup>
                   <FormGroup >
