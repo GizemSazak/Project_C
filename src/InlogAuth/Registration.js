@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import "./registration.css";
 import axios from "axios";
+import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"
 
 class Registreren extends Component {
   constructor(props) {
@@ -38,14 +39,40 @@ class Registreren extends Component {
   }
   render() {
     return (
-      <div className="HoofdpaginaImage">
-        <h1 className="login-header">Registreren</h1>
-        <input type="text" name="firstname" id="firstname" placeholder="Voornaam" onChange={this.updateInput} />
-        <input type="text" name="lastname" id="lastname" placeholder="Achternaam" onChange={this.updateInput} />
-        <input type="email" name="email" id="email_re" placeholder="Email" onChange={this.updateInput} />
-        <input type="password" name="password" id="password_re" placeholder="Wachtwoord" onChange={this.updateInput} />
-        <input id="Registrerenbutton" type="submit" value="Registreren" onClick={this.handleSubmit} />
-      </div>
+      <Container className="HomeBackground d-flex flex-column justify-content-center">
+        <Row >
+          <Col >
+            <Row>
+              <Col className="text-center text-white mb-5">
+                <Col className="py-5"><h4>Registreren</h4></Col>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="d-flex flex-column text-center" >
+                <Form>
+                  <FormGroup >
+                    <label className="text-white" >Voornaam</label>
+                    <FormControl type="text" name="firstname" className="Inputfield" onChange={this.updateInput} />
+                  </FormGroup>
+                  <FormGroup >
+                    <label className="text-white" >Achternaam</label>
+                    <FormControl type="text" name="lastname" className="Inputfield" onChange={this.updateInput} />
+                  </FormGroup>
+                  <FormGroup >
+                    <label className="text-white" >Email</label>
+                    <FormControl type="email" name="email" className="Inputfield" onChange={this.updateInput} />
+                  </FormGroup>
+                  <FormGroup >
+                    <label className="text-white" >Wachtwoord</label>
+                    <FormControl type="password" name="password" className="Inputfield" onChange={this.updateInput} />
+                  </FormGroup>
+                  <Button className="btn-success" onClick={this.handleSubmit} style={{ width: "150px" }} >Registreren</Button>
+                </Form>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container >
     );
   }
 }
