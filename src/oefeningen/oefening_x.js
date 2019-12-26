@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Menu from '../Menu/Menu'
 import { Container, Row, Col } from "react-bootstrap"
 
-class oefening_x extends Component {
+class Oefening_X extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,4 +50,4 @@ class oefening_x extends Component {
   }
 }
 
-export default oefening_x;
+export default Oefening_X;
