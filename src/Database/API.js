@@ -1,22 +1,17 @@
-// import React from "react"
-// import Redirect from "react"
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const pg = require('pg');
 const cors = require('cors');
-const saltRounds = 10;
 const Password = require("node-php-password");
 const session = require('express-session');
 var hash = Password.hash("password123");
-const bcrypt = require('bcrypt');
 const PORT = 3001;
 var customId = require("custom-id");
-const Cookies = require('universal-cookie');
+// const Cookies = require('universal-cookie');
 var localStorage = require('localStorage')
 
-const cookies = new Cookies();
+// const cookies = new Cookies();
 const cookiesMiddleware = require('universal-cookie-express');
 customId({});
 
@@ -40,12 +35,6 @@ app.use(session({
     cookie: { secure: false }
 }))
 app.use(cookiesMiddleware())
-// app.use(function(req, res) {
-//     // get the user cookies using universal-cookie
-//     req.universalCookies.get('voetbal')
-//     console.log(req.universalCookies.get('voetbal'))
-//     console.log('Cookie')
-//   });
 app.use(morgan('dev'));
 
 app.use(function (req, res, next) {
@@ -57,9 +46,49 @@ app.use(function (req, res, next) {
     next();
 });
 
+// Aanwezigheid
+app.get('/api/aanwezigheid', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query('SELECT * from aanwezigheid right join speler on speler_id=id', (err, table) => {
+            done();
+
+            // If err is True than send err else send table.rows
+            err ? res.status(400).send(err) : res.status(200).send(table.rows)
+        });
+    });
+});
+
+app.post('/api/aanwezigheid', (req, res) => {
+    console.log(req.body);
+    const datum = req.body.datum;
+    const aanwezig = req.body.aanwezig;
+    const speler_id = req.body.speler_id;
+
+    const values = [datum, aanwezig, speler_id];
+
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query(
+            'INSERT INTO aanwezigheid (datum, aanwezig, speler_id) VALUES($1, $2, $3)', [datum, aanwezig, speler_id],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+
+                console.log('INSERTED DATA SUCCESS');
+
+                res.status(201).send({ message: 'Data inserted!' });
+            }
+        );
+    });
+});
+
 //Registreren
 app.post("/api/registratie", (req, res) => {
-    //   // Ik heb teamcode voor nu weggehaald
     console.log(req.body);
     const email = req.body.email;
     const password = req.body.password;
@@ -80,7 +109,7 @@ app.post("/api/registratie", (req, res) => {
                     // console.log(customId({}));
                     try {
                         hash = Password.hash(password);
-                        db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname,teamcode], function (err, insert) {
+                        db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname, teamcode], function (err, insert) {
                             if (err) {
                                 return res.status(400).send(err);
                             } else {
@@ -92,7 +121,7 @@ app.post("/api/registratie", (req, res) => {
                     }
                     catch (err) {
                         console.log("INSERTED DATA NOT SUCCESSED");
-                       var redir = { redirect: '/registreren'};
+                        var redir = { redirect: '/registreren' };
                         return res.json(redir);
                     }
                 }
@@ -133,15 +162,15 @@ app.post("/api/login", (req, res) => {
                             console.log(req.session.email);
                             var redir = { redirect: "/" };
                             // setter
-                          console.log(localStorage);
-                            req.session.save(function(err) {
+                            console.log(localStorage);
+                            req.session.save(function (err) {
                                 // session saved
-                              })
+                            })
                             return res.json(redir);
                         }
                     } catch (err) {
                         console.log("Login not successed")
-                         redir = { redirect: '/login'};
+                        redir = { redirect: '/login' };
                         return res.json(redir);
                     }
 
@@ -154,9 +183,8 @@ app.post("/api/login", (req, res) => {
      
 });
 //Get teamcode for the tranier
-app.get('/api/registratie', (req, res) => {
+app.get('/api/registratie/teamcode', (req, res) => {
     pool.connect((err, db, done) => {
-    
         db.query(
             "SELECT teamcode from registratie where email = $1", [global.email],
             (err, table) => {
@@ -168,20 +196,6 @@ app.get('/api/registratie', (req, res) => {
                     if (err) {
                         return res.status(400).send(err);
                     }
-                    // try {
-                    //     if (Password.verify(password, table.rows[0].password)) {
-                    //         req.session.id = table.rows[0].id;
-                    //         req.session.email = table.rows[0].email;
-                    //         console.log("Login successed");
-                    //         console.log(req.session.email);
-                    //         var redir = { redirect: "/" };
-                    //         return res.json(redir);
-                    //     }
-                    // } catch (err) {
-                    //     console.log("Login not successed")
-                    //      redir = { redirect: '/login'};
-                    //     return res.json(redir);
-                    // }
 
                 }
 
@@ -251,7 +265,7 @@ app.post("/api/loginspeler", (req, res) => {
                         }
                     } catch (err) {
                         console.log("Speler Login not successed")
-                         redir = { redirect: '/LoginSpeler'};
+                        redir = { redirect: '/LoginSpeler' };
                         return res.json(redir);
                     }
                 }
@@ -632,17 +646,17 @@ app.delete('/api/agenda', (req, res) => {
         }
 
         db.query('DELETE FROM agenda WHERE id = $1',
-        [id], err => {
-            if (err) {
-                console.log(err + 'tweede');
-                return res.status(400).send(err);
+            [id], err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+
+                console.log('Delete DATA SUCCESS');
+                console.log(id);
+
+                res.status(201).send({ message: 'Data deleted!' });
             }
-
-            console.log('Delete DATA SUCCESS');
-            console.log(id);
-
-            res.status(201).send({ message: 'Data deleted!' });
-        }
         );
     });
      
