@@ -51,7 +51,7 @@ app.get('/api/aanwezigheid', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
-        db.query('SELECT * from aanwezigheid right join speler on speler_id=id', (err, table) => {
+        db.query('SELECT * from aanwezigheid right join speler on speler_id=id where teamcode = $1',[global.teamcode], (err, table) => {
             done();
 
             // If err is True than send err else send table.rows
@@ -72,7 +72,7 @@ app.post('/api/aanwezigheid', (req, res) => {
         if (err) { return res.status(400).send(err); }
 
         db.query(
-            'INSERT INTO aanwezigheid (datum, aanwezig, speler_id) VALUES($1, $2, $3)', [datum, aanwezig, speler_id],
+            'INSERT INTO aanwezigheid (datum, aanwezig, speler_id, teamcode) VALUES($1, $2, $3, $4)', [datum, aanwezig, speler_id, global.teamcode],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
@@ -183,7 +183,7 @@ app.post("/api/login", (req, res) => {
      
 });
 //Get teamcode for the tranier
-app.get('/api/registratie/teamcode', (req, res) => {
+app.get('/api/registratie', (req, res) => {
     pool.connect((err, db, done) => {
         db.query(
             "SELECT teamcode from registratie where email = $1", [global.email],
@@ -203,7 +203,6 @@ app.get('/api/registratie/teamcode', (req, res) => {
             }
         );
     });
-     
 });
 
 // teamcode
@@ -337,7 +336,7 @@ app.post('/api/notities', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO notities (titel, notitie, teamcode) VALUES($1, $2, $3, $4)',
+            'INSERT INTO notities (titel, notitie, teamcode) VALUES($1, $2, $3)',
             [...values],
             err => {
                 if (err) {

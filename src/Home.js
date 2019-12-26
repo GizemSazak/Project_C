@@ -54,6 +54,7 @@ function Home() {
   else {
     return (
       <Container className="Background d-flex flex-column justify-content-end p-0 m-0">
+        
         <Row className="text-center  d-table" >
           <Col className="Logo d-table-cell align-middle ">
             <Image src={logo} alt="Logo" className="h-50"></Image>
@@ -72,13 +73,14 @@ function Home() {
             </Col>)})
           ))}
         </Row>
-      </Container>
-      //       </div >
-      //       <button id="logout" name="logout" value="submit"  onClick={()=> logout()}>Uitloggen</button>
-      //       <Link to="./teamcode">
-      //  <button id="spelerteamcode" name="spelerteamcode" value="submit">Teamcode</button>           </Link>
+        <button id="logout" name="logout" value="submit"  onClick={()=> logout()}>Uitloggen</button>
+            {posts.map(function (post, id) {
+              return(
+             <Link to={{pathname:"./teamcode",teamcode: post.teamcode}}>
+            <button id="spelerteamcode" name="spelerteamcode" value="submit">Teamcode</button>           </Link>)})}
 
-      //     </div>
+      </Container>
+             
     );
   }
 }
