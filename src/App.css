@@ -1,73 +1,50 @@
-/* All default Values will be put here */
-.HomeBackground{
-  background-color: blue; 
-  background: url("./soccer.jpg")no-repeat center center fixed;
-  height: 100vh;
-  max-width: 100vw;
+.App {
+  background: url("bg.png")no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
-.Background{
-  background-color: green;  
-  background: url("./bg.png")no-repeat center center fixed;
-  height: 100vh;
-  max-width: 100vw;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  overflow: hidden;
+.App-logo{
+  font-size: 7rem;
+  max-width: 10vh;
+  max-height: 10vh;
 }
-.Body{
-  height: 80vh;
-  background-color: rgb(128, 128, 128,0.8);
-  border: 1px solid black;
-  overflow: auto;
+.App-link {
+  color: #09d3ac;
 }
-.Inputfield{
-  min-width: 200px;
-  max-width: 250px;
-  margin: auto;
-  background-color: rgb(220, 220, 220);
-  box-shadow: 5px 5px rgb(0, 10, 0,0.2);
+.row{
+  display: grid;  
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
-.Inputfield:hover{
-  background-color: rgb(255, 255, 255);
+@media (max-width: 600px) {
+  .row {grid-template-columns: 1fr 1fr;}
+  }
+
+/* The grid: Three equal columns that floats next to each other */
+.column { 
+  font-size: 1.5rem;
+  padding: 5vh;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  border: 0.1vh solid black;
+  background-image: radial-gradient(rgb(0, 200, 0,0.9),rgb(0, 100, 0,0.8));
 }
+
 a:hover{
-  text-decoration: none;
+  background-image: radial-gradient(rgb(0, 150, 0,1),rgb(0, 250, 0,1));
+  font-size: 0.95rem;
+  cursor: pointer;
 }
-.btn{
-  box-shadow: 3px 3px rgb(0, 10, 0,0.2);
-}
-.btn-success{
-  background-image: linear-gradient(rgb(0, 200, 0, 0.5), rgb(0, 100, 0, 0.5),rgb(0, 200, 0, 0.5) );
-}
-.btn-success:hover{
-  background-image: linear-gradient(rgb(0, 200, 0), rgb(0, 100, 0),rgb(0, 200, 0) );
-}
-.btn-danger{
-  background-image: linear-gradient(rgb(200, 0, 0,0.5), rgb(100, 0, 0, 0.5),rgb(200,0, 0, 0.5) );
-}
-.btn-danger:hover{
-  background-image: linear-gradient(rgb(200, 0, 0), rgb(100, 0, 0),rgb(200,0, 0) );
-}
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",monospace;
-}
-
-
-
 #logout{
   position: fixed;
   position: relative;

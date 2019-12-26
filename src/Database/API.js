@@ -1,17 +1,22 @@
+// import React from "react"
+// import Redirect from "react"
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const pg = require('pg');
 const cors = require('cors');
+const saltRounds = 10;
 const Password = require("node-php-password");
 const session = require('express-session');
 var hash = Password.hash("password123");
+const bcrypt = require('bcrypt');
 const PORT = 3001;
 var customId = require("custom-id");
-// const Cookies = require('universal-cookie');
+const Cookies = require('universal-cookie');
 var localStorage = require('localStorage')
 
-// const cookies = new Cookies();
+const cookies = new Cookies();
 const cookiesMiddleware = require('universal-cookie-express');
 customId({});
 
@@ -35,6 +40,12 @@ app.use(session({
     cookie: { secure: false }
 }))
 app.use(cookiesMiddleware())
+// app.use(function(req, res) {
+//     // get the user cookies using universal-cookie
+//     req.universalCookies.get('voetbal')
+//     console.log(req.universalCookies.get('voetbal'))
+//     console.log('Cookie')
+//   });
 app.use(morgan('dev'));
 
 app.use(function (req, res, next) {
@@ -46,49 +57,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-// Aanwezigheid
-app.get('/api/aanwezigheid', (req, res) => {
-    pool.connect((err, db, done) => {
-        if (err) { return res.status(400).send(err); }
-
-        db.query('SELECT * from aanwezigheid right join speler on speler_id=id', (err, table) => {
-            done();
-
-            // If err is True than send err else send table.rows
-            err ? res.status(400).send(err) : res.status(200).send(table.rows)
-        });
-    });
-});
-
-app.post('/api/aanwezigheid', (req, res) => {
-    console.log(req.body);
-    const datum = req.body.datum;
-    const aanwezig = req.body.aanwezig;
-    const speler_id = req.body.speler_id;
-
-    const values = [datum, aanwezig, speler_id];
-
-    pool.connect((err, db, done) => {
-        if (err) { return res.status(400).send(err); }
-
-        db.query(
-            'INSERT INTO aanwezigheid (datum, aanwezig, speler_id) VALUES($1, $2, $3)', [datum, aanwezig, speler_id],
-            err => {
-                if (err) {
-                    console.log(err + 'tweede');
-                    return res.status(400).send(err);
-                }
-
-                console.log('INSERTED DATA SUCCESS');
-
-                res.status(201).send({ message: 'Data inserted!' });
-            }
-        );
-    });
-});
-
 //Registreren
 app.post("/api/registratie", (req, res) => {
+    //   // Ik heb teamcode voor nu weggehaald
     console.log(req.body);
     const email = req.body.email;
     const password = req.body.password;
@@ -109,7 +80,7 @@ app.post("/api/registratie", (req, res) => {
                     // console.log(customId({}));
                     try {
                         hash = Password.hash(password);
-                        db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname, teamcode], function (err, insert) {
+                        db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname,teamcode], function (err, insert) {
                             if (err) {
                                 return res.status(400).send(err);
                             } else {
@@ -121,14 +92,13 @@ app.post("/api/registratie", (req, res) => {
                     }
                     catch (err) {
                         console.log("INSERTED DATA NOT SUCCESSED");
-                        var redir = { redirect: '/registreren' };
+                       var redir = { redirect: '/registreren'};
                         return res.json(redir);
                     }
                 }
             }
         });
     });
-     
 });
 
 //Inloggen
@@ -162,15 +132,15 @@ app.post("/api/login", (req, res) => {
                             console.log(req.session.email);
                             var redir = { redirect: "/" };
                             // setter
-                            console.log(localStorage);
-                            req.session.save(function (err) {
+                          console.log(localStorage);
+                            req.session.save(function(err) {
                                 // session saved
-                            })
+                              })
                             return res.json(redir);
                         }
                     } catch (err) {
                         console.log("Login not successed")
-                        redir = { redirect: '/login' };
+                         redir = { redirect: '/login'};
                         return res.json(redir);
                     }
 
@@ -180,11 +150,11 @@ app.post("/api/login", (req, res) => {
             }
         );
     });
-     
 });
 //Get teamcode for the tranier
-app.get('/api/registratie/teamcode', (req, res) => {
+app.get('/api/registratie', (req, res) => {
     pool.connect((err, db, done) => {
+    
         db.query(
             "SELECT teamcode from registratie where email = $1", [global.email],
             (err, table) => {
@@ -196,6 +166,20 @@ app.get('/api/registratie/teamcode', (req, res) => {
                     if (err) {
                         return res.status(400).send(err);
                     }
+                    // try {
+                    //     if (Password.verify(password, table.rows[0].password)) {
+                    //         req.session.id = table.rows[0].id;
+                    //         req.session.email = table.rows[0].email;
+                    //         console.log("Login successed");
+                    //         console.log(req.session.email);
+                    //         var redir = { redirect: "/" };
+                    //         return res.json(redir);
+                    //     }
+                    // } catch (err) {
+                    //     console.log("Login not successed")
+                    //      redir = { redirect: '/login'};
+                    //     return res.json(redir);
+                    // }
 
                 }
 
@@ -203,34 +187,20 @@ app.get('/api/registratie/teamcode', (req, res) => {
             }
         );
     });
-     
-});
 
-// teamcode
-app.post("/api/teamcode", (req, res) => {
-    pool.connect((err, db, done) => {
-        if (err) {
-            return res.status(400).send(err);
-        }
-        const teamcode = req.body.teamcode;
-        global.teamcode = req.body.teamcode;
-            
-    });
 });
-
 //Get spelers
 app.get('/api/speler', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
-        db.query('SELECT * from speler where teamcode = $1',[global.teamcode], (err, table) => {
+        db.query('SELECT * from speler', (err, table) => {
             done();
 
             // If err is True than send err else send table.rows
             err ? res.status(400).send(err) : res.status(200).send(table.rows)
         });
     });
-     
 });
 //Speler login
 app.post("/api/loginspeler", (req, res) => {
@@ -265,7 +235,7 @@ app.post("/api/loginspeler", (req, res) => {
                         }
                     } catch (err) {
                         console.log("Speler Login not successed")
-                        redir = { redirect: '/LoginSpeler' };
+                         redir = { redirect: '/LoginSpeler'};
                         return res.json(redir);
                     }
                 }
@@ -274,8 +244,9 @@ app.post("/api/loginspeler", (req, res) => {
             }
         );
     });
-     
 });
+
+
 
 app.post('/api/speler', (req, res) => {
     console.log(req.body);
@@ -284,13 +255,13 @@ app.post('/api/speler', (req, res) => {
     const achternaam = req.body.achternaam;
     const email = req.body.email;
 
-    const values = [spelernummer, voornaam, achternaam, email, global.teamcode];
+    const values = [spelernummer, voornaam, achternaam, email];
 
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
         db.query(
-            'INSERT INTO speler (spelernummer, voornaam, achternaam, email, teamcode) VALUES($1, $2, $3, $4, $5)', [...values],
+            'INSERT INTO speler (spelernummer, voornaam, achternaam, email) VALUES($1, $2, $3, $4)', [...values],
             err => {
                 if (err) { return res.status(400).send(err); }
                 console.log('INSERTED DATA SUCCESS');
@@ -299,7 +270,6 @@ app.post('/api/speler', (req, res) => {
         res.status(200).send({ message: 'Data inserted!' });
         // return res.status(200).send(table.rows);
     });
-     
 });
 
 app.delete('/api/speler', (req, res) => {
@@ -318,18 +288,29 @@ app.delete('/api/speler', (req, res) => {
         }
         );
     });
-     
 });
 
-
-
+// View Notitie
+app.get('/api/notities', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+        db.query('SELECT * from notities order by id DESC', (err, table) => {
+            done();
+            if (err) {
+                return res.status(400).send(err);
+            }
+            return res.status(200).send(table.rows);
+        });
+    });
+});
 // Insert Notitie
 app.post('/api/notities', (req, res) => {
     console.log(req.body);
     const titel = req.body.titel;
     const notitie = req.body.notitie;
-
-    const values = [titel, notitie, global.teamcode];
+    const values = [titel, notitie];
     pool.connect((err, db, done) => {
         if (err) {
             console.log(err + 'eerste');
@@ -337,8 +318,8 @@ app.post('/api/notities', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO notities (titel, notitie, teamcode) VALUES($1, $2, $3, $4)',
-            [...values],
+            'INSERT INTO notities (titel, notitie) VALUES($1, $2)',
+            [titel, notitie],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
@@ -351,26 +332,7 @@ app.post('/api/notities', (req, res) => {
             }
         );
     });
-     
 });
-
-// View Notitie
-app.get('/api/notities', (req, res) => {
-    pool.connect((err, db, done) => {
-        if (err) {
-            return res.status(400).send(err);
-        }
-        db.query('SELECT * from notities where teamcode = $1 order by id DESC',[global.teamcode], (err, table) => {
-            done();
-            if (err) {
-                return res.status(400).send(err);
-            }
-            return res.status(200).send(table.rows);
-        });
-    });
-     
-});
-
 // Update Notitie
 app.put('/api/notities', (req, res) => {
     console.log(req.body);
@@ -397,7 +359,6 @@ app.put('/api/notities', (req, res) => {
             }
         );
     });
-     
 });
 // Delete Notities
 app.delete('/api/notities', (req, res) => {
@@ -424,7 +385,6 @@ app.delete('/api/notities', (req, res) => {
         }
         );
     });
-     
 });
 // View Wedstrijd
 app.get('/api/wedstrijduitslag', (req, res) => {
@@ -433,7 +393,7 @@ app.get('/api/wedstrijduitslag', (req, res) => {
             return res.status(400).send(err);
         }
 
-        db.query('SELECT * from wedstrijduitslag where teamcode = $1 order by id DESC',[global.teamcode], (err, table) => {
+        db.query('SELECT * from wedstrijduitslag order by id DESC', (err, table) => {
             done();
             if (err) {
                 return res.status(400).send(err);
@@ -442,7 +402,6 @@ app.get('/api/wedstrijduitslag', (req, res) => {
             console.log(table.rows)
         });
     });
-     
 });
 // Delete Wedstrijd
 app.delete('/api/wedstrijduitslag', (req, res) => {
@@ -469,18 +428,17 @@ app.delete('/api/wedstrijduitslag', (req, res) => {
         }
         );
     });
-     
 });
 // Insert Wedstrijd
 app.post('/api/wedstrijduitslag', (req, res) => {
     console.log(req.body);
-    const week = req.body.week;
+    const id = req.body.id;
     const thuis = req.body.thuis;
     const uit = req.body.uit;
     const stand = req.body.stand;
     const verslag = req.body.verslag;
 
-    const values = [week, thuis, uit, stand, verslag, global.teamcode];
+    const values = [id, thuis, uit, stand, verslag];
 
     pool.connect((err, db, done) => {
         if (err) {
@@ -489,8 +447,8 @@ app.post('/api/wedstrijduitslag', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO wedstrijduitslag (week, thuis, uit, stand, verslag, teamcode) VALUES($1, $2, $3, $4, $5, $6)',
-            [...values],
+            'INSERT INTO wedstrijduitslag (id, thuis, uit, stand, verslag) VALUES($1, $2, $3, $4, $5)',
+            [id, thuis, uit, stand, verslag],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
@@ -503,7 +461,6 @@ app.post('/api/wedstrijduitslag', (req, res) => {
             }
         );
     });
-     
 });
 // Update Wedstrijd
 app.put('/api/wedstrijduitslag', (req, res) => {
@@ -530,7 +487,6 @@ app.put('/api/wedstrijduitslag', (req, res) => {
             }
         );
     });
-     
 });
 
 // View Oefeningen
@@ -549,7 +505,6 @@ app.get('/api/oefeningen', (req, res) => {
             console.log(table.rows)
         });
     });
-     
 });
 
 // View Agenda
@@ -558,7 +513,7 @@ app.get('/api/agenda', (req, res) => {
         if (err) {
             return res.status(400).send(err);
         }
-        db.query('SELECT * from agenda where teamcode = $1 order by id DESC',[global.teamcode], (err, table) => {
+        db.query('SELECT * from agenda order by id DESC', (err, table) => {
             done();
             if (err) {
                 return res.status(400).send(err);
@@ -567,7 +522,6 @@ app.get('/api/agenda', (req, res) => {
             console.log(table.rows)
         });
     });
-     
 });
 // Insert Agenda
 app.post('/api/agenda', (req, res) => {
@@ -577,7 +531,7 @@ app.post('/api/agenda', (req, res) => {
     const eindtijd = req.body.eindtijd;
     const dag = req.body.dag;
     
-    const values = [ beschrijving, starttijd, eindtijd, dag, global.teamcode];
+    const values = [ beschrijving, starttijd, eindtijd, dag];
 
     pool.connect((err, db, done) => {
         if (err) {
@@ -586,8 +540,8 @@ app.post('/api/agenda', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO agenda (beschrijving, starttijd, eindtijd, dag, teamcode) VALUES($1, $2, $3, $4, $5)',
-            [beschrijving, starttijd, eindtijd, dag, global.teamcode],
+            'INSERT INTO agenda (beschrijving, starttijd, eindtijd, dag) VALUES($1, $2, $3, $4)',
+            [beschrijving, starttijd, eindtijd, dag],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
@@ -600,7 +554,6 @@ app.post('/api/agenda', (req, res) => {
             }
         );
     });
-     
 });
 
 // Update Agenda
@@ -631,7 +584,6 @@ app.put('/api/Agenda', (req, res) => {
             }
         );
     });
-     
 });
 
 // Delete agenda
@@ -646,20 +598,19 @@ app.delete('/api/agenda', (req, res) => {
         }
 
         db.query('DELETE FROM agenda WHERE id = $1',
-            [id], err => {
-                if (err) {
-                    console.log(err + 'tweede');
-                    return res.status(400).send(err);
-                }
-
-                console.log('Delete DATA SUCCESS');
-                console.log(id);
-
-                res.status(201).send({ message: 'Data deleted!' });
+        [id], err => {
+            if (err) {
+                console.log(err + 'tweede');
+                return res.status(400).send(err);
             }
+
+            console.log('Delete DATA SUCCESS');
+            console.log(id);
+
+            res.status(201).send({ message: 'Data deleted!' });
+        }
         );
     });
-     
 });
 
 

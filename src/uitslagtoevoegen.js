@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class uitslagtoevoegen extends Component {
   constructor(props) {
     super(props);
-    this.state = {week: 0}
+    this.state = {id: 0}
       this.state = {thuis: ''}
       this.state = {uit: ''}
       this.state = {stand: ''}
@@ -20,7 +20,7 @@ class uitslagtoevoegen extends Component {
   }
 
   handleChange (event) {
-    const values = [this.state.week, this.state.thuis, this.state.uit, this.state.stand, this.state.verslag]
+    const values = [this.state.id, this.state.thuis, this.state.uit, this.state.stand, this.state.verslag]
   }
 
 
@@ -31,7 +31,7 @@ class uitslagtoevoegen extends Component {
     const request = new Request('http://localhost:3001/api/wedstrijduitslag', {
       method: 'POST',
       headers: new Headers({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify({ 'week': parseInt(this.state.week), 'thuis': this.state.thuis, 'uit': this.state.uit, 'stand': this.state.stand,  'verslag': this.state.verslag })
+      body: JSON.stringify({ 'id': parseInt(this.state.id), 'thuis': this.state.thuis, 'uit': this.state.uit, 'stand': this.state.stand,  'verslag': this.state.verslag })
     });
     fetch(request)
       .then(response => {

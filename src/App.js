@@ -10,22 +10,27 @@ import Aanwezigheid from './Aanwezigheid/Aanwezigheid'
 import uitslagtoevoegen from './Uitslagen/UToevoegen'
 import verslag from './Uitslagen/UWijzigen'
 import Home from './Home'
-import Uitslagen from './Uitslagen/Uitslagen';
+import Uitslagen from './Uitslagen';
 import Notities from './Notities//Notities'
-import Notitie_Toevoegen from './Notities//Notitie_Toevoegen'
-import Notitie_Wijzigen from './Notities//Notitie_Wijzigen'
-import registreren from "./InlogAuth/Registration";
-import Loginpage from "./InlogAuth/Login";
+import Notities_toevoegen from './Notities//Notities_toevoegen'
+import notities_beschrijven from './Notities//notities_beschrijven'
+import registreren from "./inlog + auth/Registration";
+import Loginpage from "./inlog + auth/Login";
 import tacktics from "./tactieken/tactieken";
 import Hoofdpagina from "./Hoofdpagina/Hoofdpagina";
 import Agenda from "./Agenda/Agenda"
 import Agenda_Toevoegen from "./Agenda/Agenda_Toevoegen"
 import Agenda_Bewerken from "./Agenda/Agenda_Bewerken"
-import Gegevens from "./Instellingen/Gegevens"
-import Instellingen from "./Instellingen/Instellingen"
-import LoginSpeler from "./InlogAuth/LoginSpeler"
-import teamcode from "./InlogAuth/teamcode"
+import LoginSpeler from "./inlog + auth/LoginSpeler"
+import teamcode from "./inlog + auth/teamcode"
 
+// function cheacklogin(checklogin){
+//   if(!localStorage.getItem('myData', 'My data') || localStorage === null){
+//     window.location.href = '/';
+//   }
+//   else{
+//   }
+// }
 
 function App() {
 
@@ -35,13 +40,12 @@ function App() {
       <Route exact path='/Oefeningen' component={Oefeningen} />
       <Route exact path='/Oefening_X' component={Oefening_X} />
       <Route exact path='/Spelers' component={Spelers} />
-      <Route exact path='/Spelers/Toevoegen' component={SpelerToevoegen} />
-      <Route exact path='/Spelers/Verwijderen' component={SpelerVerwijderen} />
-      <Route exact path='/Aanwezigheid' component={Aanwezigheid} />
+      <Route exact path='/SpelerToevoegen/Toevoegen' component={SpelerToevoegen} />
+      <Route exact path='/SpelerVerwijderen/Verwijderen' component={SpelerVerwijderen} />
       <Route exact path='/Uitslagen' component={Uitslagen} />
       <Route exact path='/Notities' component={Notities} />
-      <Route exact path='/Notitie_Toevoegen' component={Notitie_Toevoegen} />
-      <Route exact path='/Notitie_Wijzigen' component={Notitie_Wijzigen} />
+      <Route exact path='/Notities_toevoegen' component={Notities_toevoegen} />
+      <Route exact path='/notities_beschrijven' component={notities_beschrijven} />
       <Route exact path='/uitslagtoevoegen' component={uitslagtoevoegen} />
       <Route exact path='/verslag' component={verslag} />
       <Route exact path="/registreren" component={registreren} />
@@ -53,13 +57,9 @@ function App() {
       <Route exact path="/Agenda/Agenda_Bewerken" component={Agenda_Bewerken} />
       <Route exact path="/LoginSpeler" component={LoginSpeler} />
       <Route exact path="/teamcode" component={teamcode} />
-      <Route exact path="/Gegevens" component={Gegevens} />
-      <Route exact path="/Instellingen" component={Instellingen} />
 
 
-
-
-    </div >
+    </div>
   );
 }
 

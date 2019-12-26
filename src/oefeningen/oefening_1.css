@@ -1,0 +1,112 @@
+
+#oefen_img{
+  width: 400px;
+  height: 450px;
+  margin-left: 80pt;
+  display: block;
+}
+h5 {
+  margin-left: 480pt;
+  color:#253780;
+  width: 36em;
+  max-width: 100%;
+  display: block;
+  line-height: 1.5;
+  font-size: 30px;
+  margin-bottom: 30px;
+  margin-top: -480px; 
+  margin-right: 0;
+ }
+h3 {
+  font-size: 3vh;
+  margin-left: 480pt;
+  color:#253780;
+  float: left;
+  width: 36em;
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 25px;
+  display: block;
+}
+h6 {
+  margin-left: 480pt;
+  margin-top: 10px;
+  color:#253780;
+  float: left;
+  width: 36em;
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 25px;
+  display: block;
+}
+@media only screen and (max-width:32px){
+  h6,h3,h5,p5,p6,ol,li{
+    font-size: 16px;
+  }
+}
+p6{
+  width: 36em;
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 18px;
+  display: block;
+  margin-left: 480pt;  
+  padding-left: 2vh;
+}
+ol {
+margin-left: 468pt; 
+float: left;
+width: 36em;
+max-width: 100%;
+text-align: left;
+line-height: 1.5;
+font-size: 18px;
+display: block;
+color:#333;
+padding-right: 18.5vh;
+}
+li {
+  float: left;
+  width: 36em;
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 18px;
+  display: block;
+  color:#333;
+  }
+h2 {
+  font-size: 4vh;
+  color:#253780;
+  margin-left: 120px;
+  width: 36em;
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 30px;
+  display: block;
+}
+@media only screen and (max-width:32px){
+  h2{
+    font-size: 16px;
+  }
+}
+  p5{
+    color:#333;
+    width: 36em;
+    max-width: 100%;
+    text-align: left;
+    line-height: 1.5;
+    font-size: 18px;
+    display: block;
+    margin-left: 120px;
+    position: relative;
+  }
+
+#space {
+  padding-left: 3.9vh;
+}
+
