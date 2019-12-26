@@ -99,6 +99,7 @@ app.post("/api/registratie", (req, res) => {
             }
         });
     });
+     
 });
 
 //Inloggen
@@ -150,6 +151,7 @@ app.post("/api/login", (req, res) => {
             }
         );
     });
+     
 });
 //Get teamcode for the tranier
 app.get('/api/registratie', (req, res) => {
@@ -187,20 +189,34 @@ app.get('/api/registratie', (req, res) => {
             }
         );
     });
-
+     
 });
+
+// teamcode
+app.post("/api/teamcode", (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+        const teamcode = req.body.teamcode;
+        global.teamcode = req.body.teamcode;
+            
+    });
+});
+
 //Get spelers
 app.get('/api/speler', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
-        db.query('SELECT * from speler', (err, table) => {
+        db.query('SELECT * from speler where teamcode = $1',[global.teamcode], (err, table) => {
             done();
 
             // If err is True than send err else send table.rows
             err ? res.status(400).send(err) : res.status(200).send(table.rows)
         });
     });
+     
 });
 //Speler login
 app.post("/api/loginspeler", (req, res) => {
@@ -244,9 +260,8 @@ app.post("/api/loginspeler", (req, res) => {
             }
         );
     });
+     
 });
-
-
 
 app.post('/api/speler', (req, res) => {
     console.log(req.body);
@@ -255,13 +270,13 @@ app.post('/api/speler', (req, res) => {
     const achternaam = req.body.achternaam;
     const email = req.body.email;
 
-    const values = [spelernummer, voornaam, achternaam, email];
+    const values = [spelernummer, voornaam, achternaam, email, global.teamcode];
 
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
         db.query(
-            'INSERT INTO speler (spelernummer, voornaam, achternaam, email) VALUES($1, $2, $3, $4)', [...values],
+            'INSERT INTO speler (spelernummer, voornaam, achternaam, email, teamcode) VALUES($1, $2, $3, $4, $5)', [...values],
             err => {
                 if (err) { return res.status(400).send(err); }
                 console.log('INSERTED DATA SUCCESS');
@@ -270,6 +285,7 @@ app.post('/api/speler', (req, res) => {
         res.status(200).send({ message: 'Data inserted!' });
         // return res.status(200).send(table.rows);
     });
+     
 });
 
 app.delete('/api/speler', (req, res) => {
@@ -288,29 +304,18 @@ app.delete('/api/speler', (req, res) => {
         }
         );
     });
+     
 });
 
-// View Notitie
-app.get('/api/notities', (req, res) => {
-    pool.connect((err, db, done) => {
-        if (err) {
-            return res.status(400).send(err);
-        }
-        db.query('SELECT * from notities order by id DESC', (err, table) => {
-            done();
-            if (err) {
-                return res.status(400).send(err);
-            }
-            return res.status(200).send(table.rows);
-        });
-    });
-});
+
+
 // Insert Notitie
 app.post('/api/notities', (req, res) => {
     console.log(req.body);
     const titel = req.body.titel;
     const notitie = req.body.notitie;
-    const values = [titel, notitie];
+
+    const values = [titel, notitie, global.teamcode];
     pool.connect((err, db, done) => {
         if (err) {
             console.log(err + 'eerste');
@@ -318,8 +323,8 @@ app.post('/api/notities', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO notities (titel, notitie) VALUES($1, $2)',
-            [titel, notitie],
+            'INSERT INTO notities (titel, notitie, teamcode) VALUES($1, $2, $3, $4)',
+            [...values],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
@@ -332,7 +337,26 @@ app.post('/api/notities', (req, res) => {
             }
         );
     });
+     
 });
+
+// View Notitie
+app.get('/api/notities', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+        db.query('SELECT * from notities where teamcode = $1 order by id DESC',[global.teamcode], (err, table) => {
+            done();
+            if (err) {
+                return res.status(400).send(err);
+            }
+            return res.status(200).send(table.rows);
+        });
+    });
+     
+});
+
 // Update Notitie
 app.put('/api/notities', (req, res) => {
     console.log(req.body);
@@ -359,6 +383,7 @@ app.put('/api/notities', (req, res) => {
             }
         );
     });
+     
 });
 // Delete Notities
 app.delete('/api/notities', (req, res) => {
@@ -385,6 +410,7 @@ app.delete('/api/notities', (req, res) => {
         }
         );
     });
+     
 });
 // View Wedstrijd
 app.get('/api/wedstrijduitslag', (req, res) => {
@@ -393,7 +419,7 @@ app.get('/api/wedstrijduitslag', (req, res) => {
             return res.status(400).send(err);
         }
 
-        db.query('SELECT * from wedstrijduitslag order by id DESC', (err, table) => {
+        db.query('SELECT * from wedstrijduitslag where teamcode = $1 order by id DESC',[global.teamcode], (err, table) => {
             done();
             if (err) {
                 return res.status(400).send(err);
@@ -402,6 +428,7 @@ app.get('/api/wedstrijduitslag', (req, res) => {
             console.log(table.rows)
         });
     });
+     
 });
 // Delete Wedstrijd
 app.delete('/api/wedstrijduitslag', (req, res) => {
@@ -428,17 +455,18 @@ app.delete('/api/wedstrijduitslag', (req, res) => {
         }
         );
     });
+     
 });
 // Insert Wedstrijd
 app.post('/api/wedstrijduitslag', (req, res) => {
     console.log(req.body);
-    const id = req.body.id;
+    const week = req.body.week;
     const thuis = req.body.thuis;
     const uit = req.body.uit;
     const stand = req.body.stand;
     const verslag = req.body.verslag;
 
-    const values = [id, thuis, uit, stand, verslag];
+    const values = [week, thuis, uit, stand, verslag, global.teamcode];
 
     pool.connect((err, db, done) => {
         if (err) {
@@ -447,8 +475,8 @@ app.post('/api/wedstrijduitslag', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO wedstrijduitslag (id, thuis, uit, stand, verslag) VALUES($1, $2, $3, $4, $5)',
-            [id, thuis, uit, stand, verslag],
+            'INSERT INTO wedstrijduitslag (week, thuis, uit, stand, verslag, teamcode) VALUES($1, $2, $3, $4, $5, $6)',
+            [...values],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
@@ -461,6 +489,7 @@ app.post('/api/wedstrijduitslag', (req, res) => {
             }
         );
     });
+     
 });
 // Update Wedstrijd
 app.put('/api/wedstrijduitslag', (req, res) => {
@@ -487,6 +516,7 @@ app.put('/api/wedstrijduitslag', (req, res) => {
             }
         );
     });
+     
 });
 
 // View Oefeningen
@@ -505,6 +535,7 @@ app.get('/api/oefeningen', (req, res) => {
             console.log(table.rows)
         });
     });
+     
 });
 
 // View Agenda
@@ -513,7 +544,7 @@ app.get('/api/agenda', (req, res) => {
         if (err) {
             return res.status(400).send(err);
         }
-        db.query('SELECT * from agenda order by id DESC', (err, table) => {
+        db.query('SELECT * from agenda where teamcode = $1 order by id DESC',[global.teamcode], (err, table) => {
             done();
             if (err) {
                 return res.status(400).send(err);
@@ -522,6 +553,7 @@ app.get('/api/agenda', (req, res) => {
             console.log(table.rows)
         });
     });
+     
 });
 // Insert Agenda
 app.post('/api/agenda', (req, res) => {
@@ -531,7 +563,7 @@ app.post('/api/agenda', (req, res) => {
     const eindtijd = req.body.eindtijd;
     const dag = req.body.dag;
     
-    const values = [ beschrijving, starttijd, eindtijd, dag];
+    const values = [ beschrijving, starttijd, eindtijd, dag, global.teamcode];
 
     pool.connect((err, db, done) => {
         if (err) {
@@ -540,8 +572,8 @@ app.post('/api/agenda', (req, res) => {
         }
 
         db.query(
-            'INSERT INTO agenda (beschrijving, starttijd, eindtijd, dag) VALUES($1, $2, $3, $4)',
-            [beschrijving, starttijd, eindtijd, dag],
+            'INSERT INTO agenda (beschrijving, starttijd, eindtijd, dag, teamcode) VALUES($1, $2, $3, $4, $5)',
+            [beschrijving, starttijd, eindtijd, dag, global.teamcode],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
@@ -554,6 +586,7 @@ app.post('/api/agenda', (req, res) => {
             }
         );
     });
+     
 });
 
 // Update Agenda
@@ -584,6 +617,7 @@ app.put('/api/Agenda', (req, res) => {
             }
         );
     });
+     
 });
 
 // Delete agenda
@@ -611,6 +645,7 @@ app.delete('/api/agenda', (req, res) => {
         }
         );
     });
+     
 });
 
 

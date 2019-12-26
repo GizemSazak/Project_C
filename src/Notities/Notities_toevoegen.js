@@ -10,7 +10,6 @@ export default class Notities_toevoegen extends Component {
     this.state = {
       notitie: this.props.location.notitie,
       titel: this.props.location.titel
-
     }
   }
 
@@ -22,7 +21,7 @@ export default class Notities_toevoegen extends Component {
   Notities_toevoegen() {
     const request = new Request('http://localhost:3001/api/notities', {
       method: 'POST',
-      body: JSON.stringify({ 'notitie': this.state.notitie, 'titel': this.state.titel }),
+      body: JSON.stringify({ 'notitie': this.state.notitie, 'titel': this.state.titel}),
       headers: {
         'Content-Type': 'application/json'
       }
