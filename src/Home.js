@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import App from './App';
-import { Container, Row, Col, Image } from "react-bootstrap"
+import { Container, Row, Col, Image, Button, ButtonGroup } from "react-bootstrap"
 import logo from './logo.png'
 // import { browserhistory } from 'react-router'; 
 // function cheacklogin(checklogin){
@@ -22,21 +22,21 @@ function Home() {
 
   const [posts, setPosts] = useState([])
 
-    useEffect(() => {
-        axios.get('http://localhost:3001/api/registratie')
-            .then(res => {
-                console.log(res)
-                setPosts(res.data)
-            })
-            .catch()
-    }, []);
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/registratie')
+      .then(res => {
+        console.log(res)
+        setPosts(res.data)
+      })
+      .catch()
+  }, []);
 
-    posts.map(function (post, id) {
-      axios.post('http://localhost:3001/api/teamcode', {'teamcode': post.teamcode})
-    }
-    )
+  posts.map(function (post, id) {
+    axios.post('http://localhost:3001/api/teamcode', { 'teamcode': post.teamcode })
+  }
+  )
 
-    
+
 
   const [buttons] = useState([
     { link: "./Agenda", title: "Agenda", icon: faCalendar },
@@ -54,33 +54,36 @@ function Home() {
   else {
     return (
       <Container className="Background d-flex flex-column justify-content-end p-0 m-0">
-        
-        <Row className="text-center  d-table" >
-          <Col className="Logo d-table-cell align-middle ">
-            <Image src={logo} alt="Logo" className="h-50"></Image>
+        <Row className="text-center d-table" >
+          <Col className="d-table-cell align-middle">
+            <Image src={logo} alt="Logo" className="Logo" />
+            <ButtonGroup >
+              <Button className="btn-danger mr-1" name="logout" value="submit" onClick={() => logout()}>Uitloggen</Button>
+              {posts.map(function (post, id) {
+                return (
+                  <Link to={{ pathname: "./teamcode", teamcode: post.teamcode }}>
+                    <Button className="btn-success" name="spelerteamcode" value="submit">Teamcode</Button>
+                  </Link>)
+              })}
+            </ButtonGroup>
           </Col>
         </Row>
         <Row >
           {buttons.map(buttons => (
             /* We're making all the buttons and filling the values in by mapping through all buttons */
             posts.map(function (post, id) {
-              return(
-            <Col className="MenuColumn  d-table">
-              <Link to={{pathname: buttons.link, teamcode: post.teamcode }} className="d-table-cell align-middle text-white" onclick={buttons.link}>
-                <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "5vh" }} />
-                <br />{buttons.title}
-              </Link> 
-            </Col>)})
+              return (
+                <Col className="MenuColumn  d-table">
+                  <Link to={{ pathname: buttons.link, teamcode: post.teamcode }} className="d-table-cell align-middle text-white" onclick={buttons.link}>
+                    <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "5vh" }} />
+                    <br />{buttons.title}
+                  </Link>
+                </Col>)
+            })
           ))}
         </Row>
-        <button id="logout" name="logout" value="submit"  onClick={()=> logout()}>Uitloggen</button>
-            {posts.map(function (post, id) {
-              return(
-             <Link to={{pathname:"./teamcode",teamcode: post.teamcode}}>
-            <button id="spelerteamcode" name="spelerteamcode" value="submit">Teamcode</button>           </Link>)})}
-
       </Container>
-             
+
     );
   }
 }
