@@ -3,12 +3,19 @@ import React, { useState, useEffect, Component } from 'react';
 import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-class Teamcode extends Component {
-    constructor(props) {
-        super(props);
-      }
+// import '../Notities/Notities.css';
+function Teamcode() {
 
-    render(){
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/api/registratie')
+            .then(res => {
+                console.log(res)
+                setPosts(res.data)
+            })
+            .catch()
+    }, []);
     if(!localStorage.getItem('Data') || localStorage === null){
         window.location.href = '/';
       }
@@ -18,16 +25,20 @@ class Teamcode extends Component {
             <h1 className='titleNotitiel'>Teamcode</h1>
             <div className="column1"></div>
             <div className="tablerow" >
+                {posts.map(function (post, id) {
+                    return (
                         <button id="rowss" >
-                            {this.props.location.teamcode}
+                            {post.teamcode}
                         </button>
     
-                
+                    )
+
+                })}
 
             </div>
-            <Menu />
+            <Menu/>
         </div>
     );
-     }}
+     }
 }
 export default Teamcode;

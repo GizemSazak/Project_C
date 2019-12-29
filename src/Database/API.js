@@ -183,7 +183,7 @@ app.post("/api/login", (req, res) => {
      
 });
 //Get teamcode for the tranier
-app.get('/api/registratie', (req, res) => {
+app.get('/api/registratie/teamcode', (req, res) => {
     pool.connect((err, db, done) => {
         db.query(
             "SELECT teamcode from registratie where email = $1", [global.email],
@@ -205,6 +205,56 @@ app.get('/api/registratie', (req, res) => {
     });
 });
 
+//Get registratie
+app.get('/api/registratie', (req, res) => {
+    pool.connect((err, db, done) => {
+        db.query(
+            "SELECT * from registratie where email = $1", [global.email],
+            (err, table) => {
+                done();
+                if (err) {
+                    return res.status(400).send(err);
+                }
+                else {
+                    if (err) {
+                        return res.status(400).send(err);
+                    }
+
+                }
+
+                return res.status(200).send(table.rows);
+            }
+        );
+    });
+});
+//Update gegevens
+app.put('/api/registratie', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    pool.connect((err, db, done) => {
+        done();
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+        db.query(
+            'UPDATE registratie SET firstname = $2 , lastname = $3 where id = $1',
+            [id, firstname, lastname],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+                console.log('Update DATA SUCCESS');
+                res.status(201).send({ message: 'Data updated!' });
+            }
+            
+        );
+    });
+    
+});
 // teamcode
 app.post("/api/teamcode", (req, res) => {
     pool.connect((err, db, done) => {
@@ -231,6 +281,7 @@ app.get('/api/speler', (req, res) => {
     });
      
 });
+
 //Speler login
 app.post("/api/loginspeler", (req, res) => {
     pool.connect((err, db, done) => {
