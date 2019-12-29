@@ -51,7 +51,6 @@ function Notities() {
                                         )
                                     })}
                                 </Row>
-
                             </Col>
                         </Row>
                     </Col>
