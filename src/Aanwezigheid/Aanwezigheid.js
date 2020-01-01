@@ -13,7 +13,6 @@ class Aanwezigheid extends Component {
         this.Spelers = this.Spelers.bind(this);
     }
 
-
     todaysdate = new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()
 
     togglecheck(speler_id, present) {
@@ -30,8 +29,8 @@ class Aanwezigheid extends Component {
             .catch(err => {
                 console.log(err);
             });
+        window.location.reload()
     }
-
 
 
     Spelers() {
@@ -47,7 +46,6 @@ class Aanwezigheid extends Component {
         }, [])
         return (
             <div className="Spelersrow">
-
                 <div className='Spelerscolumn'>
                     <div className="ColumnHeader1">Naam</div>
                     {posts.map(post =>
