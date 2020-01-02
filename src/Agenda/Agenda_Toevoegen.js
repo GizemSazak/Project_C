@@ -53,7 +53,7 @@ export default class Agenda_Toevoegen extends Component {
         console.log(err);
       });
     console.log({ 'starttijd': this.state.starttijd, 'eindtijd': this.state.eindtijd, 'beschrijving': this.state.beschrijving })
-    window.location = './agenda';
+    window.location = '../Agenda';
   }
 
   render() {

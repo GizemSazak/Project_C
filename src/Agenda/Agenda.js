@@ -1,180 +1,120 @@
 import './Agenda.css';
 import Menu from '../Menu/Menu'
 import React, { Component, useState, useEffect } from 'react';
-import moment from 'moment';
+import moment from "moment";
+import { CalendarHead } from "./CalendarHead";
+import { Events } from "./Events";
+import { events } from "./event"
+import { MonthOrWeek } from "./MonthOrWeek";
+import { TableAgenda } from "./TableAgenda";
 import 'react-day-picker/lib/style.css';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Table } from "react-bootstrap"
+import "./styless.css";
+
+
+
 
 class Agenda extends Component {
-    state = {
-        dateContext: moment(),
-        today: moment(),
-        showMonthPopup: false,
-        showYearPopup: false,
-        selectedDay: moment().format('D'),
-        activitydate: false
-    }
-
     constructor(props) {
         super(props);
-        this.width = props.width || "350px";
-        this.style = props.style || {};
-        this.style.width = this.width; // add this
-        this.handleDayClick = this.handleDayClick.bind(this);
-    }
-    handleDayClick(day, { selected }) {
-        this.setState({
-            selectedDay: selected ? undefined : day,
 
-        });
-    }
-    weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
-    weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    months = moment.months();
+        this.state = {
+          events: this.parseEvents(events),
+          selectedDay: moment().format("DD/MM/YYYY"),
+          currentDate: moment(),
+          tableType: "months",
+          visibility: "hidden",
+          arrowDirection: "down"
+        };
+      }
 
-    year = () => { return this.state.dateContext.format("Y"); }
-    month = () => { return this.state.dateContext.format("MMMM"); }
-    daysInMonth = () => { return this.state.dateContext.daysInMonth(); }
-
-    currentDate = () => {
-        console.log("currentDate: ", this.state.dateContext.get("date"));
-        return this.state.dateContext.get("date");
-    }
-    currentDay = () => { return this.state.dateContext.format("D"); }
-
-    firstDayOfMonth = () => {
-        let dateContext = this.state.dateContext;
-        let firstDay = moment(dateContext).startOf('month').format('d'); // Day of week 0...1..5...6
-        return firstDay;
-    }
-
-    setMonth = (month) => {
-        let monthNo = this.months.indexOf(month);
-        let dateContext = Object.assign({}, this.state.dateContext);
-        dateContext = moment(dateContext).set("month", monthNo);
-        this.setState({
-            dateContext: dateContext
-        });
-    }
-
-    nextMonth = () => {
-        let dateContext = Object.assign({}, this.state.dateContext);
-        dateContext = moment(dateContext).add(1, "month");
-        this.setState({
-            dateContext: dateContext
-        });
-        this.props.onNextMonth && this.props.onNextMonth();
-    }
-
-    prevMonth = () => {
-        let dateContext = Object.assign({}, this.state.dateContext);
-        dateContext = moment(dateContext).subtract(1, "month");
-        this.setState({
-            dateContext: dateContext
-        });
-        this.props.onPrevMonth && this.props.onPrevMonth();
-    }
-
-    onSelectChange = (e, data) => {
-        this.setMonth(data);
-        this.props.onMonthChange && this.props.onMonthChange();
-
-    }
-    SelectList = (props) => {
-        let popup = props.data.map((data) => {
-            return (
-                <div key={data}>
-                    <a href="#" onClick={(e) => { this.onSelectChange(e, data) }}>
-                        {data}
-                    </a>
-                </div>
-            );
-        });
-
-        return (
-            <div className="month-popup">
-                {popup}
-            </div>
-        );
-    }
-
-    onChangeMonth = (e, month) => {
-        this.setState({
-            showMonthPopup: !this.state.showMonthPopup
-        });
-    }
-
-    MonthNav = () => {
-        return (
-            <span className="label-month"
-                onClick={(e) => { this.onChangeMonth(e, this.month()) }}>
-                {this.month()}
-                {this.state.showMonthPopup &&
-                    <this.SelectList data={this.months} />
-                }
-            </span>
-        );
-    }
-
-    showYearEditor = () => {
-        this.setState({
-            showYearNav: true
-        });
-    }
-
-    setYear = (year) => {
-        let dateContext = Object.assign({}, this.state.dateContext);
-        dateContext = moment(dateContext).set("year", year);
-        this.setState({
-            dateContext: dateContext
-        })
-    }
-    onYearChange = (e) => {
-        this.setYear(e.target.value);
-        this.props.onYearChange && this.props.onYearChange(e, e.target.value);
-    }
-
-    onKeyUpYear = (e) => {
-        if (e.which === 13 || e.which === 27) {
-            this.setYear(e.target.value);
-            this.setState({
-                showYearNav: false
-            })
+    
+    
+      sortedEvents() {
+        const eventsDatesList = this.getEventsDatesList();
+        const eventDate = this.state.selectedDay;
+        const isSameOrBeforeEvents = [];
+        for (let d of eventsDatesList) {
+          if (
+            moment(eventDate, "DD/MM/YYYY").isSameOrBefore(
+              moment(d, "DD/MM/YYYY"),
+              "day"
+            )
+          ) {
+            isSameOrBeforeEvents.push({ events: this.getDateEvents(d), day: d });
+          }
         }
-    }
-
-    YearNav = () => {
-        return (
-            this.state.showYearNav ?
-                <input
-                    defaultValue={this.year()}
-                    className="editor-year"
-                    ref={(yearInput) => { this.yearInput = yearInput }}
-                    onKeyUp={(e) => this.onKeyUpYear(e)}
-                    onChange={(e) => this.onYearChange(e)}
-                    type="number"
-                    placeholder="year" />
-                :
-                <span
-                    className="label-year"
-                    onDoubleClick={(e) => { this.showYearEditor() }}>
-                    {this.year()}
-                </span>
-        );
-    }
-
-    onDayClick = (e, day) => {
-        this.setState({
-            selectedDay: day
-        }, () => {
-            console.log("SELECTED DAY: ", this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y"));
-            console.log("date", moment().calendar())
+    
+        return isSameOrBeforeEvents;
+      }
+    
+      numberOfEventsInDays() {
+        const numberOfEvents = events.map(e => [e.date, e.events.length]);
+        return new Map(numberOfEvents);
+      }
+    
+      getEventsDatesList() {
+        const eventsDates = events.map(e => {
+          return e.date;
         });
-
-        this.props.onDayClick && this.props.onDayClick(e, day);
-    }
+        return eventsDates;
+      }
+    
+      parseEvents = events => {
+        const parsedEvents = events.map(e => [e.date, e.events]);
+        return new Map(parsedEvents);
+      };
+    
+      showDateEvents = selectedDay => {
+        this.setState({ selectedDay });
+      };
+    
+      getDateEvents = date => {
+        const { events } = this.state;
+        return events.get(date);
+      };
+    
+      changePanelVisibility = () => {
+        if (this.state.visibility === "visible") {
+          this.setState({ visibility: "hidden" });
+          this.setState({ arrowDirection: "down" });
+        } else {
+          this.setState({ visibility: "visible" });
+          this.setState({ arrowDirection: "up" });
+        }
+      };
+    
+      next = () => {
+        if (this.state.tableType === "months")
+          this.setState({ currentDate: this.state.currentDate.add(1, "month") });
+        else this.setState({ currentDate: this.state.currentDate.add(7, "days") });
+        this.setState({ selectedDay: "" });
+      };
+    
+      prev = () => {
+        if (this.state.tableType === "months")
+          this.setState({
+            currentDate: this.state.currentDate.subtract(1, "month")
+          });
+        else
+          this.setState({
+            currentDate: this.state.currentDate.subtract(7, "days")
+          });
+        this.setState({ selectedDay: "" });
+      };
+    
+      selectMonths = () => {
+        this.setState({ tableType: "months" });
+        this.changePanelVisibility();
+        this.setState({ selectedDay: "" });
+      };
+      selectWeeks = () => {
+        this.setState({ tableType: "weeks" });
+        this.changePanelVisibility();
+        this.setState({ selectedDay: "" });
+      };
 
     GetAgenda = () => {
         const [posts, setPosts] = useState([])
@@ -187,17 +127,16 @@ class Agenda extends Component {
                 })
                 .catch()
         }, []);
-        const datum = this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")
 
         const filterdatum = posts.filter(dag => {
-            return (dag.dag === this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y"))
+            return (dag.dag === this.state.selectedDay)
         });
 
         return (
             <Container className="p-0">
                 <Col className="p-1" >
                     <h4 className="mt-2">
-                        {"SELECTED DAY: ", this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y")}
+                        {"SELECTED DAY: ", this.state.selectedDay}
                     </h4>
 
                     <tr className="AgendaHeader1 p-2 mt-3">
@@ -223,67 +162,13 @@ class Agenda extends Component {
     }
 
     render() {
-        // Map the weekdays i.e Sun, Mon, Tue etc as <td>
-        let weekdays = this.weekdaysShort.map((day) => {
-            return (
-                <td key={day} className="week-day">{day}</td>
-            )
-        });
-
-        let blanks = [];
-        for (let i = 0; i < this.firstDayOfMonth(); i++) {
-            blanks.push(<td key={i * 80} className="emptySlot">
-                {""}
-            </td>
-            );
-        }
-        console.log("blanks: ", blanks);
-
-        let daysInMonth = [];
-        for (let d = 1; d <= this.daysInMonth(); d++) {
-
-            let className = (d == this.currentDay() ? "day current-day" : "day");
-            let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
-            let actcolor = (this.state.activitydate == true ? "activityColor" : "")
-
-            daysInMonth.push(
-                <td key={d} className={className + selectedClass} id={actcolor}>
-                    <span key={d + this.month + this.year} onClick={(e) => { this.onDayClick(e, d) }} >{d}</span>
-                </td>
-            );
-        }
-
-        console.log("days: ", daysInMonth);
-
-        var totalSlots = [...blanks, ...daysInMonth];
-        let rows = [];
-        let cells = [];
-
-        totalSlots.forEach((row, i) => {
-            if ((i % 7) !== 0) {
-                cells.push(row);
-            } else {
-                let insertRow = cells.slice();
-                rows.push(insertRow);
-                cells = [];
-                cells.push(row);
-            }
-            if (i === totalSlots.length - 1) {
-                let insertRow = cells.slice();
-                rows.push(insertRow);
-            }
-        });
-
-        let trElems = rows.map((d, i) => {
-            return (
-                <tr key={i * 100}>{d}</tr>
-            );
-        })
-
+        
         if (!localStorage.getItem('Data') || localStorage === null) {
             window.location.href = '/';
         }
         else {
+            const selectedDayEvents = this.sortedEvents();
+            const eventsDatesList = this.getEventsDatesList();
             return (
                 <Container className="Background">
                     <Row >
@@ -303,7 +188,7 @@ class Agenda extends Component {
                                     </Row>
                                     <Row className="d-flex justify-content-center align-items-center" style={{ height: '10%' }}>
                                         <Col>
-                                            <Link to={{ pathname: "./Agenda/Agenda_Toevoegen", dag: this.state.selectedDay + " " + this.state.dateContext.format("MMMM") + " " + this.state.dateContext.format("Y") }}>
+                                            <Link to={{ pathname: "./Agenda/Agenda_Toevoegen", dag: this.state.selectedDay}}>
                                                 <Button className="btn-success">Toevoegen</Button>
                                             </Link>
                                         </Col>
@@ -312,23 +197,30 @@ class Agenda extends Component {
 
                                 <Col >
                                     <Table className="Calender align-items-start">
-                                        <tr>
-                                            <td colSpan="5">
-                                                <h4><this.MonthNav />{" "}<this.YearNav /></h4>
-                                            </td>
-                                            <td colSpan="2" className="nav-month">
-                                                <i className="prev fa fa-fw fa-chevron-left"
-                                                    onClick={(e) => { this.prevMonth() }}>
-                                                </i>
-                                                <i className="prev fa fa-fw fa-chevron-right"
-                                                    onClick={(e) => { this.nextMonth() }}>
-                                                </i>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            {weekdays}
-                                        </tr>
-                                        {trElems}
+                                    <div id="wrapper">
+                                        <CalendarHead
+                                        tableType={this.state.tableType}
+                                        currentDate={this.state.currentDate}
+                                        changePanelVisibility={this.changePanelVisibility}
+                                        arrowDirection={this.state.arrowDirection}
+                                        next={this.next}
+                                        prev={this.prev}
+                                        />
+                                        <MonthOrWeek
+                                        selectMonths={this.selectMonths}
+                                        selectWeeks={this.selectWeeks}
+                                        visibility={this.state.visibility}
+                                        />
+                                        <TableAgenda
+                                        eventsDatesList={eventsDatesList}
+                                        currentDate={this.state.currentDate}
+                                        tableType={this.state.tableType}
+                                        showDateEvents={this.showDateEvents}
+                                        selectedDay={this.state.selectedDay}
+                                        numberOfEventsInDays={this.numberOfEventsInDays}
+                                        />
+                                    </div>
+                                        
                                     </Table>
 
 

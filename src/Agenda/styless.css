@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&amp;subset=cyrillic");
+
+#wrapper {
+  width: 375pt;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16pt;
+}
+
+#calendarHead {
+  height: 40pt;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+#prev {
+  padding-left: 16pt;
+  margin-top: 16pt;
+  margin-bottom: 16pt;
+  color: #48c1c2;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#current {
+  color: #ffffff;
+  margin-top: 16pt;
+  margin-bottom: 16pt;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+}
+
+#next {
+  padding-right: 16pt;
+  margin-top: 16pt;
+  margin-bottom: 16pt;
+  color: #48c1c2;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cellValue {
+  padding: 4pt 11pt 4pt;
+  cursor: pointer;
+}
+
+td {
+  position: relative;
+  width: 40pt;
+  height: 40pt;
+  font-weight: 600;
+  color: #0b3157;
+}
+
+.dot {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: red;
+}
+
+th {
+  font-weight: 400;
+  font-size: 11pt;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+#indent {
+  height: 5pt;
+}
+
+#monthOrWeek {
+  visibility: hidden;
+  width: 375pt;
+  height: 44pt;
+  background: #0b3157;
+  position: absolute;
+  z-index: 10;
+}
+
+#wrapper2 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  opacity: 0.5;
+  color: #72879c;
+}
+
+#selectWeek {
+  width: 103pt;
+  height: 30pt;
+  font-size: 14pt;
+  border-radius: 30pt;
+  border: 1pt solid #72879c;
+  line-height: 30pt;
+  margin-right: 6pt;
+  cursor: pointer;
+}
+
+#selectMonth {
+  width: 103pt;
+  height: 30pt;
+  font-size: 14pt;
+  border-radius: 30pt;
+  border: 1pt solid #72879c;
+  line-height: 30pt;
+  cursor: pointer;
+}
+
+.event {
+  background: #44b3b6;
+  border-radius: 2pt;
+  margin-bottom: 4pt;
+  height: 60pt;
+}
+
+.eventWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 12pt 16pt 0pt 16pt;
+  color: white;
+  opacity: 0.5;
+  font-weight: 600;
+}
+
+.eventBody {
+  color: white;
+  font-weight: 700;
+  padding: 0pt 0pt 12pt 16pt;
+}
+
+.dayHasEvent {
+  width: 30px;
+  height: 3pt;
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.eventLine {
+  margin-right: 1px;
+  background: green;
+  height: 3pt;
+  width: inherit;
+  border-radius: 6pt;
+}
+
+.eventDate {
+  height: 40pt;
+  font-weight: 800;
+  margin: 16pt 0pt 0pt 16pt;
+  opacity: 0.3;
+}

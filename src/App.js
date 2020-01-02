@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom'
-import oefeningen from './Oefeningen/Oefeningen'
-import oefening_x from './Oefeningen/oefening_x'
+import oefeningen from './oefeningen/Oefeningen'
+import oefening_x from './oefeningen/oefening_x'
 import Spelers from './Spelers/Spelers'
 import SpelerToevoegen from './Spelers/Toevoegen'
 import SpelerVerwijderen from './Spelers/Verwijderen'

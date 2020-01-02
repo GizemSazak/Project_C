@@ -36,7 +36,7 @@ class Agenda_Bewerken extends Component {
             .catch(err => {
                 console.log(err);
             });
-        window.location = './Agenda';
+        window.location = '../Agenda';
     }
 
 
@@ -55,7 +55,7 @@ class Agenda_Bewerken extends Component {
             .catch(err => {
                 console.log(err);
             });
-        window.location = './Agenda';
+        window.location = '../Agenda';
     }
 
     render() {
