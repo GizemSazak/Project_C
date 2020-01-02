@@ -128,7 +128,68 @@ app.post("/api/registratie", (req, res) => {
     });
 
 });
+//Update gegevens
+app.put('/api/registratie', (req, res,next) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    const oudewachtwoord = req.body.oudewachtwoord;
+    const password = req.body.password;
+    hash = Password.hash(password);
+    pool.connect((err, db, done) => {
+        done();
+        if (err) {
+            console.log(err + 'eerste');
+            return res.status(400).send(err);
+        }
+        else{
+        try {
+          db.query(
+                'UPDATE registratie SET firstname = $2 , lastname = $3 where id = $1',
+                [id, firstname, lastname],
+                err => {
+                    if (err) {
+                        console.log(err + 'tweede');
+                        return res.status(400).send(err);
+                    }
+                    console.log('Update DATA SUCCESS');
+                }
 
+            );
+
+        }
+        catch (err) {
+            console.log("NOT UPDATED REGISTRATIE");
+        }
+    }
+            next();
+            try {
+                if(global.password == oudewachtwoord ){
+                db.query(
+                    'UPDATE registratie SET password = $2 where id = $1',
+                    [id, hash],
+                    err => {
+                        if (err) {
+                            console.log(err + 'tweede');
+                            return res.status(400).send(err);
+                        }
+                        console.log('Update Password SUCCESS');
+                        // res.status(201).send({ message: 'Data updated!' });
+                    }
+        
+                );
+            }
+            else{
+                console.log('Update Password NOT SUCCESSED')
+            }
+        }
+            catch (err) {
+                console.log("PASSWORD UPDATE ERROR");
+            }
+    });
+
+});
 //Inloggen
 app.post("/api/login", (req, res) => {
     pool.connect((err, db, done) => {
@@ -138,6 +199,7 @@ app.post("/api/login", (req, res) => {
         const email = req.body.email;
         global.email = req.body.email;
         const password = req.body.password;
+        global.password = req.body.password;
         console.log(email);
 
         db.query(
@@ -159,8 +221,6 @@ app.post("/api/login", (req, res) => {
                             console.log("Login successed");
                             console.log(req.session.email);
                             var redir = { redirect: "/" };
-                            // setter
-                            console.log(localStorage);
                             req.session.save(function (err) {
                                 // session saved
                             })
@@ -225,34 +285,7 @@ app.get('/api/registratie', (req, res) => {
         );
     });
 });
-//Update gegevens
-app.put('/api/registratie', (req, res) => {
-    console.log(req.body);
-    const id = req.body.id;
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
-    pool.connect((err, db, done) => {
-        done();
-        if (err) {
-            console.log(err + 'eerste');
-            return res.status(400).send(err);
-        }
-        db.query(
-            'UPDATE registratie SET firstname = $2 , lastname = $3 where id = $1',
-            [id, firstname, lastname],
-            err => {
-                if (err) {
-                    console.log(err + 'tweede');
-                    return res.status(400).send(err);
-                }
-                console.log('Update DATA SUCCESS');
-                res.status(201).send({ message: 'Data updated!' });
-            }
 
-        );
-    });
-
-});
 // teamcode
 app.post("/api/teamcode", (req, res) => {
     pool.connect((err, db, done) => {

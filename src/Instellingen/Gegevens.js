@@ -14,6 +14,9 @@ class Gegevens extends Component {
             id: this.props.location.id,
             firstname: this.props.location.firstname,
             lastname: this.props.location.lastname,
+            password: this.props.location.password,
+            oudewachtwoord: this.props.location.oudewachtwoord,
+
         }
     }
 
@@ -26,7 +29,7 @@ class Gegevens extends Component {
     Gegevens_Wijzigen() {
         const request = new Request('http://localhost:3001/api/registratie', {
             method: 'PUT',
-            body: JSON.stringify({ 'id': parseInt(this.props.location.id), 'firstname': this.state.firstname, 'lastname': this.state.lastname }),
+            body: JSON.stringify({ 'id': parseInt(this.props.location.id), 'firstname': this.state.firstname, 'lastname': this.state.lastname, 'password': this.state.password,'oudewachtwoord': this.state.oudewachtwoord }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -38,7 +41,7 @@ class Gegevens extends Component {
             .catch(err => {
                 console.log(err);
             });
-        console.log({ 'id': parseInt(this.props.location.id), 'firstname': this.state.firstname, 'lastname': this.state.lastname })
+        console.log({ 'id': parseInt(this.props.location.id), 'firstname': this.state.firstname, 'lastname': this.state.lastname, 'password': this.state.password  })
         window.location = './Instellingen';
     }
 
@@ -80,14 +83,14 @@ class Gegevens extends Component {
                                             <label id="Oudewachtwoord">Oude Wachtwoord</label>
                                             <br></br>
                                             <input type="password" name="oudewachtwoord" onChange={event => this.handleChange(event)}
-                                                defaultValue={this.state.password} />
+                                               value = {this.state.oudewachtwoord}/>
                                         </div>
                                         <div className="Nieuwewachtwoord">
                                             <br></br>
                                             <label id="Nieuwewachtwoord">Nieuwe Wachtwoord</label>
                                             <br></br>
-                                            <input type="text" name="nieuwewachtwoord" onChange={event => this.handleChange(event)}
-                                                defaultValue={this.state.password} />
+                                            <input type="password" name="password" onChange={event => this.handleChange(event)}
+                                           />
                                         </div>
                                         <Link to="./Instellingen" onClick={this.forceUpdate}><button tye="button" onClick={() => this.Gegevens_Wijzigen()} className="wijzigenButton">Wijzigen</button>
                                         </Link>
