@@ -4,7 +4,7 @@ import React, { Component, useState, useEffect } from 'react';
 import moment from "moment";
 import { CalendarHead } from "./CalendarHead";
 import { Events } from "./Events";
-import { events } from "./event"
+import { event } from "./event"
 import { MonthOrWeek } from "./MonthOrWeek";
 import { TableAgenda } from "./TableAgenda";
 import 'react-day-picker/lib/style.css';
@@ -14,7 +14,7 @@ import { Container, Row, Col, Button, Table } from "react-bootstrap"
 import "./styless.css";
 
 
-
+const events = event
 
 class Agenda extends Component {
     constructor(props) {
