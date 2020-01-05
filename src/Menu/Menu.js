@@ -27,7 +27,7 @@ function Menu() {
                 {/* We're making all the buttons and filling the values in by mapping through all buttons */}
                 {buttons.map(buttons => (
                     <Row >
-                        <Col className="menu  d-table">
+                        <Col className="menu d-table">
                             <Link to={buttons.link} className="d-table-cell align-middle text-white">
                                 <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "3vh" }} />
                                 <br />{buttons.title}
