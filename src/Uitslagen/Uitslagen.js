@@ -35,7 +35,7 @@ function Uitslagen() {
                             <Row style={{ height: '90%' }} >
                                 <Col>
                                     <tr className="TableHeader" >
-                                        <th className="py-3 px-2" style={{ width: '10vw', borderBottom: "2px solid black" }}>Week</th>
+                                        <th className="py-2 px-2" style={{ width: '10vw', borderBottom: "2px solid black" }}>Week</th>
                                         <th style={{ width: '40vw', borderBottom: "2px solid black" }}>Thuis</th>
                                         <th style={{ width: '40vw', borderBottom: "2px solid black" }}>Stand</th>
                                         <th style={{ width: '10vw', borderBottom: "2px solid black" }}>Uit</th>
