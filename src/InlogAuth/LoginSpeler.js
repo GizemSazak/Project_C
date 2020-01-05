@@ -18,11 +18,13 @@ class LoginSpeler extends Component {
     this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  
   updateInput(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit = e => {
+    window.history.pushState({ prevUrl: window.location.href }, null, "/Home")
     const { user, rememberMe } = this.state;
     localStorage.setItem('Data', 'login');
     localStorage.setItem('user', rememberMe ? user : '');
@@ -33,6 +35,8 @@ class LoginSpeler extends Component {
       .post('http://localhost:3001/api/loginspeler', this.state)
       .then(function (response) {
         if (response.data.redirect === '/') {
+          
+          window.history.pushState({ prevUrl: window.location.href }, null, "/Home")
           window.location = "/Home"
         } else if (response.data.redirect === '/LoginSpeler') {
           window.location = "/LoginSpeler"

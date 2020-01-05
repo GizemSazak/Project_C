@@ -1,13 +1,10 @@
-
-  
-    const event = [
-        {
-        date: "04/01/2020",
-        events: [{}]
-        }
-    ]
- 
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 
 
+function event() {
 
-export { event };
+
+}
+
+export default event;

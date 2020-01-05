@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import './Home.css';
 import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunning, faClipboard, faCogs } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,6 +7,7 @@ import axios from 'axios'
 import App from './App';
 import { Container, Row, Col, Image, Button, ButtonGroup } from "react-bootstrap"
 import logo from './logo.png'
+import { browserHistory } from 'react-router'
 // import { browserhistory } from 'react-router'; 
 // function cheacklogin(checklogin){
 // if(!localStorage.getItem('myData', 'My data') || localStorage === null){
@@ -16,9 +17,27 @@ import logo from './logo.png'
 //     Home();
 //   }
 // }
-function Home() {
+
+
+
+class Home extends Component{
+  constructor(props) {
+    super(props);
+    console.log(window.history.state.prevUrl)
+  }
+
+Home() {
   // cheacklogin();
 
+  function logout() {
+    // sessionStorage.clear();
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location.href = '/';
+    window.history.replaceState(null, null, "/");
+  
+  }
+  
 
   const [posts, setPosts] = useState([])
 
@@ -88,6 +107,15 @@ function Home() {
   }
 }
 
+render(){
+  return(
+  <div>
+    <this.Home /> 
+  </div>
+  )
+}
+
+
 // function openTab(tabName) {
 //   var i, x;
 //   x = document.getElementsByClassName("containerTab");
@@ -96,12 +124,7 @@ function Home() {
 //   }
 //   document.getElementById(tabName).style.display = "block";
 // }
-function logout() {
-  // sessionStorage.clear();
-  localStorage.clear();
-  sessionStorage.clear();
-  window.location.href = '/';
-  window.history.replaceState(null, null, "/");
-
+ 
 }
-export default Home;
+
+export default Home

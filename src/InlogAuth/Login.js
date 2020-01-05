@@ -16,6 +16,7 @@ class Loginpage extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   handleSubmit = e => {
+    window.history.pushState({ prevUrl: window.location.href }, null, "/Home")
     const { user, rememberMe } = this.state;
     localStorage.setItem('Data', 'login');
     localStorage.setItem('user', rememberMe ? user : '');
@@ -34,7 +35,6 @@ class Loginpage extends Component {
       .catch(function (error) {
         window.location = "/login"
       })
-
   }
 
   // render() {

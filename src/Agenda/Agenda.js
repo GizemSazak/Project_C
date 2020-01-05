@@ -4,7 +4,7 @@ import React, { Component, useState, useEffect } from 'react';
 import moment from "moment";
 import { CalendarHead } from "./CalendarHead";
 import { Events } from "./Events";
-import { event } from "./event"
+import  event from "./event"
 import { MonthOrWeek } from "./MonthOrWeek";
 import { TableAgenda } from "./TableAgenda";
 import 'react-day-picker/lib/style.css';
@@ -14,7 +14,10 @@ import { Container, Row, Col, Button, Table } from "react-bootstrap"
 import "./styless.css";
 
 
-const events = event
+const events = [{
+  date: '04/01/2020',
+  events: [{}]
+}]
 
 class Agenda extends Component {
     constructor(props) {
@@ -28,8 +31,8 @@ class Agenda extends Component {
           visibility: "hidden",
           arrowDirection: "down"
         };
+        console.log(this.state.events)
       }
-
     
     
       sortedEvents() {
