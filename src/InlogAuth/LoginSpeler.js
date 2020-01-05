@@ -35,8 +35,6 @@ class LoginSpeler extends Component {
       .post('http://localhost:3001/api/loginspeler', this.state)
       .then(function (response) {
         if (response.data.redirect === '/') {
-          
-          window.history.pushState({ prevUrl: window.location.href }, null, "/Home")
           window.location = "/Home"
         } else if (response.data.redirect === '/LoginSpeler') {
           window.location = "/LoginSpeler"
