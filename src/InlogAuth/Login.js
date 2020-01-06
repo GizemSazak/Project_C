@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"
-
 class Loginpage extends Component {
   constructor(props) {
     super(props);
     this.state = { email: "" }
+    
     this.state = { password: "" }
     // this.state = { teamcode: "" };
 
@@ -18,6 +18,7 @@ class Loginpage extends Component {
   handleSubmit = e => {
     window.history.pushState({ prevUrl: window.location.href }, null, "/Home")
     const { user, rememberMe } = this.state;
+
     localStorage.setItem('Data', 'login');
     localStorage.setItem('user', rememberMe ? user : '');
     console.log(this.state)
@@ -26,10 +27,13 @@ class Loginpage extends Component {
     axios
       .post('http://localhost:3001/api/login', this.state)
       .then(function (response) {
-        if (response.data.redirect == '/') {
+        if (response.data.redirect === '/') {
           window.location = "/Home"
-        } else if (response.data.redirect == '/login') {
-          window.location = "/login"
+          
+        } else if (response.data.redirect === '/login') {
+          window.location = "/login";
+          alert("Voer de juiste gebruikersnaam en wachtwoord in.")
+
         }
       })
       .catch(function (error) {
@@ -82,6 +86,7 @@ class Loginpage extends Component {
             <Row>
               <Col className="d-flex flex-column text-center" >
                 <Form>
+                  
                   <FormGroup >
                     <label className="text-white" >Email</label>
                     <FormControl type="email" name="email" className="Inputfield" onChange={this.updateInput} />
@@ -100,6 +105,7 @@ class Loginpage extends Component {
     );
   }
 }
+
 
 export default Loginpage;
 

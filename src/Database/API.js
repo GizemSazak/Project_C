@@ -67,6 +67,8 @@ app.post("/api/registratie", (req, res) => {
                     var teamcode = customId({});
                     // console.log(customId({}));
                     try {
+                        req.checkBody("email", "Emial field can not be empty.").notEmpty();
+                         req.checkBody("firstname", "firstname must be between 4-100 characters lnog please try agin.").len(4,100);
                         hash = Password.hash(password);
                         db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname, teamcode], function (err, insert) {
                             if (err) {
@@ -126,7 +128,7 @@ app.put('/api/registratie', (req, res,next) => {
     }
             next();
             try {
-                if(global.password == oudewachtwoord ){
+                if(global.password === oudewachtwoord ){
                 db.query(
                     'UPDATE registratie SET password = $2 where id = $1',
                     [id, hash],
