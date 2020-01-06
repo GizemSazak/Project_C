@@ -26,14 +26,15 @@ class Registreren extends Component {
     axios
       .post('http://localhost:3001/api/registratie', this.state)
       .then(function (response) {
-        if (response.data.redirect == '/') {
-          window.location = "/login"
-        } else if (response.data.redirect == '/registreren') {
-          window.location = "/registreren"
+        if (response.data.redirect === '/') {
+          window.location = "/login";
+        } else if (response.data.redirect === '/registreren') {
+          window.location = "/registreren";
+          alert("Registratie is niet gelukt.");
         }
       })
       .catch(function (error) {
-        window.location = "/registreren"
+        window.location = "/registreren";
       })
 
   }
@@ -65,6 +66,7 @@ class Registreren extends Component {
                   <FormGroup >
                     <label className="text-white" >Wachtwoord</label>
                     <FormControl type="password" name="password" className="Inputfield" onChange={this.updateInput} />
+                    <label style={{ fontStyle: "italic" }}className="text-white" >Tussen 4-100 tekens.<br></br>Kleine letter, hoofdletter,<br></br> cijfer en een speciaal teken.</label>
                   </FormGroup>
                   <Button className="btn-success" onClick={this.handleSubmit} style={{ width: "150px" }} >Registreren</Button>
                 </Form>

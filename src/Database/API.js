@@ -10,7 +10,6 @@ const PORT = 3001;
 var customId = require("custom-id");
 // const Cookies = require('universal-cookie');
 var localStorage = require('localStorage')
-
 // const cookies = new Cookies();
 const cookiesMiddleware = require('universal-cookie-express');
 customId({});
@@ -68,7 +67,11 @@ app.post("/api/registratie", (req, res) => {
                     // console.log(customId({}));
                     try {
                         req.checkBody("email", "Emial field can not be empty.").notEmpty();
-                         req.checkBody("firstname", "firstname must be between 4-100 characters lnog please try agin.").len(4,100);
+                        req.checkBody("firstname", "firstname field can not be empty.").notEmpty();
+                        req.checkBody("lastname", "lastname field can not be empty.").notEmpty();
+                        req.checkBody("password", "password field can not be empty.").notEmpty();
+                        req.checkBody("password", "password must be between 4-100 characters lnog please try agin.").len(4,100);
+                        req.checkBody("password", "password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i");
                         hash = Password.hash(password);
                         db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname, teamcode], function (err, insert) {
                             if (err) {

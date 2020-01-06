@@ -32,7 +32,7 @@ class Loginpage extends Component {
           
         } else if (response.data.redirect === '/login') {
           window.location = "/login";
-          alert("Voer de juiste gebruikersnaam en wachtwoord in.")
+          alert("Voer de juiste email en wachtwoord in.")
 
         }
       })
