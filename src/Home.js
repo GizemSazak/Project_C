@@ -4,6 +4,7 @@ import { faCalendar, faStickyNote, faUsers, faUserCheck, faBezierCurve, faRunnin
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import event from "./Agenda/event"
 import App from './App';
 import { Container, Row, Col, Image, Button, ButtonGroup } from "react-bootstrap"
 import logo from './logo.png'
@@ -18,17 +19,19 @@ import { browserHistory } from 'react-router'
 //   }
 // }
 
-
-
 class Home extends Component{
   constructor(props) {
     super(props);
-    console.log(window.history.state.prevUrl)
+    this.state ={
+    user: this.props.location.user
+    }
   }
 
-Home() {
-  // cheacklogin();
+  
+  
 
+Home(user) {
+  new event().eventt()
   function logout() {
     // sessionStorage.clear();
     localStorage.clear();
@@ -37,6 +40,9 @@ Home() {
     window.history.replaceState(null, null, "/");
   
   }
+
+  // cheacklogin();
+
   
 
   const [posts, setPosts] = useState([])
@@ -55,9 +61,10 @@ Home() {
   }
   )
 
-
-
-  const [buttons] = useState([
+  var [buttons] = '';
+  const [trainerbuttons] =
+     useState( 
+       [
     { link: "./Agenda", title: "Agenda", icon: faCalendar },
     { link: "./Notities", title: "Notities", icon: faStickyNote },
     { link: "./Spelers", title: "Spelers", icon: faUsers },
@@ -66,7 +73,28 @@ Home() {
     { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
     { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
     { link: "./Instellingen", title: "Instellingen", icon: faCogs }
-  ]);
+  ])
+
+  const [spelerbuttons] =
+      useState( 
+        [
+    { link: "./Agenda", title: "Agenda", icon: faCalendar },
+    { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
+    { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard }
+    ])
+
+
+  if(localStorage.getItem('role') == 'speler'){
+    [buttons] = [spelerbuttons]
+    console.log('speler')
+  }
+  else{
+    [buttons] = [trainerbuttons]
+  }
+  console.log(localStorage.getItem('role'))
+
+  
+
   if (!localStorage.getItem('Data') || localStorage === null) {
     window.location.href = '/';
   }
@@ -93,7 +121,7 @@ Home() {
             posts.map(function (post, id) {
               return (
                 <Col className="MenuColumn  d-table">
-                  <Link to={{ pathname: buttons.link, teamcode: post.teamcode }} className="d-table-cell align-middle text-white" onclick={buttons.link}>
+                  <Link to={{ pathname: buttons.link, teamcode: post.teamcode}} className="d-table-cell align-middle text-white" onclick={buttons.link}>
                     <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "5vh" }} />
                     <br />{buttons.title}
                   </Link>
@@ -108,13 +136,14 @@ Home() {
 }
 
 render(){
+  console.log(this.state.user)
   return(
   <div>
     <this.Home /> 
   </div>
   )
 }
-
+}
 
 // function openTab(tabName) {
 //   var i, x;
@@ -125,6 +154,6 @@ render(){
 //   document.getElementById(tabName).style.display = "block";
 // }
  
-}
+
 
 export default Home

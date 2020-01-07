@@ -14,6 +14,7 @@ class Agenda_Bewerken extends Component {
             starttijd: this.props.location.starttijd,
             eindtijd: this.props.location.eindtijd,
             beschrijving: this.props.location.beschrijving
+                
         }
     }
 

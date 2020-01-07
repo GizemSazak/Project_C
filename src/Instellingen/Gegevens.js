@@ -16,7 +16,7 @@ class Gegevens extends Component {
             lastname: this.props.location.lastname,
             password: this.props.location.password,
             oudewachtwoord: this.props.location.oudewachtwoord,
-
+            trainer: this.props.location.trainer
         }
     }
 
@@ -54,7 +54,7 @@ class Gegevens extends Component {
                 <Container className="Background text-center">
                     <Row>
                         {/* Menu */}
-                        <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
+                        <Col xs={3} sm={1} lg={1} className="p-0"><Menu trainer={this.state.trainer}/></Col>
 
                         <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white">
                             {/* Page Header */}

@@ -6,8 +6,14 @@ import axios from 'axios'
 import { Container, Row, Col, Card } from "react-bootstrap"
 
 class Oefeningen extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            user: this.props.location.user
+        }
+    }
 
-    viewOefeningen() {
+    viewOefeningen(user) {
         const [posts, setPosts] = useState([])
 
         useEffect(() => {
@@ -27,7 +33,7 @@ class Oefeningen extends Component {
                 <Container className="Background text-center">
                     <Row>
                         {/* Menu */}
-                        <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
+                        <Col xs={3} sm={1} lg={1} className="p-0"><Menu user={user} /></Col>
 
                         <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white">
                             {/* Page Header */}
@@ -62,7 +68,7 @@ class Oefeningen extends Component {
             window.location.href = '/';
         }
         else {
-            return (<this.viewOefeningen />)
+            return (<this.viewOefeningen user={this.state.user}/>)
         }
     }
 }

@@ -13,11 +13,8 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Table } from "react-bootstrap"
 import "./styless.css";
 
+const events = JSON.parse(localStorage.getItem("eventsObjects"))
 
-const events = [{
-  date: '04/01/2020',
-  events: [{}]
-}]
 
 class Agenda extends Component {
     constructor(props) {
@@ -31,7 +28,6 @@ class Agenda extends Component {
           visibility: "hidden",
           arrowDirection: "down"
         };
-        console.log(this.state.events)
       }
     
     
@@ -134,6 +130,7 @@ class Agenda extends Component {
         const filterdatum = posts.filter(dag => {
             return (dag.dag === this.state.selectedDay)
         });
+
 
         return (
             <Container className="p-0">

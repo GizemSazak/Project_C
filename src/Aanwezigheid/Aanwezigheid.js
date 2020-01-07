@@ -9,6 +9,7 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 class Aanwezigheid extends Component {
     constructor(props) {
         super(props);
+          
         this.togglecheck = this.togglecheck.bind(this);
         this.Spelers = this.Spelers.bind(this);
     }

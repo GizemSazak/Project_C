@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom'
-import oefeningen from './Oefeningen/Oefeningen'
-import oefening_x from './Oefeningen/oefening_x'
+import oefeningen from './oefeningen/Oefeningen'
+import oefening_x from './oefeningen/oefening_x'
 import Spelers from './Spelers/Spelers'
 import SpelerToevoegen from './Spelers/Toevoegen'
 import SpelerVerwijderen from './Spelers/Verwijderen'
@@ -25,7 +25,7 @@ import Gegevens from "./Instellingen/Gegevens"
 import Instellingen from "./Instellingen/Instellingen"
 import LoginSpeler from "./InlogAuth/LoginSpeler"
 import teamcode from "./InlogAuth/teamcode"
-
+import event from "./Agenda/event"
 
 function App() {
 
@@ -55,7 +55,7 @@ function App() {
       <Route exact path="/teamcode" component={teamcode} />
       <Route exact path="/Gegevens" component={Gegevens} />
       <Route exact path="/Instellingen" component={Instellingen} />
-
+      <Route exact path="/Agenda/event" component={event} />
 
 
 

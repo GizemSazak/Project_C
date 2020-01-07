@@ -19,6 +19,7 @@ class Loginpage extends Component {
     window.history.pushState({ prevUrl: window.location.href }, null, "/Home")
     const { user, rememberMe } = this.state;
     localStorage.setItem('Data', 'login');
+    localStorage.setItem('role', 'trainer');
     localStorage.setItem('user', rememberMe ? user : '');
     console.log(this.state)
     e.preventDefault()

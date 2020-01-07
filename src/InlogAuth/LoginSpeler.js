@@ -27,6 +27,7 @@ class LoginSpeler extends Component {
     window.history.pushState({ prevUrl: window.location.href }, null, "/Home")
     const { user, rememberMe } = this.state;
     localStorage.setItem('Data', 'login');
+    localStorage.setItem('role', 'speler');
     localStorage.setItem('user', rememberMe ? user : '');
     console.log(this.state)
     e.preventDefault()

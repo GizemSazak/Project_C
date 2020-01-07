@@ -7,17 +7,40 @@ import { Container, Row, Col } from "react-bootstrap"
 
 function Menu() {
     // Here the values of the buttons are filled in
-    const [buttons] = useState([
-        { link: "../Home", title: "Home", icon: faHome },
-        { link: "../Agenda", title: "Agenda", icon: faCalendar },
-        { link: "../Notities", title: "Notities", icon: faStickyNote },
-        { link: "../Spelers", title: "Spelers", icon: faUsers },
-        { link: "../Aanwezigheid", title: "Aanwezig", icon: faUserCheck },
-        { link: "../tactieken", title: "Tactiek", icon: faBezierCurve },
-        { link: "../Oefeningen", title: "Oefeningen", icon: faRunning },
-        { link: "../Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
-        { link: "../Instellingen", title: "Instellingen", icon: faCogs }
-    ]);
+    var [buttons] = '';
+  const [trainerbuttons] =
+     useState( 
+       [
+    { link: "../Home", title: "Home", icon: faHome },
+    { link: "./Agenda", title: "Agenda", icon: faCalendar },
+    { link: "./Notities", title: "Notities", icon: faStickyNote },
+    { link: "./Spelers", title: "Spelers", icon: faUsers },
+    { link: "./Aanwezigheid", title: "Aanwezig", icon: faUserCheck },
+    { link: "./tactieken", title: "Tactiek", icon: faBezierCurve },
+    { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
+    { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
+    { link: "./Instellingen", title: "Instellingen", icon: faCogs }
+  ])
+
+  const [spelerbuttons] =
+      useState( 
+        [
+    { link: "../Home", title: "Home", icon: faHome },
+    { link: "./Agenda", title: "Agenda", icon: faCalendar },
+    { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
+    { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard }
+    ])
+
+
+  if(localStorage.getItem('role') =='speler'){
+    [buttons] = [spelerbuttons]
+    console.log('speler')
+  }
+  else{
+    [buttons] = [trainerbuttons]
+  }
+  console.log(localStorage.getItem('role'))
+
     if (!localStorage.getItem('Data') || localStorage === null) {
         window.location.href = '/';
     }
@@ -28,7 +51,7 @@ function Menu() {
                 {buttons.map(buttons => (
                     <Row >
                         <Col className="menu d-table">
-                            <Link to={buttons.link} className="d-table-cell align-middle text-white">
+                            <Link to={{pathname: buttons.link}} className="d-table-cell align-middle text-white">
                                 <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "3vh" }} />
                                 <br />{buttons.title}
                             </Link>

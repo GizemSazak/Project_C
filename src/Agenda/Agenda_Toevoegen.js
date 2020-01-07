@@ -14,8 +14,8 @@ export default class Agenda_Toevoegen extends Component {
       starttijd: this.props.location.starttijd,
       eindtijd: this.props.location.eindtijd,
       beschrijving: this.props.location.beschrijving,
-      dag: this.props.location.dag
-
+      dag: this.props.location.dag,
+      trainer: this.props.location.trainer
     }
     console.log(this.props.location.dag)
   }
