@@ -13,7 +13,9 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Table } from "react-bootstrap"
 import "./styless.css";
 
-const events = JSON.parse(localStorage.getItem("eventsObjects"))
+var events = JSON.parse(localStorage.getItem("eventsObjects"))
+console.log(events)
+events == null ? events = [{date:'',events:[{}]}] : JSON.parse(localStorage.getItem("eventsObjects"))
 
 
 class Agenda extends Component {
@@ -187,10 +189,10 @@ class Agenda extends Component {
                                         <this.GetAgenda />
                                     </Row>
                                     <Row className="d-flex justify-content-center align-items-center" style={{ height: '10%' }}>
-                                        <Col>
+                                        <Col>{localStorage.getItem('role')==='trainer'&&
                                             <Link to={{ pathname: "./Agenda/Agenda_Toevoegen", dag: this.state.selectedDay}}>
                                                 <Button className="btn-success">Toevoegen</Button>
-                                            </Link>
+                                            </Link>}
                                         </Col>
                                     </Row>
                                 </Col>

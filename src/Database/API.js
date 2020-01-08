@@ -206,6 +206,53 @@ app.post("/api/login", (req, res) => {
     });
 
 });
+
+//Speler login
+app.post("/api/loginspeler", (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+        const teamcode = req.body.teamcode;
+        global.teamcode = req.body.teamcode
+        // const password = req.body.password;
+        console.log(teamcode);
+
+        db.query(
+            "SELECT * from registratie where teamcode = $1", [teamcode],
+            (err, table) => {
+                done();
+                if (err) {
+                    return res.status(400).send(err);
+                }
+                else {
+                    if (err) {
+                        return res.status(400).send(err);
+                    }
+                    try {
+                        if (teamcode === table.rows[0].teamcode) {
+                            req.session.id = table.rows[0].id;
+                            req.session.teamcode = table.rows[0].teamcode;
+                            req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // Cookie expires after 30 days
+                            console.log("Speler Login successed");
+                            console.log(req.session.teamcode);
+                            var redir = { redirect: "/" };
+                            return res.json(redir);
+                        }
+                    } catch (err) {
+                        console.log("Speler Login not successed")
+                        redir = { redirect: '/LoginSpeler' };
+                        return res.json(redir);
+                    }
+                }
+
+                return res.status(200).send(table.rows);
+            }
+        );
+    });
+
+});
+
 //Get teamcode for the tranier
 app.get('/api/registratie/teamcode', (req, res) => {
     pool.connect((err, db, done) => {
@@ -233,7 +280,7 @@ app.get('/api/registratie/teamcode', (req, res) => {
 app.get('/api/registratie', (req, res) => {
     pool.connect((err, db, done) => {
         db.query(
-            "SELECT * from registratie where email = $1", [global.email],
+            "SELECT * from registratie where email = $1 or teamcode = $2", [global.email, global.teamcode],
             (err, table) => {
                 done();
                 if (err) {
@@ -315,51 +362,6 @@ app.get('/api/speler', (req, res) => {
             // If err is True than send err else send table.rows
             err ? res.status(400).send(err) : res.status(200).send(table.rows)
         });
-    });
-
-});
-
-//Speler login
-app.post("/api/loginspeler", (req, res) => {
-    pool.connect((err, db, done) => {
-        if (err) {
-            return res.status(400).send(err);
-        }
-        const teamcode = req.body.teamcode;
-        // const password = req.body.password;
-        console.log(teamcode);
-
-        db.query(
-            "SELECT * from registratie where teamcode = $1", [teamcode],
-            (err, table) => {
-                done();
-                if (err) {
-                    return res.status(400).send(err);
-                }
-                else {
-                    if (err) {
-                        return res.status(400).send(err);
-                    }
-                    try {
-                        if (teamcode === table.rows[0].teamcode) {
-                            req.session.id = table.rows[0].id;
-                            req.session.teamcode = table.rows[0].teamcode;
-                            req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // Cookie expires after 30 days
-                            console.log("Speler Login successed");
-                            console.log(req.session.teamcode);
-                            var redir = { redirect: "/" };
-                            return res.json(redir);
-                        }
-                    } catch (err) {
-                        console.log("Speler Login not successed")
-                        redir = { redirect: '/LoginSpeler' };
-                        return res.json(redir);
-                    }
-                }
-
-                return res.status(200).send(table.rows);
-            }
-        );
     });
 
 });

@@ -31,7 +31,6 @@ class Home extends Component{
   
 
 Home(user) {
-  new event().eventt()
   function logout() {
     // sessionStorage.clear();
     localStorage.clear();
@@ -42,7 +41,6 @@ Home(user) {
   }
 
   // cheacklogin();
-
   
 
   const [posts, setPosts] = useState([])
@@ -52,16 +50,22 @@ Home(user) {
       .then(res => {
         console.log(res)
         setPosts(res.data)
+        
       })
       .catch()
   }, []);
 
-  posts.map(function (post, id) {
-    axios.post('http://localhost:3001/api/teamcode', { 'teamcode': post.teamcode })
-  }
-  )
+  new event().eventt()
+  console.log(localStorage.getItem('role'))
 
-  var [buttons] = '';
+  var [buttons] =
+      useState( 
+        [
+    { link: "./Agenda", title: "Agenda", icon: faCalendar },
+    { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
+    { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard }
+    ])
+      
   const [trainerbuttons] =
      useState( 
        [
@@ -75,27 +79,11 @@ Home(user) {
     { link: "./Instellingen", title: "Instellingen", icon: faCogs }
   ])
 
-  const [spelerbuttons] =
-      useState( 
-        [
-    { link: "./Agenda", title: "Agenda", icon: faCalendar },
-    { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
-    { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard }
-    ])
-
-
-  if(localStorage.getItem('role') == 'speler'){
-    [buttons] = [spelerbuttons]
-    console.log('speler')
-  }
-  else{
+  if(localStorage.getItem('role')==='trainer'){
     [buttons] = [trainerbuttons]
   }
-  console.log(localStorage.getItem('role'))
 
-  
-
-  if (!localStorage.getItem('Data') || localStorage === null) {
+  if (!(localStorage.getItem('Data') || localStorage === null)) {
     window.location.href = '/';
   }
   else {
@@ -115,8 +103,8 @@ Home(user) {
             </ButtonGroup>
           </Col>
         </Row>
-        <Row >
-          {buttons.map(buttons => (
+        <Row >{
+          buttons.map(buttons => (
             /* We're making all the buttons and filling the values in by mapping through all buttons */
             posts.map(function (post, id) {
               return (
@@ -136,7 +124,6 @@ Home(user) {
 }
 
 render(){
-  console.log(this.state.user)
   return(
   <div>
     <this.Home /> 

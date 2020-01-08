@@ -3,6 +3,7 @@ import './Agenda';
 import Menu from '../Menu/Menu';
 import { Link } from 'react-router-dom';
 import trashimg from '../trash.png'
+import event from "./event.js"
 import { Container, Row, Col } from "react-bootstrap"
 
 class Agenda_Bewerken extends Component {

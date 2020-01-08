@@ -31,31 +31,39 @@ function App() {
 
   return (
     <div >
+      {
+        localStorage.getItem('role')==='trainer' ?
+        <>
+        <Route exact path='/Spelers/Toevoegen' component={SpelerToevoegen} />
+        <Route exact path='/Spelers/Verwijderen' component={SpelerVerwijderen} />
+        <Route exact path='/Spelers' component={Spelers} />
+        <Route exact path='/Aanwezigheid' component={Aanwezigheid} />
+        <Route exact path='/Notities' component={Notities} />
+        <Route exact path='/Notitie_Toevoegen' component={Notitie_Toevoegen} />
+        <Route exact path='/Notitie_Wijzigen' component={Notitie_Wijzigen} />
+        <Route exact path='/uitslagtoevoegen' component={uitslagtoevoegen} />
+        <Route exact path='/verslag' component={verslag} />
+        <Route exact path="/tactieken" component={tacktics} />
+        <Route exact path="/Agenda/Agenda_Toevoegen" component={Agenda_Toevoegen} />
+        <Route exact path="/Agenda/Agenda_Bewerken" component={Agenda_Bewerken} />
+        <Route exact path="/Gegevens" component={Gegevens} />
+        <Route exact path="/Instellingen" component={Instellingen} />
+        </>
+        :
+        <></>
+      }
       <Route exact path='/Home' component={Home} />
       <Route exact path='/Oefeningen' component={oefeningen} />
-      <Route exact path='/oefening_x' component={oefening_x} />
-      <Route exact path='/Spelers' component={Spelers} />
-      <Route exact path='/Spelers/Toevoegen' component={SpelerToevoegen} />
-      <Route exact path='/Spelers/Verwijderen' component={SpelerVerwijderen} />
-      <Route exact path='/Aanwezigheid' component={Aanwezigheid} />
+      <Route exact path='/oefening_x' component={oefening_x} />      
       <Route exact path='/Uitslagen' component={Uitslagen} />
-      <Route exact path='/Notities' component={Notities} />
-      <Route exact path='/Notitie_Toevoegen' component={Notitie_Toevoegen} />
-      <Route exact path='/Notitie_Wijzigen' component={Notitie_Wijzigen} />
-      <Route exact path='/uitslagtoevoegen' component={uitslagtoevoegen} />
-      <Route exact path='/verslag' component={verslag} />
       <Route exact path="/registreren" component={registreren} />
-      <Route exact path="/login" component={Loginpage} />
-      <Route exact path="/tactieken" component={tacktics} />
+      <Route exact path="/login" component={Loginpage} />      
       <Route exact path="/" component={Hoofdpagina} />
       <Route exact path="/Agenda" component={Agenda} />
-      <Route exact path="/Agenda/Agenda_Toevoegen" component={Agenda_Toevoegen} />
-      <Route exact path="/Agenda/Agenda_Bewerken" component={Agenda_Bewerken} />
       <Route exact path="/LoginSpeler" component={LoginSpeler} />
-      <Route exact path="/teamcode" component={teamcode} />
-      <Route exact path="/Gegevens" component={Gegevens} />
-      <Route exact path="/Instellingen" component={Instellingen} />
+      <Route exact path="/teamcode" component={teamcode} />     
       <Route exact path="/Agenda/event" component={event} />
+      
 
 
 

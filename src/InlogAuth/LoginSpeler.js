@@ -24,7 +24,6 @@ class LoginSpeler extends Component {
   }
 
   handleSubmit = e => {
-    window.history.pushState({ prevUrl: window.location.href }, null, "/Home")
     const { user, rememberMe } = this.state;
     localStorage.setItem('Data', 'login');
     localStorage.setItem('role', 'speler');
@@ -37,6 +36,7 @@ class LoginSpeler extends Component {
       .then(function (response) {
         if (response.data.redirect === '/') {
           window.location = "/Home"
+
         } else if (response.data.redirect === '/LoginSpeler') {
           window.location = "/LoginSpeler"
         }

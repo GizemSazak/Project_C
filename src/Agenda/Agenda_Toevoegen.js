@@ -5,6 +5,7 @@ import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import './Agenda.js'
+import event from "./event.js"
 import { Container, Row, Col } from "react-bootstrap"
 
 export default class Agenda_Toevoegen extends Component {

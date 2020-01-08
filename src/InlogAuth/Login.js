@@ -16,7 +16,6 @@ class Loginpage extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   handleSubmit = e => {
-    window.history.pushState({ prevUrl: window.location.href }, null, "/Home")
     const { user, rememberMe } = this.state;
 
     localStorage.setItem('Data', 'login');
