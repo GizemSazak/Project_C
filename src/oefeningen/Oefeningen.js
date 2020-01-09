@@ -4,6 +4,9 @@ import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { Container, Row, Col, Card } from "react-bootstrap"
+import Select from 'react-select';
+
+
 
 class Oefeningen extends Component {
     constructor(props){
@@ -13,7 +16,15 @@ class Oefeningen extends Component {
         }
     }
 
-    viewOefeningen(user) {
+    viewOefeningen() {
+        const soorten = [
+            { label: "Alles", value: '' },
+            { label: "Aanvallen", value: 'Aanvallen' },
+            { label: "Dribbelen", value: 'Dribbelen' },
+            { label: "Passing", value: 'Passing' },
+            { label: "Verdedigen", value: 'Verdedigen' }
+          ];
+
         const [posts, setPosts] = useState([])
 
         useEffect(() => {
@@ -25,6 +36,20 @@ class Oefeningen extends Component {
                 .catch()
         }, []);
 
+        var filter = posts.filter(post => {
+            return (post.soort.includes(localStorage.getItem('soort')))
+
+        });
+
+
+        var ChangeValue = (selectedOption) => {
+            console.log(selectedOption['value'])
+            localStorage.setItem('soort', selectedOption['value'])
+            window.location.reload()
+        }
+
+        
+
         if (!localStorage.getItem('Data') || localStorage === null) {
             window.location.href = '/';
         }
@@ -33,16 +58,19 @@ class Oefeningen extends Component {
                 <Container className="Background text-center">
                     <Row>
                         {/* Menu */}
-                        <Col xs={3} sm={1} lg={1} className="p-0"><Menu user={user} /></Col>
+                        <Col xs={3} sm={1} lg={1} className="p-0"><Menu /></Col>
 
                         <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white">
                             {/* Page Header */}
                             <Row>
                                 <Col className="py-5"><h4>Oefeningen</h4></Col>
                             </Row>
+                            <Row className="filter">
+                            <Select options={soorten} onChange={ChangeValue}/>
+                            </Row>
                             {/* Page Body */}
                             <Row className="Body pt-4 p-3 ">
-                                {posts.map(function (post, id) {
+                                {filter.map(function (post, id) {
                                     return (
                                         <Link to={{ pathname: "/Oefening_X", titel: post.titel, veldopstelling: post.veldopstelling, spelverloop: post.spelverloop, spelregels: post.spelregels }}>
                                             <Card className="OefCard">
@@ -68,7 +96,7 @@ class Oefeningen extends Component {
             window.location.href = '/';
         }
         else {
-            return (<this.viewOefeningen user={this.state.user}/>)
+            return (<this.viewOefeningen />)
         }
     }
 }
