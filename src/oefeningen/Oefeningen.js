@@ -65,8 +65,8 @@ class Oefeningen extends Component {
                             <Row>
                                 <Col className="py-5"><h4>Oefeningen</h4></Col>
                             </Row>
-                            <Row className="filter">
-                            <Select options={soorten} onChange={ChangeValue}/>
+                            <Row >
+                            <Select className="filter" options={soorten} onChange={ChangeValue}/>
                             </Row>
                             {/* Page Body */}
                             <Row className="Body pt-4 p-3 ">
@@ -84,6 +84,7 @@ class Oefeningen extends Component {
                                     )
                                 })}
                             </Row>
+                            
                         </Col>
                     </Row>
                 </Container>
