@@ -256,6 +256,9 @@ app.post("/api/loginspeler", (req, res) => {
 //Get teamcode for the tranier
 app.get('/api/registratie/teamcode', (req, res) => {
     pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
         db.query(
             "SELECT teamcode from registratie where email = $1", [global.email],
             (err, table) => {
@@ -279,6 +282,9 @@ app.get('/api/registratie/teamcode', (req, res) => {
 //Get registratie
 app.get('/api/registratie', (req, res) => {
     pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
         db.query(
             "SELECT * from registratie where email = $1 or teamcode = $2", [global.email, global.teamcode],
             (err, table) => {

@@ -148,7 +148,7 @@ class Agenda extends Component {
                     </tr>
 
                     {filterdatum.map(function (post, id) {
-                        return (
+                        return (localStorage.getItem('role')==='trainer'&&
                             <Link to={{ pathname: "./Agenda/Agenda_Bewerken", id: post.id, datum: post.dag, starttijd: post.starttijd, eindtijd: post.eindtijd, beschrijving: post.beschrijving }}>
                                 <tr key={id} className="AgendaBody1 p-1">
                                     <td style={{ width: "33%" }}>{post.starttijd}</td>
@@ -158,6 +158,13 @@ class Agenda extends Component {
                             </Link>
                         )
                     })}
+                    {filterdatum.map(function (post, id) {
+                        return (localStorage.getItem('role')==='speler'&&
+                            <tr key={id} className="AgendaBody1 p-1">
+                                    <td style={{ width: "33%" }}>{post.starttijd}</td>
+                                    <td style={{ width: "33%" }}>{post.eindtijd}</td>
+                                    <td style={{ width: "33%" }}>{post.beschrijving}</td>
+                                </tr>)})}
                 </Col>
             </Container>
         );

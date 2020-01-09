@@ -38,7 +38,7 @@ class Aanwezigheid extends Component {
         const [posts, setPosts] = useState([])
 
         useEffect(() => {
-            axios.get('http://localhost:3001/api/aanwezigheid')
+            axios.get('http://localhost:3001/api/speler')
                 .then(res => {
                     console.log(res)
                     setPosts(res.data)

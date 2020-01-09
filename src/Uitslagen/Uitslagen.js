@@ -41,7 +41,7 @@ function Uitslagen() {
                                         <th style={{ width: '10vw', borderBottom: "2px solid black" }}>Uit</th>
                                     </tr>
                                     {posts.map(function (post, id) {
-                                        return (
+                                        return (localStorage.getItem('role')==='trainer'&&
                                             <Link to={{ pathname: "/verslag", id: post.id, verslag: post.verslag, thuis: post.thuis, stand: post.stand, uit: post.uit }}>
                                                 <tr key={id} className="TableBody">
                                                     <th className="py-2 px-2" style={{ width: '10vw', borderBottom: "1px solid black" }}>{post.id}</th>
@@ -52,6 +52,14 @@ function Uitslagen() {
                                             </Link>
                                         )
                                     })}
+                                    {posts.map(function (post, id) {
+                                        return (localStorage.getItem('role')==='speler'&&
+                                        <tr key={id} className="TableBody">
+                                                    <th className="py-2 px-2" style={{ width: '10vw', borderBottom: "1px solid black" }}>{post.id}</th>
+                                                    <td style={{ width: '40vw', borderBottom: "1px solid black" }}>{post.thuis}</td>
+                                                    <td style={{ width: '40vw', borderBottom: "1px solid black" }}>{post.stand}</td>
+                                                    <td style={{ width: '10vw', borderBottom: "1px solid black" }}>{post.uit}</td>
+                                                </tr>)})}
                                 </Col>
                             </Row>
 
