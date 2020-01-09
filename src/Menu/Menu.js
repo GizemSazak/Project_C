@@ -13,7 +13,7 @@ function Menu() {
       [
         { link: "../Home", title: "Home", icon: faHome },
         { link: "../Agenda", title: "Agenda", icon: faCalendar },
-        { link: "./Notities", title: "Notities", icon: faStickyNote },
+        { link: "../Notities", title: "Notities", icon: faStickyNote },
         { link: "../Spelers", title: "Spelers", icon: faUsers },
         { link: "../Aanwezigheid", title: "Aanwezig", icon: faUserCheck },
         { link: "../tactieken", title: "Tactiek", icon: faBezierCurve },
