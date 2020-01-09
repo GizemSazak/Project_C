@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Uitslagen.css';
 import Menu from '../Menu/Menu';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button, FormGroup, FormControl, Table } from "react-bootstrap"
+import { Container, Row, Col, Button, FormGroup, FormControl, Table, Form } from "react-bootstrap"
 
 class verslagen extends Component {
     constructor(props) {
@@ -61,8 +61,10 @@ class verslagen extends Component {
 
                     <Col xs={9} sm={11} lg={11} className="d-flex flex-column justify-content-end text-white text-center">
                         {/* Page Header */}
-                        <Row>
-                            <Col className="py-5"><h4>Wedstrijduitslag Wijzigen</h4></Col>
+                        <Row>{localStorage.getItem('role')==='trainer'&&
+                            <Col className="py-5"><h4>Wedstrijdverslag Wijzigen</h4></Col>}
+                            {localStorage.getItem('role')==='speler'&&
+                            <Col className="py-5"><h4>wedstrijdverslag</h4></Col>}
                         </Row>
                         {/* Page Body */}
                         <Row className="Body pt-4 p-2">
@@ -77,22 +79,31 @@ class verslagen extends Component {
                                         <tr className="TableSubHeader" >
                                             <td colSpan="4" style={{ border: "1px solid black" }}>Verslag</td>
                                         </tr>
-                                        <tr >
+                                        <tr >{localStorage.getItem('role')==='trainer'&&
                                             <td colSpan="4" className="p-0" >
                                                 <FormGroup >
                                                     <FormControl as="textarea" col="200" style={{ height: '100%' }} className="NotitieBody border-dark p-4" type="text" name="verslag" onChange={event => this.handleChange(event)} defaultValue={this.state.verslag} />
                                                 </FormGroup>
-                                            </td>
+                                            </td>}
+                                            {localStorage.getItem('role')==='speler'&&
+                                            <td colSpan="4" className="p-0" >
+                                                <FormGroup >
+                                                    <Form.Text col="200" style={{ height: '100%' }} className="NotitieBody border-dark p-4" >
+                                                    {this.state.verslag}
+                                                    </Form.Text>
+                                                </FormGroup>
+                                             </td>}
+                                            
                                         </tr>
                                     </Table>
                                 </Row>
                                 {/* Buttons */}
                                 <Row className="align-items-start " style={{ height: '10%' }}>
-                                    <Col >
+                                    <Col >{localStorage.getItem('role')==='trainer'&&
                                         <Link to="./Uitslagen" onClick={this.forceUpdate} >
                                             <Button variant="success" className="m-1 border-dark" onClick={() => this.Opslaan()}>Opslaan</Button>
                                             <Button variant="danger" className="border-dark" onClick={() => this.Verwijderen()}>Verwijderen</Button>
-                                        </Link>
+                                        </Link>}
                                     </Col>
                                 </Row>
                             </Col>

@@ -42,7 +42,6 @@ function App() {
             <Route exact path='/Notitie_Toevoegen' component={Notitie_Toevoegen} />
             <Route exact path='/Notitie_Wijzigen' component={Notitie_Wijzigen} />
             <Route exact path='/uitslagtoevoegen' component={uitslagtoevoegen} />
-            <Route exact path='/verslag' component={verslag} />
             <Route exact path="/tactieken" component={tacktics} />
             <Route exact path="/Agenda/Agenda_Toevoegen" component={Agenda_Toevoegen} />
             <Route exact path="/Agenda/Agenda_Bewerken" component={Agenda_Bewerken} />
@@ -56,6 +55,7 @@ function App() {
       <Route exact path='/Oefeningen' component={oefeningen} />
       <Route exact path='/oefening_x' component={oefening_x} />
       <Route exact path='/Uitslagen' component={Uitslagen} />
+      <Route exact path='/verslag' component={verslag} />
       <Route exact path="/registreren" component={registreren} />
       <Route exact path="/login" component={Loginpage} />
       <Route exact path="/" component={Hoofdpagina} />
