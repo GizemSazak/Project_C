@@ -21,4 +21,9 @@
   border: 1px solid black;
   max-width: 500px;
 }
+
+.filter {
+  width: 100%;
+  color: black
+}
   

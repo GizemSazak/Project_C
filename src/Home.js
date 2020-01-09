@@ -31,6 +31,7 @@ class Home extends Component{
   
 
 Home(user) {
+  localStorage.setItem('soort', '')
   function logout() {
     // sessionStorage.clear();
     localStorage.clear();

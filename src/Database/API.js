@@ -280,7 +280,7 @@ app.get('/api/registratie', (req, res) => {
             return res.status(400).send(err);
         }
         db.query(
-            "SELECT * from registratie where email = $1 or teamcode = $2", [global.email, global.teamcode],
+            "SELECT teamcode from registratie where email = $1 or teamcode = $2", [global.email, global.teamcode],
             (err, table) => {
                 done();
                 if (err) {
