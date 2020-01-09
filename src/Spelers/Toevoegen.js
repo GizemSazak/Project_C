@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Spelers.css'
 import Menu from '../Menu/Menu'
 import { Container, Row, Col, Form, FormGroup, FormControl } from "react-bootstrap"
+import { Link } from 'react-router-dom'
 
 class Toevoegen extends Component {
     constructor(props) {
@@ -35,6 +36,7 @@ class Toevoegen extends Component {
             .catch(err => {
                 console.log(err);
             });
+
     }
 
     render() {
@@ -69,7 +71,9 @@ class Toevoegen extends Component {
                                         <label className="FormLabel" >Spelernummer</label>
                                         <FormControl type="number" placeholder="spelernummer" className="Inputfield" onChange={this.updateInput} />
                                     </FormGroup>
-                                    <input type="submit" value="Opslaan" className="btn btn-success py-2 px-5 my-2 border-dark" onClick={this.handleSubmit} />
+                                    <Link to={{ pathname: "../Spelers" }}>
+                                        <input type="submit" value="Opslaan" className="btn btn-success py-2 px-5 my-2 border-dark" onClick={this.handleSubmit} />
+                                    </Link>
                                 </Form>
                             </Col>
                         </Row>
