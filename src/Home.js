@@ -94,27 +94,25 @@ Home(user) {
             <Image src={logo} alt="Logo" className="Logo" />
             <ButtonGroup >
               <Button className="btn-danger mr-1" name="logout" value="submit" onClick={() => logout()}>Uitloggen</Button>
-              {posts.map(function (post, id) {
-                return (
-                  <Link to={{ pathname: "./teamcode", teamcode: post.teamcode }}>
+              
+                  <Link to={{ pathname: "./teamcode"}}>
                     <Button className="btn-success" name="spelerteamcode" value="submit">Teamcode</Button>
-                  </Link>)
-              })}
+                  </Link>
+              
             </ButtonGroup>
           </Col>
         </Row>
         <Row >{
           buttons.map(buttons => (
             /* We're making all the buttons and filling the values in by mapping through all buttons */
-            posts.map(function (post, id) {
-              return (
+            
                 <Col className="MenuColumn  d-table">
-                  <Link to={{ pathname: buttons.link, teamcode: post.teamcode}} className="d-table-cell align-middle text-white" onclick={buttons.link}>
+                  <Link to={{ pathname: buttons.link}} className="d-table-cell align-middle text-white" onclick={buttons.link}>
                     <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "5vh" }} />
                     <br />{buttons.title}
                   </Link>
-                </Col>)
-            })
+                </Col>
+            
           ))}
         </Row>
       </Container>
