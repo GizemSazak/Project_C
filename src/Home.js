@@ -55,6 +55,11 @@ Home(user) {
       .catch()
   }, []);
 
+  posts.map(function (post, id) {
+    axios.post('http://localhost:3001/api/teamcode', { 'teamcode': post.teamcode })
+  }
+  )
+
   new event().eventt()
   console.log(localStorage.getItem('role'))
 
