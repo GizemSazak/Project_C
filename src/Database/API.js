@@ -8,9 +8,7 @@ const session = require('express-session');
 var hash = Password.hash("password123");
 const PORT = 3001;
 var customId = require("custom-id");
-// const Cookies = require('universal-cookie');
 var localStorage = require('localStorage')
-// const cookies = new Cookies();
 const cookiesMiddleware = require('universal-cookie-express');
 customId({});
 
@@ -52,7 +50,6 @@ app.post("/api/registratie", (req, res) => {
     const password = req.body.password;
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
-    // const values = [email, password, firstname, lastname];
     pool.connect((err, db, done) => {
         db.query("SELECT COUNT(*) AS cnt FROM registratie WHERE email = $1", [email], function (err, data) {
             if (err) {
@@ -61,10 +58,8 @@ app.post("/api/registratie", (req, res) => {
             else {
                 if (data.rows > 0) {
                     console.log("Email Already exist ");
-                    // Already exist 
                 } else {
                     var teamcode = customId({});
-                    // console.log(customId({}));
                     try {
                         req.checkBody("email", "Emial field can not be empty.").notEmpty();
                         req.checkBody("firstname", "firstname field can not be empty.").notEmpty();
@@ -141,7 +136,6 @@ app.put('/api/registratie', (req, res,next) => {
                             return res.status(400).send(err);
                         }
                         console.log('Update Password SUCCESS');
-                        // res.status(201).send({ message: 'Data updated!' });
                     }
         
                 );
