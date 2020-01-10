@@ -8,7 +8,6 @@ const session = require('express-session');
 var hash = Password.hash("password123");
 const PORT = 3001;
 var customId = require("custom-id");
-var localStorage = require('localStorage')
 const cookiesMiddleware = require('universal-cookie-express');
 customId({});
 
@@ -305,7 +304,6 @@ app.post("/api/teamcode", (req, res) => {
         if (err) {
             return res.status(400).send(err);
         }
-        const teamcode = req.body.teamcode;
         global.teamcode = req.body.teamcode;
 
     });
@@ -331,8 +329,6 @@ app.post('/api/aanwezigheid', (req, res) => {
     const datum = req.body.datum;
     const aanwezig = req.body.aanwezig;
     const speler_id = req.body.speler_id;
-
-    const values = [datum, aanwezig, speler_id];
 
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
@@ -492,7 +488,6 @@ app.put('/api/notities', (req, res) => {
 app.delete('/api/notities', (req, res) => {
     console.log(req.body);
     const id = req.body.id;
-    const values = [id];
 
     pool.connect((err, db, done) => {
         if (err) {
@@ -528,7 +523,6 @@ app.get('/api/wedstrijduitslag', (req, res) => {
                 return res.status(400).send(err);
             }
             return res.status(200).send(table.rows);
-            console.log(table.rows)
         });
     });
 
@@ -537,8 +531,6 @@ app.get('/api/wedstrijduitslag', (req, res) => {
 app.delete('/api/wedstrijduitslag', (req, res) => {
     console.log(req.body);
     const id = req.body.id;
-    const values = [id];
-
     pool.connect((err, db, done) => {
         if (err) {
             console.log(err + 'eerste');
@@ -635,7 +627,6 @@ app.get('/api/oefeningen', (req, res) => {
                 return res.status(400).send(err);
             }
             return res.status(200).send(table.rows);
-            console.log(table.rows)
         });
     });
 
@@ -653,7 +644,6 @@ app.get('/api/agenda', (req, res) => {
                 return res.status(400).send(err);
             }
             return res.status(200).send(table.rows);
-            console.log(table.rows)
         });
     });
 
@@ -665,8 +655,6 @@ app.post('/api/agenda', (req, res) => {
     const starttijd = req.body.starttijd;
     const eindtijd = req.body.eindtijd;
     const dag = req.body.dag;
-
-    const values = [beschrijving, starttijd, eindtijd, dag, global.teamcode];
 
     pool.connect((err, db, done) => {
         if (err) {
