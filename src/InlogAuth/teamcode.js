@@ -38,9 +38,7 @@ function Teamcode() {
                                 <Row className="h-90% flex-column align-content-center" style={{ height: '87%' }}>
                                     {posts.map(function (post, id) {
                                         return (
-                                            <Button >
-                                                {post.teamcode}
-                                            </Button>
+                                            <div className="p-2" style={{ backgroundColor: "rgb(0, 120, 0)", borderRadius: "10px" }}>{post.teamcode}</div>
                                         )
                                     })}
                                 </Row>

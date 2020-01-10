@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Notities.css';
 import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';

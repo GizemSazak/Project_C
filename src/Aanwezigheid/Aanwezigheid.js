@@ -4,12 +4,12 @@ import axios from 'axios'
 import './Aanwezigheid.css'
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Container, Row, Col, Button } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 
 class Aanwezigheid extends Component {
     constructor(props) {
         super(props);
-          
+
         this.togglecheck = this.togglecheck.bind(this);
         this.Spelers = this.Spelers.bind(this);
     }
@@ -89,19 +89,9 @@ class Aanwezigheid extends Component {
                             <Col className="py-5"><h4>Aanwezigheid</h4></Col>
                         </Row>
                         {/* Page Body */}
-                        <Row className="Body pt-4 p-2 ">
-                            <Col>
-                                <Row style={{ height: '13%' }}>
-                                    <Col>
-                                        <Button className="btn btn-success p-2 my-2 border-dark">{this.todaysdate}</Button>
-                                    </Col>
-                                </Row>
-
-                                <Row className="h-90% flex-column align-content-center" style={{ height: '87%' }}>
-                                    <this.Spelers />
-                                </Row>
-
-                            </Col>
+                        <Row className="Body pt-4 p-2 h-90% flex-column align-content-center" >
+                            <div className="p-2" style={{ backgroundColor: "rgb(0, 100, 0)", borderRadius: "10px" }}>{this.todaysdate}</div>
+                            <this.Spelers />
                         </Row>
                     </Col>
                 </Row>
