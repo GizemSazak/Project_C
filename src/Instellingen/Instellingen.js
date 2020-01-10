@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Instellingen.css'
 import Menu from '../Menu/Menu';
 import { Link } from 'react-router-dom';
 import axios from 'axios'

@@ -1,5 +1,4 @@
 import React, { Component, useState, useEffect } from "react";
-import "./login.css";
 import axios from "axios";
 import Cookies from 'universal-cookie';
 import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"
@@ -18,7 +17,7 @@ class LoginSpeler extends Component {
     this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   updateInput(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
