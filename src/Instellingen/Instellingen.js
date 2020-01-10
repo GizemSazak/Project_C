@@ -3,7 +3,9 @@ import './Instellingen.css'
 import Menu from '../Menu/Menu';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Button } from "react-bootstrap"
+import { faUserCog } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Instellingen() {
     const [posts, setPosts] = useState([])
@@ -34,25 +36,22 @@ function Instellingen() {
                         {/* Page Body */}
                         <Row className="Body pt-4 p-2 ">
                             <Col>
-                                <div className="uitslagBody">
-                                    {posts.map(function (post, id) {
-                                        return (<Link refresh="true" className="linkk" to={{ pathname: "/Gegevens", id: post.id, firstname: post.firstname, lastname: post.lastname, password: post.password }}>
-                                            <button type="button" value="Gegevens wijzigen" class="Gegevens_wijzigen" >
-                                                {/* {post.id} */}
+                                {posts.map(function (post, id) {
+                                    return (
+                                        <Link refresh="true" className="linkk" to={{ pathname: "/Gegevens", id: post.id, firstname: post.firstname, lastname: post.lastname, password: post.password }}>
+                                            <Button className="btn-success" >
+                                                <FontAwesomeIcon icon={faUserCog} style={{ fontSize: "3vh" }} /> <br />
                                                 Gegevens wijzigen
-                        </button>
+                                            </Button>
                                         </Link>
-                                        )
-
-                                    })}
-                                </div>
+                                    )
+                                })}
                             </Col>
+
                         </Row>
                     </Col>
                 </Row>
             </Container>
-
-
         );
     }
 }
