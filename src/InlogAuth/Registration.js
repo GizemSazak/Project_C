@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import "./registration.css";
 import axios from "axios";
 import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"
@@ -20,7 +20,6 @@ class Registreren extends Component {
   handleSubmit = e => {
     console.log(this.state)
     e.preventDefault()
-    const { email, password, firstName, lastName } = this.state;
     axios
       .post('http://localhost:3001/api/registratie', this.state)
       .then(function (response) {

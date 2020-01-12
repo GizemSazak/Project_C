@@ -1,8 +1,7 @@
 import Menu from '../Menu/Menu'
 import '../Notities/Notities.css'
-import axios from 'axios'
 import '../App.css'
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { Container, Row, Col, Button, Form, FormGroup, FormControl } from "react-bootstrap"
 
 import { Link } from 'react-router-dom';

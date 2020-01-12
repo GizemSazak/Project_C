@@ -5,6 +5,7 @@ const pg = require('pg');
 const cors = require('cors');
 const Password = require("node-php-password");
 const session = require('express-session');
+const expressValidator = require('express-validator');
 var hash = Password.hash("password123");
 const PORT = 3001;
 var customId = require("custom-id");
@@ -20,6 +21,7 @@ const pool = new pg.Pool({
 });
 
 const app = express();
+app.use(expressValidator()) 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,19 +62,25 @@ app.post("/api/registratie", (req, res) => {
                 } else {
                     var teamcode = customId({});
                     try {
-                        req.checkBody("email", "Emial field can not be empty.").notEmpty();
-                        req.checkBody("firstname", "firstname field can not be empty.").notEmpty();
-                        req.checkBody("lastname", "lastname field can not be empty.").notEmpty();
-                        req.checkBody("password", "password field can not be empty.").notEmpty();
-                        req.checkBody("password", "password must be between 4-100 characters lnog please try agin.").len(4,100);
-                        req.checkBody("password", "password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i");
                         hash = Password.hash(password);
                         db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname, teamcode], function (err, insert) {
                             if (err) {
-                                return res.status(400).send(err);
-                            } else {
+                               var redir = { redirect: '/registreren' };
+                                return res.json(redir);
+                            } else if(
+                            req.checkBody("email", "Emial field can not be empty.").notEmpty() &&
+                            req.checkBody('firstname', "firstname field can not be empty.").notEmpty() &&
+                            req.checkBody('lastname', "lastname field can not be empty.").notEmpty() &&
+                            req.checkBody('password', "password field can not be empty.").notEmpty() &&
+                            req.checkBody('password', "password must be between 4-100 characters lnog please try agin.").len(4,100) &&
+                            req.checkBody('password', "password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d.@)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i")) {
                                 console.log("INSERTED DATA SUCCESS");
-                                var redir = { redirect: "/" };
+                                 redir = { redirect: "/" };
+                                return res.json(redir);
+                            }
+                            else{
+                                console.log("INSERTED DATA NOT SUCCESSED>>>");
+                                 redir = { redirect: '/registreren' };
                                 return res.json(redir);
                             }
                         })
@@ -85,6 +93,7 @@ app.post("/api/registratie", (req, res) => {
                 }
             }
         });
+        done();
     });
 
 });
@@ -98,7 +107,6 @@ app.put('/api/registratie', (req, res,next) => {
     const password = req.body.password;
     hash = Password.hash(password);
     pool.connect((err, db, done) => {
-        done();
         if (err) {
             console.log(err + 'eerste');
             return res.status(400).send(err);
@@ -117,6 +125,7 @@ app.put('/api/registratie', (req, res,next) => {
                 }
 
             );
+            
 
         }
         catch (err) {
@@ -164,7 +173,6 @@ app.post("/api/login", (req, res) => {
         db.query(
             "SELECT * from registratie where email = $1", [email],
             (err, table) => {
-                done();
                 if (err) {
                     return res.status(400).send(err);
                 }
@@ -196,6 +204,7 @@ app.post("/api/login", (req, res) => {
                 return res.status(200).send(table.rows);
             }
         );
+        done();
     });
 
 });
@@ -214,7 +223,6 @@ app.post("/api/loginspeler", (req, res) => {
         db.query(
             "SELECT * from registratie where teamcode = $1", [teamcode],
             (err, table) => {
-                done();
                 if (err) {
                     return res.status(400).send(err);
                 }
@@ -242,6 +250,7 @@ app.post("/api/loginspeler", (req, res) => {
                 return res.status(200).send(table.rows);
             }
         );
+        done();
     });
 
 });
@@ -253,9 +262,8 @@ app.get('/api/registratie/teamcode', (req, res) => {
             return res.status(400).send(err);
         }
         db.query(
-            "SELECT teamcode from registratie where email = $1", [global.email],
+            "SELECT teamcode from registratie where email = $1 or teamcode = $2", [global.email,global.teamcode],
             (err, table) => {
-                done();
                 if (err) {
                     return res.status(400).send(err);
                 }
@@ -269,6 +277,7 @@ app.get('/api/registratie/teamcode', (req, res) => {
                 return res.status(200).send(table.rows);
             }
         );
+        done();
     });
 });
 
@@ -279,9 +288,8 @@ app.get('/api/registratie', (req, res) => {
             return res.status(400).send(err);
         }
         db.query(
-            "SELECT teamcode from registratie where email = $1 or teamcode = $2", [global.email, global.teamcode],
+            "SELECT * from registratie where email = $1 or teamcode = $2", [global.email, global.teamcode],
             (err, table) => {
-                done();
                 if (err) {
                     return res.status(400).send(err);
                 }
@@ -295,6 +303,7 @@ app.get('/api/registratie', (req, res) => {
                 return res.status(200).send(table.rows);
             }
         );
+        done();
     });
 });
 
@@ -305,7 +314,7 @@ app.post("/api/teamcode", (req, res) => {
             return res.status(400).send(err);
         }
         global.teamcode = req.body.teamcode;
-
+        done();
     });
 });
 
@@ -315,11 +324,10 @@ app.get('/api/aanwezigheid', (req, res) => {
         if (err) { return res.status(400).send(err); }
 
         db.query('SELECT * from aanwezigheid right join speler on speler_id=id where speler.teamcode = $1',[global.teamcode], (err, table) => {
-            done();
-
             // If err is True than send err else send table.rows
             err ? res.status(400).send(err) : res.status(200).send(table.rows)
         });
+        done();
     });
 
 });
@@ -344,6 +352,7 @@ app.post('/api/aanwezigheid', (req, res) => {
                 res.status(201).send({ message: 'Data inserted!' });
             }
         );
+        done();
     });
 });
 
@@ -353,11 +362,10 @@ app.get('/api/speler', (req, res) => {
         if (err) { return res.status(400).send(err); }
 
         db.query('SELECT * from speler where teamcode = $1', [global.teamcode], (err, table) => {
-            done();
-
             // If err is True than send err else send table.rows
             err ? res.status(400).send(err) : res.status(200).send(table.rows)
         });
+        done();
     });
 
 });
@@ -382,8 +390,10 @@ app.post('/api/speler', (req, res) => {
             }
         );
         res.status(200).send({ message: 'Data inserted!' });
+        done();
         // return res.status(200).send(table.rows);
     });
+    
 
 });
 
@@ -402,6 +412,7 @@ app.delete('/api/speler', (req, res) => {
             res.status(201).send({ message: 'Data deleted!' });
         }
         );
+        done();
     });
 
 });
@@ -435,6 +446,7 @@ app.post('/api/notities', (req, res) => {
                 res.status(201).send({ message: 'Data inserted!' });
             }
         );
+        done();
     });
 
 });
@@ -446,12 +458,12 @@ app.get('/api/notities', (req, res) => {
             return res.status(400).send(err);
         }
         db.query('SELECT * from notities where teamcode = $1 order by id DESC', [global.teamcode], (err, table) => {
-            done();
             if (err) {
                 return res.status(400).send(err);
             }
             return res.status(200).send(table.rows);
         });
+        done();
     });
 
 });
@@ -463,7 +475,6 @@ app.put('/api/notities', (req, res) => {
     const notitie = req.body.notitie;
     const titel = req.body.titel;
     pool.connect((err, db, done) => {
-        done();
         if (err) {
             console.log(err + 'eerste');
             return res.status(400).send(err);
@@ -481,6 +492,7 @@ app.put('/api/notities', (req, res) => {
                 res.status(201).send({ message: 'Data updated!' });
             }
         );
+        done();
     });
 
 });
@@ -507,6 +519,7 @@ app.delete('/api/notities', (req, res) => {
             res.status(201).send({ message: 'Data deleted!' });
         }
         );
+        done();
     });
 
 });
@@ -518,12 +531,12 @@ app.get('/api/wedstrijduitslag', (req, res) => {
         }
 
         db.query('SELECT * from wedstrijduitslag where teamcode = $1 order by id DESC', [global.teamcode], (err, table) => {
-            done();
             if (err) {
                 return res.status(400).send(err);
             }
             return res.status(200).send(table.rows);
         });
+        done();
     });
 
 });
@@ -549,6 +562,7 @@ app.delete('/api/wedstrijduitslag', (req, res) => {
             res.status(201).send({ message: 'Data deleted!' });
         }
         );
+        done();
     });
 
 });
@@ -583,6 +597,7 @@ app.post('/api/wedstrijduitslag', (req, res) => {
                 res.status(201).send({ message: 'Data inserted!' });
             }
         );
+        done();
     });
 
 });
@@ -592,7 +607,6 @@ app.put('/api/wedstrijduitslag', (req, res) => {
     const id = req.body.id;
     const verslag = req.body.verslag;
     pool.connect((err, db, done) => {
-        done();
         if (err) {
             console.log(err + 'eerste');
             return res.status(400).send(err);
@@ -610,6 +624,7 @@ app.put('/api/wedstrijduitslag', (req, res) => {
                 res.status(201).send({ message: 'Data updated!' });
             }
         );
+        done();
     });
 
 });
@@ -622,12 +637,12 @@ app.get('/api/oefeningen', (req, res) => {
         }
 
         db.query('SELECT * from oefeningen order by id ASC', (err, table) => {
-            done();
             if (err) {
                 return res.status(400).send(err);
             }
             return res.status(200).send(table.rows);
         });
+        done();
     });
 
 });
@@ -639,12 +654,12 @@ app.get('/api/agenda', (req, res) => {
             return res.status(400).send(err);
         }
         db.query('SELECT * from agenda where teamcode = $1 order by id DESC', [global.teamcode], (err, table) => {
-            done();
             if (err) {
                 return res.status(400).send(err);
             }
             return res.status(200).send(table.rows);
         });
+        done();
     });
 
 });
@@ -676,6 +691,7 @@ app.post('/api/agenda', (req, res) => {
                 res.status(201).send({ message: 'Data inserted!' });
             }
         );
+        done();
     });
 
 });
@@ -689,7 +705,6 @@ app.put('/api/Agenda', (req, res) => {
     const eindtijd = req.body.eindtijd;
     const beschrijving = req.body.beschrijving;
     pool.connect((err, db, done) => {
-        done();
         if (err) {
             console.log(err + 'eerste');
             return res.status(400).send(err);
@@ -707,6 +722,7 @@ app.put('/api/Agenda', (req, res) => {
                 res.status(201).send({ message: 'Data updated!' });
             }
         );
+        done();
     });
 
 });
@@ -735,6 +751,7 @@ app.delete('/api/agenda', (req, res) => {
                 res.status(201).send({ message: 'Data deleted!' });
             }
         );
+        done();
     });
 
 });

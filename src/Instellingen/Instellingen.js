@@ -38,7 +38,7 @@ function Instellingen() {
                                 {posts.map(function (post, id) {
                                     return (
                                         <Link refresh="true" className="linkk" to={{ pathname: "/Gegevens", id: post.id, firstname: post.firstname, lastname: post.lastname, password: post.password }}>
-                                            <Button className="btn-success" >
+                                            <Button className="btn-success" value="linkk" >
                                                 <FontAwesomeIcon icon={faUserCog} style={{ fontSize: "3vh" }} /> <br />
                                                 Gegevens wijzigen
                                             </Button>

@@ -23,13 +23,12 @@ class Loginpage extends Component {
     localStorage.setItem('user', rememberMe ? user : '');
     console.log(this.state)
     e.preventDefault()
-    const { email, password } = this.state;
     axios
       .post('http://localhost:3001/api/login', this.state)
       .then(function (response) {
         if (response.data.redirect === '/') {
           window.location = "/Home"
-          
+
         } else if (response.data.redirect === '/login') {
           window.location = "/login";
           alert("Voer de juiste email en wachtwoord in.")
@@ -39,6 +38,7 @@ class Loginpage extends Component {
       .catch(function (error) {
         window.location = "/login"
       })
+      
   }
 
   render() {

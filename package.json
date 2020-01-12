@@ -16,11 +16,13 @@
     "custom-id": "^1.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "express-validator": "^5.3.0",
     "localStorage": "^1.0.4",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "node-gyp": "^6.0.1",
     "node-php-password": "^0.1.2",
+    "not-empty": "^1.1.2",
     "pg": "^7.13.0",
     "pg-native": "^3.0.0",
     "ramda": "^0.26.1",
@@ -45,7 +47,8 @@
     "shortid": "^2.2.15",
     "styled-components": "^5.0.0-regexrehydrate",
     "universal-cookie": "^4.0.2",
-    "universal-cookie-express": "^4.0.1"
+    "universal-cookie-express": "^4.0.1",
+    "validator": "^12.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
