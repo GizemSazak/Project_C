@@ -102,7 +102,6 @@ table {
   visibility: hidden;
   min-width: 100px;
   height: 30pt;
-  background: #0b3157;
   position: absolute;
   z-index: 10;
 }
@@ -110,30 +109,39 @@ table {
 #wrapper2 {
   display: flex;
   justify-content: center;
-  text-align: center;
-  opacity: 0.5;
-  color: #72879c;
+  font-size: 14pt;
+  width: 90vw;
+  margin-top: 5px;
 }
 
 #selectWeek {
-  width: 103pt;
-  height: 30pt;
-  font-size: 14pt;
-  border-radius: 30pt;
-  border: 1pt solid #72879c;
-  line-height: 30pt;
-  margin-right: 6pt;
+  border: 1pt solid black;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-image: linear-gradient(rgb(200, 200, 200), rgb(255, 255, 255), rgb(200, 200, 200));
+  color: rgb(75, 150, 150);
+  font-weight: 700;
   cursor: pointer;
+  padding:5px;
+  width: 100px;
+}
+#selectWeek:hover{
+  background-image: linear-gradient(rgb(180, 180, 180), rgb(240, 240, 240), rgb(180, 180, 180));
 }
 
 #selectMonth {
-  width: 103pt;
-  height: 30pt;
-  font-size: 14pt;
-  border-radius: 30pt;
-  border: 1pt solid #72879c;
-  line-height: 30pt;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1pt solid black;
+  background-image: linear-gradient(rgb(75, 150, 150), rgb(75, 190, 190), rgb(75, 150, 150));
+  color: white;
+  font-weight: 700;
   cursor: pointer;
+  padding:5px;
+  width: 100px;
+}
+#selectMonth:hover{
+  background-image: linear-gradient(rgb(75, 130, 130), rgb(75, 180, 180), rgb(75, 130, 130));
 }
 
 .event {

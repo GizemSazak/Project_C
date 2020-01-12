@@ -1,6 +1,3 @@
-//Панель выбора вида отображения(месячное, понедельное).
-//Раскрывается при клике на текущий месяц(неделю)
-
 import React from "react";
 
 export class MonthOrWeek extends React.Component {
@@ -14,7 +11,7 @@ export class MonthOrWeek extends React.Component {
               this.props.selectWeeks();
             }}
           >
-            This week
+            Week
           </div>
           <div
             id="selectMonth"
@@ -22,7 +19,7 @@ export class MonthOrWeek extends React.Component {
               this.props.selectMonths();
             }}
           >
-            This month
+            Maand
           </div>
         </div>
       </div>
