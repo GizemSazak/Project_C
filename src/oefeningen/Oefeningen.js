@@ -6,10 +6,8 @@ import axios from 'axios'
 import { Container, Row, Col, Card } from "react-bootstrap"
 import Select from 'react-select';
 
-
-
 class Oefeningen extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             user: this.props.location.user
@@ -23,7 +21,7 @@ class Oefeningen extends Component {
             { label: "Dribbelen", value: 'Dribbelen' },
             { label: "Passing", value: 'Passing' },
             { label: "Verdedigen", value: 'Verdedigen' }
-          ];
+        ];
 
         const [posts, setPosts] = useState([])
 
@@ -41,14 +39,11 @@ class Oefeningen extends Component {
 
         });
 
-
         var ChangeValue = (selectedOption) => {
             console.log(selectedOption['value'])
             localStorage.setItem('soort', selectedOption['value'])
             window.location.reload()
         }
-
-        
 
         if (!localStorage.getItem('Data') || localStorage === null) {
             window.location.href = '/';
@@ -66,7 +61,7 @@ class Oefeningen extends Component {
                                 <Col className="py-5"><h4>Oefeningen</h4></Col>
                             </Row>
                             <Row >
-                            <Select className="filter" options={soorten} onChange={ChangeValue}/>
+                                <Select className="filter" options={soorten} onChange={ChangeValue} />
                             </Row>
                             {/* Page Body */}
                             <Row className="Body pt-4 p-3 ">
@@ -84,7 +79,7 @@ class Oefeningen extends Component {
                                     )
                                 })}
                             </Row>
-                            
+
                         </Col>
                     </Row>
                 </Container>

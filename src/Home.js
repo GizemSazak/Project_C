@@ -5,10 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import event from "./Agenda/event"
-import App from './App';
 import { Container, Row, Col, Image, Button, ButtonGroup } from "react-bootstrap"
 import logo from './logo.png'
-import { browserHistory } from 'react-router'
 // import { browserhistory } from 'react-router'; 
 // function cheacklogin(checklogin){
 // if(!localStorage.getItem('myData', 'My data') || localStorage === null){
