@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&amp;subset=cyrillic");
 
 #wrapper {
-  width: 375pt;
+  width: 100vw;
   font-family: "Montserrat", sans-serif;
   font-size: 16pt;
 }
@@ -14,34 +14,57 @@
 }
 
 #prev {
-  padding-left: 16pt;
-  margin-top: 16pt;
-  margin-bottom: 16pt;
-  color: #48c1c2;
+  color: rgb(75, 190, 190);
   font-weight: 700;
   cursor: pointer;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  align-self: center;
+  background-image: linear-gradient(rgb(200, 200, 200), rgb(255, 255, 255), rgb(200, 200, 200));
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+#prev:hover{
+  background-image: linear-gradient(rgb(180, 180, 180), rgb(240, 240, 240), rgb(180, 180, 180));
 }
 
 #current {
   color: #ffffff;
-  margin-top: 16pt;
-  margin-bottom: 16pt;
   font-weight: 800;
   cursor: pointer;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 33%;
+  background-image: linear-gradient(rgb(75, 150, 150), rgb(75, 190, 190), rgb(75, 150, 150));
+}
+#current:hover{
+  background-image: linear-gradient(rgb(75, 130, 130), rgb(75, 180, 180), rgb(75, 130, 130));
 }
 
 #next {
-  padding-right: 16pt;
-  margin-top: 16pt;
-  margin-bottom: 16pt;
   color: #48c1c2;
   font-weight: 700;
   cursor: pointer;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  background-image: linear-gradient(rgb(200, 200, 200), rgb(255, 255, 255), rgb(200, 200, 200));
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#next:hover{
+  background-image: linear-gradient(rgb(180, 180, 180), rgb(240, 240, 240), rgb(180, 180, 180));
 }
 
 .cellValue {
-  padding: 4pt 11pt 4pt;
+  padding-top: 0px;
   cursor: pointer;
 }
 
@@ -70,19 +93,15 @@ th {
 }
 
 table {
-  width: 100%;
+  width: 90vw;
   text-align: center;
   border-collapse: collapse;
 }
 
-#indent {
-  height: 5pt;
-}
-
 #monthOrWeek {
   visibility: hidden;
-  width: 375pt;
-  height: 44pt;
+  min-width: 100px;
+  height: 30pt;
   background: #0b3157;
   position: absolute;
   z-index: 10;

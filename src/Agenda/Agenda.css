@@ -10,12 +10,11 @@
     background-image: linear-gradient(rgb(200, 200, 200, 0.5), rgb(250, 250, 250, 0.5), rgb(200, 200, 200, 0.5));
     color: black;
     display: flex;
+    max-height: 35px;
+    border: 1px solid black;
 }
 .AgendaBody1:hover{
     background-image: linear-gradient(rgb(200, 200, 200, 0.8), rgb(250, 250, 250, 0.8), rgb(200, 200, 200, 0.8));
-}
-.Calender{
-    border:2px solid black;
 }
 
 
