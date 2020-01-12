@@ -116,22 +116,35 @@
  top: 50%;
  position: relative;
 }
-#AgendaBewerkTable, #Agendatable, #Agenda_col, #Agenda_row1{
-    border: 2px solid black;
-    border-collapse: collapse;
+#AgendaBewerkTable, #Agendatable, #Agenda_col, #Agenda_row1, #Agenda_row2,.Agenda_row3{
+    border: 1px solid black;
+    /* border-collapse: collapse; */
 }
-#Agenda_col, #Agenda_row1 {
-    padding: 15px;
-  }
+
  #Agenda_row1{
-    background-image:radial-gradient(rgb(0, 200, 0,0.7),rgb(0, 100, 0,0.5));
+    background-image:radial-gradient(rgb(0, 200, 0),rgb(0, 100, 0));
     text-align: center;
+    font-size: 1.5rem;
+    width: 80vw;
+    max-width: 600px;
 }
-.titleDatum {
-    font-size: 4vh;
+#Agenda_row2{
+    background-image:radial-gradient(rgb(0, 220, 0),rgb(0, 150, 0));
+    text-align: center;
+    font-size: 1.2rem;
+    width: 40vw;
+    max-width: 300px;
 }
+.Agenda_row3{
+    background-color: rgb(220, 220, 220);
+    text-align: center;
+    border-radius: 0px;
+  }
+.Agenda_row3:hover{
+    background-color: rgb(255, 255, 255);
+  }
+
  #AgendaBewerkTable{
-    width: 50%;   
     left:25% ;
     margin-top: 20vh;
     position: relative;

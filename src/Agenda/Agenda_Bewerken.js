@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import './Agenda';
 import Menu from '../Menu/Menu';
 import { Link } from 'react-router-dom';
-import trashimg from '../trash.png'
 import event from "./event.js"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Button, FormControl, FormGroup } from "react-bootstrap"
 
 class Agenda_Bewerken extends Component {
     constructor(props) {
@@ -15,7 +14,6 @@ class Agenda_Bewerken extends Component {
             starttijd: this.props.location.starttijd,
             eindtijd: this.props.location.eindtijd,
             beschrijving: this.props.location.beschrijving
-                
         }
     }
 
@@ -40,7 +38,6 @@ class Agenda_Bewerken extends Component {
             });
         window.location = '../Agenda';
     }
-
 
     Opslaan() {
         const request = new Request('http://localhost:3001/api/Agenda', {
@@ -78,60 +75,48 @@ class Agenda_Bewerken extends Component {
                             </Row>
                             {/* Page Body */}
                             <Row className="Body">
-                                <Col className="p-0 ">
-                                    <Row style={{ height: '90%' }} >
-                                        <Col>
-                                            <div className="uitslagBody">
-                                                <table id="AgendaBewerkTable">
-                                                    <th id="Agenda_row1" className="titleDatum" colspan="3">{this.props.location.datum}</th>
-                                                    <tr>
-                                                        <th id="Agenda_row1">Starttijd</th>
-                                                        <th id="Agenda_row1">Eindtijd</th>
-                                                        <th id="Agenda_row1">Beschrijving</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td id="Agenda_col">
-                                                            <textarea
-                                                                placeholder="Starttijd"
-                                                                id="starttijd"
-                                                                name="starttijd"
-                                                                value={this.state.starttijd}
-                                                                onChange={event => this.handleChange(event)}
-                                                            />
-                                                        </td>
-                                                        <td id="Agenda_col">
-                                                            <textarea
-                                                                placeholder="Eindtijd"
-                                                                id="eindtijd"
-                                                                name="eindtijd"
-                                                                value={this.state.eindtijd}
-                                                                onChange={event => this.handleChange(event)}
-                                                            /></td>
-                                                        <td id="Agenda_col">
-                                                            <textarea
-                                                                placeholder="Beschrijving"
-                                                                id="beschrijving"
-                                                                name="beschrijving"
-                                                                value={this.state.beschrijving}
-                                                                onChange={event => this.handleChange(event)}
-                                                            />
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
+                                <Col className="p-0">
+                                    <Row className="align-items-center" style={{ height: '90%' }} >
+                                        <Col className="d-flex flex-column align-items-center">
+                                            <th id="Agenda_row1" colspan="3">{this.props.location.datum}</th>
+                                            <tr>
+                                                <th id="Agenda_row2">Starttijd</th>
+                                                <th id="Agenda_row2">Eindtijd</th>
+                                            </tr>
+
+                                            <tr style={{ height: "38px" }}>
+                                                <td style={{ height: "30px", maxWidth: "300px", width: "40vw" }}>
+                                                    <FormControl className="Agenda_row3" id="starttijd" type="text" placeholder="Starttijd" name="starttijd" value={this.state.starttijd} onChange={event => this.handleChange(event)} />
+                                                </td>
+                                                <td style={{ height: "30px", maxWidth: "300px", width: "40vw" }}>
+                                                    <FormControl className="Agenda_row3" id="eindtijd" type="text" placeholder="Eindtijd" name="eindtijd" value={this.state.eindtijd} onChange={event => this.handleChange(event)} />
+                                                </td>
+                                            </tr>
+
+                                            <tr ><th id="Agenda_row2" colspan="3" style={{ maxWidth: "600px", width: "80vw" }}>Beschrijving</th></tr>
+                                            <tr >
+                                                <td colspan="1" style={{ maxWidth: "600px", width: "80vw" }}>
+                                                    <FormControl
+                                                        rows="10"
+                                                        as="textarea"
+                                                        id="beschrijving"
+                                                        className="Agenda_row3"
+                                                        type="text"
+                                                        placeholder="Beschrijven"
+                                                        name="beschrijving"
+                                                        value={this.state.beschrijving}
+                                                        onChange={event => this.handleChange(event)}>
+                                                    </FormControl>
+                                                </td>
+                                            </tr>
                                         </Col>
                                     </Row>
 
                                     <Row className="h-90% flex-column align-content-center" style={{ height: '10%' }}>
                                         <Col>
                                             <Link to="./Agenda" >
-                                                <button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button>
-                                                <img src={trashimg} style={{ height: "2rem" }} onClick={() => this.Verwijderen()} className="trashbutton" />
-                                            </Link>
-
-                                            <Link to="./Agenda" onClick={this.forceUpdate}>
-                                                <button onClick={() => this.Opslaan()} className="opslaanbutton">Opslaan</button>
-                                                <img src={trashimg} style={{ height: "2rem" }} onClick={() => this.Verwijderen()} className="trashbutton" />
+                                                <Button onClick={() => this.Opslaan()} className="btn-success">Opslaan</Button>
+                                                <Button onClick={() => this.Verwijderen()} className="btn-danger">Verwijderen</Button>
                                             </Link>
                                         </Col>
                                     </Row>
@@ -144,6 +129,5 @@ class Agenda_Bewerken extends Component {
         }
     }
 }
-
 
 export default Agenda_Bewerken;
