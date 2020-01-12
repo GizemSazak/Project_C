@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-// import '../Notities/Notities.css';
-import Menu from '../Menu/Menu'
-import { Link } from 'react-router-dom';
-import axios from 'axios'
-import { Container, Row, Col } from "react-bootstrap"
-// import '../Notities/Notities.css';
+import Menu from '../Menu/Menu';
+import axios from 'axios';
+import { Container, Row, Col } from "react-bootstrap";
+
 function Teamcode() {
 
     const [posts, setPosts] = useState([])
-
+    //Getting all the registration information from the server 
     useEffect(() => {
         axios.get('http://localhost:3001/api/registratie')
             .then(res => {
@@ -17,6 +15,10 @@ function Teamcode() {
             })
             .catch()
     }, []);
+/*Check the local storage if it has not have the same local storage value when the user logged in.
+It will not allowed the user to go to the teamcode page if he is not logged in. 
+Else it will allowed to the user to see the the teamcode page if he is logged in.
+*/
     if (!localStorage.getItem('Data') || localStorage === null) {
         window.location.href = '/';
     }
