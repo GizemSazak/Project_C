@@ -136,10 +136,10 @@ class Agenda extends Component {
 
     return (
       <Container className="p-0">
-        <Col className="p-1" >
-          <h4 className="mt-2">
+        <Col className="p-0" >
+          <h5 className="mt-2">
             {"SELECTED DAY: ", this.state.selectedDay}
-          </h4>
+          </h5>
 
           <tr className="AgendaHeader1 p-2 mt-3">
             <th style={{ width: "33%" }}>Starttijd</th>
@@ -160,7 +160,7 @@ class Agenda extends Component {
           })}
           {filterdatum.map(function (post, id) {
             return (localStorage.getItem('role') === 'speler' &&
-              <tr key={id} className="AgendaBody1 p-1">
+              <tr key={id} className="AgendaBody1">
                 <td style={{ width: "33%" }}>{post.starttijd}</td>
                 <td style={{ width: "33%" }}>{post.eindtijd}</td>
                 <td style={{ width: "33%" }}>{post.beschrijving}</td>
@@ -191,12 +191,12 @@ class Agenda extends Component {
                 <Col className="py-5"><h4>Agenda</h4></Col>
               </Row>
               {/* Page Body */}
-              <Row className="Body pt-4">
+              <Row className="Body pt-2">
                 <Col>
-                  <Row style={{ height: '90%' }}>
+                  <Row style={{ height: '85%' }}>
                     <this.GetAgenda />
                   </Row>
-                  <Row className="d-flex justify-content-center align-items-center" style={{ height: '10%' }}>
+                  <Row className="d-flex justify-content-center align-items-center" style={{ height: '15%' }}>
                     <Col>{localStorage.getItem('role') === 'trainer' &&
                       <Link to={{ pathname: "./Agenda/Agenda_Toevoegen", dag: this.state.selectedDay }}>
                         <Button className="btn-success">Toevoegen</Button>
@@ -206,7 +206,7 @@ class Agenda extends Component {
                 </Col>
 
                 <Col >
-                  <Table className="d-flex justify-content-start pt-5">
+                  <Table className="d-flex justify-content-start pt-4">
                     <div id="wrapper">
                       <CalendarHead
                         tableType={this.state.tableType}
