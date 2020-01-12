@@ -18,7 +18,7 @@ class Notitie_Wijzigen extends Component {
         let val = event.target.value;
         this.setState({ [nam]: val });
     }
-
+//This function send delete state to the server and then redirect the user to the Notities page
     Notities_Verwijderen() {
         const request = new Request('http://localhost:3001/api/notities', {
             method: 'DELETE',
@@ -34,7 +34,7 @@ class Notitie_Wijzigen extends Component {
             });
         window.location = './Notities';
     }
-
+//This function update the notitie title and beschrijving and then redirect the user to Notitie page
     Notities_Wijzigen() {
         const request = new Request('http://localhost:3001/api/notities', {
             method: 'PUT',
