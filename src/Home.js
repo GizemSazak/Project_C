@@ -19,121 +19,116 @@ import { browserHistory } from 'react-router'
 //   }
 // }
 
-class Home extends Component{
+class Home extends Component {
   constructor(props) {
     super(props);
-    this.state ={
-    user: this.props.location.user
+    this.state = {
+      user: this.props.location.user
     }
   }
 
-  
-  
+  Home(user) {
+    localStorage.setItem('soort', '')
+    function logout() {
+      // sessionStorage.clear();
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = '/';
+      window.history.replaceState(null, null, "/");
+    }
 
-Home(user) {
-  localStorage.setItem('soort', '')
-  function logout() {
-    // sessionStorage.clear();
-    localStorage.clear();
-    sessionStorage.clear();
-    window.location.href = '/';
-    window.history.replaceState(null, null, "/");
-  
-  }
+    // cheacklogin();
 
-  // cheacklogin();
-  
 
-  const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([])
 
-  useEffect(() => {
-    axios.get('http://localhost:3001/api/registratie')
-      .then(res => {
-        console.log(res)
-        setPosts(res.data)
-        
-      })
-      .catch()
-  }, []);
+    useEffect(() => {
+      axios.get('http://localhost:3001/api/registratie')
+        .then(res => {
+          console.log(res)
+          setPosts(res.data)
+        })
+        .catch()
+    }, []);
 
-  posts.map(function (post, id) {
-    axios.post('http://localhost:3001/api/teamcode', { 'teamcode': post.teamcode })
-  }
-  )
+    posts.map(function (post, id) {
+      axios.post('http://localhost:3001/api/teamcode', { 'teamcode': post.teamcode })
+    }
+    )
 
-  new event().eventt()
-  console.log(localStorage.getItem('role'))
+    new event().eventt()
+    console.log(localStorage.getItem('role'))
 
-  var [buttons] =
-      useState( 
+    var [buttons] =
+      useState(
         [
-    { link: "./Agenda", title: "Agenda", icon: faCalendar },
-    { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
-    { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard }
-    ])
-      
-  const [trainerbuttons] =
-     useState( 
-       [
-    { link: "./Agenda", title: "Agenda", icon: faCalendar },
-    { link: "./Notities", title: "Notities", icon: faStickyNote },
-    { link: "./Spelers", title: "Spelers", icon: faUsers },
-    { link: "./Aanwezigheid", title: "Aanwezig", icon: faUserCheck },
-    { link: "./tactieken", title: "Tactiek", icon: faBezierCurve },
-    { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
-    { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
-    { link: "./Instellingen", title: "Instellingen", icon: faCogs }
-  ])
+          { link: "./Agenda", title: "Agenda", icon: faCalendar },
+          { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
+          { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard }
+        ])
 
-  if(localStorage.getItem('role')==='trainer'){
-    [buttons] = [trainerbuttons]
-  }
+    const [trainerbuttons] =
+      useState(
+        [
+          { link: "./Agenda", title: "Agenda", icon: faCalendar },
+          { link: "./Notities", title: "Notities", icon: faStickyNote },
+          { link: "./Spelers", title: "Spelers", icon: faUsers },
+          { link: "./Aanwezigheid", title: "Aanwezig", icon: faUserCheck },
+          { link: "./tactieken", title: "Tactiek", icon: faBezierCurve },
+          { link: "./Oefeningen", title: "Oefeningen", icon: faRunning },
+          { link: "./Uitslagen", title: "Wedstrijduitslag", icon: faClipboard },
+          { link: "./Instellingen", title: "Instellingen", icon: faCogs }
+        ])
 
-  if (!(localStorage.getItem('Data') || localStorage === null)) {
-    window.location.href = '/';
-  }
-  else {
-    return (
-      <Container className="Background d-flex flex-column justify-content-end p-0 m-0">
-        <Row className="text-center d-table" >
-          <Col className="d-table-cell align-middle">
+    if (localStorage.getItem('role') === 'trainer') {
+      [buttons] = [trainerbuttons]
+    }
+
+    if (!(localStorage.getItem('Data') || localStorage === null)) {
+      window.location.href = '/';
+    }
+    else {
+      return (
+        <Container className="Background d-flex flex-column justify-content-end p-0 m-0">
+          <Row style={{ height: '4vh' }}>
+            <Col className="d-flex justify-content-end pt-2 pr-4">
+              <ButtonGroup>
+                <Button className="btn-danger mr-1" name="logout" value="submit" onClick={() => logout()}>Uitloggen</Button>
+
+                <Link to={{ pathname: "./teamcode" }}>
+                  <Button className="btn-success" name="spelerteamcode" value="submit">Teamcode</Button>
+                </Link>
+              </ButtonGroup>
+            </Col>
+          </Row>
+
+          <Row className="d-flex justify-content-center align-content-end pl-4" style={{ height: '46vh' }} >
             <Image src={logo} alt="Logo" className="Logo" />
-            <ButtonGroup >
-              <Button className="btn-danger mr-1" name="logout" value="submit" onClick={() => logout()}>Uitloggen</Button>
-              
-                  <Link to={{ pathname: "./teamcode"}}>
-                    <Button className="btn-success" name="spelerteamcode" value="submit">Teamcode</Button>
-                  </Link>
-              
-            </ButtonGroup>
-          </Col>
-        </Row>
-        <Row >{
-          buttons.map(buttons => (
-            /* We're making all the buttons and filling the values in by mapping through all buttons */
-            
-                <Col className="MenuColumn  d-table">
-                  <Link to={{ pathname: buttons.link}} className="d-table-cell align-middle text-white" onclick={buttons.link}>
-                    <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "5vh" }} />
-                    <br />{buttons.title}
-                  </Link>
-                </Col>
-            
-          ))}
-        </Row>
-      </Container>
+          </Row>
 
-    );
+          <Row >{
+            buttons.map(buttons => (
+              /* We're making all the buttons and filling the values in by mapping through all buttons */
+              <Col className="MenuColumn d-table">
+                <Link to={{ pathname: buttons.link }} className="d-table-cell align-middle text-white" onclick={buttons.link}>
+                  <FontAwesomeIcon icon={buttons.icon} style={{ fontSize: "5vh" }} />
+                  <div style={{ fontSize: "1.5vh" }}>{buttons.title}</div>
+                </Link>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      );
+    }
   }
-}
 
-render(){
-  return(
-  <div>
-    <this.Home /> 
-  </div>
-  )
-}
+  render() {
+    return (
+      <div>
+        <this.Home />
+      </div>
+    )
+  }
 }
 
 // function openTab(tabName) {
@@ -144,7 +139,5 @@ render(){
 //   }
 //   document.getElementById(tabName).style.display = "block";
 // }
- 
-
 
 export default Home
