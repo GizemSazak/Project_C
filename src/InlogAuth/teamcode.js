@@ -1,9 +1,9 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 // import '../Notities/Notities.css';
 import Menu from '../Menu/Menu'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import { Container, Row, Col, Button } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 // import '../Notities/Notities.css';
 function Teamcode() {
 

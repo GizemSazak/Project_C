@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"
+
 class Loginpage extends Component {
   constructor(props) {
     super(props);
     this.state = { email: "" }
-    
+
     this.state = { password: "" }
     // this.state = { teamcode: "" };
 
@@ -38,7 +39,7 @@ class Loginpage extends Component {
       .catch(function (error) {
         window.location = "/login"
       })
-      
+
   }
 
   render() {
@@ -56,7 +57,7 @@ class Loginpage extends Component {
             <Row>
               <Col className="d-flex flex-column text-center" >
                 <Form>
-                  
+
                   <FormGroup >
                     <label className="text-white" >Email</label>
                     <FormControl type="email" name="email" className="Inputfield" onChange={this.updateInput} />

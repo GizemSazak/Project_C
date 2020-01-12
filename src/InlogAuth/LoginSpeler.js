@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import Cookies from 'universal-cookie';
 import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"

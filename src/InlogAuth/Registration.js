@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./registration.css";
 import axios from "axios";
 import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"
 
@@ -63,7 +62,7 @@ class Registreren extends Component {
                   <FormGroup >
                     <label className="text-white" >Wachtwoord</label>
                     <FormControl type="password" name="password" className="Inputfield" onChange={this.updateInput} />
-                    <label style={{ fontStyle: "italic" }}className="text-white" >Tussen 4-100 tekens.<br></br>Kleine letter, hoofdletter,<br></br> cijfer en een speciaal teken.</label>
+                    <label style={{ fontStyle: "italic" }} className="text-white" >Tussen 4-100 tekens.<br></br>Kleine letter, hoofdletter,<br></br> cijfer en een speciaal teken.</label>
                   </FormGroup>
                   <Button className="btn-success" onClick={this.handleSubmit} style={{ width: "150px" }} >Registreren</Button>
                 </Form>
