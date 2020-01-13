@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Component } from 'react';
 import axios from 'axios'
 
-
 class event extends Component {
     constructor(props) {
         super(props);
@@ -23,50 +22,36 @@ class event extends Component {
                 .catch()
         }, []);
 
-        
-          
-        var x = [   posts.map(function (post, id) {
+        var x = [posts.map(function (post, id) {
             return (post.dag
-              )
-          })]
-          console.log(x)
-        
-          
-          var fin = [];
-          x.forEach(myFunction);
-        
-         function myFunction(value){
+            )
+        })]
+        console.log(x)
+
+        var fin = [];
+        x.forEach(myFunction);
+
+        function myFunction(value) {
             fin = fin + value + ""
-            
         }
-        var arraydate= fin.split(",")
+        var arraydate = fin.split(",")
         var eventttt = []
-        
-        function secondFunction(){
-            for(var i=0;i<arraydate.length;i++){
-            eventttt.push({date: arraydate[i], events: [{}]})
+
+        function secondFunction() {
+            for (var i = 0; i < arraydate.length; i++) {
+                eventttt.push({ date: arraydate[i], events: [{}] })
             }
         }
         secondFunction()
-          console.log(eventttt)
-          console.log(fin)
-          localStorage.setItem("eventsObjects", JSON.stringify(eventttt))
+        console.log(eventttt)
+        console.log(fin)
+        localStorage.setItem("eventsObjects", JSON.stringify(eventttt))
 
-          return(<div>
-              {fin}</div>)
-
-          
-
-}
-
-
-
-    render(){
-        
-        return(<div><this.eventt/></div>
-        )
-        
+        return (<div>{fin}</div>)
     }
-
+    render() {
+        return (<div><this.eventt /></div>
+        )
+    }
 }
 export default event;

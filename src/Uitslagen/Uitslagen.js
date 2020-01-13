@@ -56,7 +56,7 @@ function Uitslagen() {
                             </Row>
 
                             <Row className="h-90% flex-column align-content-center" style={{ height: '10%' }}>
-                                <Col>{localStorage.getItem('role')==='trainer'&&
+                                <Col>{localStorage.getItem('role') === 'trainer' &&
                                     <Button href="./uitslagtoevoegen" className="btn btn-success p-2 px-4 my-2 border-dark">Toevoegen</Button>}
                                 </Col>
                             </Row>

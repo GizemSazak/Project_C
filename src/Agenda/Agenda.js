@@ -206,8 +206,8 @@ class Agenda extends Component {
                 </Col>
 
                 <Col >
-                  <Table className="d-flex justify-content-start pt-4">
-                    <div id="wrapper">
+                  <Table className="d-flex justify-content-start pt-4" id="wrapper">
+                    <div >
                       <CalendarHead
                         tableType={this.state.tableType}
                         currentDate={this.state.currentDate}

@@ -5,15 +5,13 @@
   font-family: "Montserrat", sans-serif;
   font-size: 16pt;
 }
-
 #calendarHead {
   height: 40pt;
   display: flex;
   justify-content: space-between;
   z-index: 5;
 }
-
-#prev {
+#prev,#next {
   color: rgb(75, 190, 190);
   font-weight: 700;
   cursor: pointer;
@@ -22,15 +20,13 @@
   justify-content: center;
   align-items: center;
   width: 33%;
-  align-self: center;
   background-image: linear-gradient(rgb(200, 200, 200), rgb(255, 255, 255), rgb(200, 200, 200));
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-#prev:hover{
+#prev:hover,#next:hover{
   background-image: linear-gradient(rgb(180, 180, 180), rgb(240, 240, 240), rgb(180, 180, 180));
 }
-
 #current {
   color: #ffffff;
   font-weight: 800;
@@ -46,36 +42,10 @@
   background-image: linear-gradient(rgb(75, 130, 130), rgb(75, 180, 180), rgb(75, 130, 130));
 }
 
-#next {
-  color: #48c1c2;
-  font-weight: 700;
-  cursor: pointer;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 33%;
-  background-image: linear-gradient(rgb(200, 200, 200), rgb(255, 255, 255), rgb(200, 200, 200));
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-#next:hover{
-  background-image: linear-gradient(rgb(180, 180, 180), rgb(240, 240, 240), rgb(180, 180, 180));
-}
-
 .cellValue {
   padding-top: 0px;
   cursor: pointer;
 }
-
-td {
-  position: relative;
-  width: 40pt;
-  height: 40pt;
-  font-weight: 600;
-  color: #0b3157;
-}
-
 .dot {
   position: absolute;
   left: 50%;
@@ -86,18 +56,22 @@ td {
   border-radius: 50%;
   background: red;
 }
-
+td {
+  position: relative;
+  width: 40pt;
+  height: 20pt;
+  font-weight: 600;
+  color: #0b3157;
+}
 th {
   font-weight: 400;
   font-size: 11pt;
 }
-
 table {
   width: 90vw;
   text-align: center;
   border-collapse: collapse;
 }
-
 #monthOrWeek {
   visibility: hidden;
   min-width: 100px;
@@ -105,7 +79,6 @@ table {
   position: absolute;
   z-index: 10;
 }
-
 #wrapper2 {
   display: flex;
   justify-content: center;
@@ -113,7 +86,6 @@ table {
   width: 90vw;
   margin-top: 5px;
 }
-
 #selectWeek {
   border: 1pt solid black;
   border-top-left-radius: 10px;
@@ -128,7 +100,6 @@ table {
 #selectWeek:hover{
   background-image: linear-gradient(rgb(180, 180, 180), rgb(240, 240, 240), rgb(180, 180, 180));
 }
-
 #selectMonth {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -143,14 +114,12 @@ table {
 #selectMonth:hover{
   background-image: linear-gradient(rgb(75, 130, 130), rgb(75, 180, 180), rgb(75, 130, 130));
 }
-
 .event {
   background: #44b3b6;
   border-radius: 2pt;
   margin-bottom: 4pt;
   height: 60pt;
 }
-
 .eventWrapper {
   display: flex;
   justify-content: space-between;
@@ -159,13 +128,11 @@ table {
   opacity: 0.5;
   font-weight: 600;
 }
-
 .eventBody {
   color: white;
   font-weight: 700;
   padding: 0pt 0pt 12pt 16pt;
 }
-
 .dayHasEvent {
   width: 30px;
   height: 3pt;
@@ -175,7 +142,6 @@ table {
   transform: translateX(-50%);
   display: flex;
 }
-
 .eventLine {
   margin-right: 1px;
   background: green;
@@ -183,7 +149,6 @@ table {
   width: inherit;
   border-radius: 6pt;
 }
-
 .eventDate {
   height: 40pt;
   font-weight: 800;
