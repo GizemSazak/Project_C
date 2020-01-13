@@ -1,27 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Cookies from 'universal-cookie';
 import { Container, Row, Col, Button, FormGroup, FormControl, Form } from "react-bootstrap"
-
-const cookies = new Cookies();
-
 class LoginSpeler extends Component {
   constructor(props) {
     super(props);
     this.state = { teamcode: "" }
     this.state = { cookie: "" };
-
-    // this.state = { password: "" }
-    // this.state = { teamcode: "" };
-
     this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  //Setting value of the inputs to the state
   updateInput(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-
   handleSubmit = e => {
     const { user, rememberMe } = this.state;
     localStorage.setItem('Data', 'login');
@@ -29,13 +20,14 @@ class LoginSpeler extends Component {
     localStorage.setItem('user', rememberMe ? user : '');
     console.log(this.state)
     e.preventDefault()
-    const { email, password } = this.state;
+   //Sending data to the server
     axios
       .post('http://localhost:3001/api/loginspeler', this.state)
       .then(function (response) {
+        //When the log in true in the server. It will redirect the user to the home page
         if (response.data.redirect === '/') {
           window.location = "/Home"
-
+        //When the log in false in the server. It will redirect the user to the LoginSpeler page
         } else if (response.data.redirect === '/LoginSpeler') {
           window.location = "/LoginSpeler"
         }
@@ -46,10 +38,6 @@ class LoginSpeler extends Component {
   }
 
   render() {
-    cookies.set('voetbal', 'login', { path: '/' });
-    this.state.cookie = cookies.get('voetbal');
-    console.log(cookies.get('voetbal'));
-
     return (
       <Container className="HomeBackground d-flex flex-column justify-content-center">
         <Row >

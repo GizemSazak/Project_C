@@ -11,12 +11,13 @@ export default class Notitie_Toevoegen extends Component {
       titel: this.props.location.titel
     }
   }
-
+  //Setting value of the inputs to the state
   handleChange(event) {
     let nam = event.target.name;
     let val = event.target.value;
     this.setState({ [nam]: val });
   }
+  //This function add a notitie title and beschrijving and then redirect the user to Notitie page
   Notities_toevoegen() {
     const request = new Request('http://localhost:3001/api/notities', {
       method: 'POST',

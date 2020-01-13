@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css'
 import { Container, Row, Col, Button } from "react-bootstrap"
-
 import SplitText from 'react-pose-text';
+
+//This line for the text animation in the first page
 const charPoses = {
     exit: { opacity: 0, y: 20 },
     enter: {

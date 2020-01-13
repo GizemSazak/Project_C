@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Spelers.css'
 import Menu from '../Menu/Menu'
-import { Container, Row, Col, Form, FormGroup, FormControl } from "react-bootstrap"
+import { Container, Row, Col, Form, FormGroup, FormControl,Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 
 class Toevoegen extends Component {
@@ -36,7 +36,7 @@ class Toevoegen extends Component {
             .catch(err => {
                 console.log(err);
             });
-
+             window.location = '../Spelers';
     }
 
     render() {
@@ -71,8 +71,8 @@ class Toevoegen extends Component {
                                         <label className="FormLabel" >Spelernummer</label>
                                         <FormControl type="number" placeholder="spelernummer" className="Inputfield" onChange={this.updateInput} />
                                     </FormGroup>
-                                    <Link to={{ pathname: "../Spelers" }}>
-                                        <input type="submit" value="Opslaan" className="btn btn-success py-2 px-5 my-2 border-dark" onClick={this.handleSubmit} />
+                                    <Link to="./Speler" onClick={this.forceUpdate}>
+                                    <Button variant="succes" type="submit" className="btn btn-success py-2 px-5 my-2 border-dark" onClick={this.handleSubmit} >Opslaan</Button>
                                     </Link>
                                 </Form>
                             </Col>

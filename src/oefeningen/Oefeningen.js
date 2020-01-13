@@ -24,7 +24,7 @@ class Oefeningen extends Component {
         ];
 
         const [posts, setPosts] = useState([])
-
+        //Getting all the oefeningen information from the server 
         useEffect(() => {
             axios.get('http://localhost:3001/api/oefeningen')
                 .then(res => {
@@ -44,7 +44,10 @@ class Oefeningen extends Component {
             localStorage.setItem('soort', selectedOption['value'])
             window.location.reload()
         }
-
+        /*Check the local storage if it has not have the same local storage value when the user logged in.
+        It will not allowed the user to go to the oefeningen page if he is not logged in. 
+        Else it will allowed to the user to see the the oefeningen page if he is logged in.
+        */
         if (!localStorage.getItem('Data') || localStorage === null) {
             window.location.href = '/';
         }

@@ -7,7 +7,7 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 
 function Notities() {
     const [posts, setPosts] = useState([])
-
+    //Getting all the notities information from the server 
     useEffect(() => {
         axios.get('http://localhost:3001/api/notities')
             .then(res => {
@@ -16,6 +16,10 @@ function Notities() {
             })
             .catch()
     }, []);
+    /*Check the local storage if it has not have the same local storage value when the user logged in.
+    It will not allowed the user to go to the Notities page if he is not logged in. 
+    Else it will allowed to the user to see the the Notities page if he is logged in.
+    */
     if (!localStorage.getItem('Data') || localStorage === null) {
         window.location.href = '/';
     }
@@ -42,10 +46,11 @@ function Notities() {
 
                                 <Row className="h-90% flex-column align-content-center" style={{ height: '87%' }}>
                                     {posts.map(function (post, id) {
+                                        //Sending the id, title and note to Notitie_Wijzigen page
                                         return (
                                             <Col className="my-1 Notes">
                                                 <Link refresh="true" to={{ pathname: "/Notitie_Wijzigen", id: post.id, titel: post.titel, notitie: post.notitie }}>
-                                                    <Button className="Note text-white p-2 border-dark"> {post.titel} </Button>
+                                                    <Button className="Note text-white p-2 border-dark"> {post.titel} </Button> {/** Show the title / */}
                                                 </Link>
                                             </Col>
                                         )

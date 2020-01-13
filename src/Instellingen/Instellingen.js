@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Instellingen() {
     const [posts, setPosts] = useState([])
-
+    //Getting all the registratie information from the server. I use this to get the old password, id, first and lastname
     useEffect(() => {
         axios.get('http://localhost:3001/api/registratie')
             .then(res => {
@@ -17,6 +17,11 @@ function Instellingen() {
             })
             .catch()
     }, []);
+
+    /*Check the local storage if it has not have the same local storage value when the user logged in.
+    It will not allowed the user to go to the Instellingen page if he is not logged in. 
+    Else it will allowed to the user to see the the Instellingen page if he is logged in.
+    */
     if (!localStorage.getItem('Data') || localStorage === null) {
         window.location.href = '/';
     }
@@ -36,6 +41,7 @@ function Instellingen() {
                         <Row className="Body pt-4 p-2 ">
                             <Col>
                                 {posts.map(function (post, id) {
+                                //Sending the id, firstname, lastname and password to gegevens page
                                     return (
                                         <Link refresh="true" className="linkk" to={{ pathname: "/Gegevens", id: post.id, firstname: post.firstname, lastname: post.lastname, password: post.password }}>
                                             <Button className="btn-success" value="linkk" >
