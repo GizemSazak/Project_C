@@ -52,6 +52,7 @@ app.post("/api/registratie", (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     pool.connect((err, db, done) => {
+        //Check if there is already the same email in database 
         db.query("SELECT COUNT(*) AS cnt FROM registratie WHERE email = $1", [email], function (err, data) {
             if (err) {
                 return res.status(400).send(err);
@@ -60,7 +61,12 @@ app.post("/api/registratie", (req, res) => {
                 if (data.rows > 0) {
                     console.log("Email Already exist ");
                 } else {
-                    var teamcode = customId({});
+                    var teamcode = customId({}); //Teamecode is unique random number
+
+                    /*If there is no error and the email is not already exist in the database. It will hashing the password. 
+                    Also it will check the body of the fields if all fields is filled, the password length is more the 4 and
+                    it contains uppercase and special character. Then it will add the user to the database. Otherwise it will gave an alert message for the user.
+                     */
                     try {
                         hash = Password.hash(password);
                         db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname, teamcode], function (err, insert) {
@@ -112,6 +118,7 @@ app.put('/api/registratie', (req, res,next) => {
             return res.status(400).send(err);
         }
         else{
+        //Updating first and lastname
         try {
           db.query(
                 'UPDATE registratie SET firstname = $2 , lastname = $3 where id = $1',
@@ -132,25 +139,27 @@ app.put('/api/registratie', (req, res,next) => {
             console.log("NOT UPDATED REGISTRATIE");
         }
     }
-            next();
-            try {
-                if(global.password === oudewachtwoord ){
-                db.query(
-                    'UPDATE registratie SET password = $2 where id = $1',
-                    [id, hash],
-                    err => {
-                        if (err) {
-                            console.log(err + 'tweede');
-                            return res.status(400).send(err);
-                        }
-                        console.log('Update Password SUCCESS');
+    next();
+    //Check if the password that the user is filled is equal to the old password if it is true then it will update the password.
+    try {
+            if(global.password === oudewachtwoord ){
+            db.query(
+                'UPDATE registratie SET password = $2 where id = $1',
+                [id, hash],
+                err => {
+                    if (err) {
+                        console.log(err + 'tweede');
+                        return res.status(400).send(err);
                     }
-        
-                );
-            }
-            else{
-                console.log('Update Password NOT SUCCESSED')
-            }
+                    console.log('Update Password SUCCESS');
+                }
+    
+            );
+        }
+        else{
+            console.log('Update Password NOT SUCCESSED');
+         }
+
         }
             catch (err) {
                 console.log("PASSWORD UPDATE ERROR");
@@ -158,6 +167,7 @@ app.put('/api/registratie', (req, res,next) => {
     });
 
 });
+
 //Inloggen
 app.post("/api/login", (req, res) => {
     pool.connect((err, db, done) => {
@@ -181,13 +191,16 @@ app.post("/api/login", (req, res) => {
                         return res.status(400).send(err);
                     }
                     try {
+                        /*Check if password is equal to the password that we have in registration table.
+                          Check if the id from the session if it is equal to the id that we have in registration table.
+                          Check if the email from the session if it is equal to the email that we have in registration table.
+                        */
                         if (Password.verify(password, table.rows[0].password)) {
-                            // window.localStorage.setItem('myData', 'My data');
                             req.session.id = table.rows[0].id;
                             req.session.email = table.rows[0].email;
                             console.log("Login successed");
                             console.log(req.session.email);
-                            var redir = { redirect: "/" };
+                            var redir = { redirect: "/" }; //redirect the user to home page.
                             req.session.save(function (err) {
                                 // session saved
                             })
@@ -195,7 +208,7 @@ app.post("/api/login", (req, res) => {
                         }
                     } catch (err) {
                         console.log("Login not successed")
-                        redir = { redirect: '/login' };
+                        redir = { redirect: '/login' }; //If the log in not successed keep the user in login page.
                         return res.json(redir);
                     }
 
@@ -231,18 +244,19 @@ app.post("/api/loginspeler", (req, res) => {
                         return res.status(400).send(err);
                     }
                     try {
+                        //If the filled in teamcode is equal to the team code that we have in our database.
                         if (teamcode === table.rows[0].teamcode) {
-                            req.session.id = table.rows[0].id;
-                            req.session.teamcode = table.rows[0].teamcode;
-                            req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // Cookie expires after 30 days
-                            console.log("Speler Login successed");
+                            req.session.id = table.rows[0].id; //Check if the id from the session if it is equal to the id that we have in registration table.
+                            req.session.teamcode = table.rows[0].teamcode; //Check if the teamcode from the session if it is equal to the teamcode that we have in registration table.
+                            req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; //Cookie expires after 30 days
+                            console.log("Speler Login successed"); 
                             console.log(req.session.teamcode);
-                            var redir = { redirect: "/" };
+                            var redir = { redirect: "/" }; //If the log in successed send the user to Home page.
                             return res.json(redir);
                         }
                     } catch (err) {
                         console.log("Speler Login not successed")
-                        redir = { redirect: '/LoginSpeler' };
+                        redir = { redirect: '/LoginSpeler' }; //If the log in not successed keep the user in LoginSpeler page.
                         return res.json(redir);
                     }
                 }
@@ -307,7 +321,7 @@ app.get('/api/registratie', (req, res) => {
     });
 });
 
-// teamcode
+// Posting teamcode
 app.post("/api/teamcode", (req, res) => {
     pool.connect((err, db, done) => {
         if (err) {
@@ -431,7 +445,7 @@ app.post('/api/notities', (req, res) => {
             console.log(err + 'eerste');
             return res.status(400).send(err);
         }
-
+        //Inserting the values that the user has fillied in to notitie table in the database.
         db.query(
             'INSERT INTO notities (titel, notitie, teamcode) VALUES($1, $2, $3)',
             [...values],

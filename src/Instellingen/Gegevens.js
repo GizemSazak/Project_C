@@ -17,13 +17,13 @@ class Gegevens extends Component {
             trainer: this.props.location.trainer
         }
     }
-
+ //Setting value of the inputs to the state
     handleChange(event) {
         let nam = event.target.name;
         let val = event.target.value;
         this.setState({ [nam]: val });
     }
-
+    //This function update the password, first and then redirect the user to Instellingen page
     Gegevens_Wijzigen() {
         const request = new Request('http://localhost:3001/api/registratie', {
             method: 'PUT',
@@ -44,6 +44,10 @@ class Gegevens extends Component {
     }
 
     render() {
+        /*Check the local storage if it has not have the same local storage value when the user logged in.
+        It will not allowed the user to go to the Gegevens page if he is not logged in. 
+        Else it will allowed to the user to see the the Gegevens page if he is logged in.
+        */
         if (!localStorage.getItem('Data') || localStorage === null) {
             window.location.href = '/';
         }

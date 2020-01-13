@@ -16,10 +16,10 @@ function Notities() {
             })
             .catch()
     }, []);
-/*Check the local storage if it has not have the same local storage value when the user logged in.
-It will not allowed the user to go to the Notities page if he is not logged in. 
-Else it will allowed to the user to see the the Notities page if he is logged in.
-*/
+    /*Check the local storage if it has not have the same local storage value when the user logged in.
+    It will not allowed the user to go to the Notities page if he is not logged in. 
+    Else it will allowed to the user to see the the Notities page if he is logged in.
+    */
     if (!localStorage.getItem('Data') || localStorage === null) {
         window.location.href = '/';
     }
