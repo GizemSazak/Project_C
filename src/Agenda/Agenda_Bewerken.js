@@ -3,7 +3,7 @@ import './Agenda';
 import Menu from '../Menu/Menu';
 import { Link } from 'react-router-dom';
 import event from "./event.js"
-import { Container, Row, Col, Button, FormControl, FormGroup } from "react-bootstrap"
+import { Container, Row, Col, Button, FormControl } from "react-bootstrap"
 
 class Agenda_Bewerken extends Component {
     constructor(props) {

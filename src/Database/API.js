@@ -21,7 +21,7 @@ const pool = new pg.Pool({
 });
 
 const app = express();
-app.use(expressValidator()) 
+app.use(expressValidator())
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -65,22 +65,22 @@ app.post("/api/registratie", (req, res) => {
                         hash = Password.hash(password);
                         db.query("INSERT INTO registratie (email, password, firstname, lastname, teamcode) VALUES($1, $2, $3, $4,$5)", [email, hash, firstname, lastname, teamcode], function (err, insert) {
                             if (err) {
-                               var redir = { redirect: '/registreren' };
+                                var redir = { redirect: '/registreren' };
                                 return res.json(redir);
-                            } else if(
-                            req.checkBody("email", "Emial field can not be empty.").notEmpty() &&
-                            req.checkBody('firstname', "firstname field can not be empty.").notEmpty() &&
-                            req.checkBody('lastname', "lastname field can not be empty.").notEmpty() &&
-                            req.checkBody('password', "password field can not be empty.").notEmpty() &&
-                            req.checkBody('password', "password must be between 4-100 characters lnog please try agin.").len(4,100) &&
-                            req.checkBody('password', "password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d.@)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i")) {
+                            } else if (
+                                req.checkBody("email", "Emial field can not be empty.").notEmpty() &&
+                                req.checkBody('firstname', "firstname field can not be empty.").notEmpty() &&
+                                req.checkBody('lastname', "lastname field can not be empty.").notEmpty() &&
+                                req.checkBody('password', "password field can not be empty.").notEmpty() &&
+                                req.checkBody('password', "password must be between 4-100 characters lnog please try agin.").len(4, 100) &&
+                                req.checkBody('password', "password must include one lowercase character, one uppercase character, a number, and a special character.").matches(/^(?=.*\d.@)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i")) {
                                 console.log("INSERTED DATA SUCCESS");
-                                 redir = { redirect: "/" };
+                                redir = { redirect: "/" };
                                 return res.json(redir);
                             }
-                            else{
+                            else {
                                 console.log("INSERTED DATA NOT SUCCESSED>>>");
-                                 redir = { redirect: '/registreren' };
+                                redir = { redirect: '/registreren' };
                                 return res.json(redir);
                             }
                         })
@@ -98,7 +98,7 @@ app.post("/api/registratie", (req, res) => {
 
 });
 //Update gegevens
-app.put('/api/registratie', (req, res,next) => {
+app.put('/api/registratie', (req, res, next) => {
     console.log(req.body);
     const id = req.body.id;
     const firstname = req.body.firstname;
@@ -111,30 +111,28 @@ app.put('/api/registratie', (req, res,next) => {
             console.log(err + 'eerste');
             return res.status(400).send(err);
         }
-        else{
-        try {
-          db.query(
-                'UPDATE registratie SET firstname = $2 , lastname = $3 where id = $1',
-                [id, firstname, lastname],
-                err => {
-                    if (err) {
-                        console.log(err + 'tweede');
-                        return res.status(400).send(err);
-                    }
-                    console.log('Update DATA SUCCESS');
-                }
-
-            );
-            
-
-        }
-        catch (err) {
-            console.log("NOT UPDATED REGISTRATIE");
-        }
-    }
-            next();
+        else {
             try {
-                if(global.password === oudewachtwoord ){
+                db.query(
+                    'UPDATE registratie SET firstname = $2 , lastname = $3 where id = $1',
+                    [id, firstname, lastname],
+                    err => {
+                        if (err) {
+                            console.log(err + 'tweede');
+                            return res.status(400).send(err);
+                        }
+                        console.log('Update DATA SUCCESS');
+                    }
+
+                );
+            }
+            catch (err) {
+                console.log("NOT UPDATED REGISTRATIE");
+            }
+        }
+        next();
+        try {
+            if (global.password === oudewachtwoord) {
                 db.query(
                     'UPDATE registratie SET password = $2 where id = $1',
                     [id, hash],
@@ -145,16 +143,16 @@ app.put('/api/registratie', (req, res,next) => {
                         }
                         console.log('Update Password SUCCESS');
                     }
-        
+
                 );
             }
-            else{
+            else {
                 console.log('Update Password NOT SUCCESSED')
             }
         }
-            catch (err) {
-                console.log("PASSWORD UPDATE ERROR");
-            }
+        catch (err) {
+            console.log("PASSWORD UPDATE ERROR");
+        }
     });
 
 });
@@ -200,7 +198,6 @@ app.post("/api/login", (req, res) => {
                     }
 
                 }
-
                 return res.status(200).send(table.rows);
             }
         );
@@ -262,7 +259,7 @@ app.get('/api/registratie/teamcode', (req, res) => {
             return res.status(400).send(err);
         }
         db.query(
-            "SELECT teamcode from registratie where email = $1 or teamcode = $2", [global.email,global.teamcode],
+            "SELECT teamcode from registratie where email = $1 or teamcode = $2", [global.email, global.teamcode],
             (err, table) => {
                 if (err) {
                     return res.status(400).send(err);
@@ -323,7 +320,7 @@ app.get('/api/aanwezigheid', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
-        db.query('SELECT * from aanwezigheid right join speler on speler_id=id where speler.teamcode = $1',[global.teamcode], (err, table) => {
+        db.query('SELECT * from aanwezigheid right join speler on speler_id=id where speler.teamcode = $1', [global.teamcode], (err, table) => {
             // If err is True than send err else send table.rows
             err ? res.status(400).send(err) : res.status(200).send(table.rows)
         });
@@ -393,7 +390,7 @@ app.post('/api/speler', (req, res) => {
         done();
         // return res.status(200).send(table.rows);
     });
-    
+
 
 });
 

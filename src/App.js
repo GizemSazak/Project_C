@@ -63,10 +63,6 @@ function App() {
       <Route exact path="/LoginSpeler" component={LoginSpeler} />
       <Route exact path="/teamcode" component={teamcode} />
       <Route exact path="/Agenda/event" component={event} />
-
-
-
-
     </div >
   );
 }

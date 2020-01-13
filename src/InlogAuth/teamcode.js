@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import '../Notities/Notities.css';
 import Menu from '../Menu/Menu'
-import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { Container, Row, Col } from "react-bootstrap"
-// import '../Notities/Notities.css';
 function Teamcode() {
 
     const [posts, setPosts] = useState([])
