@@ -255,7 +255,6 @@ app.post("/api/loginspeler", (req, res) => {
                         return res.json(redir);
                     }
                 }
-
                 return res.status(200).send(table.rows);
             }
         );
