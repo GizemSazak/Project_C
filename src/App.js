@@ -17,6 +17,7 @@ import registreren from "./inlog + auth/Registration";
 import Loginpage from "./inlog + auth/Login";
 import tacktics from "./tactieken/tactieken";
 import Hoofdpagina from "./Hoofdpagina/Hoofdpagina";
+import tactieken_toevoegen from "./tactieken/tactiek_toevoegen"
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <Route exact path="/login" component={Loginpage} />
       <Route exact path="/tactieken" component={tacktics} />
       <Route exact path="/" component={Hoofdpagina} />
+      <Route exact path="/tactieken_toevoegen" component={tactieken_toevoegen} />
 
     </div>
   );

@@ -78,7 +78,7 @@ app.post("/api/registratie", (req, res) => {
                     }
                     catch (err) {
                         console.log("INSERTED DATA NOT SUCCESSED");
-                       var redir = { redirect: '/registreren'};
+                        var redir = { redirect: '/registreren' };
                         return res.json(redir);
                     }
                 }
@@ -118,7 +118,7 @@ app.post("/api/login", (req, res) => {
                         }
                     } catch (err) {
                         console.log("Login not successed")
-                         redir = { redirect: '/login'};
+                        redir = { redirect: '/login' };
                         return res.json(redir);
                     }
                 }
@@ -402,7 +402,43 @@ app.get('/api/oefeningen', (req, res) => {
     });
 });
 
+app.post('/api/tacktieken_toevoegen', (req, res) => {
+    console.log(req.body);
+    const tactieknaam = req.body.naam
+    const tactiekplaatje = req.body.screenschot
+    const values = [tactieknaam, tactiekplaatje];
 
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query(
+            'INSERT INTO tacktieken (tacktieknaam, tactiekplaatje) VALUES($1, $2)', [...values],
+            err => {
+                if (err) { return res.status(400).send(err); }
+                console.log('INSERTED DATA SUCCESS');
+            }
+        );
+        res.status(200).send({ message: 'Data inserted!' });
+        // return res.status(200).send(table.rows);
+    });
+});
+
+app.get('/api/tactieken', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+
+        db.query('SELECT * from tactieken order by id ASC', (err, table) => {
+            done();
+            if (err) {
+                return res.status(400).send(err);
+            }
+            return res.status(200).send(table.rows);
+            console.log(table.rows)
+        });
+    });
+});
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 
 

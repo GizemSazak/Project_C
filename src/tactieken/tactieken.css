@@ -1,85 +1,47 @@
 .app{  
-  background: url("../bg.png")no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100vh;
-  width: 203vh;
-  position: fixed;
-  right: 0;
-}
-.body{
-  background-image: url("../voetbalveld.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-left: 17vh;
-  margin-right: 70vh;
-  margin-top: 30vh;
-  margin-bottom: 0vh;
-  border: 0.2vh solid black;
-  min-height: 70vh;
-}
-.boardtools{
-  background-color:white;
-  margin-left: 0vh;
-  margin-right: 0vh;
-  margin-top: -30vh;
-  margin-bottom: 0vh;
-  border: 0.2vh solid black;
-  min-height: 30vh;
-}
-.cross{
-  background-image: url("./cross.png");
-  background-size: cover;
-  width: 6vh;
-  height: 6vh;
-  position: fixed;
-  margin-left: 10vh;
-}
-.circle{
-  background-image: url("./circle.png");
-  background-size: cover;
-  background-size: cover;
-  width: 6vh;
-  height: 6vh;
-  position: fixed;
-  margin-left: 20vh;
-}
-.arrowleft{
-  background-image: url("./left-arrow.png");
-  background-size: cover;
-  background-size: cover;
-  width: 6vh;
-  height: 6vh;
-  position: fixed;
-  margin-left: 30vh;
-}
-.arrowright{
-  background-image: url("./right-arrow.png");
-  background-size: cover;
-  background-size: cover;
-  width: 6vh;
-  height: 6vh;
-  position: fixed;
-  margin-left: 40vh;
-}
-.arrowup{
-  background-image: url("./up-arrow.png");
-  background-size: cover;
-  background-size: cover;
-  width: 6vh;
-  height: 6vh;
-  position: fixed;
-  margin-left: 50vh;
-}
-.arrowdown{
-  background-image: url("./down-arrow.png");
-  background-size: cover;
-  background-size: cover;
-  width: 6vh;
-  height: 6vh;
-  position: fixed;
-  margin-left: 60vh;
+    background: url("../bg.png")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width: 203vh;
+    position: fixed;
+    right: 0;
+  }
 
+
+  .addtactiek,.btnDeletePlayer{
+    font-size: 3rem;
+    font-weight: 900;
+    width: 100px;
+    height: 100px;
+    color: white;
+    background-color: transparent;
+    border: none;
+
+    position: absolute;
+    right:10px; 
+    bottom:10px;
+}
+.addtactiek{
+    float:left;
+    right:100px; 
+}
+
+
+.roww{
+  display: grid;  
+  grid-template-columns: repeat(auto-fill, minmax(40vh, 1fr ));
+  right: 0;
+  bottom: 0;
+  padding-left: 18vh;
+}
+.columnn { 
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  color: black;
+  border: 0.1vh solid black;
+  background-color: white;
 }

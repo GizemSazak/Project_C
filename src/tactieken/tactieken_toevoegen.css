@@ -1,0 +1,188 @@
+.app{  
+  background: url("../bg.png")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  width: 203vh;
+  position: fixed;
+  right: 0;
+}
+.body{
+  background-image: url("../voetbalveld.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: 18vh;
+  margin-right: 70vh;
+  margin-top: 30vh;
+  margin-bottom: 0vh;
+  border: 0.2vh solid black;
+  min-height: 70vh;
+}
+.boardtools{
+  background-color:white;
+  margin-left: 0vh;
+  margin-right: 0vh;
+  margin-top: -30vh;
+  margin-bottom: 0vh;
+  border: 0.2vh solid black;
+  min-height: 30vh;
+}
+.cross{
+  background-image: url("./cross.png");
+  background-size: cover;
+  width: 6vh;
+  height: 6vh;
+  position: fixed;
+  margin-left: 10vh;
+}
+.circle{
+  background-image: url("./circle.png");
+  background-size: cover;
+  background-size: cover;
+  width: 6vh;
+  height: 6vh;
+  position: fixed;
+  margin-left: 20vh;
+}
+.arrowleft{
+  background-image: url("./left-arrow.png");
+  background-size: cover;
+  background-size: cover;
+  width: 6vh;
+  height: 6vh;
+  position: fixed;
+  margin-left: 30vh;
+}
+.arrowright{
+  background-image: url("./right-arrow.png");
+  background-size: cover;
+  background-size: cover;
+  width: 6vh;
+  height: 6vh;
+  position: fixed;
+  margin-left: 40vh;
+}
+.arrowup{
+  background-image: url("./up-arrow.png");
+  background-size: cover;
+  background-size: cover;
+  width: 6vh;
+  height: 6vh;
+  position: fixed;
+  margin-left: 50vh;
+}
+.arrowdown{
+  background-image: url("./down-arrow.png");
+  background-size: cover;
+  background-size: cover;
+  width: 6vh;
+  height: 6vh;
+  position: fixed;
+  margin-left: 60vh;
+
+}
+
+.capturebutton{
+  position: fixed;
+  top: 50%;
+  left: 80%;
+
+}
+
+.savebutton{
+  position: fixed;
+  top: 60%;
+  left: 80%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  overflow: hidden;
+}
+
+h1, p {
+  font-family: Lato;
+}
+
+.crosshairs {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 2147483645;
+}
+
+.crosshairs.hidden {
+  display: none;
+}
+
+
+.crosshairs::before,
+.crosshairs::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border: none !important;
+  border-image: !important;
+}
+
+.crosshairs::before {
+  left: -100%;
+  top: -100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.crosshairs::after {
+  left: 0px;
+  top: 0px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  
+}
+
+.overlay.highlighting {
+  background: none;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-style: solid;
+}
+
+.screenschot{
+  position: fixed;
+  top: 40;
+  left: 40;
+
+}
+
+.Inputfield{
+  position: fixed;
+  font-size: 1.2rem;
+  text-align: center;
+  top: 40%;
+  left: 75%;
+}
+
+.Inputfield2{
+  position: fixed;
+  font-size: 1.2rem;
+  text-align: center;
+  top: 37%;
+  left: 75%;
+}

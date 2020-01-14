@@ -3,9 +3,9 @@ import Menu from '../Menu/Menu';
 import "./tactieken.css";
 import axios from 'axios'
 
-class tactieken extends Component {
+class tactieken_verwijderen extends Component {
 
-    viewtacktieken() {
+    tacktieken() {
         const [posts, setPosts] = useState([])
         useEffect(() => {
             axios.get('http://localhost:3001/api/tacktieken')
@@ -32,6 +32,21 @@ class tactieken extends Component {
     }
 
 
+    Delete(tactieknaam, tactiekplaatje) {
+
+        const request = new Request('http://localhost:3001/api/speler', {
+            method: 'DELETE',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify({ 'tactieknaam': tactieknaam, 'tacktiekplaatje': tactiekplaatje })
+        });
+        fetch(request)
+            .then(response => { response.json().then(data => { }); })
+            .catch(err => { console.log(err); });
+        window.location.reload()
+    }
+
+
+
     render() {
         return (
             <div className="app">
@@ -52,5 +67,5 @@ class tactieken extends Component {
 
 }
 
-export default tactieken;
+export default tactieken_verwijderen;
 
