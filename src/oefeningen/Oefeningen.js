@@ -20,7 +20,7 @@ class Oefeningen extends Component {
             { label: "Aanvallen", value: 'Aanvallen' },
             { label: "Dribbelen", value: 'Dribbelen' },
             { label: "Passing", value: 'Passing' },
-            { label: "Verdedigen", value: 'Verdedigen' }
+            { label: "Verdedigen", value: 'verdedigen' }
         ];
 
         const [posts, setPosts] = useState([])
