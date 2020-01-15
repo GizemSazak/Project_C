@@ -377,7 +377,7 @@ app.get('/api/aanwezigheid', (req, res) => {
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
-        db.query('SELECT * from aanwezigheid left join speler on id=speler_id where speler.teamcode = $1 group by ', [global.teamcode], (err, table) => {
+        db.query('SELECT * from aanwezigheid left join speler on id=speler_id where speler.teamcode = $1', [global.teamcode], (err, table) => {
             // If err is True than send err else send table.rows
             err ? res.status(400).send(err) : res.status(200).send(table.rows)
         });
