@@ -5,6 +5,7 @@ import './Aanwezigheid.css'
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Container, Row, Col } from "react-bootstrap"
+import { check } from 'express-validator/check'
 
 const date = new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()
 
@@ -15,10 +16,9 @@ class Aanwezigheid extends Component {
 
         this.togglecheck = this.togglecheck.bind(this);
         this.Spelers = this.Spelers.bind(this);
-        this.previousdate = this.previousdate.bind(this);
-        this.nextdate = this.nextdate.bind(this);
         this.state = {
             todaysdate: new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()
+        
         }
     }
 
@@ -53,14 +53,10 @@ class Aanwezigheid extends Component {
             .catch(err => {
                 console.log(err);
             });
+    }
+
+    getupdatedlist(){
         window.location.reload()
-    }
-
-    previousdate(){
-        console.log('done')
-    }
-
-    nextdate(){
     }
 
     Spelers() {
@@ -113,11 +109,11 @@ class Aanwezigheid extends Component {
                             {/* <button onClick={() => this.Submit(post.voornaam, post.id, this.state.aanwezig, this.state.datum)}>test</button> */}
 
                             <a onClick={() => this.togglecheck(post.id, post.aanwezig = true)}>
-                            <FontAwesomeIcon icon={faCheckCircle} />
+                            <FontAwesomeIcon icon={faCheckCircle} className={post.aanwezig ? "checkTrue" : "Aanwezigheidsicons"} /> {" "}
 
                             </a>{"   "}
-                            <a onClick={() => this.togglecheck(post.id, post.aanwezig = false)}>
-                            <FontAwesomeIcon icon={faTimesCircle} />
+                            <a className="crossTrue" onClick={() => this.togglecheck(post.id, post.aanwezig = false)}>
+                            <FontAwesomeIcon icon={faTimesCircle} className={post.aanwezig===false ? "crossTrue" : "Aanwezigheidsicons"} />
                 
                             </a>
 
@@ -139,6 +135,7 @@ class Aanwezigheid extends Component {
                     
                 </div>
                 <button onClick={()=>this.newlist()}>newlist</button>
+                <button onClick={()=>this.getupdatedlist()}>apply</button>
             </div>
             
         )
