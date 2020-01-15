@@ -326,31 +326,15 @@ app.post("/api/teamcode", (req, res) => {
     });
 });
 
-// Aanwezigheid
-app.get('/api/aanwezigheid', (req, res) => {
-    pool.connect((err, db, done) => {
-        if (err) { return res.status(400).send(err); }
-
-        db.query('SELECT * from aanwezigheid right join speler on speler_id=id where speler.teamcode = $1', [global.teamcode], (err, table) => {
-            // If err is True than send err else send table.rows
-            err ? res.status(400).send(err) : res.status(200).send(table.rows)
-        });
-        done();
-    });
-
-});
-
-app.post('/api/aanwezigheid', (req, res) => {
+app.put('/api/aanwezigheidnewlist', (req, res) => {
     console.log(req.body);
     const datum = req.body.datum;
-    const aanwezig = req.body.aanwezig;
-    const speler_id = req.body.speler_id;
 
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
         db.query(
-            'INSERT INTO aanwezigheid (datum, aanwezig, speler_id, teamcode) VALUES($1, $2, $3, $4)', [datum, aanwezig, speler_id, global.teamcode],
+            'INSERT INTO aanwezigheid(speler_id,datum) select id,$2 from speler where speler.teamcode=$1',[global.teamcode,datum],
             err => {
                 if (err) {
                     console.log(err + 'tweede');
@@ -363,6 +347,59 @@ app.post('/api/aanwezigheid', (req, res) => {
         done();
     });
 });
+
+app.put('/api/aanwezigheid', (req, res) => {
+    console.log(req.body);
+    const datum = req.body.datum;
+    const aanwezig = req.body.aanwezig;
+    const speler_id = req.body.speler_id;
+
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query(
+            'UPDATE aanwezigheid SET aanwezig=$2, teamcode=$4 where speler_id=$3 and datum=$1', [datum, aanwezig, speler_id, global.teamcode],
+            err => {
+                if (err) {
+                    console.log(err + 'tweede');
+                    return res.status(400).send(err);
+                }
+                console.log('INSERTED DATA SUCCESS');
+                res.status(201).send({ message: 'Data inserted!' });
+            }
+        );
+        done();
+    });
+});
+
+// Aanwezigheid right join speler on speler_id=id
+app.get('/api/aanwezigheid', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query('SELECT * from aanwezigheid left join speler on id=speler_id where speler.teamcode = $1 group by ', [global.teamcode], (err, table) => {
+            // If err is True than send err else send table.rows
+            err ? res.status(400).send(err) : res.status(200).send(table.rows)
+        });
+        done();
+    });
+
+});
+
+//Get spelers
+app.get('/api/speleraanwezigheid', (req, res) => {
+    pool.connect((err, db, done) => {
+        if (err) { return res.status(400).send(err); }
+
+        db.query('SELECT * from speler left join aanwezigheid on id=speler_id where speler.teamcode = $1', [global.teamcode], (err, table) => {
+            // If err is True than send err else send table.rows
+            err ? res.status(400).send(err) : res.status(200).send(table.rows)
+        });
+        done();
+    });
+
+});
+
 
 //Get spelers
 app.get('/api/speler', (req, res) => {
