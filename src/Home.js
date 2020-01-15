@@ -26,6 +26,7 @@ class Home extends Component {
   }
 
   Home(user) {
+
     localStorage.setItem('soort', '')
     function logout() {
       // sessionStorage.clear();
@@ -48,6 +49,8 @@ class Home extends Component {
         })
         .catch()
     }, []);
+
+   
 
     posts.map(function (post, id) {
       axios.post('http://localhost:3001/api/teamcode', { 'teamcode': post.teamcode })
