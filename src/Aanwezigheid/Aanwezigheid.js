@@ -2,9 +2,9 @@ import React, { Component, useState, useEffect } from 'react'
 import Menu from '../Menu/Menu'
 import axios from 'axios'
 import './Aanwezigheid.css'
-import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle, faTimesCircle, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Button } from "react-bootstrap"
 import { check } from 'express-validator/check'
 
 const date = new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()
@@ -18,11 +18,11 @@ class Aanwezigheid extends Component {
         this.Spelers = this.Spelers.bind(this);
         this.state = {
             todaysdate: new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()
-        
+
         }
     }
 
-    newlist(){
+    newlist() {
         const request = new Request('http://localhost:3001/api/aanwezigheidnewlist', {
             method: 'PUT',
             headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -35,7 +35,7 @@ class Aanwezigheid extends Component {
             .catch(err => {
                 console.log(err);
             });
-            window.location.reload()
+        window.location.reload()
     }
 
 
@@ -53,9 +53,6 @@ class Aanwezigheid extends Component {
             .catch(err => {
                 console.log(err);
             });
-    }
-
-    getupdatedlist(){
         window.location.reload()
     }
 
@@ -84,22 +81,20 @@ class Aanwezigheid extends Component {
 
         const filterdate = posts.filter(post => {
             return (post.datum === this.state.todaysdate)
-          });
-          console.log(filterdate.length==0)
+        });
+        console.log(filterdate.length == 0)
 
-         
 
         return (
-            
             <div className="Spelersrow">
                 <div className='Spelerscolumn'>
-                
+
                     <div className="ColumnHeader1">Naam</div>
                     {filterdate.map(post =>
                         <div>
                             <div className="Speler">{post.voornaam} {post.achternaam}</div>
                         </div>)}
-                    
+
                 </div>
 
                 <div className='Spelerscolumn'>
@@ -109,35 +104,27 @@ class Aanwezigheid extends Component {
                             {/* <button onClick={() => this.Submit(post.voornaam, post.id, this.state.aanwezig, this.state.datum)}>test</button> */}
 
                             <a onClick={() => this.togglecheck(post.id, post.aanwezig = true)}>
-                            <FontAwesomeIcon icon={faCheckCircle} className={post.aanwezig ? "checkTrue" : "Aanwezigheidsicons"} /> {" "}
+                                <FontAwesomeIcon icon={faCheckCircle} className={post.aanwezig ? "checkTrue" : "Aanwezigheidsicons"} /> {" "}
 
                             </a>{"   "}
                             <a className="crossTrue" onClick={() => this.togglecheck(post.id, post.aanwezig = false)}>
-                            <FontAwesomeIcon icon={faTimesCircle} className={post.aanwezig===false ? "crossTrue" : "Aanwezigheidsicons"} />
-                
+                                <FontAwesomeIcon icon={faTimesCircle} className={post.aanwezig === false ? "crossTrue" : "Aanwezigheidsicons"} />
                             </a>
-
                         </div>)}
-                    
                 </div>
 
                 <div className='Spelerscolumn'>
                     <div className="ColumnHeader3">Aanwezigheid</div>
                     {filterdate.map(post =>
                         <div>
-                          {post.aanwezig != null &&
-                            <div className="Speler">{post.aanwezig.toString()=='true'&&'aanwezig'}
-                                                    {post.aanwezig.toString()=='false'&&'afwezig'}</div>}
-                        {post.aanwezig == null &&
-                        <div className="Speler">{"-"}</div>}                         
-                          
+                            {post.aanwezig != null &&
+                                <div className="Speler">{post.aanwezig.toString() == 'true' && 'aanwezig'}
+                                    {post.aanwezig.toString() == 'false' && 'afwezig'}</div>}
+                            {post.aanwezig == null &&
+                                <div className="Speler">{"-"}</div>}
                         </div>)}
-                    
                 </div>
-                <button onClick={()=>this.newlist()}>newlist</button>
-                <button onClick={()=>this.getupdatedlist()}>apply</button>
             </div>
-            
         )
     }
 
@@ -155,14 +142,30 @@ class Aanwezigheid extends Component {
                         </Row>
                         {/* Page Body */}
                         <Row className="Body pt-4 p-2 h-90% flex-column align-content-center" >
-                        <div className="p-2" style={{ backgroundColor: "rgb(0, 100, 0)", borderRadius: "10px" }}>
-                            <button onClick= {()=>this.setState({todaysdate: (parseInt(this.state.todaysdate) - 1) + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()})}>-</button> {'        '}
-                            {this.state.todaysdate}{'       '}
-                            <button onClick= {()=>this.setState({todaysdate: (parseInt(this.state.todaysdate) + 1) + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear()})}>-</button> {'        '}
+                            <Row style={{ height: '90%', width: '100%' }}>
+                                <Col>
+                                    <div className="p-2" style={{ backgroundColor: "rgb(0, 100, 0)", borderRadius: "10px" }}>
+                                        <Button className="btn-success" onClick={() => this.setState({ todaysdate: (parseInt(this.state.todaysdate) - 1) + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear() })}>
+                                            <FontAwesomeIcon icon={faArrowLeft} />
+                                        </Button> {'        '}
+                                        {this.state.todaysdate}{'       '}
+                                        <Button className="btn-success" onClick={() => this.setState({ todaysdate: (parseInt(this.state.todaysdate) + 1) + '-' + (new Date().getMonth() + 1) + '-' + new Date().getFullYear() })}>
+                                            <FontAwesomeIcon icon={faArrowRight} />
+                                        </Button> {'        '}
 
-                            </div>
-                            <this.Spelers />
+                                    </div>
+                                    <this.Spelers />
+                                </Col>
+
+                            </Row>
+
+                            <Row style={{ height: '10%' }}>
+                                <Col>
+                                    <Button onClick={() => this.newlist()} style={{ height: "40px" }} className="btn-success">Nieuwe Lijst</Button>
+                                </Col>
+                            </Row>
                         </Row>
+
                     </Col>
                 </Row>
             </Container>
