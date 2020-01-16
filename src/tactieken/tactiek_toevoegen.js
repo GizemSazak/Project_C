@@ -4,6 +4,7 @@ import Menu from '../Menu/Menu';
 import './tactieken_toevoegen.css';
 import ScreenCapture from "./screenshot"
 import base64Img from "base64-img"
+import Axios from "axios";
 
 class tactieken_toevoegen extends Component {
     constructor(props) {
@@ -21,25 +22,26 @@ class tactieken_toevoegen extends Component {
         this.setState({ [event.target.name]: event.target.value })
     }
 
-    handleScreenCapture = (screenCapture, tactieknaam) => {
-        this.setState({
-            screenCapture, tactieknaam
-        })
+    handleScreenCapture = () => {
+        const { tactieknaam, screenCapture } = this.state
 
-        // var data = base64Img.base64Sync(ScreenCapture);
+        var data = base64Img.base64Sync(ScreenCapture);
 
-        const request = new Request('http://localhost:3001/api/tacktieken_toevoegen', {
-            method: 'POST',
-            headers: new Headers({ 'Content-Type': 'application/json' }),
-            body: ({ 'tactieknaam': this.state.naam, 'tactiekplaatje': this.state.screenCapture })
-        });
-        fetch(request)
-            .then(response => {
-                response().then(data => { });
-            })
-            .catch(err => {
-                console.log(err);
-            });
+
+        Axios
+            .post('http://localhost:3001/api/tactieken_toevoegen', this.state)
+        // request = new Request('http://localhost:3001/api/tactieken_toevoegen', {
+        //     method: 'POST',
+        //     headers: new Headers({ 'Content-Type': 'application/json' }),
+        //     body: ({ 'tactieknaam': this.state.naam, 'tacktiekplaatje': this.state.screenCapture })
+        // });
+        // fetch(request)
+        //     .then(response => {
+        //         response().then(data => { });
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     });
     }
 
 

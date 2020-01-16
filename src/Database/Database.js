@@ -402,17 +402,17 @@ app.get('/api/oefeningen', (req, res) => {
     });
 });
 
-app.post('/api/tacktieken_toevoegen', (req, res) => {
+app.post('/api/tactieken_toevoegen', (req, res) => {
     console.log(req.body);
-    const tactieknaam = req.body.naam
-    const tactiekplaatje = req.body.screenschot
-    const values = [tactieknaam, tactiekplaatje];
+    const tactieknaam = req.body.tactieknaam
+    const tacktiekplaatje = req.body.tacktiekplaatje
+    const values = [tactieknaam, tacktiekplaatje];
 
     pool.connect((err, db, done) => {
         if (err) { return res.status(400).send(err); }
 
         db.query(
-            'INSERT INTO tacktieken (tacktieknaam, tactiekplaatje) VALUES($1, $2)', [...values],
+            'INSERT INTO tacktieken (tacktieknaam, tacktiekplaatje) VALUES($1, $2)', [...values],
             err => {
                 if (err) { return res.status(400).send(err); }
                 console.log('INSERTED DATA SUCCESS');
