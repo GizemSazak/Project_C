@@ -334,7 +334,7 @@ app.put('/api/aanwezigheidnewlist', (req, res) => {
         if (err) { return res.status(400).send(err); }
 
         db.query(
-            'INSERT INTO aanwezigheid(speler_id,datum) select id,$2 from speler where speler.teamcode=$1',[global.teamcode,datum],
+            'INSERT INTO aanwezigheid(speler_id,datum) select id,$2 from speler where speler.teamcode=$1', [global.teamcode, datum],
             err => {
                 if (err) {
                     console.log(err + 'tweede');

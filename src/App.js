@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom'
-import oefeningen from './Oefeningen/Oefeningen'
-import oefening_x from './Oefeningen/oefening_x'
+import Oefeningen from './oefeningen/Oefeningen'
+import oefening_x from './oefeningen/oefening_x'
 import Spelers from './Spelers/Spelers'
 import SpelerToevoegen from './Spelers/Toevoegen'
 import SpelerVerwijderen from './Spelers/Verwijderen'
@@ -52,7 +52,7 @@ function App() {
           <></>
       }
       <Route exact path='/Home' component={Home} />
-      <Route exact path='/Oefeningen' component={oefeningen} />
+      <Route exact path='/Oefeningen' component={Oefeningen} />
       <Route exact path='/oefening_x' component={oefening_x} />
       <Route exact path='/Uitslagen' component={Uitslagen} />
       <Route exact path='/verslag' component={verslag} />
