@@ -17,7 +17,7 @@ const pool = new pg.Pool({
     host: "salt.db.elephantsql.com",
     database: "cligxofj",
     user: "cligxofj",
-    password: "MMdvlDXsE73zeBxtbKvigi5ALP6_pRVo"
+    password: "7Sd8bkKwIsoLk_Lq-89ndnYnffkfTxuE"
 });
 
 const app = express();
